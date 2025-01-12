@@ -33,7 +33,12 @@ class AclService implements AclServiceInterface
      */
     public function __construct()
     {
-        $this->userRole = $this->aclRoleArray[Auth::user()->role_id];
+        if (Auth::check()) {
+            $this->userRole = $this->aclRoleArray[Auth::user()->role_id];
+
+            // Sets up the role_permissions json file
+            $this->setRolePermissionJson();
+        }
     }
 
 
@@ -110,31 +115,31 @@ class AclService implements AclServiceInterface
      * @param \Illuminate\Http\Request $request
      * @return bool
      */
-    public function middlewareAcl(Request $request): bool
+    public function permissionCheck(Request $request): bool
     {
-        // Sets up the file and function name
-        $this->setFileAndFunctionName($request->route()->getAction()['controller']);
+        // Checks if the user is logged in
+        if (Auth::check()) {
+            // Sets up the file and function name
+            $this->setFileAndFunctionName($request->route()->getAction()['controller']);
 
-        // Sets up the role_permissions json file
-        $this->setRolePermissionJson();
+            // Other variables
+            $userRole = $this->userRole;
+            $fileName = $this->fileName;
+            $functionName = $this->functionName;
 
-        // Other variables
-        $userRole = $this->userRole;
-        $fileName = $this->fileName;
-        $functionName = $this->functionName;
+            // Checks if the user has the file and function permission
+            if (isset($this->rolePermissionsJson->roles->$userRole->$fileName)) {
+                $functions = $this->rolePermissionsJson->roles->$userRole->$fileName;
 
-        // Checks if the user has the file and function permission
-        if (isset($this->rolePermissionsJson->roles->$userRole->$fileName)) {
-            $functions = $this->rolePermissionsJson->roles->$userRole->$fileName;
+                if ($this->functionPermissionCheck($functionName, $functions)) {
+                    return true;
+                }
+            } elseif (isset($this->rolePermissionsJson->global->$fileName)) {
+                $functions = $this->rolePermissionsJson->global->$fileName;
 
-            if ($this->functionPermissionCheck($functionName, $functions)) {
-                return true;
-            }
-        } elseif (isset($this->rolePermissionsJson->global->$fileName)) {
-            $functions = $this->rolePermissionsJson->global->$fileName;
-
-            if ($this->functionPermissionCheck($functionName, $functions)) {
-                return true;
+                if ($this->functionPermissionCheck($functionName, $functions)) {
+                    return true;
+                }
             }
         }
 

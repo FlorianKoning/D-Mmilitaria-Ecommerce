@@ -1,3 +1,5 @@
+@props(['products'])
+
 <div class="">
     <div>
       <!--
@@ -319,77 +321,54 @@
             <h2 id="product-heading" class="sr-only">Products</h2>
 
             <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
+                @foreach ($products as $item)
+                    <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
+                        <img src="{{ $item->product_image_url }}" alt="Helm" class="aspect-[3/4] bg-gray-200 object-cover group-hover:opacity-75 sm:h-96">
+                        <div class="flex flex-1 flex-col space-y-2 p-4">
+                            <h3 class="text-sm font-medium text-gray-900">
+                                <a href="#">
+                                <span aria-hidden="true" class="absolute inset-0"></span>
+                                    {{ $item->name }}
+                                </a>
+                            </h3>
+                            <p class="text-sm text-gray-500">{{ substr($item->small_desc, 0, 100) }}</p>
+                            <div class="flex flex-1 flex-col justify-end">
+                                <div class="flex flex-row justify-between">
+                                    {{-- item price --}}
+                                    @if ($item->inventory > 0)
+                                        @if ($item->discount_percentage != null)
+                                            <div class="flex flex-row gap-x-1">
+                                                <span class="line-through text-sm text-red-500">{{ $item->price }}</span>
+                                                <p class="text-sm text-gray-900">{{ $item->price - ($item->price / 100 * 15) }}</p>
+                                            </div>
+                                        @else
+                                            <div class="flex flex-row gap-x-1">
+                                                <p class="text-sm text-gray-900">{{ $item->price }}</p>
+                                            </div>
+                                        @endif
+                                    @endif
 
-              <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/M1helmetshell.jpg" alt="Helm" class="aspect-[3/4] bg-gray-200 object-cover group-hover:opacity-75 sm:h-96">
-                <div class="flex flex-1 flex-col space-y-2 p-4">
-                  <h3 class="text-sm font-medium text-gray-900">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Lorem ipsum dolor sit amet.
-                    </a>
-                  </h3>
-                  <p class="text-sm text-gray-500">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, debitis!</p>
-                  <div class="flex flex-1 flex-col justify-end">
-                    <p class="text-sm italic text-gray-500">8 colors</p>
-                    <p class="text-base font-medium text-gray-900">$256</p>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Duitse_militaire_Stahlhelm_M.35%2C_grijsgroen_met_rijkswapen%2C_leren_binnenhelm_en_kinriem_met_gesp_050551.JPG/1200px-Duitse_militaire_Stahlhelm_M.35%2C_grijsgroen_met_rijkswapen%2C_leren_binnenhelm_en_kinriem_met_gesp_050551.JPG" alt="Helm" class="aspect-[3/4] bg-gray-200 object-cover group-hover:opacity-75 sm:h-96">
-                <div class="flex flex-1 flex-col space-y-2 p-4">
-                  <h3 class="text-sm font-medium text-gray-900">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Lorem, ipsum dolor.
-                    </a>
-                  </h3>
-                  <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, inventore?</p>
-                  <div class="flex flex-1 flex-col justify-end">
-                    <p class="text-sm italic text-gray-500">Black</p>
-                    <p class="text-base font-medium text-gray-900">$32</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
-                <img src="https://www.therupturedduck.com/cdn/shop/files/RD_112624_0508_large.jpg?v=1734457619" alt="Front of plain black t-shirt." class="aspect-[3/4] bg-gray-200 object-cover group-hover:opacity-75 sm:h-96">
-                <div class="flex flex-1 flex-col space-y-2 p-4">
-                  <h3 class="text-sm font-medium text-gray-900">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Lorem ipsum dolor sit.
-                    </a>
-                  </h3>
-                  <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, eligendi.</p>
-                  <div class="flex flex-1 flex-col justify-end">
-                    <p class="text-sm italic text-gray-500">Black</p>
-                    <p class="text-base font-medium text-gray-900">$32</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
-                <img src="https://www.warrelics.eu/forum/attachments/field-equipment-accessories-third-reich/1591102d1655215057-critique-my-mannequin-feldwebel-field-display-dsc_7385.jpg" alt="Front of plain black t-shirt." class="aspect-[3/4] bg-gray-200 object-cover group-hover:opacity-75 sm:h-96">
-                <div class="flex flex-1 flex-col space-y-2 p-4">
-                  <h3 class="text-sm font-medium text-gray-900">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="text-sm text-gray-500">Look like a visionary CEO and wear the same black t-shirt every day.</p>
-                  <div class="flex flex-1 flex-col justify-end">
-                    <p class="text-sm italic text-gray-500">Black</p>
-                    <p class="text-base font-medium text-gray-900">$32</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- More products... -->
+                                    {{-- in stock --}}
+                                    @if ($item->inventory > 0)
+                                        <div class="flex flex-row gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                            </svg>
+                                            <p class="text-sm text-gray-900">In vooraad</p>
+                                        </div>
+                                    @else
+                                        <div class="flex flex-row gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                            </svg>
+                                            <p class="text-sm text-gray-900">Uit vooraad</p>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
           </section>
         </div>

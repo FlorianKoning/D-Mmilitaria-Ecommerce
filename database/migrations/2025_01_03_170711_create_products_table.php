@@ -13,15 +13,19 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('inventory_number');
             $table->string('name');
             $table->text('small_desc');
             $table->text('big_desc');
             $table->unsignedBigInteger('catagory_id');
             $table->foreign('catagory_id')->references('id')->on('catagories');
-            $table->unsignedBigInteger('inventory_id');
-            $table->foreign('inventory_id')->references('id')->on('inventories');
+            $table->integer('inventory');
             $table->decimal('price');
-            $table->unsignedBigInteger('discount_id');
+            $table->string('product_image_url');
+            $table->integer('discount_percentage')->nullable();
+            $table->date('discount_start_date')->nullable();
+            $table->date('discount_end_date')->nullable();
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }

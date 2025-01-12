@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -14,7 +15,9 @@ class HomeController extends Controller
      */
     public function index(): View
     {
-        return view('frontPage');
+        return view('frontPage', [
+            'products' => Product::all(),
+        ]);
     }
 
 

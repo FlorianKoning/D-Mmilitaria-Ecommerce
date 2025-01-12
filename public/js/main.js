@@ -6,3 +6,27 @@ function hideLayer(layer_id) {
         $('#'+layer_id).removeClass('hidden');
     }
 }
+
+
+function checkboxValidation(id)
+{
+    let checkbox = document.getElementById("checkbox");
+    if (checkbox.checked) {
+        $('#'+id).fadeIn().removeClass('hidden')
+    } else {
+        $('#'+id).fadeOut().addClass('hidden')
+    }
+}
+
+
+function warningModel()
+{
+    $('#warningModel').fadeIn().removeClass('hidden');
+}
+
+
+function closeModal(id)
+{
+    $('#'+id).fadeOut().addClass('hidden')
+}
+

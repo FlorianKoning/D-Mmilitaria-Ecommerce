@@ -19,11 +19,13 @@ export default {
                 title: '#010101',
                 background: '#e8eedf',
                 navBackground: '#252527',
-                cmsBackground: '#F8F8F8',
-                cmsNavBackground: '#051f2c',
-                cmsNavHover: '#1F3B49',
+                cmsBackground: '#FBFBFB',
+                cmsNavBackground: '#F4F4F4',
+                cmsNavHover: '#203B49',
                 cmsBorder: '#58baec',
                 cmsTitle: '#2b5367',
+                backgroundBtn: '#444444',
+                logoBackground: '#367FA9'
             },
             screens: {
                 'phone': '360px',

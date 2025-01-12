@@ -19,7 +19,7 @@ class AclMiddleware
     {
         $aclService = new AclService();
 
-        if ($aclService->middlewareAcl($request)) {
+        if ($aclService->permissionCheck($request)) {
             return $next($request);
         }
 

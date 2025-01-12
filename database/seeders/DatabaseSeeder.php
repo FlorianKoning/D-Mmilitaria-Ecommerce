@@ -6,6 +6,7 @@ use App\Models\Role;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +21,13 @@ class DatabaseSeeder extends Seeder
                 'name' => $value
             ]);
         }
+
+
+        User::factory()->create([
+            'name' => env('ADMIN_NAME'),
+            'email' => env('ADMIN_EMAIL'),
+            'password' => Hash::make(env('ADMIN_PASSWORD')),
+            'role_id' => 3
+        ]);
     }
 }

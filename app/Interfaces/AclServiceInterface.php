@@ -41,5 +41,5 @@ interface AclServiceInterface
     /**
      * Middleware acl permission check
      */
-    public function middlewareAcl(Request $request): bool;
+    public function permissionCheck(Request $request): bool;
 }
