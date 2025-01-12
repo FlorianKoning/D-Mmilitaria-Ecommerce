@@ -73,7 +73,7 @@
         {{-- product catagory --}}
         <div>
             <x-input-label for="catagory" :value="__('Product catagory.')" />
-            <x-text-input id="catagory" name="catagory" type="text" class="mt-1 block w-full" :value="old('catagory')" required autofocus autocomplete="catagory" />
+            <x-live-search :table="__('product_categories')" :inputName="__('catagory')" />
             <x-input-error class="mt-2" :messages="$errors->get('catagory')" />
         </div>
 
@@ -89,7 +89,7 @@
         {{-- product price --}}
         <div>
             <x-input-label for="price" :value="__('Product price.')" />
-            <x-text-input id="price" name="price" type="number" step=".01" class="mt-1 block w-full" :value="old('price')" required autofocus autocomplete="price" />
+            <x-text-input id="price" name="price" type="number" min="1" step=".01" class="mt-1 block w-full" :value="old('price')" required autofocus autocomplete="price" />
             <x-input-error class="mt-2" :messages="$errors->get('price')" />
         </div>
 
