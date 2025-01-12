@@ -73,7 +73,7 @@
         {{-- product catagory --}}
         <div>
             <x-input-label for="catagory" :value="__('Product catagory.')" />
-            <x-live-search :table="__('product_categories')" :inputName="__('catagory')" />
+            <x-live-search :table="__('product_categories')" :inputName="__('catagory')" :old="$catagories" />
             <x-input-error class="mt-2" :messages="$errors->get('catagory')" />
         </div>
 
@@ -149,7 +149,7 @@
                 </div>
                 </div>
                 <div class="text-sm/6">
-                <label for="checkbox" class="font-medium text-gray-900">Maak dit product in actief</label>
+                <label for="checkbox" class="font-medium text-gray-900">Maak dit product inactief</label>
                 </div>
             </div>
         @endif
