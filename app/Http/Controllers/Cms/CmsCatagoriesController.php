@@ -7,7 +7,6 @@ use App\Http\Requests\ProductCatagoyRequest;
 use App\Models\Product_category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class CmsCatagoriesController extends Controller
 {

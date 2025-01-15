@@ -1,34 +1,42 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Cms\CmsProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\BasketController;
+use App\Http\Controllers\Cms\CmsCatagoriesController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Cms\CmsDashboardController;
 use App\Http\Controllers\Cms\CmsUserController;
+use App\Http\Controllers\ProductController;
 use App\Http\Middleware\AclMiddleware;
+use App\Services\CartService;
 
 // Homepage routes
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-// Product Routes
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-
-// Contact Routes
-Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-
-// Basket Routes
-Route::get('/basket', [BasketController::class, 'index'])->name('basket.index');
-
-
 // All the cms routes
 Route::middleware(AclMiddleware::class)->group(function() {
+    // Contact Routes
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+
+
+    // Cart controller
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/store/{product}', [CartController::class, 'store'])->name('cart.store');
+
+
+    // Product Controller
+    Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+
+    // CMS dashboard route
     Route::get('/cms', [CmsDashboardController::class, 'index'])->name('cms.dashboard.index');
 
-    // Products routes
+
+    // Cms products routes
     Route::get('/cms/products', [CmsProductsController::class, 'index'])->name('cms.products.index');
     Route::get('/cms/products/create', [CmsProductsController::class, 'create'])->name('cms.products.create');
     Route::get('/cms/products/edit/{product}', [CmsProductsController::class, 'edit'])->name('cms.products.edit');
@@ -36,12 +44,23 @@ Route::middleware(AclMiddleware::class)->group(function() {
     Route::post('/cms/product/update/{product}', [CmsProductsController::class, 'update'])->name('cms.products.update');
     Route::delete('/cms/products/delete/{product}', [CmsProductsController::class, 'destroy'])->name('cms.products.delete');
 
+
     // User routes
     Route::get('/cms/users', [CmsUserController::class, 'index'])->name('cms.users.index');
 
 
     // Catagory routes
-    // Route::get('/cms/catagories')
+    Route::get('/cms/catagories', [CmsCatagoriesController::class, 'index'])->name('cms.catagories.index');
+    Route::get('/cms/catagories/create', [CmsCatagoriesController::class, 'create'])->name('cms.catagories.create');
+    Route::get('/cms/catagories/edit/{catagorie}', [CmsCatagoriesController::class, 'edit'])->name('cms.catagories.edit');
+    Route::post('/cms/catagories/store', [CmsCatagoriesController::class, 'store'])->name('cms.catagories.store');
+    Route::post('/cms/catagories/update/{catagorie}', [CmsCatagoriesController::class, 'update'])->name('cms.catagories.update');
+    Route::delete('/cms/delete/{catagorie}', [CmsCatagoriesController::class, 'destroy'])->name('cms.catagories.delete');
+
+
+    // Ajax routes
+    Route::get('/ajax/liveSearch/{input}/{table}', [AjaxController::class, 'livesearch'])->name('ajax.liveSearch');
+    Route::get('/ajax/options/{id}/{table}', [AjaxController::class, 'getOptions'])->name('ajax.getOptions');
 });
 
 

@@ -1,9 +1,9 @@
 // simple function to hide layers in navigation
 function hideLayer(layer_id) {
     if ($('#'+layer_id).is(":visible")) {
-        $('#'+layer_id).addClass('hidden');
+        $('#'+layer_id).fadeOut().addClass('hidden');
     } else {
-        $('#'+layer_id).removeClass('hidden');
+        $('#'+layer_id).fadeIn().removeClass('hidden');
     }
 }
 
@@ -29,4 +29,3 @@ function closeModal(id)
 {
     $('#'+id).fadeOut().addClass('hidden')
 }
-
