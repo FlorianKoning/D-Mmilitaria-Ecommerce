@@ -18,6 +18,7 @@
 
         {{-- custom js files  --}}
         <script defer src="{{ asset('js/main.js') }}" type="text/javascript"></script>
+        <script defer src="{{ asset('js/liveSearch.js') }}" type="text/javascript"></script>
 
 
         <!-- Scripts -->

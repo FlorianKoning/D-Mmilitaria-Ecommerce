@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
+use App\Models\Product_category;
 use App\Services\FileService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -78,7 +79,8 @@ class CmsProductsController extends Controller
     public function edit(Product $product): View
     {
         return view('cms.products.products-edit', [
-            'product' => $product
+            'product' => $product,
+            'catagories' => Product_category::find($product->catagory_id),
         ]);
     }
 
@@ -119,7 +121,7 @@ class CmsProductsController extends Controller
             'discount_percentage' => (isset($validated['discountPercentage'])) ? $validated['discountPercentage'] : $product->discount_percentage,
             'discount_start_date' => (isset($validated['discountStartDate'])) ? $validated['discountStartDate'] : $product->discount_start_date,
             'discount_end_date' => (isset($validated['discountEndDate'])) ? $validated['discountEndDate'] : $product->discount_end_date,
-            'is_active' => (isset($validated['makeActive'])) ? 1 : 0,
+            'is_active' => (isset($validated['makeActive'])) ? 1 :((isset($validated['makeInActive'])) ? 0 : 1),
         ]);
 
 

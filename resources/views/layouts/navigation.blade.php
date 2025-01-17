@@ -2,7 +2,7 @@
     <header class="fixed inset-x-0 top-0 z-50 bg-navBackground shadow-lg">
         <nav>
             <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-              <div class="flex h-16 justify-between">
+              <div class="flex h-16 justify-between content-center">
                 <div class="flex px-2 lg:px-0">
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('home.index')" :active="request()->routeIs('home.*')">
@@ -21,7 +21,7 @@
                         <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
                       </svg>
                     </div>
-                  </div>
+                </div>
                 <div class="flex items-center lg:hidden">
                   <!-- Mobile menu button -->
                   <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:ring-2 focus:ring-gray-500 focus:outline-hidden focus:ring-inset" aria-controls="mobile-menu" aria-expanded="false">
@@ -53,21 +53,20 @@
                             <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                                 {{ __('Profiel') }}
                             </x-nav-link>
-
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <button type="submit" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-base font-bold leading-5 text-white/70 hover:text-white hover:border-white focus:outline-none focus:text-white focus:border-white transition duration-150 ease-in-out">
-                                    {{ __('Log uit') }}
-                                </button>
-                            </form>
-
                             {{-- Checks if the user has the right to view the cms --}}
                             @if ($aclService->superUserCheck())
                                 <x-nav-link :href="route('cms.dashboard.index')" :active="request()->routeIs('cms.dashboard.index')">
                                     {{ __('CMS') }}
                                 </x-nav-link>
                             @endif
+
+                            <form method="POST" action="{{ route('logout') }}" class="flex">
+                                @csrf
+
+                                <button type="submit" class="flex items-center px-1 pt-1 border-b-2 border-transparent text-base font-bold text-white/70 hover:text-white hover:border-white focus:text-white focus:border-white transition duration-150 ease-in-out">
+                                    {{ __('Log uit') }}
+                                </button>
+                            </form>
                         @else
                             <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
                                 {{ __('Log in') }}
@@ -77,11 +76,19 @@
                                 {{ __('Regristreer') }}
                             </x-nav-link>
                         @endif
-                        <x-nav-link :href="route('basket.index')" :active="request()->routeIs('baske.*')">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                            </svg>
-                        </x-nav-link>
+
+
+                        <div class="flex flex-row">
+                            <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.*')">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                                </svg>
+                            </x-nav-link>
+
+                            @if ($cartAmount != 0)
+                                <p class="text-white mb-4 bg-black px-2 rounded-full">{{ $cartAmount }}</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 </div>
@@ -94,10 +101,6 @@
                 <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" -->
                 <x-responsive-nav-link :href="route('home.index')" :active="request()->routeIs('home.*')">
                     {{ __('Home Pagina') }}
-                </x-responsive-nav-link>
-
-                <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
-                    {{ __('Producten') }}
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.*')">

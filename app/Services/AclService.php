@@ -33,12 +33,13 @@ class AclService implements AclServiceInterface
      */
     public function __construct()
     {
+        // when logged in, sets the user role
         if (Auth::check()) {
             $this->userRole = $this->aclRoleArray[Auth::user()->role_id];
-
-            // Sets up the role_permissions json file
-            $this->setRolePermissionJson();
         }
+
+        // Sets up the role_permissions json file
+        $this->setRolePermissionJson();
     }
 
 
@@ -117,29 +118,35 @@ class AclService implements AclServiceInterface
      */
     public function permissionCheck(Request $request): bool
     {
-        // Checks if the user is logged in
+        // Sets up the file and function name
+        $this->setFileAndFunctionName($request->route()->getAction()['controller']);
+
+
+        $fileName = $this->fileName;
+        $functionName = $this->functionName;
+
+
+        // Can only get role routes when user is logged in
         if (Auth::check()) {
-            // Sets up the file and function name
-            $this->setFileAndFunctionName($request->route()->getAction()['controller']);
-
-            // Other variables
             $userRole = $this->userRole;
-            $fileName = $this->fileName;
-            $functionName = $this->functionName;
 
-            // Checks if the user has the file and function permission
+            // Checks if the logged in user has the file and function permission
             if (isset($this->rolePermissionsJson->roles->$userRole->$fileName)) {
                 $functions = $this->rolePermissionsJson->roles->$userRole->$fileName;
 
                 if ($this->functionPermissionCheck($functionName, $functions)) {
                     return true;
                 }
-            } elseif (isset($this->rolePermissionsJson->global->$fileName)) {
-                $functions = $this->rolePermissionsJson->global->$fileName;
+            }
+        }
 
-                if ($this->functionPermissionCheck($functionName, $functions)) {
-                    return true;
-                }
+
+        // When user does not have routes as the role or is not logged in. Check in the global role permissions
+        if (isset($this->rolePermissionsJson->global->$fileName)) {
+            $functions = $this->rolePermissionsJson->global->$fileName;
+
+            if ($this->functionPermissionCheck($functionName, $functions)) {
+                return true;
             }
         }
 

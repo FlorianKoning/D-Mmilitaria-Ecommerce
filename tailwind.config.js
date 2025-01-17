@@ -17,15 +17,16 @@ export default {
             },
             colors: {
                 title: '#010101',
-                background: '#e8eedf',
-                navBackground: '#252527',
+                background: '#fffff',
+                navBackground: '#4C5C41',
                 cmsBackground: '#FBFBFB',
                 cmsNavBackground: '#F4F4F4',
                 cmsNavHover: '#203B49',
                 cmsBorder: '#58baec',
                 cmsTitle: '#2b5367',
                 backgroundBtn: '#444444',
-                logoBackground: '#367FA9'
+                logoBackground: '#367FA9',
+                buttonColor: '#808080',
             },
             screens: {
                 'phone': '360px',

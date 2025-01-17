@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Product_category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -16,7 +16,8 @@ class HomeController extends Controller
     public function index(): View
     {
         return view('frontPage', [
-            'products' => Product::all(),
+            'products' => Product::frontPage(),
+            'catagories' => Product_category::all(),
         ]);
     }
 
@@ -42,9 +43,9 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product): View
     {
-        //
+        dd($product);
     }
 
 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class Product extends Model
 {
@@ -62,12 +63,24 @@ class Product extends Model
 
     /**
      * Returns all the products with pagination and removes all the non active products
-     * @return void
      */
     public static function getAll(int $paginationAmount): LengthAwarePaginator
     {
         return DB::table('products')
             ->select('*')
             ->paginate($paginationAmount);
+    }
+
+
+
+    /**
+     * Returns all the products with out all the non active products
+     */
+    public static function frontPage(): Collection
+    {
+        return DB::table('products')
+            ->select('*')
+            ->where('is_active', 1)
+            ->get();
     }
 }
