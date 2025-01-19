@@ -25,6 +25,15 @@ function warningModel()
 }
 
 
+
+function cartWarning(route, name)
+{
+    $('#cartWarning').fadeIn().removeClass('hidden');
+    $('#warningRoute').attr('action', route);
+    $('#warningMessage').text('Weet u zeker dat u '+name+' wilt verwijderen uit uw winkelmandje?');
+}
+
+
 function closeModal(id)
 {
     $('#'+id).fadeOut().addClass('hidden')

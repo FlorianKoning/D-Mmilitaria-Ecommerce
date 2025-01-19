@@ -66,6 +66,41 @@ class CartService implements CartServiceInterface
 
 
     /**
+     * Updates the amount of the product in the cart.
+     * @param \App\Models\Product $product
+     * @param int $amount
+     * @return void
+     */
+    public static function update(Product $product, int $amount): void
+    {
+        $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
+
+
+        // Checks if user is logged in
+        if (Auth::check()) {
+            // Updates the cart in the database
+            Cart::where('user_id', Auth::user()->id)
+                ->where('product_id', $product->id)
+                ->update([
+                    'amount' => $amount
+                ]);
+        } else {
+            // Updates the cart in the session
+            foreach ($cart as $key => $item)
+            {
+                if ($item['id'] == $product['id']) {
+                    $cart[$key]['amount'] = $amount;
+                }
+            }
+
+
+            // Sets the updated array in the
+            session()->put('cart', $cart);
+        }
+    }
+
+
+    /**
      * Returns how many items there are in the users cart.
      * If the users has no items it will return null.
      * @return int
@@ -91,6 +126,8 @@ class CartService implements CartServiceInterface
 
     /**
      * Returns an object of all the cart items from the given user id.
+     * @param int $userId
+     * @return \Illuminate\Support\Collection
      */
     public static function get(int $userId)
     {
@@ -102,6 +139,38 @@ class CartService implements CartServiceInterface
 
 
     /**
+     * Deletes the product from the cart. If the product has a mount > then 1, remove just 1 from the amount.
+     * @param \App\Models\Product $product
+     * @return void
+     */
+    public static function destroy(Product $product): void
+    {
+        // Gets the cart
+        $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
+
+
+        // Checks if the user is logged in
+        if (Auth::check()) {
+            // deletes cart item from database
+            Cart::where('user_id', Auth::user()->id)->where('product_id', $product->id)->delete();
+        } else {
+            // Loop through the cart and checks what item has to be deleted
+            foreach ($cart as $key => $item)
+            {
+                if ($item['id'] == $product['id']) {
+                    unset($cart[$key]);
+                }
+            }
+
+
+            // Sets the updated array in the
+            session()->put('cart', $cart);
+        }
+
+    }
+
+
+    /**
      * Checks what the price is of the product.
      * @param int $productId
      * @return array
@@ -109,7 +178,7 @@ class CartService implements CartServiceInterface
     public static function price(int $productId): array
     {
         // Variables
-        $product = Product::find($productId)->first();
+        $product = Product::find($productId);
         $date = date('Y-m-d');
         $prices = array();
 

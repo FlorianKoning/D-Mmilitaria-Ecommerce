@@ -32,32 +32,44 @@
 
         <!-- Product info -->
         <div class="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+            {{-- title --}}
             <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $product->name }}</h1>
 
+
+            {{-- price --}}
             <div class="mt-3">
-            <h2 class="sr-only">Product information</h2>
-            @if ($product->inventory > 0)
-                @if ($product->discount_percentage != null)
-                    <div class="flex flex-row gap-x-1">
-                        <span class="line-through text-xl text-red-500">{{ $product->price }}</span>
-                        <p class="text-xl text-gray-900">{{ $product->price - ($product->price / 100 * 15) }}</p>
-                    </div>
-                @else
-                    <div class="flex flex-row gap-x-1">
-                        <p class="text-xl text-gray-900">{{ $product->price }}</p>
-                    </div>
+                <h2 class="sr-only">Product information</h2>
+                @if ($product->inventory > 0)
+                    @if ($product->discount_percentage != null)
+                        <div class="flex flex-row gap-x-1">
+                            <span class="line-through text-xl text-red-500">{{ $product->price }}</span>
+                            <p class="text-xl text-gray-900">{{ $product->price - ($product->price / 100 * 15) }}</p>
+                        </div>
+                    @else
+                        <div class="flex flex-row gap-x-1">
+                            <p class="text-xl text-gray-900">{{ $product->price }}</p>
+                        </div>
+                    @endif
                 @endif
-            @endif
             </div>
 
+
+            {{-- amount in stock --}}
+            <div class="mt-3">
+                <div class="flex flex-row gap-x-1">
+                    <p class="text-sm font-medium text-gray-900">Hoeveelheid in verkoop: {{ $product->inventory }}</p>
+                </div>
+            </div>
+
+
+            {{-- description --}}
             <div class="mt-6">
-            <h3 class="sr-only">Description</h3>
+                <h3 class="sr-only">Description</h3>
 
-            <div class="space-y-6 text-base text-gray-700">
-                <p>{{ $product->big_desc }}</p>
+                <div class="space-y-6 text-base text-gray-700">
+                    <p>{{ $product->big_desc }}</p>
+                </div>
             </div>
-            </div>
-
 
 
             <div class="mt-10">

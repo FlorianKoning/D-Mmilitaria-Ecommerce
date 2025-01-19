@@ -26,6 +26,8 @@ Route::middleware(AclMiddleware::class)->group(function() {
     // Cart controller
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/store/{product}', [CartController::class, 'store'])->name('cart.store');
+    Route::get('/cart/update/{product}/{amount}', [CartController::class, 'update'])->name('cart.update');
+    Route::delete('/cart/delete/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
 
 
     // Product Controller

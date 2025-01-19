@@ -9,4 +9,6 @@
     @if (session()->has('wrongPermission'))
         <x-session-warning :sessionText="session('wrongPermission')" />
     @endif
+
+
 </x-app-layout>
