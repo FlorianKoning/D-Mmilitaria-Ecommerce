@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Cms;
 
+use App\Models\Product;
+use App\Helper\Functions;
+use Illuminate\View\View;
+use App\Models\ProductImage;
+use Illuminate\Http\Request;
+use App\Services\FileService;
+use App\Models\ProductFeature;
+use App\Models\Product_category;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
-use App\Models\Product;
-use App\Models\Product_category;
-use App\Services\FileService;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class CmsProductsController extends Controller
 {
@@ -26,14 +29,22 @@ class CmsProductsController extends Controller
         ]);
     }
 
+
     /**
      * Show the form for creating a new resource.
      * @return \Illuminate\View\View
      */
     public function create(): View
     {
-        return view('cms.products.products-create');
+        return view('cms.products.products-create', [
+            'extraImages' => ProductImage::all(),
+            'imagesColumn' => ProductImage::$columnNames,
+
+            'extraFeatures' => ProductFeature::all(),
+            'featuresColumn' => ProductFeature::$columnNames
+        ]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -62,11 +73,15 @@ class CmsProductsController extends Controller
             'catagory_id' => $validated['catagory'],
             'inventory' => $validated['inventory'],
             'price' => $validated['price'],
-            'product_image_url' => $fileUrl,
+            'main_image' => $fileUrl,
             'discount_percentage' => $validated['discountPercentage'],
             'discount_start_date' => $validated['discountStartDate'],
             'discount_end_date' => $validated['discountEndDate'],
         ]);
+
+
+        // Updates the lastupdated database table
+        Functions::storeLatestUpdate();
 
 
         // returns the user back to the overview table
@@ -117,12 +132,16 @@ class CmsProductsController extends Controller
             'catagory_id' => $validated['catagory'],
             'inventory' => $validated['inventory'],
             'price' => $validated['price'],
-            'product_image_url' => (isset($validated['productImage'])) ? $fileUrl : $product->product_image_url,
+            'main_image' => (isset($validated['productImage'])) ? $fileUrl : $product->product_image_url,
             'discount_percentage' => (isset($validated['discountPercentage'])) ? $validated['discountPercentage'] : $product->discount_percentage,
             'discount_start_date' => (isset($validated['discountStartDate'])) ? $validated['discountStartDate'] : $product->discount_start_date,
             'discount_end_date' => (isset($validated['discountEndDate'])) ? $validated['discountEndDate'] : $product->discount_end_date,
             'is_active' => (isset($validated['makeActive'])) ? 1 :((isset($validated['makeInActive'])) ? 0 : 1),
         ]);
+
+
+        // Updates the lastupdated database table
+        Functions::storeLatestUpdate();
 
 
         // returns the user back to the overview table
