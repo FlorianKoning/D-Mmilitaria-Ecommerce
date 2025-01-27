@@ -11,7 +11,12 @@
     @endif
 
     @if (session()->has('productAdded'))
-        <x-session-succes :sessionText="session('productAdded')" />
+        <x-session-succes :sessionText="session('productAdded')" :title="__('Product Toegevoegd.')" />
+    @endif
+
+
+    @if (session()->has('productNotAdded'))
+        <x-session-succes :sessionText="session('productNotAdded')" :title="__('Product niet toegevoegd.')" />
     @endif
 
 </x-app-layout>

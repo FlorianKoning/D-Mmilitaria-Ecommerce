@@ -9,6 +9,7 @@ use App\Http\Controllers\Cms\CmsCatagoriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Cms\CmsDashboardController;
+use App\Http\Controllers\Cms\CmsExtraImagesController;
 use App\Http\Controllers\Cms\CmsUserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\AclMiddleware;
@@ -58,6 +59,12 @@ Route::middleware(AclMiddleware::class)->group(function() {
     Route::post('/cms/catagories/store', [CmsCatagoriesController::class, 'store'])->name('cms.catagories.store');
     Route::post('/cms/catagories/update/{catagorie}', [CmsCatagoriesController::class, 'update'])->name('cms.catagories.update');
     Route::delete('/cms/delete/{catagorie}', [CmsCatagoriesController::class, 'destroy'])->name('cms.catagories.delete');
+
+
+    // Extra images routes
+    Route::post('/extraImages/create/{id}', [CmsExtraImagesController::class, 'create'])->name('cms.extraImages.create');
+    Route::post('/extraImages/edit/{productImage}', [CmsExtraImagesController::class, 'edit'])->name('cms.extraImages.edit');
+    Route::delete('/extraImage/delete/{productImage}', [CmsExtraImagesController::class, 'destroy'])->name('cms.extraImages.delete');
 
 
     // Ajax routes

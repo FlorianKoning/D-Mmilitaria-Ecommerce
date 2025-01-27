@@ -45,6 +45,14 @@ return [
             'throw' => false,
         ],
 
+        'extraImages' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/extraImages'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'acl' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
