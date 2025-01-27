@@ -36,12 +36,19 @@ class CmsProductsController extends Controller
      */
     public function create(): View
     {
+        // Gets the id of the new product.
+        // this is needed so that the application knows what product the extraImages and extraFeatures need to "join" with.
+        $newProductId = (Product::orderBy('id', 'desc')->first()->id) + 1;
+
+
         return view('cms.products.products-create', [
-            'extraImages' => ProductImage::all(),
+            'extraImages' => ProductImage::where('product_id', $newProductId)->get(),
             'imagesColumn' => ProductImage::$columnNames,
 
-            'extraFeatures' => ProductFeature::all(),
-            'featuresColumn' => ProductFeature::$columnNames
+            'extraFeatures' => ProductFeature::where('product_id', $newProductId)->get(),
+            'featuresColumn' => ProductFeature::$columnNames,
+
+            'newProductid' => $newProductId,
         ]);
     }
 
