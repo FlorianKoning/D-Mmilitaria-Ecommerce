@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Cms\CmsExtraFeaturesController;
 use App\Http\Controllers\Cms\CmsProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -63,8 +64,14 @@ Route::middleware(AclMiddleware::class)->group(function() {
 
     // Extra images routes
     Route::post('/extraImages/create/{id}', [CmsExtraImagesController::class, 'create'])->name('cms.extraImages.create');
-    Route::post('/extraImages/edit/{productImage}', [CmsExtraImagesController::class, 'edit'])->name('cms.extraImages.edit');
+    Route::post('/extraImages/edit/{productImage}',  [CmsExtraImagesController::class, 'edit'])->name('cms.extraImages.edit');
     Route::delete('/extraImage/delete/{productImage}', [CmsExtraImagesController::class, 'destroy'])->name('cms.extraImages.delete');
+
+
+    // Extra features routes
+    Route::post('/extraFeatures/create/{id}', [CmsExtraFeaturesController::class, 'create'])->name('cms.extraFeatures.create');
+    Route::post('/extraFeatures/edit/{productFeature}', [CmsExtraFeaturesController::class, 'edit'])->name('cms.extraFeatures.edit');
+    Route::delete('/extraFeature/delete/{productFeature}', [CmsExtraFeaturesController::class, 'destroy'])->name('cms.extraFeature.delete');
 
 
     // Ajax routes

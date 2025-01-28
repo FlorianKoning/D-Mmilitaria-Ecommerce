@@ -31,8 +31,6 @@
                     </div>
                     <x-input-error class="mt-2" :messages="$errors->get('imageEdit')" />
                 </div>
-
-
                 {{-- exta image name --}}
                 <div>
                     <x-input-label for="extraImageName" :value="__('Naam van extra foto')" />

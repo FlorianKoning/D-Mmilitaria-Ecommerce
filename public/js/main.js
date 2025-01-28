@@ -25,6 +25,17 @@ function warningModel()
 }
 
 
+function featureWarning(id)
+{
+    $('#'+id).fadeIn().removeClass('hidden');
+}
+
+
+function openModal(id)
+{
+    $('#'+id).fadeIn().removeClass('hidden');
+}
+
 
 function cartWarning(route, name)
 {
@@ -37,4 +48,12 @@ function cartWarning(route, name)
 function closeModal(id)
 {
     $('#'+id).fadeOut().addClass('hidden')
+}
+
+
+
+function editModal(id, inputId, old)
+{
+    $('#'+id).fadeIn().removeClass('hidden');
+    $('#'+inputId).attr('value', old);
 }
