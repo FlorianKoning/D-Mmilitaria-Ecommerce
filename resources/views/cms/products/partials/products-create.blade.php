@@ -69,11 +69,5 @@
             <x-text-input id="price" name="price" type="number" min="1" step=".01" class="mt-1 block w-full" :value="old('price')" required autofocus autocomplete="price" />
             <x-input-error class="mt-2" :messages="$errors->get('price')" />
         </div>
-
-
-        {{-- buttons --}}
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
-        </div>
     </div>
 </section>

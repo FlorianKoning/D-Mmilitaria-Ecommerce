@@ -26,7 +26,7 @@ class CmsExtraFeaturesController extends Controller
 
 
         // Returns the user to the create form
-        return redirect()->route('cms.products.create')->with('productFeaturesSucces', 'Het product feature is succesfull toegevoegd');
+        return redirect()->route('cms.products.extra', $id)->with('productFeaturesSucces', 'Het product feature is succesfull toegevoegd');
     }
 
 
@@ -45,7 +45,7 @@ class CmsExtraFeaturesController extends Controller
 
 
         // Returns the user to the create form
-        return redirect()->route('cms.products.create')->with('featureEdit', 'De feature is succesfull geupdate');
+        return redirect()->route('cms.products.extra', $productFeature->product_id)->with('featureEdit', 'De feature is succesfull geupdate');
     }
 
 
@@ -60,6 +60,6 @@ class CmsExtraFeaturesController extends Controller
         $productFeature->delete();
 
         // Returns the user to the create form
-        return redirect()->route('cms.products.create')->with('featureDeleteSucces', 'De feature is succesfull verwijderd');
+        return redirect()->route('cms.products.extra', $productFeature->product_id)->with('featureDeleteSucces', 'De feature is succesfull verwijderd');
     }
 }

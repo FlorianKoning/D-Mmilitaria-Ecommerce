@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -14,7 +15,8 @@ class ProductController extends Controller
     public function show(Product $product): View
     {
         return view('products.products-show', [
-            'product' => $product
+            'product' => $product,
+            'extraImages' => ProductImage::where('product_id', $product->id)->get(),
         ]);
     }
 }

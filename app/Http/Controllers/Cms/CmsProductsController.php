@@ -6,7 +6,6 @@ use App\Models\Product;
 use App\Helper\Functions;
 use Illuminate\View\View;
 use App\Models\ProductImage;
-use Illuminate\Http\Request;
 use App\Services\FileService;
 use App\Models\ProductFeature;
 use App\Models\Product_category;
@@ -42,13 +41,24 @@ class CmsProductsController extends Controller
 
 
         return view('cms.products.products-create', [
-            'extraImages' => ProductImage::where('product_id', $newProductId)->get(),
-            'imagesColumn' => ProductImage::$columnNames,
-
-            'extraFeatures' => ProductFeature::where('product_id', $newProductId)->get(),
-            'featuresColumn' => ProductFeature::$columnNames,
-
             'newProductid' => $newProductId,
+        ]);
+    }
+
+
+    /**
+     * Shows the user the extra tables and options for the product.
+     * @param \App\Models\Product $product
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function extra(Product $product): View
+    {
+        return view('cms.products.products-extra', [
+            'product' => $product,
+            'imagesColumn' => ProductImage::$columnNames,
+            'featuresColumn' => ProductFeature::$columnNames,
+            'extraImages' => ProductImage::where('product_id', $product->id)->get(),
+            'extraFeatures' => ProductFeature::where('product_id', $product->id)->get(),
         ]);
     }
 

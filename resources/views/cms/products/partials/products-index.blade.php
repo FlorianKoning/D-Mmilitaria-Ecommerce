@@ -66,6 +66,12 @@
                                 </x-slot>
 
                                 <x-slot name="content">
+                                    {{-- extra options --}}
+                                    <x-dropdown-link :href="route('cms.products.extra', $value->id)">
+                                        {{ __("extra's") }}
+                                    </x-dropdown-link>
+
+
                                     {{-- edit options --}}
                                     <x-dropdown-link :href="route('cms.products.edit', $value->id)">
                                         {{ __('Edit') }}

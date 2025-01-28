@@ -37,7 +37,7 @@ class CmsExtraImagesController extends Controller
 
 
         // Returns the user to the create form
-        return redirect()->route('cms.products.create')->with('extraImageSucces', 'De extra foto is succesfull toegevoegd');
+        return redirect()->route('cms.products.extra', $id)->with('extraImageSucces', 'De extra foto is succesfull toegevoegd');
     }
 
 
@@ -62,7 +62,7 @@ class CmsExtraImagesController extends Controller
 
 
         // Returns the user to the create form
-        return redirect()->route('cms.products.create')->with('extraImageEdit', 'De extra foto is succesfull geupdate');
+        return redirect()->route('cms.products.extra', $productImage->product_id)->with('extraImageEdit', 'De extra foto is succesfull geupdate');
     }
 
 
@@ -77,6 +77,6 @@ class CmsExtraImagesController extends Controller
         $productImage->delete();
 
         // Returns the user to the create form
-        return redirect()->route('cms.products.create')->with('deleteSucces', 'De extra foto is succesfull verwijderd');
+        return redirect()->route('cms.products.extra', $productImage->product_id)->with('deleteSucces', 'De extra foto is succesfull verwijderd');
     }
 }
