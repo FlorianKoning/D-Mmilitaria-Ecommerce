@@ -1,4 +1,4 @@
-@props(['products', 'catagories'])
+@props(['products', 'catagories', 'latestUpdate'])
 
 <div class="">
     <div>
@@ -148,12 +148,13 @@
 
       {{-- main display --}}
       <main class="mx-auto max-w-full px-4 lg:max-w-full lg:px-8">
-        <div class="border-b border-gray-400 pb-10">
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900">Nieuwe Producten</h1>
-          <p class="mt-4 text-base text-gray-500">Hier vind u de nieuwste producten.</p>
+        <div class="border-b max-w-full border-gray-400 pb-10">
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900">Nieuwe Producten</h1>
+            <p class="mt-4 text-base text-gray-500">Hier vind u de nieuwste producten.</p>
+            <p class="mt-4 text-base text-gray-500">Producten voor het laatst geupdate: <span class="text-gray-900 underline">{{ $latestUpdate }}</span></p>
         </div>
 
-        <div class="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
+        <div class="pb-24 pt-12 lg:grid lg:grid-cols-4 lg:gap-x-8 xl:grid-cols-4">
           <aside>
             <h2 class="sr-only">Filters</h2>
             <button type="button" class="inline-flex items-center lg:hidden">
@@ -196,7 +197,7 @@
             <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
                 @foreach ($products as $item)
                     <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
-                        <img src="{{ $item->product_image_url }}" alt="Helm" class="aspect-[3/4] bg-gray-200 object-cover group-hover:opacity-75 sm:h-96">
+                        <img src="{{ $item->main_image }}" alt="Helm" class="aspect-[3/4] bg-gray-200 object-cover group-hover:opacity-75 sm:h-96">
                         <div class="flex flex-1 flex-col space-y-2 p-4">
                             <h3 class="text-sm font-medium text-gray-900">
                                 <a href="{{ route('products.show', $item->id) }}">

@@ -3,7 +3,7 @@
 <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
         <h1 class="text-base font-semibold text-gray-900">Extra fotos tabel</h1>
-        <p class="mt-2 text-sm text-gray-700">Hier heeft een een makkelijke overzicht voor al uw extra fotos die u kunt/heeft toegevoeg. <span class="text-blue-600 font-extrabold">Let op!</span> U kunt maar 3 foto's hier oploaden.</p>
+        <p class="mt-2 text-sm text-gray-700">Hier heeft een een makkelijke overzicht voor al uw extra fotos die u kunt/heeft toegevoeg. <span class="text-blue-600 font-extrabold">Let op!</span> U kunt maar 20 foto's hier oploaden.</p>
     </div>
     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
         <button onclick="openModal('extraImages')" type="button" class="block rounded-md bg-logoBackground px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-logoBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-logobg-logoBackground">Foto Toevoegen</button>

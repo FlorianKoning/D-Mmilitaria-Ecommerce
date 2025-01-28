@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Functions;
 use App\Models\Product;
 use App\Models\Product_category;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class HomeController extends Controller
         return view('frontPage', [
             'products' => Product::frontPage(),
             'catagories' => Product_category::all(),
+            'latestUpdate' => (Functions::getLatestupdate() != null) ? Functions::getLatestupdate() : 'Er zijn nog geen updates.',
         ]);
     }
 

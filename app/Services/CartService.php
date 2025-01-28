@@ -17,50 +17,18 @@ class CartService implements CartServiceInterface
      * @param \App\Models\Product $product
      * @return void
      */
-    public static function add(Product $product): void
+    public static function add(Product $product): bool
     {
-        // Checks if the user is logged in
+        // Checks if the user is logged in.
         if (Auth::check()) {
-            // checks if user already has the same product in cart
-            if (Cart::where('product_id', $product->id)->where('user_id', Auth::user()->id)->count() > 0) {
-                $cart = Cart::where('product_id', $product->id)->where('user_id', Auth::user()->id)->first();
-                $amount = $cart->amount;
+            // Adds the product to the cart in the database.
+            return self::authAdd($product->id);
 
-
-                // updates the amount
-                $cart->update([
-                    'amount' => $amount += 1,
-                ]);
-            } else {
-                Cart::create([
-                    'product_id' => $product->id,
-                    'user_id' => Auth::user()->id,
-                    'amount' => 1,
-                ]);
-            }
-        } else { // User is nog logged in, store product in session array
+        } else { // User is nog logged in, store product in session array.
             $cart = (session()->exists('cart')) ? session()->get('cart') : array();
 
-
-            // Checks if product is already in cart
-            if (isset($cart[$product->name])) {
-                $cart[$product->name]['amount'] += 1;
-            } else {
-                // set up the new product
-                $cart[$product->name] = [
-                    'id' => $product->id,
-                    'name' => $product->name,
-                    'description' => $product->small_desc,
-                    'product_image_url' => $product->product_image_url,
-                    'inventory' => $product->inventory,
-                    'price' => $product->price,
-                    'amount' => 1,
-                ];
-            }
-
-
-            // puts cart in session array
-            session()->put('cart', $cart);
+            // Adds the prouct to the session cart.
+            return self::nonAuthAdd($product, $cart);
         }
     }
 
@@ -76,16 +44,16 @@ class CartService implements CartServiceInterface
         $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
 
 
-        // Checks if user is logged in
+        // Checks if user is logged in.
         if (Auth::check()) {
-            // Updates the cart in the database
+            // Updates the cart in the database.
             Cart::where('user_id', Auth::user()->id)
                 ->where('product_id', $product->id)
                 ->update([
                     'amount' => $amount
                 ]);
         } else {
-            // Updates the cart in the session
+            // Updates the cart in the session.
             foreach ($cart as $key => $item)
             {
                 if ($item['id'] == $product['id']) {
@@ -94,7 +62,7 @@ class CartService implements CartServiceInterface
             }
 
 
-            // Sets the updated array in the
+            // Sets the updated array in the.
             session()->put('cart', $cart);
         }
     }
@@ -107,12 +75,12 @@ class CartService implements CartServiceInterface
      */
     public static function count(): int
     {
-        // based on if user is logged in, get database or session cart
+        // based on if user is logged in, get database or session cart.
         $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
         $amount = 0;
 
 
-        // counts how many items there are in cart
+        // counts how many items there are in cart.
         if ($cart != null) {
             foreach($cart as $value) {
                 $amount += $value['amount'];
@@ -145,16 +113,16 @@ class CartService implements CartServiceInterface
      */
     public static function destroy(Product $product): void
     {
-        // Gets the cart
+        // Gets the cart.
         $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
 
 
-        // Checks if the user is logged in
+        // Checks if the user is logged in.
         if (Auth::check()) {
-            // deletes cart item from database
+            // deletes cart item from database.
             Cart::where('user_id', Auth::user()->id)->where('product_id', $product->id)->delete();
         } else {
-            // Loop through the cart and checks what item has to be deleted
+            // Loop through the cart and checks what item has to be deleted.
             foreach ($cart as $key => $item)
             {
                 if ($item['id'] == $product['id']) {
@@ -163,7 +131,7 @@ class CartService implements CartServiceInterface
             }
 
 
-            // Sets the updated array in the
+            // Sets the updated array in the.
             session()->put('cart', $cart);
         }
 
@@ -177,13 +145,13 @@ class CartService implements CartServiceInterface
      */
     public static function price(int $productId): array
     {
-        // Variables
+        // Variables.
         $product = Product::find($productId);
         $date = date('Y-m-d');
         $prices = array();
 
 
-        // Checks if the discount date is due.
+        // Checks if the discount date is due..
         if ($date < $product->discount_end_date) {
             $discountPrice =  $product->price - ($product->price / 100 * $product->discount_percentage);
 
@@ -195,5 +163,87 @@ class CartService implements CartServiceInterface
         // Sets the old price in the prices array and returns the prices array.
         $prices['oldPrice'] = $product->price;
         return $prices;
+    }
+
+
+    /**
+     * When the user is logged in, it adds the product to the cart in the database.
+     * Returns true or false based on if product could be added to the cart in the database.
+     * @param int $productId
+     * @return bool
+     */
+    private static function authAdd(int $productId): bool
+    {
+        // checks if user already has the same product in cart.
+        if (Cart::where('product_id', $productId)->where('user_id', Auth::user()->id)->count() > 0) {
+            $cart = Cart::where('product_id', $productId)->where('user_id', Auth::user()->id)->first();
+            $amount = $cart->amount;
+
+
+            // Checks if you can add a nother product. (Can't add a nother product to cart when amount is equal to the inventory).
+            if (($cart['amount'] + 1) <=  Product::find($cart['product_id'])['inventory']) {
+                // updates the amount
+                $cart->update([
+                    'amount' => $amount += 1,
+                ]);
+
+
+                return true;
+            } else {
+                // The cart amount was greater then the product inventory. Return false.
+                return false;
+            }
+        } else {// Creates new cart item when there no cart items.
+            Cart::create([
+                'product_id' => $productId,
+                'user_id' => Auth::user()->id,
+                'amount' => 1,
+            ]);
+
+
+            return true;
+        }
+    }
+
+
+
+    /**
+     * When the user is not logged in, it adds the product cart to the session array.
+     * Returns true or false based on if product could be added to the session cart.
+     * @param \App\Models\Product $product
+     * @param array $cart
+     * @return bool
+     */
+    private static function nonAuthAdd(Product $product, array $cart)
+    {
+        // Checks if you can add a nother product. (Can't add a nother product to cart when amount is equal to the inventory).
+        if (empty($cart) || ($cart[$product->name]['amount'] + 1) <= $cart[$product->name]['inventory']) {
+
+            // Checks if product is already in cart
+            if (isset($cart[$product->name])) {
+                $cart[$product->name]['amount'] += 1;
+            } else {
+                // set up the new product.
+                $cart[$product->name] = [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'description' => $product->small_desc,
+                    'main_image' => $product->main_image,
+                    'inventory' => $product->inventory,
+                    'price' => $product->price,
+                    'amount' => 1,
+                ];
+            }
+
+
+            // puts cart in session array.
+            session()->put('cart', $cart);
+
+
+            return true;
+        } else {
+            // The cart amount was greater then the product inventory. Return false.
+            return false;
+        }
     }
 }

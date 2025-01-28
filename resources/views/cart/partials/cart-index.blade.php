@@ -10,7 +10,7 @@
                 @foreach ($cart as $item)
                     <li class="flex py-6 sm:py-10">
                         <div class="shrink-0">
-                            <img src="{{ $item->product_image_url }}" alt="{{ $item->name }}" class="size-24 rounded-md object-cover sm:size-48">
+                            <img src="{{ $item->main_image }}" alt="{{ $item->name }}" class="size-24 rounded-md object-cover sm:size-48">
                         </div>
 
                         <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">

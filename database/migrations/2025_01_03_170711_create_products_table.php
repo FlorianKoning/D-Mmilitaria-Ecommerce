@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('catagory_id')->references('id')->on('catagories');
             $table->integer('inventory');
             $table->decimal('price');
-            $table->string('product_image_url');
+            $table->string('main_image');
             $table->integer('discount_percentage')->nullable();
             $table->date('discount_start_date')->nullable();
             $table->date('discount_end_date')->nullable();

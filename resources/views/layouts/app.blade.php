@@ -19,6 +19,7 @@
         {{-- custom js files  --}}
         <script defer src="{{ asset('js/main.js') }}" type="text/javascript"></script>
         <script defer src="{{ asset('js/liveSearch.js') }}" type="text/javascript"></script>
+        <script defer src="{{ asset('js/frontPage.js') }}" type="text/javascript"></script>
 
 
         <!-- Scripts -->
@@ -27,7 +28,6 @@
     <body class="{{ $functions::requestUriCheck('/cms', 'font-robotoMono', 'font-sans') }} antialiased {{ $functions::requestUriCheck('/cms', 'bg-cmsBackground', 'bg-background') }} ">
         @if (str_contains($_SERVER['REQUEST_URI'], '/cms'))
             @include('layouts.cms.navigation')
-
                 <main class="py-10">
                     <div class="px-4 sm:px-6 lg:px-8">
                         <!-- Your content -->

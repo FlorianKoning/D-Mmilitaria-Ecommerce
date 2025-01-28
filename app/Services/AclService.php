@@ -125,7 +125,6 @@ class AclService implements AclServiceInterface
         $fileName = $this->fileName;
         $functionName = $this->functionName;
 
-
         // Can only get role routes when user is logged in
         if (Auth::check()) {
             $userRole = $this->userRole;

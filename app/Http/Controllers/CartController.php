@@ -40,10 +40,11 @@ class CartController extends Controller
     public function store(Product $product): RedirectResponse
     {
         // add product to cart
-        CartService::add($product);
-
-        // returns the user to the product the added
-        return redirect()->route('products.show', $product->id)->with('productAdded', 'Product is toegevoegd aan uw winkelmandje.');
+        if (CartService::add($product) == true) {
+            return redirect()->route('products.show', $product->id)->with('productAdded', 'Product is toegevoegd aan uw winkelmandje.');
+        } else { // CartService::add returned false
+            return redirect()->route('products.show', $product->id)->with('productNotAdded', 'Product kon niet worden toegevoegt, er zijn niet genoeg producten in verkoop.');
+        }
     }
 
     /**

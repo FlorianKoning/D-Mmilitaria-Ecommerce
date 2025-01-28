@@ -1,5 +1,3 @@
-{{-- @dd($product) --}}
-
 <section>
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 bg-white p-5 rounded-xl border shadow">
         <div class="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
@@ -7,23 +5,34 @@
         <div class="flex flex-col-reverse">
             <!-- Image selector -->
             <div class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
-            <div class="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
-                <button id="tabs-1-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-indigo-500/50 focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
-                <span class="sr-only">Angled view</span>
-                <span class="absolute inset-0 overflow-hidden rounded-md">
-                    <img src="{{ $product->product_image_url }}" alt="" class="size-full object-cover">
-                </span>
-                <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
-                <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2" aria-hidden="true"></span>
-                </button>
+                <div class="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
+                    <button id="tabs-1-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-navBackground focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
+                        <span class="sr-only">Angled view</span>
+                        <span class="absolute inset-0 overflow-hidden rounded-md">
+                            <img onclick="changeImage($(this).attr('src'))" src="{{ $product->main_image }}" alt="" class="size-full object-cover">
+                        </span>
+                        <!-- Selected: "ring-navBackgroundNot Selected: "ring-transparent" -->
+                        <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2" aria-hidden="true"></span>
+                    </button>
 
-                <!-- More images... -->
+                    {{-- extra images --}}
+                    @foreach ($extraImages as $image)
+                        <button id="tabs-1-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-navBackground focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
+                            <span class="sr-only">Angled view</span>
+                            <span class="absolute inset-0 overflow-hidden rounded-md">
+                                <img onclick="changeImage($(this).attr('src'))" src="{{ $image->image_url }}" alt="{{ $image->image_name }}" class="size-full object-cover">
+                            </span>
+                            <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
+                            <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2" aria-hidden="true"></span>
+                        </button>
+                    @endforeach
+                </div>
             </div>
-            </div>
+
             <div>
             <!-- Tab panel, show/hide based on tab state. -->
             <div id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
-                <img src="{{ $product->product_image_url }}" alt="Angled front view with bag zipped and handles upright." class="aspect-square w-full object-cover sm:rounded-lg">
+                <img id="mainImage" src="{{ $product->main_image }}" alt="Angled front view with bag zipped and handles upright." class="aspect-square w-full object-cover sm:rounded-lg">
             </div>
 
             <!-- More images... -->
@@ -110,13 +119,9 @@
                 </h3>
                 <div class="pb-6" id="features">
                     <ul role="list" class="list-disc space-y-1 pl-5 text-sm/6 text-gray-700 marker:text-gray-300">
-                    <li class="pl-2">Multiple strap configurations</li>
-                    <li class="pl-2">Spacious interior with top zip</li>
-                    <li class="pl-2">Leather handle and tabs</li>
-                    <li class="pl-2">Interior dividers</li>
-                    <li class="pl-2">Stainless strap loops</li>
-                    <li class="pl-2">Double stitched construction</li>
-                    <li class="pl-2">Water-resistant</li>
+                        @foreach ($extraFeatures as $feature)
+                            <li class="pl-2">{{ $feature->feature }}</li>
+                        @endforeach
                     </ul>
                 </div>
                 </div>

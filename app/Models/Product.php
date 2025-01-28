@@ -79,7 +79,7 @@ class Product extends Model
     public static function frontPage(): Collection
     {
         return DB::table('products')
-            ->select('*')
+            ->select('products.*')
             ->where('is_active', 1)
             ->get();
     }

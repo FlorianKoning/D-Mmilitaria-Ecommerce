@@ -97,7 +97,7 @@
     </div>
 
     <div class="lg:pl-56">
-      <div class="sticky z-0 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8 bg-[#3C8DBC] text-white">
+      <div class="fixed w-full z-0 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8 bg-[#3C8DBC] text-white">
         <div class="flex flex-row justify-between">
             {{-- header title --}}
             @isset($header)
