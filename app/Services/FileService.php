@@ -16,9 +16,9 @@ class FileService implements FileServiceInterface
      */
     public static function imageUpload(UploadedFile $file, string $fileName): string
     {
-        self::uploadPreset($file, $fileName);
+        $newFileName = self::uploadPreset($file, $fileName);
 
-        return Storage::disk('public')->url('images/'.$fileName.'.png');
+        return Storage::disk('public')->url('images/'.$newFileName.'.png');
     }
 
 
@@ -44,10 +44,12 @@ class FileService implements FileServiceInterface
      * @param string $fileName
      * @return void
      */
-    private static function uploadPreset(UploadedFile $file, string $fileName, string $option = 'public'): void
+    private static function uploadPreset(UploadedFile $file, string $fileName, string $option = 'public'): string
     {
-        $fileName = str_replace(' ', '-', $fileName);
+        $fileName = str_replace(',', '', str_replace(' ', '-', $fileName));
 
         Storage::disk($option)->putFileAs($file, $fileName.'.png');
+
+        return $fileName;
     }
 }

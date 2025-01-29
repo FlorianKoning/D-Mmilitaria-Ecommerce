@@ -217,7 +217,7 @@ class CartService implements CartServiceInterface
     private static function nonAuthAdd(Product $product, array $cart)
     {
         // Checks if you can add a nother product. (Can't add a nother product to cart when amount is equal to the inventory).
-        if (empty($cart) || ($cart[$product->name]['amount'] + 1) <= $cart[$product->name]['inventory']) {
+        if (empty($cart) || isset($cart[$product->name]) == false || ($cart[$product->name]['amount'] + 1) <= $cart[$product->name]['inventory']) {
 
             // Checks if product is already in cart
             if (isset($cart[$product->name])) {

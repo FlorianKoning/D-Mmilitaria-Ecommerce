@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\Functions;
 use App\Services\AclService;
 use App\Services\CartService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 abstract class Controller
@@ -12,6 +13,7 @@ abstract class Controller
     protected AclService $aclService;
     protected Functions $functions;
     protected int $cartAmount;
+    protected object|null $cart;
 
 
     public function __construct()
@@ -24,5 +26,8 @@ abstract class Controller
 
         $this->cartAmount = CartService::count();
         View::share('cartAmount', $this->cartAmount);
+
+        $this->cart = (Auth::check()) ? CartService::get(Auth::user()->id) : json_decode(json_encode(session()->get('cart')), associative: FALSE);
+        View::share('cart', $this->cart);
     }
 }

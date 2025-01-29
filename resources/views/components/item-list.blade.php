@@ -197,7 +197,7 @@
             <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
                 @foreach ($products as $item)
                     <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
-                        <img src="{{ $item->main_image }}" alt="Helm" class="aspect-[3/4] bg-gray-200 object-cover group-hover:opacity-75 sm:h-96">
+                        <img src="{{ $item->main_image }}" alt="Helm" class="bg-gray-200 object-cover group-hover:opacity-75 sm:h-96">
                         <div class="flex flex-1 flex-col space-y-2 p-4">
                             <h3 class="text-sm font-medium text-gray-900">
                                 <a href="{{ route('products.show', $item->id) }}">
@@ -212,12 +212,12 @@
                                     @if ($item->inventory > 0)
                                         @if ($item->discount_percentage != null)
                                             <div class="flex flex-row gap-x-1">
-                                                <span class="line-through text-sm text-red-500">{{ $item->price }}</span>
-                                                <p class="text-sm text-gray-900">{{ $item->price - ($item->price / 100 * 15) }}</p>
+                                                <span class="line-through text-sm text-red-500">€{{ $item->price }}</span>
+                                                <p class="text-sm text-gray-900">€{{ $item->price - ($item->price / 100 * 15) }}</p>
                                             </div>
                                         @else
                                             <div class="flex flex-row gap-x-1">
-                                                <p class="text-sm text-gray-900">{{ $item->price }}</p>
+                                                <p class="text-sm text-gray-900">€{{ $item->price }}</p>
                                             </div>
                                         @endif
                                     @endif
