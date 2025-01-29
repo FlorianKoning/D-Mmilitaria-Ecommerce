@@ -34,12 +34,10 @@
                             </a>
                         </td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
-                            <button onclick="warningModel()" class="rounded-md bg-logoBackground px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-logoBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-logobg-logoBackground">
+                            <button onclick="warningModel('{{ route('cms.catagories.delete', $value->id) }}', '{{ $value->name }}')" class="rounded-md bg-logoBackground px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-logoBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-logobg-logoBackground">
                                 {{ __('Verwijder') }}
                             </button>
                         </td>
-                        {{-- warning model --}}
-                        <x-warning-modal :catagory="__('catagory')" :route="route('cms.catagories.delete', $value->id)" :name="$value->name" />
                     </tr>
                 @endforeach
             </tbody>
@@ -50,5 +48,5 @@
 </div>
 
 
-
-
+{{-- warning model --}}
+<x-warning-modal :catagory="__('catagory')" />

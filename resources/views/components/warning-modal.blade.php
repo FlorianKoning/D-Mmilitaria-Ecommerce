@@ -1,6 +1,6 @@
-@props(['catagory', 'route', 'name', 'id'])
-<div id="{{ isset($id) ? $id : 'warningModel' }}" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <form method="POST" action="{{ $route }}">
+@props(['catagory'])
+<div id="warningModel" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <form id="warningForm" method="POST" action="">
         @csrf
         @method('delete')
 
@@ -17,7 +17,7 @@
                   </svg>
                 </div>
                 <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                  <h3 class="text-base font-semibold text-gray-900" id="modal-title">Verwijder {{ $catagory }}: {{ $name }}</h3>
+                  <h3 id="warningTitle" class="text-base font-semibold text-gray-900" id="modal-title">Verwijder {{ $catagory }}: </h3>
                   <div class="mt-2">
                     <p class="text-sm text-gray-500">Weet je zeker dat je de {{ $catagory }} wilt verwijderen? De verwijdering van dit product kan niet meer ongedaan worden hierna!</p>
                   </div>

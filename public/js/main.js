@@ -19,9 +19,11 @@ function checkboxValidation(id)
 }
 
 
-function warningModel()
+function warningModel(route, name)
 {
     $('#warningModel').fadeIn().removeClass('hidden');
+    $('#warningForm').attr('action', route);
+    $("#warningTitle").append(name);
 }
 
 
