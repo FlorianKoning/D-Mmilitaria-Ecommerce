@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Cms\CmsDashboardController;
 use App\Http\Controllers\Cms\CmsExtraImagesController;
+use App\Http\Controllers\Cms\CmsLandCatagoriesController;
 use App\Http\Controllers\Cms\CmsUserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\AclMiddleware;
@@ -56,11 +57,11 @@ Route::middleware(AclMiddleware::class)->group(function() {
 
     // Catagory routes
     Route::get('/cms/catagories', [CmsCatagoriesController::class, 'index'])->name('cms.catagories.index');
-    Route::get('/cms/catagories/create', [CmsCatagoriesController::class, 'create'])->name('cms.catagories.create');
-    Route::get('/cms/catagories/edit/{catagorie}', [CmsCatagoriesController::class, 'edit'])->name('cms.catagories.edit');
-    Route::post('/cms/catagories/store', [CmsCatagoriesController::class, 'store'])->name('cms.catagories.store');
-    Route::post('/cms/catagories/update/{catagorie}', [CmsCatagoriesController::class, 'update'])->name('cms.catagories.update');
-    Route::delete('/cms/delete/{catagorie}', [CmsCatagoriesController::class, 'destroy'])->name('cms.catagories.delete');
+    Route::get('/cms/catagories/create/{check?}', [CmsCatagoriesController::class, 'create'])->name('cms.catagories.create');
+    Route::get('/cms/catagories/edit/{id}/{check?}', [CmsCatagoriesController::class, 'edit'])->name('cms.catagories.edit');
+    Route::post('/cms/catagories/store/{check?}', [CmsCatagoriesController::class, 'store'])->name('cms.catagories.store');
+    Route::post('/cms/catagories/update/{id}/{check?}', [CmsCatagoriesController::class, 'update'])->name('cms.catagories.update');
+    Route::delete('/cms/delete/{catagorie}/{check?}', [CmsCatagoriesController::class, 'destroy'])->name('cms.catagories.delete');
 
 
     // Extra images routes

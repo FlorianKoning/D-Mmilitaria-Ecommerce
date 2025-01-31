@@ -36,9 +36,13 @@
                                 <div class="mt-4 sm:mt-0 sm:pr-9">
                                     <div class="grid w-full max-w-16 grid-cols-1">
                                         <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" name="quantity-0" aria-label="Quantity, Basic Tee" class="col-start-1 row-start-1 appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-navBackground sm:text-sm/6">
-                                            @for ($i = 1; $i <= $item->inventory; $i++)
-                                                <option {{ $item->amount == "$i" ? 'selected' : '' }} value="{{ route('cart.update', [$item->id, $i]) }}">{{ $i }}</option>
-                                            @endfor
+                                            @if ($item->inventory != 0)
+                                                @for ($i = 1; $i <= $item->inventory; $i++)
+                                                    <option {{ $item->amount == "$i" ? 'selected' : '' }} value="{{ route('cart.update', [$item->id, $i]) }}">{{ $i }}</option>
+                                                @endfor
+                                            @else
+                                                <option selected value="0">0</option>
+                                            @endif
                                         </select>
                                     </div>
 
@@ -65,12 +69,6 @@
                                 </div>
                             @else
                                 <div class="flex flex-row gap-2">
-                                    <p class="mt-4 flex space-x-2 text-sm text-gray-700">
-                                        <svg class="size-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-                                        </svg>
-                                        <span>In stock</span>
-                                    </p>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                     </svg>
@@ -91,7 +89,7 @@
         <section aria-labelledby="summary-heading" class="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
           <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Order summary</h2>
 
-          <dl class="mt-6 space-y-4">
+        <div class="mt-6 space-y-4">
             <div class="flex items-center justify-between">
               <dt class="text-sm text-gray-600">Subtotal</dt>
               <dd class="text-sm font-medium text-gray-900">€{{ (isset($totalPrice)) ? $totalPrice : '0' }}</dd>
@@ -115,7 +113,7 @@
               <dt class="text-base font-medium text-gray-900">Totale kosten</dt>
               <dd class="text-base font-medium text-gray-900">€{{ $totalPrice + 5 }}</dd>
             </div>
-          </dl>
+        </div>
 
           <div class="mt-6">
             <button type="submit" class="w-full rounded-md border border-transparent bg-navBackground px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-navBackground focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50">Checkout</button>

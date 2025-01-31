@@ -72,7 +72,7 @@ class CmsProductsController extends Controller
     {
         // Variables
         $validated = $request->validated();
-        $fileUrl = FileService::imageUpload($validated['productImage'], $validated['name']);
+        $fileUrl = FileService::imageUpload($validated['mainImage'], $validated['name']);
 
 
         // Checks if the start and end date are not the same value
@@ -149,7 +149,7 @@ class CmsProductsController extends Controller
             'catagory_id' => $validated['catagory'],
             'inventory' => $validated['inventory'],
             'price' => $validated['price'],
-            'main_image' => (isset($validated['productImage'])) ? $fileUrl : $product->product_image_url,
+            'main_image' => (isset($validated['productImage'])) ? $fileUrl : $product->main_image,
             'discount_percentage' => (isset($validated['discountPercentage'])) ? $validated['discountPercentage'] : $product->discount_percentage,
             'discount_start_date' => (isset($validated['discountStartDate'])) ? $validated['discountStartDate'] : $product->discount_start_date,
             'discount_end_date' => (isset($validated['discountEndDate'])) ? $validated['discountEndDate'] : $product->discount_end_date,

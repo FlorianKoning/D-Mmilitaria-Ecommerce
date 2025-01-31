@@ -1,13 +1,13 @@
 <section>
     <header class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
-          <h1 class="text-base font-semibold text-gray-900">Catagorie Update</h1>
-          <p class="mt-2 text-sm text-gray-700">Hier kunt u heel simpel de catagorie updaten door gewoon de form hier onder in te vullen.</p>
+          <h1 class="text-base font-semibold text-gray-900">{{ ($check) ? 'Land catagorie updaten' : 'Catagorie Update' }}</h1>
+          <p class="mt-2 text-sm text-gray-700">Hier kunt u heel simpel {{ ($check) ? 'het land catagorie' : 'de catagorie' }} updaten door gewoon de form hier onder in te vullen.</p>
         </div>
     </header>
 
 
-    <form method="post" action="{{ route('cms.catagories.update', $catagorie->id) }}" class="mt-6 space-y-6" enctype="multipart/form-data" >
+    <form method="post" action="{{ route('cms.catagories.update', [$catagorie->id, $check]) }}" class="mt-6 space-y-6" enctype="multipart/form-data" >
         @csrf
 
         {{-- product inventory number --}}

@@ -44,7 +44,7 @@ class Product extends Model
         'catagory_id',
         'inventory',
         'price',
-        'product_image_url',
+        'main_image',
         'discount_percentage',
         'discount_start_date',
         'discount_end_date',

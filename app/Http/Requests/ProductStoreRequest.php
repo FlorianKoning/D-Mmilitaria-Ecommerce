@@ -29,7 +29,7 @@ class ProductStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'productImage' => ['required', 'file'],
+            'mainImage' => ['required', 'file'],
             'invNumb' => ['required', 'string'],
             'name' => ['required', 'string'],
             'smallDesc' => ['required', 'string'],

@@ -1,8 +1,8 @@
 <section>
     <header class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
-          <h1 class="text-base font-semibold text-gray-900">Producten overview</h1>
-          <p class="mt-2 text-sm text-gray-700">Hier heb je de overview tabel van alle producten. Hier kan je ook nieuwe producten toevoegen, editen en verwijderen.</p>
+          <h1 class="text-base font-semibold text-gray-900">{{ ($check) ? 'Land producten overview' : 'Producten overview' }}</h1>
+          <p class="mt-2 text-sm text-gray-700">Hier maakt u een nieuwe {{ ($check) ? 'land' : '' }} catagorie aan.</p>
         </div>
     </header>
 
@@ -10,12 +10,12 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('cms.catagories.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data" >
+    <form method="post" action="{{ route('cms.catagories.store', $check) }}" class="mt-6 space-y-6" enctype="multipart/form-data" >
         @csrf
 
-        {{-- product inventory number --}}
+        {{-- Catagorie name --}}
         <div>
-            <x-input-label for="name" :value="__('Product inventory nummer.')" />
+            <x-input-label for="name" :value="($check) ? __('Land catagorie Naam.') : __('Catagorie Naam.')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name')" required autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
