@@ -32,7 +32,7 @@
 
                       Menu open: "hidden", Menu closed: "block"
                     -->
-                    <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                    <svg onclick="hideLayer('phoneNav')" class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                     <!--
@@ -84,19 +84,19 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                                 </svg>
                             </button>
-                            <div id="cartLayer" class="hidden flex-col justify-between mt-12 fixed w-[400px] h-[380px] bg-white rounded-md border shadow-lg overflow-y-scroll">
-                                <div class="flex flex-col space-y-6">
+                            <div id="cartLayer" class="hidden flex-col fixed justify-between mt-12 w-[400px] h-[380px] bg-white rounded-md border shadow-lg">
+                                <div class="flex flex-col space-y-6 w-[400px] h-[400px] overflow-y-scroll">
                                     @if ($cart != null)
                                         @foreach ($cart as $item)
                                             {{-- @dd($item) --}}
-                                            <div class="flex flex-row w-[350px] my-2">
+                                            <div class="flex flex-row my-2">
                                                 {{-- image block --}}
                                                 <div class="shrink-0 mx-3">
                                                     <img src="{{ $item->main_image }}" alt="{{ $item->name }}" class="size-16 rounded-md object-cover">
                                                 </div>
 
                                                 {{-- text box --}}
-                                                <div class="max-w-full flex flex-col justify-between">
+                                                <div class="max-w-full flex flex-col justify-between w-[200px]">
                                                     <h4 class="font-bold">{{ $item->name }}</h4>
                                                     <div class="flex flex-row justify-between">
                                                         <p class="text-sm">Hoeveelheid: {{ $item->amount }}</p>
@@ -116,6 +116,7 @@
                                 </a>
                             </div>
 
+
                             @if ($cartAmount != 0)
                                 <p class="text-white mb-4 bg-black px-2 rounded-full">{{ $cartAmount }}</p>
                             @endif
@@ -127,8 +128,9 @@
             </div>
 
 
+
             <!-- Mobile menu, show/hide based on menu state. -->
-            <div class="hidden" id="mobile-menu">
+            <div id="phoneNav" class="hidden" id="mobile-menu">
               <div class="ml-8 space-y-1 pt-2 pb-3">
                 <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" -->
                 <x-responsive-nav-link :href="route('home.index')" :active="request()->routeIs('home.*')">
@@ -138,6 +140,37 @@
                 <x-responsive-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.*')">
                     {{ __('Contact') }}
                 </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                    {{ __('Profiel') }}
+                </x-responsive-nav-link>
+
+
+                {{-- Checks if the user is logged in --}}
+                @if (Auth::check())
+                    {{-- Checks if the user has the right to view the cms --}}
+                    @if ($aclService->superUserCheck())
+                        <x-responsive-nav-link :href="route('cms.dashboard.index')" :active="request()->routeIs('cms.dashboard.index')">
+                            {{ __('CMS') }}
+                        </x-responsive-nav-link>
+                    @endif
+
+                    <form method="POST" action="{{ route('logout') }}" class="flex">
+                        @csrf
+
+                        <button type="submit" class="block w-full ps-3 pe-4 py-2 border-l-4 border-transparent text-start text-base font-medium text-gray-300 hover:text-white hover:border-gray-300 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                                {{ __('Log uit') }}
+                        </button>
+                    </form>
+                @else
+                    <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                        {{ __('Log in') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                        {{ __('Regristreer') }}
+                    </x-responsive-nav-link>
+                @endif
               </div>
             </div>
         </nav>
