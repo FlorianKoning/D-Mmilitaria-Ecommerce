@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\Functions;
-use App\Models\LandCatagories;
 use App\Models\Product;
-use App\Models\Product_category;
-use Illuminate\Http\Request;
+use App\Helper\Functions;
+use App\Helper\ModelHelper;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Models\LandCatagories;
+use App\Models\Product_category;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -15,10 +17,29 @@ class HomeController extends Controller
      * Display a listing of the resource.
      * @return \Illuminate\View\View
      */
-    public function index(): View
+    public function index(Request $request): View
     {
+        // Checks there was a filter option selected
+        if (isset($request->category) || isset($request->landCategory)) {
+            $baseQuery = ModelHelper::ProductsBaseQuery()
+                ->leftJoin('product_categories', 'product_categories.product_id', '=', 'products.id')
+                ->leftJoin('land_catagories', 'land_catagories.product_id', '=', 'products.id');
+
+
+            if (isset($request->category)) {
+                $baseQuery->whereIn('product_categories.product_id', $request->category);
+            }
+
+
+            if (isset($request->landCategory)) {
+                $baseQuery->whereIn('land_catagories.product_id', $request->landCategory);
+            }
+
+            $products = $baseQuery->get();
+        }
+
         return view('frontPage', [
-            'products' => Product::frontPage(),
+            'products' => (isset($products)) ? $products : Product::frontPage(),
             'catagories' => Product_category::all(),
             'landCatagories' => LandCatagories::all(),
             'latestUpdate' => (Functions::getLatestupdate() != null) ? Functions::getLatestupdate() : 'Er zijn nog geen updates.',

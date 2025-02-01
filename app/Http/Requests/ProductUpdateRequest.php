@@ -34,7 +34,6 @@ class ProductUpdateRequest extends FormRequest
             'name' => ['required', 'string'],
             'smallDesc' => ['required', 'string'],
             'bigDesc' => ['required', 'string'],
-            'catagory' => ['required', 'string', 'numeric'],
             'inventory' => ['required', 'string', 'numeric'],
             'price' => ['required', 'string', 'numeric'],
             'discountPercentage' => ['nullable', 'string', 'numeric'],

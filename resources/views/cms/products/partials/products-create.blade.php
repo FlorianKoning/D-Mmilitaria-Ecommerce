@@ -47,14 +47,6 @@
         </div>
 
 
-        {{-- product catagory --}}
-        <div>
-            <x-input-label for="catagory" :value="__('Product catagory.')" />
-            <x-live-search :table="__('product_categories')" :inputName="__('catagory')" />
-            <x-input-error class="mt-2" :messages="$errors->get('catagory')" />
-        </div>
-
-
         {{-- product inventory --}}
         <div>
             <x-input-label for="inventory" :value="__('Product kwantiteit.')" />

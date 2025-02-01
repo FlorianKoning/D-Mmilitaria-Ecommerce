@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\LandCatagories;
 use App\Models\Product_catagory;
 use App\Models\Role;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -43,7 +44,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Nederlands geweer uit 1941',
             'small_desc' => 'Nederlands geweer uit 1941 van een nederlandse soldaat.',
             'big_desc' => 'Nederlands geweer uit 1941 van een nederlandse soldaat. Nederlands geweer uit 1941 van een nederlandse soldaat. Nederlands geweer uit 1941 van een nederlandse soldaat.',
-            'catagory_id' => '1',
             'inventory' => '3',
             'price' => '499.00',
             'main_image' => 'http://127.0.0.1:8080/storage/images/Nederlands-geweer-uit-1941.png',
@@ -59,7 +59,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'uniform van nederlandse soldaat',
             'small_desc' => 'uniform van nederlandse soldaat uit 1941.',
             'big_desc' => 'uniform van nederlandse soldaat uit 1941. uniform van nederlandse soldaat uit 1941. uniform van nederlandse soldaat uit 1941.',
-            'catagory_id' => '2',
             'inventory' => '2',
             'price' => '1699.00',
             'discount_percentage' => '10',
@@ -75,6 +74,7 @@ class DatabaseSeeder extends Seeder
         // Creates geweren category
         Product_category::factory()->create([
             'name' => 'Geweren',
+            'product_id' => 1,
             'created_at' => '2025-01-19 21:19:09',
             'updated_at' => '2025-01-19 21:19:13'
         ]);
@@ -83,6 +83,23 @@ class DatabaseSeeder extends Seeder
         // Creates uniformen category
         Product_category::factory()->create([
             'name' => 'Uniformen',
+            'product_id' => 2,
+            'created_at' => '2025-01-19 21:19:09',
+            'updated_at' => '2025-01-19 21:19:13'
+        ]);
+
+
+        // Creates land categories
+        LandCatagories::factory()->create([
+            'name' => 'Nederlands',
+            'created_at' => '2025-01-19 21:19:09',
+            'updated_at' => '2025-01-19 21:19:13'
+        ]);
+
+
+        // Creates land categories
+        LandCatagories::factory()->create([
+            'name' => 'Duits',
             'created_at' => '2025-01-19 21:19:09',
             'updated_at' => '2025-01-19 21:19:13'
         ]);

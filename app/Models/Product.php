@@ -53,15 +53,6 @@ class Product extends Model
 
 
     /**
-     * Get the catagorie associated with the user.
-     */
-    public function product_category(): HasOne
-    {
-        return $this->hasOne(product_category::class);
-    }
-
-
-    /**
      * Returns all the products with pagination and removes all the non active products
      */
     public static function getAll(int $paginationAmount): LengthAwarePaginator

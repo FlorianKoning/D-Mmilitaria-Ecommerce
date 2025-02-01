@@ -16,6 +16,7 @@ class Product_category extends Model
      */
     public static array $columnNames = [
         'name' => 'Catagorie Naam',
+        'product_id' => 'Product'
     ];
 
 
@@ -26,5 +27,6 @@ class Product_category extends Model
      */
     protected $fillable = [
         'name',
+        'product_id'
     ];
 }

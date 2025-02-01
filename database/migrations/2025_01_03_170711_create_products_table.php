@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('name');
             $table->text('small_desc');
             $table->text('big_desc');
-            $table->unsignedBigInteger('catagory_id');
-            $table->foreign('catagory_id')->references('id')->on('catagories');
             $table->integer('inventory');
             $table->decimal('price');
             $table->string('main_image');
