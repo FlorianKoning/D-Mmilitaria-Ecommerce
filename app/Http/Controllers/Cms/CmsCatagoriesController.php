@@ -49,7 +49,6 @@ class CmsCatagoriesController extends Controller
         // Variables
         $validated = $request->validated();
 
-
         // Checks if land catagorie was selected
         if ($check) {
             LandCatagories::create([
@@ -60,8 +59,6 @@ class CmsCatagoriesController extends Controller
                 'name' => $validated['name'],
             ]);
         }
-
-
 
         // returns the user back to the overview table
         return redirect()->route('cms.catagories.index')->withErrors('storeSucces', 'De nieuwe catagorie is succesvol aangemaakt.');

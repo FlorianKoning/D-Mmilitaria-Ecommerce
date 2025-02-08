@@ -49,7 +49,7 @@
                             @endif
                         </td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-white">
-                            <x-dropdown align="left" width="32">
+                            <x-dropdown align="left" width="48">
                                 <x-slot name="trigger">
                                     <button
                                         class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-logoBackground focus:outline-none transition ease-in-out duration-150">
@@ -66,9 +66,21 @@
                                 </x-slot>
 
                                 <x-slot name="content">
+                                    {{-- product categories --}}
+                                    <x-dropdown-link :href="route('cms.products.productCategories', $value->id)">
+                                        {{ __('Product Categorieën') }}
+                                    </x-dropdown-link>
+
+
+                                    {{-- land categories --}}
+                                    <x-dropdown-link :href="route('cms.products.landCategories', $value->id)">
+                                        {{ __('Land Categorieën') }}
+                                    </x-dropdown-link>
+
+
                                     {{-- extra options --}}
                                     <x-dropdown-link :href="route('cms.products.extra', $value->id)">
-                                        {{ __("extra's") }}
+                                        {{ __("Extra's") }}
                                     </x-dropdown-link>
 
 

@@ -6,16 +6,44 @@ use App\Models\Product;
 use App\Helper\Functions;
 use Illuminate\View\View;
 use App\Models\ProductImage;
+use Illuminate\Http\Request;
 use App\Services\FileService;
+use App\Models\LandCatagories;
 use App\Models\ProductFeature;
 use App\Models\Product_category;
+use App\Models\LandCatagoriesLink;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Product_catagoryLink;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 
 class CmsProductsController extends Controller
 {
+    private $model;
+    private array $options = array();
+
+
+    public function __construct()
+    {
+        // * Extends the parent constructor class
+        parent::__construct();
+
+
+        $this->options = [
+            'land' => new LandCatagoriesLink(),
+            'product' => new Product_catagoryLink(),
+        ];
+    }
+
+
+    private function setOption(string $option): void
+    {
+        $this->model = $this->options[$option];
+    }
+
+
     /**
      * Display a listing of the resource.
      * @return \Illuminate\View\View
@@ -43,6 +71,106 @@ class CmsProductsController extends Controller
         return view('cms.products.products-create', [
             'newProductid' => $newProductId,
         ]);
+    }
+
+
+    /**
+     * Shows the 2 tables to link product categories and land categories to the product.
+     * @param \App\Models\Product $product
+     * @return void
+     */
+    public function productCategories(Product $product): View
+    {
+        return view('cms.products.product-categories', [
+            'product' => $product,
+            'productName' => $product->name,
+
+            'productCategoriesLinked' => new Product_catagoryLink(),
+            'productCategories' => Product_category::all(),
+            'productCategoryColumns' => Product_catagoryLink::$columnNames,
+        ]);
+    }
+
+
+
+    public function landCategories(Product $product): View
+    {
+        return view('cms.products.product-land-categories', [
+            'product' => $product,
+            'productName' => $product->name,
+
+            'landCategoriesColumns' => LandCatagoriesLink::$columnNames,
+            'landCategories' => LandCatagories::all(),
+            'productCategoriesLinked' => new LandCatagoriesLink(),
+        ]);
+    }
+
+
+    /**
+     * Links the product categories to the product
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Product $product
+     * @return RedirectResponse
+     */
+    public function extraCategorieStore(Request $request, Product $product, string $option): RedirectResponse
+    {
+        // Checks if the option is a valid option
+        if (!isset($this->options[$option])) {
+            return redirect()->route('cms.products.index')->with('invalidOption', 'There was a error. An invalid option has been given.');
+        }
+
+
+        // Variables
+        $this->setOption($option);
+        $categories = $this->model::all();
+
+
+        // Checks if nothing was selected and there are no links
+        if ($this->isEmpty($request->categories, $product->id)) {
+            return redirect()->route('cms.products.'.$option.'Categories', $product->id)
+                ->with('productCategorieEmpty', 'Please select a categorie.');
+        }
+
+
+        // Checks if all the boxes where ticked off
+        // And deletes all the product links with this product id
+        if (empty($request->categories)) {
+            $categoryLinks = $this->model::where('product_id', $product->id)->get();
+
+            foreach ($categoryLinks as $links) {
+                $links->delete();
+            }
+
+            return redirect()->route('cms.products.'.$option.'Categories', $product->id)
+                ->with('productCategorieDelete', 'All links have been removed');
+        }
+
+
+        // Loops through all the product categories to see if one is missing in the request array but does exist in the database.
+        // If so, delete it from the database.
+        foreach ($categories as $categorie) {
+            if ($this->deleteCheck($categorie, $request->categories, $product->id, $option)) {
+                $categoryLink = $this->model::where($option.'_categories_id', $categorie[$option.'_categories_id'])
+                    ->where('product_id',  $product->id)->first();
+
+                $categoryLink->delete();
+            }
+        }
+
+
+        // Loops through the request array and if is does not exist in the database, store it in the database.
+       foreach ($request->categories as $id => $switch) {
+            if (!$this->model::exists($id, $product->id)) {
+                $this->model::create([
+                    $option."_categories_id" => $id,
+                    'product_id' => $product->id
+                ]);
+            }
+        }
+
+
+        return redirect()->route('cms.products.'.$option.'Categories', $product->id)
+            ->with('productCategorieLink', 'Gelukt om de categorie te linken aan het product');
     }
 
 
@@ -175,5 +303,25 @@ class CmsProductsController extends Controller
         $product->delete();
 
         return redirect()->route('cms.products.index')->with('deleteSucces', "Product $inventory_number is succesvol verwijderd.");
+    }
+
+
+    private function isEmpty(?array $categories, int $product_id): bool
+    {
+        if (empty($categories) && $this->model::where('product_id', $product_id)->exists() == false) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    private function deleteCheck(object $categorie, array $categories, int $product_id, string $option)
+    {
+        if (in_array($categorie->id, $categories) == false && $this->model::exists($categorie[$option.'_categories_id'], $product_id)) {
+            return true;
+        }
+
+        return false;
     }
 }

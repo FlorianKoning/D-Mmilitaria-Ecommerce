@@ -74,7 +74,6 @@ class DatabaseSeeder extends Seeder
         // Creates geweren category
         Product_category::factory()->create([
             'name' => 'Geweren',
-            'product_id' => 1,
             'created_at' => '2025-01-19 21:19:09',
             'updated_at' => '2025-01-19 21:19:13'
         ]);
@@ -83,7 +82,6 @@ class DatabaseSeeder extends Seeder
         // Creates uniformen category
         Product_category::factory()->create([
             'name' => 'Uniformen',
-            'product_id' => 2,
             'created_at' => '2025-01-19 21:19:09',
             'updated_at' => '2025-01-19 21:19:13'
         ]);

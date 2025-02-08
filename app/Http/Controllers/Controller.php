@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Helper\Functions;
 use App\Services\AclService;
 use App\Services\CartService;
+use App\Models\LandCatagoriesLink;
+use App\Models\Product_catagoryLink;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 

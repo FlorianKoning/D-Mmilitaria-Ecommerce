@@ -38,7 +38,7 @@ class HomeController extends Controller
         }
 
         return view('frontPage', [
-            'products' => (isset($products)) ? $products : Product::frontPage(),
+            'products' => (isset($products)) ? $products->unique() : Product::frontPage(),
             'catagories' => Product_category::all(),
             'landCatagories' => LandCatagories::all(),
             'latestUpdate' => (Functions::getLatestupdate() != null) ? Functions::getLatestupdate() : 'Er zijn nog geen updates.',

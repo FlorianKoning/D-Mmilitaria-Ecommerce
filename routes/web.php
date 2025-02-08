@@ -50,6 +50,11 @@ Route::middleware(AclMiddleware::class)->group(function() {
     Route::post('/cms/product/update/{product}', [CmsProductsController::class, 'update'])->name('cms.products.update');
     Route::delete('/cms/products/delete/{product}', [CmsProductsController::class, 'destroy'])->name('cms.products.delete');
 
+    // Extra Product Routes
+    Route::get('/cms/products/product-catagories/{product}', [CmsProductsController::class, 'productCategories'])->name('cms.products.productCategories');
+    Route::get('/cms/product/land-categories/{product}', [CmsProductsController::class, 'landCategories'])->name('cms.products.landCategories');
+    Route::post('/cms/product/categories/store/{product}/{option}', [CmsProductsController::class, 'extraCategorieStore'])->name('cms.products.extraCategorieStore');
+
 
     // User routes
     Route::get('/cms/users', [CmsUserController::class, 'index'])->name('cms.users.index');
