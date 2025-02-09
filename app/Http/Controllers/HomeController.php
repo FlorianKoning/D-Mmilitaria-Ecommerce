@@ -27,16 +27,19 @@ class HomeController extends Controller
 
 
             if (isset($request->category)) {
-                $baseQuery->whereIn('product_catagory_links.product_id', $request->category);
+                $baseQuery->whereIn('product_catagory_links.product_categories_id', $request->category);
             }
 
+
             if (isset($request->landCategory)) {
-                $baseQuery->whereIn('land_catagories_links.product_id', $request->landCategory);
+                $baseQuery->whereIn('land_catagories_links.land_categories_id', $request->landCategory);
             }
+
 
             $products = $baseQuery->get();
         }
 
+        
         return view('frontPage', [
             'products' => (isset($products)) ? $products->unique() : Product::frontPage(),
             'catagories' => Product_category::all(),
