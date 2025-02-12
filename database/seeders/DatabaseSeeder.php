@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\Product_catagorie;
 use App\Models\Product_category;
 use App\Models\ProductCatagory;
+use App\Models\Province;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,17 +30,39 @@ class DatabaseSeeder extends Seeder
         }
 
 
+        // Inserts all the provinces
+        foreach (Province::$provinces as $province) {
+            Province::factory()->create([
+                'province_name' => $province,
+            ]);
+        }
+
+
         // creates the admin user
         User::factory()->create([
-            'name' => env('ADMIN_NAME'),
             'email' => env('ADMIN_EMAIL'),
             'password' => Hash::make(env('ADMIN_PASSWORD')),
             'role_id' => 3
         ]);
 
 
-        // Creates a product
-        Product::factory()->create([
+        // Creates the default products in the database.
+        $this->defaultProducts();
+
+
+        // Creates the default categories
+        $this->defaultCategories();
+    }
+
+
+    /**
+     * Creates products in the database.
+     * @return void
+     */
+    private function defaultProducts()
+    {
+         // Creates a product
+         Product::factory()->create([
             'inventory_number' => 'nederlandsGeweer012025',
             'name' => 'Nederlands geweer uit 1941',
             'small_desc' => 'Nederlands geweer uit 1941 van een nederlandse soldaat.',
@@ -69,10 +92,17 @@ class DatabaseSeeder extends Seeder
             'created_at' => '2025-01-19 21:20:08',
             'updated_at' => '2025-01-19 21:20:08'
         ]);
+    }
 
 
-        // Creates geweren category
-        Product_category::factory()->create([
+    /**
+     * Creates some default categories
+     * @return void
+     */
+    private function defaultCategories()
+    {
+         // Creates geweren category
+         Product_category::factory()->create([
             'name' => 'Geweren',
             'created_at' => '2025-01-19 21:19:09',
             'updated_at' => '2025-01-19 21:19:13'

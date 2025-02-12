@@ -90,6 +90,8 @@ Route::middleware(AclMiddleware::class)->group(function() {
 // All the auth routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/shipping', [ProfileController::class, 'shipping'])->name('profile.shipping');
+    Route::post('/profile/shipping/store', [ProfileController::class, 'shippingStore'])->name('profile.shipping.store');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

@@ -20,12 +20,10 @@ class CartController extends Controller
         // Variables
         $cart = (Auth::check()) ? CartService::get(Auth::user()->id) : json_decode(json_encode(session()->get('cart')), associative: FALSE);
 
-
         // Checks if the cart is not empty
         if ($cart != null) {
             $totalPrice = $this->totalPrice($cart);
         }
-
 
         return view('cart.cart-index', [
             'cartService' => new CartService,
