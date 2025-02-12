@@ -12,7 +12,6 @@ use App\Models\LandCatagories;
 use App\Models\ProductFeature;
 use App\Models\Product_category;
 use App\Models\LandCatagoriesLink;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Product_catagoryLink;
 use Illuminate\Http\RedirectResponse;
@@ -159,7 +158,7 @@ class CmsProductsController extends Controller
 
 
         // Loops through the request array and if is does not exist in the database, store it in the database.
-       foreach ($request->categories as $id => $switch) {
+        foreach ($request->categories as $id => $switch) {
             if (!$this->model::exists($id, $product->id)) {
                 $this->model::create([
                     $option."_categories_id" => $id,

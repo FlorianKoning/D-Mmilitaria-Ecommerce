@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('land_catagories_links', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('land_catagory_id');
-            $table->foreign('land_catagory_id')->references('id')->on('land_catagories');
+            $table->unsignedBigInteger('land_categories_id');
+            $table->foreign('land_categories_id')->references('id')->on('land_catagories');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
         });
