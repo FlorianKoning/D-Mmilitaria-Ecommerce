@@ -37,6 +37,9 @@ Route::middleware(AclMiddleware::class)->group(function() {
 
     // Loads the admin routes.
     require __DIR__.'/admin.php';
+
+    // Loads the payment routes
+    require __DIR__.'/payment.php';
 });
 
 

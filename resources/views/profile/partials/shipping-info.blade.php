@@ -56,7 +56,7 @@
                 <div class="mt-2 grid grid-cols-1">
                   <select required id="provinces" name="provinces" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-2 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-600 sm:text-sm/6">
                     @foreach ($provinces as $province)
-                        <option {{ ($province->id == $shipping->province_id) ? 'selected' : '' }} value="{{ $province->id }}">{{ $province->province_name }}</option>
+                        <option {{ ($shipping != null && $province->id == $shipping->province_id) ? 'selected' : '' }} value="{{ $province->id }}">{{ $province->province_name }}</option>
                     @endforeach
                   </select>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\PaymentOption;
 use App\Models\Product;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -29,6 +30,8 @@ class CartController extends Controller
             'cartService' => new CartService,
             'cart' => $cart,
             'totalPrice' => (isset($totalPrice)) ? $totalPrice : null,
+            'paymentOptions' => PaymentOption::all(),
+            'paymentTranslation' => PaymentOption::$columnTranslations,
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\LandCatagories;
 use App\Models\OrderStatus;
+use App\Models\PaymentOption;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Product;
@@ -19,38 +20,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // inserts all the roles
-        foreach (Role::$roleArray as $value) {
-            Role::factory()->create([
-                'name' => $value
-            ]);
-        }
-
-        // Inserts all the provinces
-        foreach (Province::$provinces as $province) {
-            Province::factory()->create([
-                'province_name' => $province,
-            ]);
-        }
-
-        // Inserts all the default order statuses
-        foreach (OrderStatus::$orderStatusArray as $status) {
-            OrderStatus::factory()->create([
-                'status' => $status
-            ]);
-        }
-
-        // creates the admin user
-        User::factory()->create([
-            'email' => env('ADMIN_EMAIL'),
-            'password' => Hash::make(env('ADMIN_PASSWORD')),
-            'role_id' => 3
-        ]);
-
+        // Inserts all the default options of database tables.
+        $this->defaultOptions();
 
         // Creates the default products in the database.
         $this->defaultProducts();
-
 
         // Creates the default categories
         $this->defaultCategories();
@@ -132,6 +106,48 @@ class DatabaseSeeder extends Seeder
             'name' => 'Duits',
             'created_at' => '2025-01-19 21:19:09',
             'updated_at' => '2025-01-19 21:19:13'
+        ]);
+    }
+
+    /**
+     * Inserts all the default options of database tables.
+     * @return void
+     */
+    private function defaultOptions(): void
+    {
+        // inserts all the roles
+        foreach (Role::$roleArray as $value) {
+            Role::factory()->create([
+                'name' => $value
+            ]);
+        }
+
+        // Inserts all the provinces
+        foreach (Province::$provinces as $province) {
+            Province::factory()->create([
+                'province_name' => $province,
+            ]);
+        }
+
+        // Inserts all the default order statuses
+        foreach (OrderStatus::$orderStatusArray as $status) {
+            OrderStatus::factory()->create([
+                'status' => $status
+            ]);
+        }
+
+        // Inserts all the default payment options.
+        foreach (PaymentOption::$paymentOptionsArray as $payment) {
+            PaymentOption::factory()->create([
+                'payment_name' => $payment
+            ]);
+        }
+
+        // creates the admin user
+        User::factory()->create([
+            'email' => env('ADMIN_EMAIL'),
+            'password' => Hash::make(env('ADMIN_PASSWORD')),
+            'role_id' => 3
         ]);
     }
 }

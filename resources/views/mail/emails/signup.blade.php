@@ -123,7 +123,7 @@
                     We zijn blij om u bij ons welkom te noemen.
                   </p>
                   <div>
-                    <a href="https://maizzle.com" style="display: inline-block; text-decoration: none; padding: 16px 24px; font-size: 16px; line-height: 1; border-radius: 4px; color: #fffffe; background-color: #4C5C41" class="hover-bg-slate-800">
+                    <a href="{{ url('/login') }}" style="display: inline-block; text-decoration: none; padding: 16px 24px; font-size: 16px; line-height: 1; border-radius: 4px; color: #fffffe; background-color: #4C5C41" class="hover-bg-slate-800">
                       <!--[if mso]><i style="mso-font-width: 150%; mso-text-raise: 31px" hidden>&emsp;</i><![endif]-->
                       <span style="mso-text-raise: 16px">Log hier in</span>
                       <!--[if mso]><i hidden style="mso-font-width: 150%">&emsp;&#8203;</i><![endif]-->
