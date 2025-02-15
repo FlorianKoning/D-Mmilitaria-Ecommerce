@@ -11,6 +11,11 @@ class PaymentController extends Controller
 {
     private $paymentOption;
 
+    /**
+     * Handels the payment option, items and payment service.
+     * @param \Illuminate\Http\Request $request
+     * @return PaymentService
+     */
     public function index(Request $request)
     {
         // Variables
@@ -20,6 +25,11 @@ class PaymentController extends Controller
         return new PaymentService($items, $this->paymentOption, $request->paymentValue);
     }
 
+    /**
+     * Returns the payment option from the request payment option array.
+     * @param array $paymentOption
+     * @return void
+     */
     private function getPaymentOption(array $paymentOption): void
     {
         foreach ($paymentOption as $key => $payment) {
