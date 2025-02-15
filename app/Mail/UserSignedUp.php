@@ -36,7 +36,7 @@ class UserSignedUp extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.user-signed-up',
+            view: 'mail..emails.signup',
         );
     }
 
