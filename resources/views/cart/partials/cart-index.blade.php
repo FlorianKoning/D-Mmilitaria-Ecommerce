@@ -139,6 +139,9 @@
                   </fieldset>
             </div>
 
+            {{-- hidden values --}}
+            <input type="hidden" name="paymentValue" value="{{ $totalPrice + 5 }}">
+
             <div>
                 <button type="submit" class="w-full rounded-md border border-transparent bg-navBackground px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-navBackground focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50">Betalen</button>
             </div>
