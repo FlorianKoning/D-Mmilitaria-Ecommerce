@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->json('order_items');
             $table->foreign('user_id')->references('id')->on('users');
             $table->decimal('payment_amount');
             $table->unsignedBigInteger('order_status_id');
