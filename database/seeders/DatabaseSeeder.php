@@ -3,14 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\LandCatagories;
-use App\Models\Product_catagory;
+use App\Models\OrderStatus;
 use App\Models\Role;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use App\Models\Product;
-use App\Models\Product_catagorie;
 use App\Models\Product_category;
-use App\Models\ProductCatagory;
 use App\Models\Province;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +26,6 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-
         // Inserts all the provinces
         foreach (Province::$provinces as $province) {
             Province::factory()->create([
@@ -37,6 +33,12 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        // Inserts all the default order statuses
+        foreach (OrderStatus::$orderStatusArray as $status) {
+            OrderStatus::factory()->create([
+                'status' => $status
+            ]);
+        }
 
         // creates the admin user
         User::factory()->create([
@@ -69,7 +71,7 @@ class DatabaseSeeder extends Seeder
             'big_desc' => 'Nederlands geweer uit 1941 van een nederlandse soldaat. Nederlands geweer uit 1941 van een nederlandse soldaat. Nederlands geweer uit 1941 van een nederlandse soldaat.',
             'inventory' => '3',
             'price' => '499.00',
-            'main_image' => 'http://127.0.0.1:8080/storage/images/Nederlands-geweer-uit-1941.png',
+            'main_image' => 'http://127.0.0.1:3000/storage/images/Nederlands-geweer-uit-1941.png',
             'is_active' => true,
             'created_at' => '2025-01-19 21:20:08',
             'updated_at' => '2025-01-19 21:20:08'
@@ -87,7 +89,7 @@ class DatabaseSeeder extends Seeder
             'discount_percentage' => '10',
             'discount_start_date' => '2025-01-20',
             'discount_end_date' => '2025-01-27',
-            'main_image' => 'http://127.0.0.1:8080/storage/images/uniform-van-nederlandse-soldaat.png',
+            'main_image' => 'http://127.0.0.1:3000/storage/images/uniform-van-nederlandse-soldaat.png',
             'is_active' => true,
             'created_at' => '2025-01-19 21:20:08',
             'updated_at' => '2025-01-19 21:20:08'
