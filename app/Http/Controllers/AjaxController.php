@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
 class AjaxController extends Controller
@@ -29,5 +30,17 @@ class AjaxController extends Controller
             ->first()->name;
 
             return response()->json($option);
+    }
+
+    /**
+     * Returns all the payment option id's.
+     */
+    public function paymentId()
+    {
+        $paymentId = DB::table('payment_options')
+            ->select('id')
+            ->get();
+
+        return response()->json($paymentId);
     }
 }
