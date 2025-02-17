@@ -2,23 +2,24 @@
 
 namespace App\Services;
 
-use App\Interfaces\PaymentServiceInterface;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use App\Interfaces\PaymentServiceInterface;
 
 class PaymentService implements PaymentServiceInterface
 {
-    protected array|object $items;
+    protected object $items;
     protected string $paymentOption;
     protected int $value;
     protected array $payments;
 
     /**
      * Sets up the variables
-     * @param array|object $items
+     * @param object $items
      * @param string $paymentOption
      * @param int $value
      */
-    public function __construct(array|object $items, string $paymentOption, int $value)
+    public function __construct(object $items, string $paymentOption, int $value)
     {
         $this->items = $items;
         $this->paymentOption = $paymentOption;
@@ -46,7 +47,10 @@ class PaymentService implements PaymentServiceInterface
      */
     public function backTransfer(): RedirectResponse
     {
-        dd('huts');
+        // Sets up the new order.
+         $order = new OrderService(Auth::user()->id, $this->value, $this->items);
+
+        // Creates the new order
     }
 
     /**
