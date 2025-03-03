@@ -36,7 +36,6 @@ class FileService implements FileServiceInterface
     }
 
 
-
     /**
      * Stores the file in the directory.
      * Should be used to just upload the file in the application.

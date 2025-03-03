@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payment_options', function (Blueprint $table) {
+        Schema::create('guest_users', function (Blueprint $table) {
             $table->id();
-            $table->string('payment_name');
-            $table->enum('shipping', ['one_week', 'fair_pickup']);
-            $table->double('shipping_cost')->nullable();
-            $table->boolean('extra_service_costs');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email')->unique();
+            $table->timestamps();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment_options');
+        Schema::dropIfExists('guest_users');
     }
 };

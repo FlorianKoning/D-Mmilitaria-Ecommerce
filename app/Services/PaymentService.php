@@ -2,44 +2,52 @@
 
 namespace App\Services;
 
+use App\Models\Order;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Interfaces\PaymentServiceInterface;
+use App\Models\PaymentOption;
 
 class PaymentService implements PaymentServiceInterface
 {
-    protected object $items;
-    protected string $paymentOption;
-    protected int $value;
-    protected array $payments;
+    protected Order $order;
+    protected PaymentOption $paymentOption;
 
     /**
-     * Sets up the variables
-     * @param object $items
-     * @param string $paymentOption
-     * @param int $value
+     * Summary of __construct
+     * @param \App\Models\Order $order
+     * @param \App\Models\PaymentOption $paymentOption
      */
-    public function __construct(object $items, string $paymentOption, int $value)
+    public function __construct(Order $order, PaymentOption $paymentOption)
     {
-        $this->items = $items;
+        $this->order = $order;
         $this->paymentOption = $paymentOption;
-        $this->value = $value;
-        $this->payments = [
-            'bank_transfer' => $this->backTransfer(),
-            'fair_pickup' => $this->fairPickUp(),
-            'other' => $this->other()
-        ];
     }
 
+
     /**
-     * Gets used as a controller method.
-     * Calls the associated function from the payment method.
+     * This function is used as a controller.
+     * Checks what payment function has to be called based on the payment option
      * @return void
      */
-    public function __invoke(): void
+    public function payment()
     {
-        $this->payments[$this->paymentOption];
+        switch ($this->paymentOption['id']) {
+            case 1:
+                $this->backTransfer();
+                break;
+            case 2:
+                $this->fairPickUp();
+                break;
+            case 3:
+                $this->other();
+                break;
+            default:
+                throw new Exception('Invalid payment option given.');
+        }
     }
+
 
     /**
      * Creates a bank transfer payment
@@ -47,11 +55,9 @@ class PaymentService implements PaymentServiceInterface
      */
     public function backTransfer(): RedirectResponse
     {
-        // Sets up the new order.
-         $order = new OrderService(Auth::user()->id, $this->value, $this->items);
-
-        // Creates the new order
+        dd($this->order, $this->paymentOption);
     }
+
 
     /**
      * Creates a order for a fair pickup.
@@ -61,6 +67,7 @@ class PaymentService implements PaymentServiceInterface
     {
         //
     }
+
 
     /**
      * Creates other payment using molli.

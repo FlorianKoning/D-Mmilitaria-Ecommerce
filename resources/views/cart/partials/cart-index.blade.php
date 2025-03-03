@@ -77,27 +77,35 @@
                             @endif
                         </div>
                     </li>
-
-
                 @endforeach
             @endif
-
           </ul>
         </section>
 
-        <section aria-labelledby="summary-heading" class="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 space-y-10">
+        <section aria-labelledby="summary-heading" class="mt-16 w-[350px] rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 space-y-10 border border-navBackground">
             <!-- Order summary -->
             <div>
-                <h2 id="summary-heading" class="text-lg font-medium text-gray-900 mb-4">Order summary</h2>
+                <h2 id="summary-heading" class="text-2xl font-bold text-gray-900 mb-4">Totale Winkelmandje</h2>
 
                 <div class="space-y-4">
                     <div class="flex items-center justify-between">
-                        <dt class="text-sm text-gray-600">Subtotal</dt>
-                        <dd class="text-sm font-medium text-gray-900">€{{ (isset($totalPrice)) ? $totalPrice : '0' }}</dd>
+                        <dt class="text-base text-gray-900">Subtotal</dt>
+                        <dd class="text-base font-bold text-gray-900">€{{ (isset($totalPrice)) ? $totalPrice : '0' }}</dd>
                     </div>
-                    <div class="flex items-center justify-between border-t border-gray-200 pt-4">
-                        <dt class="text-base font-medium text-gray-900">Totale kosten</dt>
-                        <dd class="text-base font-medium text-gray-900">€{{ $totalPrice }}</dd>
+                    <div class=" flex flex-col border-t border-gray-200 space-y-4 pt-4">
+                        <div class="flex items-center justify-between">
+                            <dt class="text-base text-gray-900">Verzending</dt>
+                            <dd class="text-base font-bold text-gray-900">€{{ (isset($totalPrice)) ? $totalPrice : '0' }}</dd>
+                        </div>
+                        <p class="text-xs text-gray-500 float-right">De beschikbare verzendopties worden weergegeven tijdens het afrekenproces, waarbij de bijbehorende verzendkosten automatisch worden berekend.</p>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4">
+                        <div class="flex items-center justify-between">
+                            <dt class="text-base font-medium text-gray-900">Totaal</dt>
+                            <dd class="text-base font-bold text-gray-900">€{{ (isset($totalPrice)) ? $totalPrice : '0' }}</dd>
+                        </div>
+                        <p class="text-xs text-gray-500 float-right">(Exclusief verzond kosten)</p>
                     </div>
                 </div>
             </div>
@@ -106,7 +114,7 @@
             <input type="hidden" name="paymentValue" value="{{ $totalPrice }}">
 
             <div>
-                <button type="submit" class="w-full rounded-md border border-transparent bg-navBackground px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-navBackground focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50">Betalen</button>
+                <button type="submit" class="w-full rounded-md border border-transparent bg-navBackground px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-navBackground focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50">DOORGAAN NAAR AFREKENEN</button>
             </div>
         </section>
       </form>

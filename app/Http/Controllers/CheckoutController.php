@@ -11,15 +11,21 @@ use App\Services\CartService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Helper\Translate\TranslatePaymentOption;
+use Illuminate\Http\RedirectResponse;
 
 class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): View
+    public function index(Request $request): View|RedirectResponse
     {
         $cart = (Auth::check()) ? CartService::get(Auth::user()->id) : json_decode(json_encode(session()->get('cart')), associative: FALSE);
+
+        // Checks if the cart is empty
+        if ($cart == null) {
+            return redirect()->route('cart.index')->with('noItems', 'Je kunt niet betalen met geen producten in je winkelmandje');
+        }
 
         return view('checkout.checkout-index', [
             'shippingInfo' => (Auth::check()) ? Shipping::where('user_id', Auth::user()->id)->first() : null,

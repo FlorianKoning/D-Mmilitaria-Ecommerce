@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
         // Inserts all the default options of database tables.
         $this->defaultOptions();
 
+        // Default payment options.
+        $this->defaultPaymentOptions();
+
         // Creates the default products in the database.
         $this->defaultProducts();
 
@@ -136,18 +139,39 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // Inserts all the default payment options.
-        foreach (PaymentOption::$paymentOptionsArray as $payment) {
-            PaymentOption::factory()->create([
-                'payment_name' => $payment
-            ]);
-        }
-
         // creates the admin user
         User::factory()->create([
             'email' => env('ADMIN_EMAIL'),
             'password' => Hash::make(env('ADMIN_PASSWORD')),
             'role_id' => 3
+        ]);
+    }
+
+    /**
+     * Default payment options.
+     * @return void
+     */
+    private function defaultPaymentOptions(): void
+    {
+        PaymentOption::factory()->create([
+            'payment_name' => 'bank_transfer',
+            'shipping' => 'one_week',
+            'shipping_cost' => 5.00,
+            'extra_service_costs' => false
+        ]);
+
+        PaymentOption::factory()->create([
+            'payment_name' => 'fair_pickup',
+            'shipping' => 'fair_pickup',
+            'shipping_cost' => null,
+            'extra_service_costs' => false
+        ]);
+
+        PaymentOption::factory()->create([
+            'payment_name' => 'other',
+            'shipping' => 'one_week',
+            'shipping_cost' => 5.00,
+            'extra_service_costs' => true
         ]);
     }
 }

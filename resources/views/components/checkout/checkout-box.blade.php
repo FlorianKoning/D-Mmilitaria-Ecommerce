@@ -1,9 +1,9 @@
-@props(['paymentValue', 'cart'])
+@props(['paymentValue', 'cart', 'paymentOptions', 'paymentOptionTranslation'])
 
-<div class="mt-10 lg:mt-0">
-    <h2 class="text-lg font-medium text-gray-900">Bestelling</h2>
+<div class="mt-10 mx-auto lg:mt-0">
+    <h2 class="text-lg font-medium text-gray-900">Uw Bestelling</h2>
 
-    <div class="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
+    <div class="mt-4 w-[350px] rounded-lg border border-gray-200 bg-white shadow-sm">
         {{-- checkout item list --}}
         <x-checkout.item-list :cart="$cart" />
 

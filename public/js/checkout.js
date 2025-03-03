@@ -7,6 +7,11 @@ function paymentMethod(id, shipping = null, serviceCost = null) {
             $('#paymentMethod2').fadeOut().addClass('hidden');
             $('#paymentMethod3').fadeOut().addClass('hidden');
 
+            // Checks the input
+            $('#1').attr('value', 'checked');
+            $('#2').attr('value', '');
+            $('#3').attr('value', '');
+
             // Changes the pricing
             $('#shippingCost').fadeIn().removeClass('hidden');
             $('#shippingCost').removeAttr('style');
@@ -20,6 +25,11 @@ function paymentMethod(id, shipping = null, serviceCost = null) {
             $('#paymentMethod1').fadeOut().addClass('hidden');
             $('#paymentMethod3').fadeOut().addClass('hidden');
 
+            // Checks the input
+            $('#1').attr('value', '');
+            $('#2').attr('value', 'checked');
+            $('#3').attr('value', '');
+
             // Changes the pricing
             $('#shippingCost').fadeOut().addClass('hidden');
             $('#total').html("€"+(subtotal));
@@ -31,6 +41,11 @@ function paymentMethod(id, shipping = null, serviceCost = null) {
             $('#paymentMethod1').fadeOut().addClass('hidden');
             $('#paymentMethod2').fadeOut().addClass('hidden');
 
+            // Checks the input
+            $('#1').attr('value', '');
+            $('#2').attr('value', '');
+            $('#3').attr('value', 'checked');
+
             // Changes the pricing
             $('#shippingCost').fadeIn().removeClass('hidden');
             $('#shippingCost').removeAttr('style');
@@ -39,9 +54,21 @@ function paymentMethod(id, shipping = null, serviceCost = null) {
             break;
 
         default:
-            $('#paymentMethod1').fadeIn().removeClass('hidden');
-            $('#paymentMethod2').fadeOut().addClass('hidden');
-            $('#paymentMethod3').fadeOut().addClass('hidden');
+             // Displays the check
+             $('#paymentMethod3').fadeIn().removeClass('hidden');
+             $('#paymentMethod1').fadeOut().addClass('hidden');
+             $('#paymentMethod2').fadeOut().addClass('hidden');
+
+             // Checks the input
+             $('#1').attr('value', '');
+             $('#2').attr('value', '');
+             $('#3').attr('value', 'checked');
+
+             // Changes the pricing
+             $('#shippingCost').fadeIn().removeClass('hidden');
+             $('#shippingCost').removeAttr('style');
+             $('#total').html("€"+(Number(subtotal) + 5));
+             $('#inputPayment').attr('value', subtotal + 5);
             break;
     }
 }

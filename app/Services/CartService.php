@@ -27,7 +27,7 @@ class CartService implements CartServiceInterface
         } else { // User is nog logged in, store product in session array.
             $cart = (session()->exists('cart')) ? session()->get('cart') : array();
 
-            // Adds the prouct to the session cart.
+            // Adds the product to the session cart.
             return self::nonAuthAdd($product, $cart);
         }
     }

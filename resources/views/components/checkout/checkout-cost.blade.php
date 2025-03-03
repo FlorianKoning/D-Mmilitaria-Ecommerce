@@ -10,9 +10,12 @@
         <dt class="text-sm">Verzend kosten</dt>
         <dd class="text-sm font-medium text-gray-900">$5.00</dd>
     </div>
-    <div class="flex items-center justify-between border-t border-gray-200 pt-6">
-        <dt class="text-base font-medium">Total</dt>
-        <dd id="total" class="text-base font-medium text-gray-900">€{{ $paymentValue + 5 }}</dd>
-        <input id="inputPayment" type="hidden" value="{{ $paymentValue }}">
+    <div class="border-t border-gray-200 pt-4">
+        <div class="flex items-center justify-between">
+            <dt class="text-base font-medium text-gray-900">Totaal</dt>
+            <dd class="text-base font-bold text-gray-900">€{{ $paymentValue + 5 }}</dd>
+        </div>
+        <input id="inputPayment" name="paymentAmount" type="hidden" value="{{ $paymentValue }}">
+        <p class="text-xs text-gray-500 float-right">(Extra service kosten bij Mollie)</p>
     </div>
 </dl>

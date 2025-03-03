@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class GuestUser extends Model
 {
-    /** @use HasFactory<\Database\Factories\OrderFactory> */
+    /** @use HasFactory<\Database\Factories\GuestUserFactory> */
     use HasFactory;
+
 
     /**
      * The attributes that are mass assignable.
@@ -16,10 +17,8 @@ class Order extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'user_id',
-        'guest_user_id',
-        'order_items',
-        'payment_amount',
-        'order_status_id'
+        'first_name',
+        'last_name',
+        'email',
     ];
 }

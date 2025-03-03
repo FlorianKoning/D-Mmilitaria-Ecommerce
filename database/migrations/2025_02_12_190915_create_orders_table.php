@@ -13,15 +13,18 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->json('order_items');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('guest_user_id')->nullable();
+            $table->foreign('guest_user_id')->references('id')->on('guest_users');
+            $table->json('order_items');
             $table->decimal('payment_amount');
             $table->unsignedBigInteger('order_status_id');
             $table->foreign('order_status_id')->references('id')->on('order_statuses');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

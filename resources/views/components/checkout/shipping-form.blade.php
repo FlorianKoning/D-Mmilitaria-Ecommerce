@@ -7,14 +7,14 @@
             <label for="email-address" class="block text-sm/6 font-medium text-gray-700">Email address <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="email" id="email-address" name="shipping[email-address]" value="{{ (Auth::check()) ? Auth::user()->email : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <x-input-error class="mt-2" :messages="$errors->get('shipping[email-address]')" />
+                <x-input-error class="mt-2" :messages="$errors->get('shipping.email-address')" />
             </div>
         </div>
         <div class="sm:col-span-2">
             <label for="phone" class="block text-sm/6 font-medium text-gray-700">Telefoon nummer <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" name="shipping[phone]" id="phone" value="{{ ($shipping != null) ? $shipping->phone_number : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <x-input-error class="mt-2" :messages="$errors->get('shipping[phone]')" />
+                <x-input-error class="mt-2" :messages="$errors->get('shipping.phone')" />
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
             <label for="first-name" class="block text-sm/6 font-medium text-gray-700">Voornaam <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" id="first-name" name="shipping[first-name]" value="{{ ($shipping != null) ? $shipping->first_name : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <x-input-error class="mt-2" :messages="$errors->get('shipping[first-name]')" />
+                <x-input-error class="mt-2" :messages="$errors->get('shipping.first-name')" />
             </div>
         </div>
 
@@ -36,7 +36,7 @@
             <label for="last-name" class="block text-sm/6 font-medium text-gray-700">Achternaam <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" id="last-name" name="shipping[last-name]" value="{{ ($shipping != null) ? $shipping->last_name : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <x-input-error class="mt-2" :messages="$errors->get('shipping[last-name]')" />
+                <x-input-error class="mt-2" :messages="$errors->get('shipping.last-name')" />
             </div>
         </div>
 
@@ -44,7 +44,7 @@
             <label for="company" class="block text-sm/6 font-medium text-gray-700">Bedrijf</label>
             <div class="mt-2">
                 <input type="text" name="shipping[company]" id="company" value="{{ ($shipping != null) ? $shipping->company : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <x-input-error class="mt-2" :messages="$errors->get('shipping[company]')" />
+                <x-input-error class="mt-2" :messages="$errors->get('shipping.company')" />
             </div>
         </div>
 
@@ -52,7 +52,7 @@
             <label for="address" class="block text-sm/6 font-medium text-gray-700">Address <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" name="shipping[address]" id="address" value="{{ ($shipping != null) ? $shipping->address : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <x-input-error class="mt-2" :messages="$errors->get('shipping[address]')" />
+                <x-input-error class="mt-2" :messages="$errors->get('shipping.address')" />
             </div>
         </div>
 
@@ -60,7 +60,7 @@
             <label for="apartment" class="block text-sm/6 font-medium text-gray-700">Apartement</label>
             <div class="mt-2">
                 <input type="text" name="shipping[apartment]" id="apartment" value="{{ ($shipping != null) ? $shipping->apartment : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <x-input-error class="mt-2" :messages="$errors->get('shipping[apartment]')" />
+                <x-input-error class="mt-2" :messages="$errors->get('shipping.apartment')" />
             </div>
         </div>
 
@@ -68,7 +68,7 @@
             <label for="city" class="block text-sm/6 font-medium text-gray-700">Stad <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" name="shipping[city]" id="city" value="{{ ($shipping != null) ? $shipping->city : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <x-input-error class="mt-2" :messages="$errors->get('shipping[city]')" />
+                <x-input-error class="mt-2" :messages="$errors->get('shipping.city')" />
             </div>
         </div>
 
@@ -82,14 +82,14 @@
                 @endforeach
               </select>
             </div>
-            <x-input-error class="mt-2" :messages="$errors->get('provinces')" />
+            <x-input-error class="mt-2" :messages="$errors->get('shipping.provinces')" />
         </div>
 
         <div>
             <label for="postal-code" class="block text-sm/6 font-medium text-gray-700">Post code <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" name="shipping[postal-code]" id="postal-code" value="{{ ($shipping != null) ? $shipping->postal_code : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <x-input-error class="mt-2" :messages="$errors->get('postal-code')" />
+                <x-input-error class="mt-2" :messages="$errors->get('shipping.postal-code')" />
             </div>
         </div>
     </div>
