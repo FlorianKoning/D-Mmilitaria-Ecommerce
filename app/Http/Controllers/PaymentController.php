@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PaymentOption;
 use Exception;
+use App\Mail\NewOrder;
 use Illuminate\Http\Request;
+use App\Models\PaymentOption;
 use App\Services\OrderService;
 use Illuminate\Validation\Rule;
 use App\Services\PaymentService;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -36,6 +38,11 @@ class PaymentController extends Controller
 
         // Creates a new order with the payment id, items array and the shipping array.
         $order = OrderService::create($request->shipping, $request->items, $request->paymentAmount);
+
+        // Sends email That the order has been made.
+        Mail::to($request->shipping['email-address'])->queue(
+            new NewOrder($order, $request->shipping['first-name'])
+        );
 
         // Checks what payment options has been selected
         $paymentOption = $this->getPaymentOption($request->paymentMethod);

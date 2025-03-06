@@ -2,22 +2,24 @@
 
 namespace App\Mail;
 
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
 
-class UserSignedUp extends Mailable
+class NewOrder extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public Order $order, public string $name)
     {
-        //
+        $this->order = $order;
+        $this->name = $name;
     }
 
     /**
@@ -26,7 +28,8 @@ class UserSignedUp extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Account aangemaakt bij d&Mmilitaria.',
+            subject: env("APP_NAME")." | Nieuwe Bestelling | ".$this->order['order_number'],
+            from: env("APP_MAIL"),
         );
     }
 
@@ -36,7 +39,11 @@ class UserSignedUp extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.emails.signup',
+            html: 'mail.emails.order',
+            with: [
+                'orderNumber' => $this->order['order_number'],
+                'customerName' => $this->name
+            ]
         );
     }
 

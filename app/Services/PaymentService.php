@@ -2,12 +2,15 @@
 
 namespace App\Services;
 
-use App\Models\Order;
+use App\Mail\NewOrder;
 use Exception;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\GuestUser;
+use App\Models\PaymentOption;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use App\Interfaces\PaymentServiceInterface;
-use App\Models\PaymentOption;
 
 class PaymentService implements PaymentServiceInterface
 {
@@ -33,6 +36,7 @@ class PaymentService implements PaymentServiceInterface
      */
     public function payment()
     {
+        // Checks what function has to be called based on the payment option.
         switch ($this->paymentOption['id']) {
             case 1:
                 $this->backTransfer();
@@ -56,6 +60,7 @@ class PaymentService implements PaymentServiceInterface
     public function backTransfer(): RedirectResponse
     {
         dd($this->order, $this->paymentOption);
+        $email = ($this->order['user_id'] == null) ? GuestUser::find($this->order['guest_user_id'])->email : User::find($this->order['user_id'])->email;
     }
 
 

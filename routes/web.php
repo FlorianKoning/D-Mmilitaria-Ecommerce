@@ -1,6 +1,4 @@
 <?php
-use App\Mail\UserSignedUp;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AclMiddleware;
 use App\Http\Controllers\AjaxController;

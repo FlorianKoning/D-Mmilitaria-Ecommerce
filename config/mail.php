@@ -109,7 +109,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@dnmmilitaria.nl'),
+        'address' => env('MAIL_FROM_ADDRESS', env('APP_MAIL')),
         'name' => env('MAIL_FROM_NAME', 'D&Mmilitaria | Daan Boghert'),
     ],
 

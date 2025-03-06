@@ -115,12 +115,12 @@
                   </a>
                   <div role="separator" style="line-height: 24px">&zwj;</div>
                   <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
-                    Uw bestel nummer is:
+                    Uw bestel nummer is: {{ $orderNumber }}
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Beste <br>
+                    Beste {{ $customerName }}<br>
                     <br>
-                    Nog maals bedankt voor uw bestelling bij .<br>
+                    Nog maals bedankt voor uw bestelling bij {{ env('APP_NAME') }}.<br>
                     <br>
                     In deze mail vind u de factuur van uw bestelling in de bijlage. Bewaar de factuur goed omdat dit het bewijs is van uw bestelling.
                     <br>
