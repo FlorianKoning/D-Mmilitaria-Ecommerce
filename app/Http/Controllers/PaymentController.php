@@ -65,8 +65,14 @@ class PaymentController extends Controller
     }
 
 
-    private function getPaymentOption(array $paymentMethods): PaymentOption
+    private function getPaymentOption(?array $paymentMethods): PaymentOption
     {
+        // Checks if "nothing" was selected, use default payment option.
+        if ($paymentMethods == null) {
+            return PaymentOption::find(PaymentOption::$other);
+        }
+
+
         foreach ($paymentMethods as $key => $checked) {
             if ($checked === "checked") {
                 if (PaymentOption::find($key) == null) {

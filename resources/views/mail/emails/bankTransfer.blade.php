@@ -115,18 +115,23 @@
                   </a>
                   <div role="separator" style="line-height: 24px">&zwj;</div>
                   <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
-                    Uw bestel nummer is:
+                    Bank overschrijving | Bestel nummer |
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
                     Beste <br>
                     <br>
-                    Nog maals bedankt voor uw bestelling bij .<br>
+                    Dit is de mail voor de betalings optie die u heeft gekozen. Hier onder staat het bank rekening nummer waar u het geld naar kan over maken.<br>
                     <br>
-                    In deze mail vind u de factuur van uw bestelling in de bijlage. Bewaar de factuur goed omdat dit het bewijs is van uw bestelling.
+                    Na dat u het geld heeft overgemaakt gaat er persoonlijk gekeken worden of het geld is binnen gekomen. Als alles goed is gegaan krijgt u nog een confirmation mail van ons dat het geld succesvol is overgeschreven, en de bestelling word behandeld.
                     <br>
+                    <br>
+                    Check altijd goed of het bestellings nummer wel over een komt met het bestellings nummer van uw vorige email. Als het niet over een komt negeer het en neem contact met ons team op.
+                    <br>
+                    <br>
+                    Hier onder vind u ook het factuur van uw bestelling in de bijlagen.
                   </p>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    U ontvangt nog een mail over de betaling.
+                    Bank rekening nummer:
                   </p>
                   <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
                     Met vriendelijke groet,
@@ -135,7 +140,7 @@
                   </p>
                   <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
                   <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
-                    Als u niks heeft besteld bij ons of iest fout is gegaan, neem graag contact met ons team op:
+                    Heeft u niks besteld? Of komt het bestellings nummer niet overheen met uw bestelling? Neem dan contact op met ons team:
                     <a href="mailto:florian.koning2004@gmail.com?subject=Moeite met inloggen%20there&body=This%20is%20a%20predefined%20email%20body.">
                       Klick hier om de mail te sturen.
                     </a>
