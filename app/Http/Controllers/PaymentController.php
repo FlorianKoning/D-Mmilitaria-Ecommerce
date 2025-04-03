@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Mail\NewOrder;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
 use App\Services\OrderService;
 use Illuminate\Validation\Rule;
 use App\Services\PaymentService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -17,9 +19,9 @@ class PaymentController extends Controller
     /**
      * Handles the payment option, items and payment service.
      * @param \Illuminate\Http\Request $request
-     * @return PaymentService
+     * @return RedirectResponse
      */
-    public function index(Request $request)
+    public function index(Request $request): RedirectResponse
     {
         // Validates Shipping information
         $provinceIds = $this->getProvince();
@@ -39,6 +41,13 @@ class PaymentController extends Controller
         // Creates a new order with the payment id, items array and the shipping array.
         $order = OrderService::create($request->shipping, $request->items, $request->paymentAmount);
 
+
+        // Checks if redirect is needed. (User already had an order on open)
+        if ($order === false) {
+            return redirect()->route('checkout.index')->with('shipping', $request->shipping)->with('paymentAmount', $request->paymentAmount)->with('duplicateOrder', 'Weet u zeker dat u deze order wilt plaatsen, u heeft nog een andere order op open status staan.');
+        }
+
+
         // Sends email That the order has been made.
         Mail::to($request->shipping['email-address'])->queue(
             new NewOrder($order, $request->shipping['first-name'])
@@ -50,6 +59,9 @@ class PaymentController extends Controller
         // Activates the payment
         $paymentService = new PaymentService($order, $paymentOption);
         $paymentService->payment();
+
+
+        return redirect()->route('home.index');
     }
 
     private function getProvince(): array

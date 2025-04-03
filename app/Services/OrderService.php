@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\GuestUser;
 use App\Models\OrderStatus;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,9 +18,9 @@ class OrderService
      * @param array $orderInfo
      * @param array $orderItems
      * @param int $paymentAmount
-     * @return Order
+     * @return Order|bool
      */
-    public static function create(array $orderInfo, array $orderItems, int $paymentAmount): Order
+    public static function create(array $orderInfo, array $orderItems, int $paymentAmount): Order|bool
     {
         // Creates a new guest account if needed.
         if (!Auth::check()) {
@@ -32,6 +33,14 @@ class OrderService
             }
             $guest = GuestUser::where('email', $orderInfo)->first();
         }
+
+
+        // Checks if the user already has an open order
+        if ((isset($guest) ? Order::where('guest_user_id', $guest['id'])->exists() : Order::where('user_id', operator: Auth::user()->id)->exists())) {
+            return false;
+        }
+
+
         // Creates a usable json array from the order items
         $productsArray = self::createItemArray($orderItems);
         $orderNumber = self::createOrderNumber();
@@ -47,6 +56,7 @@ class OrderService
             'order_status_id' => OrderStatus::$open
         ]);
 
+        dd($order);
         return $order;
     }
 
