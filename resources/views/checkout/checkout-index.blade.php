@@ -4,4 +4,8 @@
             @include('checkout.partials.checkout-index')
         </div>
     </div>
+
+    @if (session()->has('duplicateOrder'))
+        <x-session-warning :sessionText="session('duplicateOrder')" />
+    @endif
 </x-app-layout>

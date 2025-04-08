@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
 use App\Models\PaymentOption;
 use App\Models\Product;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Services\CartService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +23,13 @@ class CartController extends Controller
         if ($cart != null) {
             $totalPrice = $this->totalPrice($cart);
         }
+
+
+        // Sets the totalprice in an session
+        if (isset($totalPrice)) {
+            session(['totalPrice' => $totalPrice]);
+        }
+
 
         return view('cart.cart-index', [
             'cartService' => new CartService,

@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\PaymentController;
-use App\Services\PaymentService;
 use Illuminate\Support\Facades\Route;
 
 // Payment routes

@@ -14,5 +14,7 @@
         <x-session-warning :sessionText="session('noItems')" />
     @endif
 
-
+    @if (session()->has('noInventory'))
+        <x-session-warning :sessionText="session('noInventory')" />
+    @endif
 </x-app-layout>

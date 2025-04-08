@@ -56,7 +56,6 @@ class OrderService
             'order_status_id' => OrderStatus::$open
         ]);
 
-        dd($order);
         return $order;
     }
 

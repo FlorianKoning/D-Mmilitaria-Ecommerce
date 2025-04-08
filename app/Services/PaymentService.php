@@ -2,30 +2,34 @@
 
 namespace App\Services;
 
-use App\Mail\NewOrder;
 use Exception;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\GuestUser;
+use App\Mail\BankTransfer;
 use App\Models\PaymentOption;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
 use App\Interfaces\PaymentServiceInterface;
 
 class PaymentService implements PaymentServiceInterface
 {
     protected Order $order;
     protected PaymentOption $paymentOption;
+    protected string $name;
 
     /**
      * Summary of __construct
      * @param \App\Models\Order $order
      * @param \App\Models\PaymentOption $paymentOption
      */
-    public function __construct(Order $order, PaymentOption $paymentOption)
+    public function __construct(Order $order, PaymentOption $paymentOption, string $name)
     {
         $this->order = $order;
         $this->paymentOption = $paymentOption;
+        $this->name = $name;
     }
 
 
@@ -59,8 +63,31 @@ class PaymentService implements PaymentServiceInterface
      */
     public function backTransfer(): RedirectResponse
     {
-        dd($this->order, $this->paymentOption);
         $email = ($this->order['user_id'] == null) ? GuestUser::find($this->order['guest_user_id'])->email : User::find($this->order['user_id'])->email;
+
+        // Sends email to the new registered  user
+        Mail::to($email)->queue(
+            new BankTransfer($this->order, $email, $this->name)
+        );
+
+        // Removes everything from the users cart
+        $cart = (Auth::check()) ? CartService::get(Auth::user()->id) : session('cart');
+        if (!Auth::check()) {
+            foreach ($cart as $key => $item) {
+                unset($cart[$key]);
+            }
+
+            Session::put('cart', $cart);
+        } else {
+            $cart->delete();
+        }
+
+
+        // Removes the inventory of all the bought items.
+        dd($cart);
+
+
+        return redirect()->route('home.index')->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
     }
 
 

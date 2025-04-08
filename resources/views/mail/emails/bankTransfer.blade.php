@@ -115,12 +115,15 @@
                   </a>
                   <div role="separator" style="line-height: 24px">&zwj;</div>
                   <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
-                    Bank overschrijving | Bestel nummer |
+                    Bank overschrijving | Bestel nummer | {{ $orderNumber }}
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Beste <br>
+                    Beste {{ $customerName }}<br>
                     <br>
-                    Dit is de mail voor de betalings optie die u heeft gekozen. Hier onder staat het bank rekening nummer waar u het geld naar kan over maken.<br>
+                    Dit is de mail voor de betalings optie die u heeft gekozen. Hier onder staat het bank rekening nummer waar u het geld naar kan over maken.
+                    <br>
+                    <br>
+                    Als u het geld over maakt moet u uw bestel nummer in de betaalbeschrijving zetten. Zo weten we welke bestelling bij wie hoort,<br>
                     <br>
                     Na dat u het geld heeft overgemaakt gaat er persoonlijk gekeken worden of het geld is binnen gekomen. Als alles goed is gegaan krijgt u nog een confirmation mail van ons dat het geld succesvol is overgeschreven, en de bestelling word behandeld.
                     <br>
@@ -131,7 +134,7 @@
                     Hier onder vind u ook het factuur van uw bestelling in de bijlagen.
                   </p>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Bank rekening nummer:
+                    Bank rekening nummer: <span style="font-weight: 500"></span>
                   </p>
                   <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
                     Met vriendelijke groet,

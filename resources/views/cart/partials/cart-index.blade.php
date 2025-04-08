@@ -88,24 +88,15 @@
                 <h2 id="summary-heading" class="text-2xl font-bold text-gray-900 mb-4">Totale Winkelmandje</h2>
 
                 <div class="space-y-4">
-                    <div class="flex items-center justify-between">
-                        <dt class="text-base text-gray-900">Subtotal</dt>
-                        <dd class="text-base font-bold text-gray-900">€{{ (isset($totalPrice)) ? $totalPrice : '0' }}</dd>
-                    </div>
-                    <div class=" flex flex-col border-t border-gray-200 space-y-4 pt-4">
+                    <div>
                         <div class="flex items-center justify-between">
-                            <dt class="text-base text-gray-900">Verzending</dt>
-                            <dd class="text-base font-bold text-gray-900">€{{ (isset($totalPrice)) ? $totalPrice : '0' }}</dd>
-                        </div>
-                        <p class="text-xs text-gray-500 float-right">De beschikbare verzendopties worden weergegeven tijdens het afrekenproces, waarbij de bijbehorende verzendkosten automatisch worden berekend.</p>
-                    </div>
-
-                    <div class="border-t border-gray-200 pt-4">
-                        <div class="flex items-center justify-between">
-                            <dt class="text-base font-medium text-gray-900">Totaal</dt>
+                            <dt class="text-base text-gray-900">Subtotal</dt>
                             <dd class="text-base font-bold text-gray-900">€{{ (isset($totalPrice)) ? $totalPrice : '0' }}</dd>
                         </div>
                         <p class="text-xs text-gray-500 float-right">(Exclusief verzond kosten)</p>
+                    </div>
+                    <div class=" flex flex-col border-t border-gray-200 space-y-4 pt-4">
+                        <p class="text-xs text-gray-500 float-right">De beschikbare verzendopties worden weergegeven tijdens het afrekenproces, waarbij de bijbehorende verzendkosten automatisch worden berekend.</p>
                     </div>
                 </div>
             </div>

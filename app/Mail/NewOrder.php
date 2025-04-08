@@ -17,10 +17,7 @@ class NewOrder extends Mailable
      * Create a new message instance.
      */
     public function __construct(public Order $order, public string $name)
-    {
-        $this->order = $order;
-        $this->name = $name;
-    }
+    {}
 
     /**
      * Get the message envelope.
@@ -41,7 +38,7 @@ class NewOrder extends Mailable
         return new Content(
             html: 'mail.emails.order',
             with: [
-                'orderNumber' => $this->order['order_number'],
+                'orderNumber' => $this->order->order_number,
                 'customerName' => $this->name
             ]
         );

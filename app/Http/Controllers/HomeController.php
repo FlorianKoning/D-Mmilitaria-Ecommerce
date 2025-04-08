@@ -39,7 +39,7 @@ class HomeController extends Controller
             $products = $baseQuery->get();
         }
 
-        
+
         return view('frontPage', [
             'products' => (isset($products)) ? $products->unique() : Product::frontPage(),
             'catagories' => Product_category::all(),
@@ -72,7 +72,6 @@ class HomeController extends Controller
      */
     public function show(Product $product): View
     {
-        dd($product);
     }
 
 

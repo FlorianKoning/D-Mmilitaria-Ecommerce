@@ -89,7 +89,7 @@
                                     @if ($cart != null)
                                         @foreach ($cart as $item)
                                             {{-- @dd($item) --}}
-                                            <div class="flex flex-row my-2">
+                                            <div class="flex flex-row my-2 border-b border-gray-600">
                                                 {{-- image block --}}
                                                 <div class="shrink-0 mx-3">
                                                     <img src="{{ $item->main_image }}" alt="{{ $item->name }}" class="size-16 rounded-md object-cover">

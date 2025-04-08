@@ -15,9 +15,9 @@
             </div>
 
             {{-- Extra features --}}
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+            {{-- <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <x-extra-features-table :columnNames="$featuresColumn" :features="$extraFeatures" :id="$product->id" />
-            </div>
+            </div> --}}
         </div>
     </div>
 

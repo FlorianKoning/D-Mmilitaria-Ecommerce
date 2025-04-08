@@ -82,10 +82,12 @@
 
 
             <div class="mt-10">
-                <form method="POST" action="{{ route('cart.store', $product->id) }}" class="mt-6">
-                    @csrf
-                    <button type="submit" class="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-navBackground px-8 py-3 text-base font-medium text-white hover:bg-navBackground/80 focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">Voeg toe</button>
-                </form>
+                @if ($product->inventory != 0)
+                    <form method="POST" action="{{ route('cart.store', $product->id) }}" class="mt-6">
+                        @csrf
+                        <button type="submit" class="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-navBackground px-8 py-3 text-base font-medium text-white hover:bg-navBackground/80 focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">Voeg toe</button>
+                    </form>
+                @endif
 
                 <button type="button" class="hidden ml-4 flex items-center justify-center rounded-md px-3 py-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500">
                     <svg class="size-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
@@ -94,39 +96,6 @@
                     <span class="sr-only">Add to favorites</span>
                 </button>
             </div>
-
-            <section aria-labelledby="details-heading" class="mt-12">
-            <h2 id="details-heading" class="sr-only">Additional details</h2>
-
-            <div class="divide-y divide-gray-200 border-t">
-                <div>
-                <h3>
-                    <!-- Expand/collapse question button -->
-                    <button onclick="hideLayer('features')" type="button" class="group relative flex w-full items-center justify-between py-6 text-left" aria-controls="disclosure-1" aria-expanded="false">
-                    <!-- Open: "text-indigo-600", Closed: "text-gray-900" -->
-                    <span class="text-sm font-medium text-gray-900">Features</span>
-                    <span class="ml-6 flex items-center">
-                        <!-- Open: "hidden", Closed: "block" -->
-                        <svg class="block size-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                        <!-- Open: "block", Closed: "hidden" -->
-                        <svg class="hidden size-6 text-indigo-400 group-hover:text-indigo-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
-                        </svg>
-                    </span>
-                    </button>
-                </h3>
-                <div class="pb-6" id="features">
-                    <ul role="list" class="list-disc space-y-1 pl-5 text-sm/6 text-gray-700 marker:text-gray-300">
-                        @foreach ($extraFeatures as $feature)
-                            <li class="pl-2">{{ $feature->feature }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                </div>
-            </div>
-            </section>
         </div>
         </div>
     </div>

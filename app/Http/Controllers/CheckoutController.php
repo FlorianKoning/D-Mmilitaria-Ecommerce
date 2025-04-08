@@ -22,10 +22,19 @@ class CheckoutController extends Controller
     {
         $cart = (Auth::check()) ? CartService::get(Auth::user()->id) : json_decode(json_encode(session()->get('cart')), associative: FALSE);
 
+
+
         // Checks if the cart is empty
         if ($cart == null) {
             return redirect()->route('cart.index')->with('noItems', 'Je kunt niet betalen met geen producten in je winkelmandje');
         }
+
+
+        // Checks one of the items in the cart has a inventory of 0
+        if($this->inventoryCheck($cart) === false) {
+            return redirect()->route('cart.index')->with('noInventory', 'Er is iets fout gegaan, de inventory of dit product is 0.');
+        }
+
 
         return view('checkout.checkout-index', [
             'shippingInfo' => (Auth::check()) ? Shipping::where('user_id', Auth::user()->id)->first() : null,
@@ -36,6 +45,7 @@ class CheckoutController extends Controller
             'paymentOptionTranslation' => TranslatePaymentOption::$translate
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -83,5 +93,18 @@ class CheckoutController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    // Checks if an item in the shopping cart has a inventory of 0
+    private function inventoryCheck($cart): bool
+    {
+        foreach ($cart as $item) {
+            if ($item->inventory === 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -9,4 +9,9 @@
     @if (session()->has('wrongPermission'))
         <x-session-warning :sessionText="session('wrongPermission')" />
     @endif
+
+    {{-- succesfull new order --}}
+    @if (session()->has('bankTransfer'))
+        <x-session-succes :sessionText="session('bankTransfer')" :title="__('Nieuwe Order')" />
+    @endif
 </x-app-layout>

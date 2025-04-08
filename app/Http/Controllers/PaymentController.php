@@ -38,13 +38,14 @@ class PaymentController extends Controller
             'shipping.postal-code' => 'required|string|min:7'
         ]);
 
+
         // Creates a new order with the payment id, items array and the shipping array.
         $order = OrderService::create($request->shipping, $request->items, $request->paymentAmount);
 
 
         // Checks if redirect is needed. (User already had an order on open)
         if ($order === false) {
-            return redirect()->route('checkout.index')->with('shipping', $request->shipping)->with('paymentAmount', $request->paymentAmount)->with('duplicateOrder', 'Weet u zeker dat u deze order wilt plaatsen, u heeft nog een andere order op open status staan.');
+            return redirect()->route('checkout.index')->with('shipping', $request->shipping)->with('paymentAmount', $request->paymentAmount)->with('duplicateOrder', 'U heeft al een bestelling staan, wacht nog even met het maken van deze bestelling.');
         }
 
 
@@ -53,11 +54,13 @@ class PaymentController extends Controller
             new NewOrder($order, $request->shipping['first-name'])
         );
 
+
         // Checks what payment options has been selected
         $paymentOption = $this->getPaymentOption($request->paymentMethod);
 
+
         // Activates the payment
-        $paymentService = new PaymentService($order, $paymentOption);
+        $paymentService = new PaymentService($order, $paymentOption, $request->shipping['first-name']." ".$request->shipping['last-name']);
         $paymentService->payment();
 
 
