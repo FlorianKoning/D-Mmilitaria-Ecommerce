@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Mail\PaymentReceived;
 use Exception;
 use App\Models\Cart;
 use App\Models\User;
@@ -133,5 +134,23 @@ class PaymentService implements PaymentServiceInterface
     public function other(): RedirectResponse
     {
         //
+    }
+
+
+    /**
+     * Sends confirmation email to the user.
+     * @param \App\Models\Order $order
+     * @return bool
+     */
+    public static function paymentReceived(Order $order): bool
+    {
+        $email = (isset($order['user_id'])) ? User::find($order['user_id'])['email'] : GuestUser::find($order['guest_user_id'])['email'];
+
+        // Sends email to the user
+        Mail::to($email)->queue(
+            new PaymentReceived($order)
+        );
+
+        return true;
     }
 }

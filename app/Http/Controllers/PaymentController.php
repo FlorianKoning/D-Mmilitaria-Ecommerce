@@ -34,22 +34,22 @@ class PaymentController extends Controller
             'shipping.apartment' => 'nullable|number|max:1000',
             'shipping.city' => 'required|string|max:191',
             'shipping.provinces' => 'required|string|'.Rule::in($provinceIds),
-            'shipping.postal-code' => 'required|string|min:7'
+            'shipping.postal-code' => 'required|string|min:6'
         ]);
 
 
+        // Checks what payment options has been selected
+        $paymentOption = $this->getPaymentOption($request->paymentMethod);
+
+        
         // Creates a new order with the payment id, items array and the shipping array.
-        $order = OrderService::create($request->shipping, $request->items, $request->paymentAmount);
+        $order = OrderService::create($request->shipping, $request->items, $request->paymentAmount, $paymentOption);
 
 
         // Sends email That the order has been made.
         Mail::to($request->shipping['email-address'])->queue(
             new NewOrder($order, $request->shipping['first-name'])
         );
-
-
-        // Checks what payment options has been selected
-        $paymentOption = $this->getPaymentOption($request->paymentMethod);
 
 
         // Activates the payment

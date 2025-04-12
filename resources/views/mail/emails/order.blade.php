@@ -118,11 +118,11 @@
                     Uw bestel nummer is: {{ $orderNumber }}
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Beste {{ $customerName }}<br>
-                    <br>
-                    Nog maals bedankt voor uw bestelling bij .<br>
-                    <br>
-                    In deze mail vind u de factuur van uw bestelling in de bijlage. Bewaar de factuur goed omdat dit het bewijs is van uw bestelling.
+                    Beste, {{ $customerName }}
+                    <br><br>
+                    Hartelijk dank voor uw bestelling bij ons.
+                    <br><br>
+                    In de bijlage van deze e-mail vindt u de factuur van uw bestelling. Wij raden aan deze goed te bewaren, aangezien dit het bewijs van uw aankoop is.
                     <br>
                   </p>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">

@@ -56,6 +56,9 @@ Route::delete('/extraFeature/delete/{productFeature}', [CmsExtraFeaturesControll
 
 // Cms order routes
 Route::get('/cms/orders', [CmsOrderController::class, 'index'])->name('cms.orders.index');
+Route::get('/cms/orders/{order}', [CmsOrderController::class, 'edit'])->name('cms.orders.edit');
+Route::get('/cms/orders/show/{order}', [CmsOrderController::class, 'show'])->name('cms.orders.show');
+Route::put('/cms/orders/update/{order}', [CmsOrderController::class, 'update'])->name('cms.order.udpate');
 
 
 // Cms order status routes.

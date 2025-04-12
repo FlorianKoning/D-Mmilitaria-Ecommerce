@@ -118,23 +118,20 @@
                     Bank overschrijving | Bestel nummer | {{ $orderNumber }}
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Beste {{ $customerName }}<br>
-                    <br>
-                    Dit is de mail voor de betalings optie die u heeft gekozen. Hier onder staat het bank rekening nummer waar u het geld naar kan over maken.
-                    <br>
-                    <br>
-                    Als u het geld over maakt moet u uw bestel nummer in de betaalbeschrijving zetten. Zo weten we welke bestelling bij wie hoort,<br>
-                    <br>
-                    Na dat u het geld heeft overgemaakt gaat er persoonlijk gekeken worden of het geld is binnen gekomen. Als alles goed is gegaan krijgt u nog een confirmation mail van ons dat het geld succesvol is overgeschreven, en de bestelling word behandeld.
-                    <br>
-                    <br>
-                    Check altijd goed of het bestellings nummer wel over een komt met het bestellings nummer van uw vorige email. Als het niet over een komt negeer het en neem contact met ons team op.
-                    <br>
-                    <br>
-                    Hier onder vind u ook het factuur van uw bestelling in de bijlagen.
+                    Beste, {{ $customerName }}
+                    <br><br>
+                    Dit is de e-mail met de betaalmethode die u heeft gekozen. Hieronder vindt u het bankrekeningnummer waarop u het bedrag kunt overmaken.
+                    <br><br>
+                    Vermeld bij de betaling altijd uw bestelnummer in de omschrijving. Op die manier kunnen wij uw betaling aan de juiste bestelling koppelen.
+                    <br><br>
+                    Zodra de betaling is ontvangen, wordt dit handmatig gecontroleerd. Als alles in orde is, ontvangt u van ons een bevestigingsmail waarin staat dat de betaling succesvol is verwerkt en dat uw bestelling in behandeling wordt genomen.
+                    <br><br>
+                    Controleer altijd goed of het bestelnummer overeenkomt met het nummer in de vorige e-mail. Als dit niet het geval is, negeer dan deze e-mail en neem contact op met ons supportteam.
+                    <br><br>
+                    In de bijlage vindt u tevens de factuur van uw bestelling.
                   </p>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Bank rekening nummer: <span style="font-weight: 500"></span>
+                    Bank rekening nummer: <span style="font-weight: 500">{{ env('BANKTRANSFER_NUMBER') }}</span>
                   </p>
                   <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
                     Met vriendelijke groet,

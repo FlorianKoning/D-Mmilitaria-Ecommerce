@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
+use App\Models\PaymentOption;
 use Exception;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\GuestUser;
 use App\Models\OrderStatus;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +20,7 @@ class OrderService
      * @param int $paymentAmount
      * @return Order|bool
      */
-    public static function create(array $orderInfo, array $orderItems, int $paymentAmount): Order|bool
+    public static function create(array $orderInfo, array $orderItems, int $paymentAmount, PaymentOption $paymentOption): Order|bool
     {
         // Creates a new guest account if needed.
         if (!Auth::check()) {
@@ -43,10 +43,11 @@ class OrderService
         // creates the new order
         $order = Order::create([
             'order_number' => $orderNumber,
+            'payment_option_id' => $paymentOption['id'],
             'user_id' => (isset($guest)) ? null : Auth::user()->id,
             'guest_user_id' => (isset($guest)) ? $guest['id'] : null,
             'order_items' => $productsArray,
-            'payment_amount' => $paymentAmount,
+            'payment_amount' => $paymentAmount / 10,
             'order_status_id' => OrderStatus::$open
         ]);
 
@@ -64,6 +65,7 @@ class OrderService
     private static function createItemArray(array $orderItems): bool|string
     {
         $itemArray = array();
+        $count = 0;
 
         foreach ($orderItems as $key => $item) {
             if (Product::find($key) == null) {
@@ -72,9 +74,11 @@ class OrderService
 
             $product =  Product::find($key);
 
-            $itemArray[]['id'] = $product['id'];
-            $itemArray[]['name'] = $product['name'];
-            $itemArray[]['amount'] = $item;
+            $itemArray[$count]['id'] = $product['id'];
+            $itemArray[$count]['name'] = $product['name'];
+            $itemArray[$count]['amount'] = $item;
+
+            $count++;
         }
 
         return json_encode($itemArray);

@@ -141,6 +141,8 @@ class DatabaseSeeder extends Seeder
 
         // creates the admin user
         User::factory()->create([
+            'first_name' => 'admin',
+            'last_name' => 'admin',
             'email' => env('ADMIN_EMAIL'),
             'password' => Hash::make(env('ADMIN_PASSWORD')),
             'role_id' => 3

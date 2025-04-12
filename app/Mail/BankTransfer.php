@@ -43,7 +43,7 @@ class BankTransfer extends Mailable
             html: 'mail.emails.bankTransfer',
             with: [
                 'orderNumber' => $this->order['order_number'],
-                'customerName' => $this->name
+                'customerName' => $this->name,
             ]
         );
     }
