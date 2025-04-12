@@ -35,12 +35,6 @@ class OrderService
         }
 
 
-        // Checks if the user already has an open order
-        if ((isset($guest) ? Order::where('guest_user_id', $guest['id'])->exists() : Order::where('user_id', operator: Auth::user()->id)->exists())) {
-            return false;
-        }
-
-
         // Creates a usable json array from the order items
         $productsArray = self::createItemArray($orderItems);
         $orderNumber = self::createOrderNumber();
@@ -55,6 +49,7 @@ class OrderService
             'payment_amount' => $paymentAmount,
             'order_status_id' => OrderStatus::$open
         ]);
+
 
         return $order;
     }
@@ -94,7 +89,7 @@ class OrderService
     {
         $template = "C".substr(env('APP_NAME'), 0, 2)."-";
         $intSize = 7;
-        $orderAmount = count(DB::table('orders')->select('*')->get());
+        $orderAmount = count(DB::table('orders')->select('*')->get()) + 1;
         $orderAmountLen = strlen((string)$orderAmount);
 
         $randomNumber = random_int(10000, 99999);

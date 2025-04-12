@@ -3,8 +3,10 @@
 namespace App\Services;
 
 use Exception;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\GuestUser;
 use App\Mail\BankTransfer;
 use App\Models\PaymentOption;
@@ -64,30 +66,53 @@ class PaymentService implements PaymentServiceInterface
     public function backTransfer(): RedirectResponse
     {
         $email = ($this->order['user_id'] == null) ? GuestUser::find($this->order['guest_user_id'])->email : User::find($this->order['user_id'])->email;
+        $cart = (Auth::check()) ? CartService::get(Auth::user()->id) : session('cart');
 
         // Sends email to the new registered  user
         Mail::to($email)->queue(
             new BankTransfer($this->order, $email, $this->name)
         );
 
-        // Removes everything from the users cart
-        $cart = (Auth::check()) ? CartService::get(Auth::user()->id) : session('cart');
+        // Removes everything from the users cart and calculates the new inventory
+        $this->itemHandle($cart);
+
+
+
+        return redirect()->route('home.index')->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
+    }
+
+
+    /**
+     * Removes everything from the users cart and calculates the new inventory
+     * @param array|object $cart
+     * @return bool
+     */
+    private function itemHandle(array|object $cart): bool
+    {
+        // Checks if the user is logged in.
         if (!Auth::check()) {
             foreach ($cart as $key => $item) {
                 unset($cart[$key]);
             }
 
             Session::put('cart', $cart);
-        } else {
-            $cart->delete();
+
+            return true;
         }
 
+        foreach ($cart as $key => $item) {
+            // Deletes the products from the cart
+            $cartItem = Cart::where('product_id', $item->product_id)->where('user_id', $item->user_id)->first();
+            $cartItem->delete();
 
-        // Removes the inventory of all the bought items.
-        dd($cart);
+            // Removes the inventory from the product based on the order.
+            $product = Product::find($item->product_id);
+            $product->update([
+                'inventory' => $product->inventory - $item->amount
+            ]);
+        }
 
-
-        return redirect()->route('home.index')->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
+        return true;
     }
 
 

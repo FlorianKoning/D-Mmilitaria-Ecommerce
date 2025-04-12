@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Mail\NewOrder;
-use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
 use App\Services\OrderService;
@@ -41,12 +40,6 @@ class PaymentController extends Controller
 
         // Creates a new order with the payment id, items array and the shipping array.
         $order = OrderService::create($request->shipping, $request->items, $request->paymentAmount);
-
-
-        // Checks if redirect is needed. (User already had an order on open)
-        if ($order === false) {
-            return redirect()->route('checkout.index')->with('shipping', $request->shipping)->with('paymentAmount', $request->paymentAmount)->with('duplicateOrder', 'U heeft al een bestelling staan, wacht nog even met het maken van deze bestelling.');
-        }
 
 
         // Sends email That the order has been made.
