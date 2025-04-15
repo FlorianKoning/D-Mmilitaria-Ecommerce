@@ -5,8 +5,8 @@ namespace App\Services;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use App\Interfaces\AclServiceInterface;
-use Illuminate\Support\Facades\Storage;
 
 class AclService implements AclServiceInterface
 {
@@ -14,7 +14,7 @@ class AclService implements AclServiceInterface
     protected string $userRole;
     protected string $fileName;
     protected string $functionName;
-    protected object $rolePermissionsJson;
+    protected array $rolePermissionsJson;
 
 
     /**
@@ -65,7 +65,7 @@ class AclService implements AclServiceInterface
      */
     public function setRolePermissionJson(): void
     {
-        $this->rolePermissionsJson = json_decode(Storage::disk('acl')->get('acl/role_permission.json'));
+        $this->rolePermissionsJson = Config::get('acl.permissions');
     }
 
 
@@ -130,8 +130,8 @@ class AclService implements AclServiceInterface
             $userRole = $this->userRole;
 
             // Checks if the logged in user has the file and function permission
-            if (isset($this->rolePermissionsJson->roles->$userRole->$fileName)) {
-                $functions = $this->rolePermissionsJson->roles->$userRole->$fileName;
+            if (isset($this->rolePermissionsJson['roles'][$userRole][$fileName])) {
+                $functions = $this->rolePermissionsJson['roles'][$userRole][$fileName];
 
                 if ($this->functionPermissionCheck($functionName, $functions)) {
                     return true;
@@ -141,8 +141,8 @@ class AclService implements AclServiceInterface
 
 
         // When user does not have routes as the role or is not logged in. Check in the global role permissions
-        if (isset($this->rolePermissionsJson->global->$fileName)) {
-            $functions = $this->rolePermissionsJson->global->$fileName;
+        if (isset($this->rolePermissionsJson['global'][$fileName])) {
+            $functions = $this->rolePermissionsJson['global'][$fileName];
 
             if ($this->functionPermissionCheck($functionName, $functions)) {
                 return true;
