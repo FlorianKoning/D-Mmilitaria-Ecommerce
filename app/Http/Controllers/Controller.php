@@ -16,6 +16,7 @@ abstract class Controller
     protected Functions $functions;
     protected int $cartAmount;
     protected object|null $cart;
+    protected string $today;
 
 
     public function __construct()
@@ -31,5 +32,8 @@ abstract class Controller
 
         $this->cart = (Auth::check()) ? CartService::get(Auth::user()->id) : json_decode(json_encode((object) session()->get('cart')), associative: FALSE);
         View::share('cart', $this->cart);
+
+        $this->today = date('Y-m-d');
+        View::share('today', $this->today);
     }
 }

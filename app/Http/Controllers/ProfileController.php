@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use App\Http\Requests\ShippingRequest;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\Province;
 use App\Models\Shipping;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\ShippingRequest;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
@@ -34,6 +36,19 @@ class ProfileController extends Controller
         return view('profile.shipping', [
             'provinces' => Province::select('*')->orderBy('province_name')->get(),
             'shipping' => Shipping::where('user_id', Auth::user()->id)->first(),
+        ]);
+    }
+
+
+    /**
+     * Displays all the orders of the logged in user.
+     * @return void
+     */
+    public function orders(): View
+    {
+        return view('profile.orders', [
+            'orders' => Order::getUserOrder(Auth::user()->id),
+            'productModel' => new Product()
         ]);
     }
 

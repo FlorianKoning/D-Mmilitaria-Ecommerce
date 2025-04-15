@@ -91,7 +91,7 @@ class OrderService
      */
     private static function createOrderNumber(): string
     {
-        $template = "C".substr(env('APP_NAME'), 0, 2)."-";
+        $template = "";
         $intSize = 7;
         $orderAmount = count(DB::table('orders')->select('*')->get()) + 1;
         $orderAmountLen = strlen((string)$orderAmount);

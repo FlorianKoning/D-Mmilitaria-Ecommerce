@@ -78,7 +78,6 @@ class PaymentService implements PaymentServiceInterface
         $this->itemHandle($cart);
 
 
-
         return redirect()->route('home.index')->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
     }
 

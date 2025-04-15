@@ -49,16 +49,26 @@
             <div class="mt-3">
                 <h2 class="sr-only">Product information</h2>
                 <?php if($product->inventory > 0): ?>
-                    <?php if($product->discount_percentage != null): ?>
-                        <div class="flex flex-row gap-x-1">
-                            <span class="line-through text-xl text-red-500">€<?php echo e($product->price); ?></span>
-                            <p class="text-xl text-gray-900">€<?php echo e($product->price - ($product->price / 100 * 15)); ?></p>
-                        </div>
-                    <?php else: ?>
-                        <div class="flex flex-row gap-x-1">
-                            <p class="text-xl text-gray-900">€<?php echo e($product->price); ?></p>
-                        </div>
-                    <?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.discount-price','data' => ['item' => $product,'textSize' => __('xl')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('discount-price'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['item' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product),'textSize' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('xl'))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79)): ?>
+<?php $attributes = $__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79; ?>
+<?php unset($__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4eba5a0f5430be374961e51d7c8c9e79)): ?>
+<?php $component = $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79; ?>
+<?php unset($__componentOriginal4eba5a0f5430be374961e51d7c8c9e79); ?>
+<?php endif; ?>
                 <?php endif; ?>
             </div>
 

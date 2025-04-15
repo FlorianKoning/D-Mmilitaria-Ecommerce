@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
@@ -45,6 +47,32 @@ class Order extends Model
         'guest_user_id',
         'order_items',
         'payment_amount',
-        'order_status_id'
+        'order_status_id',
+        'invoice_location'
     ];
+
+
+
+    /**
+     * Returns all/the orders of the given authenticated user.
+     * @param int $userId
+     * @param mixed $amount
+     * @throws \Exception
+     * @return Collection<int, Order>
+     */
+    public static function getUserOrder(int $userId, ?int $amount = null): Collection
+    {   
+        // Checks if the given user exists
+        if (User::find($userId) == null) {
+            throw  new Exception("The given user does not exist.");
+        }
+
+        $orders =  Order::where('user_id', $userId);
+
+        if ($amount != null) {
+            $orders = $orders->take($amount);
+        }
+
+        return $orders->get();
+    }
 }

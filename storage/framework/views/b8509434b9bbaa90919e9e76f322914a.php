@@ -2,7 +2,7 @@
     <header class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
           <h1 class="text-base font-semibold text-gray-900">Producten overview</h1>
-          <p class="mt-2 text-sm text-gray-700">Hier heb je de overview tabel van alle producten. Hier kan je ook nieuwe producten toevoegen, editen en verwijderen.</p>
+          <p class="mt-2 text-sm text-gray-700">Hier heb je de form voor het bewerken van uw gekozen product.</p>
         </div>
     </header>
 

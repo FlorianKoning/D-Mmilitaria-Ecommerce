@@ -3,7 +3,10 @@
 namespace App\Helper;
 
 use App\Models\LatestUpdate;
+use App\Models\Product;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
+use stdClass;
 
 class Functions
 {
@@ -44,5 +47,21 @@ class Functions
 
         // Returns null when the database table is empty.
         return null;
+    }
+
+
+    /**
+     * Checks if the product has a discount
+     * @param mixed $item
+     * @return bool
+     */
+    public static function hasDiscount($item): bool
+    {
+        $today = date('Y-m-d');
+        if (isset($item->discount_percentage) && $item->discount_percentage != null && $item->discount_start_date >= $today && $item->discount_end_date > $today) {
+            return true;
+        }
+
+        return false;
     }
 }

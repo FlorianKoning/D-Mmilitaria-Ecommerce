@@ -31,7 +31,8 @@ return [
                 "CmsExtraImagesController" => ["*"],
                 "CmsExtraFeaturesController" => ["*"],
                 "CmsOrderController" => ["*"],
-                "CmsOrderStatusesController" => ["*"]
+                "CmsOrderStatusesController" => ["*"],
+                "CmsInvoiceController" => ["*"]
             ],
             "administator" => [
                 "CmsDashboardController" => ["*"],

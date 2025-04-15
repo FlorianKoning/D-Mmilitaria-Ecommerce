@@ -13,14 +13,14 @@
         <div class="py-12">
             <?php if (isset($component)) { $__componentOriginal75719a873aef52870b75ff337fe33664 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal75719a873aef52870b75ff337fe33664 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.item-list','data' => ['products' => $products,'catagories' => $catagories,'latestUpdate' => $latestUpdate,'landCatagories' => $landCatagories]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.item-list','data' => ['products' => $products,'catagories' => $catagories,'latestUpdate' => $latestUpdate,'landCatagories' => $landCatagories,'today' => $today]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('item-list'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['products' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($products),'catagories' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($catagories),'latestUpdate' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($latestUpdate),'landCatagories' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($landCatagories)]); ?>
+<?php $component->withAttributes(['products' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($products),'catagories' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($catagories),'latestUpdate' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($latestUpdate),'landCatagories' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($landCatagories),'today' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($today)]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal75719a873aef52870b75ff337fe33664)): ?>

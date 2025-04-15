@@ -49,16 +49,7 @@
             <div class="mt-3">
                 <h2 class="sr-only">Product information</h2>
                 @if ($product->inventory > 0)
-                    @if ($product->discount_percentage != null)
-                        <div class="flex flex-row gap-x-1">
-                            <span class="line-through text-xl text-red-500">€{{ $product->price }}</span>
-                            <p class="text-xl text-gray-900">€{{ $product->price - ($product->price / 100 * 15) }}</p>
-                        </div>
-                    @else
-                        <div class="flex flex-row gap-x-1">
-                            <p class="text-xl text-gray-900">€{{ $product->price }}</p>
-                        </div>
-                    @endif
+                    <x-discount-price :item="$product" :textSize="__('xl')" />
                 @endif
             </div>
 

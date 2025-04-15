@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Attachment;
 
 class NewOrder extends Mailable
 {
@@ -16,8 +17,7 @@ class NewOrder extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public Order $order, public string $name)
-    {}
+    public function __construct(public Order $order, public string $name){}
 
     /**
      * Get the message envelope.
@@ -51,6 +51,8 @@ class NewOrder extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+           //
+        ];
     }
 }

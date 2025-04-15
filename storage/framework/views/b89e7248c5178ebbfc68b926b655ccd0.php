@@ -46,7 +46,26 @@ unset($__defined_vars); ?>
                         <p class="mt-1 text-xs font-medium text-gray-500">Hoeveelheid: <?php echo e($item->amount); ?></p>
                     </div>
                     <div class="flex flex-1 items-end justify-between pt-2">
-                        <p class="mt-1 text-sm font-medium text-gray-900">€<?php echo e(($item->price * $item->amount)); ?></p>
+                        <?php if (isset($component)) { $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.discount-price','data' => ['item' => $item,'textSize' => __('xs')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('discount-price'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['item' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($item),'textSize' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('xs'))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79)): ?>
+<?php $attributes = $__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79; ?>
+<?php unset($__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4eba5a0f5430be374961e51d7c8c9e79)): ?>
+<?php $component = $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79; ?>
+<?php unset($__componentOriginal4eba5a0f5430be374961e51d7c8c9e79); ?>
+<?php endif; ?>
                     </div>
                 </div>
             </li>

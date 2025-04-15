@@ -154,6 +154,33 @@
 <?php $component = $__componentOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
 <?php unset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
 <?php endif; ?>
+
+                        <?php if (isset($component)) { $__componentOriginal7c31356aca81a64b5d3f4569b8e77442 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7c31356aca81a64b5d3f4569b8e77442 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.cms-nav-link','data' => ['href' => route('cms.invoice.settings'),'active' => request()->routeIs('cms.invoice.settings')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('cms-nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('cms.invoice.settings')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('cms.invoice.settings'))]); ?>
+                            <div class="flex flex-row gap-x-3 ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 shrink-0">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                </svg>
+                                Invoice Settings
+                            </div>
+                         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7c31356aca81a64b5d3f4569b8e77442)): ?>
+<?php $attributes = $__attributesOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
+<?php unset($__attributesOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442)): ?>
+<?php $component = $__componentOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
+<?php unset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
+<?php endif; ?>
                     </ul>
                 </li>
 

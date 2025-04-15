@@ -1,4 +1,4 @@
-@props(['products', 'catagories', 'latestUpdate', 'landCatagories'])
+@props(['products', 'catagories', 'latestUpdate', 'landCatagories', 'today'])
 
 <div class="">
     <div>
@@ -113,16 +113,7 @@
                                 <div class="flex flex-row justify-between">
                                     {{-- item price --}}
                                     @if ($item->inventory > 0)
-                                        @if ($item->discount_percentage != null)
-                                            <div class="flex flex-row gap-x-1">
-                                                <span class="line-through text-sm text-red-500">€{{ $item->price }}</span>
-                                                <p class="text-sm text-gray-900">€{{ $item->price - ($item->price / 100 * 15) }}</p>
-                                            </div>
-                                        @else
-                                            <div class="flex flex-row gap-x-1">
-                                                <p class="text-sm text-gray-900">€{{ $item->price }}</p>
-                                            </div>
-                                        @endif
+                                        <x-discount-price :item="$item" />
                                     @endif
 
                                     {{-- in stock --}}

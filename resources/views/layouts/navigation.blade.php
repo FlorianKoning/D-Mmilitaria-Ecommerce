@@ -14,14 +14,6 @@
                         </x-nav-link>
                     </div>
                 </div>
-                {{-- <div class="relative z-0 flex flex-1 items-center justify-center px-2 ml-52 sm:inset-0">
-                    <div class="grid w-full grid-cols-1 sm:max-w-xs">
-                      <input type="search" name="search" class="col-start-1 row-start-1 block w-full rounded-md bg-white py-1.5 pr-3 pl-10 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-gray-600 sm:text-sm/6" placeholder="Search">
-                      <svg class="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                        <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
-                      </svg>
-                    </div>
-                </div> --}}
                 <div class="flex items-center lg:hidden">
                   <!-- Mobile menu button -->
                   <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:ring-2 focus:ring-gray-500 focus:outline-hidden focus:ring-inset" aria-controls="mobile-menu" aria-expanded="false">
@@ -100,7 +92,7 @@
                                                     <h4 class="font-bold">{{ $item->name }}</h4>
                                                     <div class="flex flex-row justify-between">
                                                         <p class="text-sm">Hoeveelheid: {{ $item->amount }}</p>
-                                                        <p class="text-sm">€{{ $item->price }}</p>
+                                                        <x-discount-price :item="$item" :textSize="__('xs')" />
                                                     </div>
                                                 </div>
                                             </div>

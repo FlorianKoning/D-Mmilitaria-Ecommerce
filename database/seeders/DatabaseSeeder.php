@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\InvoiceSettings;
 use App\Models\LandCatagories;
 use App\Models\OrderStatus;
 use App\Models\PaymentOption;
@@ -31,6 +32,9 @@ class DatabaseSeeder extends Seeder
 
         // Creates the default categories
         $this->defaultCategories();
+
+        // Creates the default invoice settings.
+        $this->defaultInvoiceSettings();
     }
 
 
@@ -174,6 +178,20 @@ class DatabaseSeeder extends Seeder
             'shipping' => 'one_week',
             'shipping_cost' => 5.00,
             'extra_service_costs' => true
+        ]);
+    }
+
+
+    private function defaultInvoiceSettings(): void
+    {
+        InvoiceSettings::factory()->create([
+            'id' => 1,
+            'bankaccount_number' => 'NL60RABO0128258292',
+            'bankaccount_name' => 'Florian Koning',
+            'company_name' => 'DBM militaria',
+            'KVK_number' => '97008478',
+            'phone_number' => '0628424913',
+            'address' => 'Hadrianuslaan 15'
         ]);
     }
 }

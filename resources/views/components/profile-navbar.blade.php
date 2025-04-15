@@ -10,6 +10,10 @@
                 <x-nav-link :href="route('profile.shipping')" :active="request()->routeIs('profile.shipping')">
                     {{ __('Verzending') }}
                 </x-nav-link>
+
+                <x-nav-link :href="route('profile.orders')" :active="request()->routeIs('profile.orders')">
+                    {{ __('Bestellingen') }}
+                </x-nav-link>
             </div>
         </div>
             <div class="flex items-center lg:hidden">

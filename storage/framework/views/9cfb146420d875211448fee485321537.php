@@ -52,7 +52,6 @@
 <?php endif; ?>
                     </div>
                 </div>
-                
                 <div class="flex items-center lg:hidden">
                   <!-- Mobile menu button -->
                   <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:ring-2 focus:ring-gray-500 focus:outline-hidden focus:ring-inset" aria-controls="mobile-menu" aria-expanded="false">
@@ -208,7 +207,26 @@
                                                     <h4 class="font-bold"><?php echo e($item->name); ?></h4>
                                                     <div class="flex flex-row justify-between">
                                                         <p class="text-sm">Hoeveelheid: <?php echo e($item->amount); ?></p>
-                                                        <p class="text-sm">€<?php echo e($item->price); ?></p>
+                                                        <?php if (isset($component)) { $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.discount-price','data' => ['item' => $item,'textSize' => __('xs')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('discount-price'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['item' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($item),'textSize' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('xs'))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79)): ?>
+<?php $attributes = $__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79; ?>
+<?php unset($__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4eba5a0f5430be374961e51d7c8c9e79)): ?>
+<?php $component = $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79; ?>
+<?php unset($__componentOriginal4eba5a0f5430be374961e51d7c8c9e79); ?>
+<?php endif; ?>
                                                     </div>
                                                 </div>
                                             </div>

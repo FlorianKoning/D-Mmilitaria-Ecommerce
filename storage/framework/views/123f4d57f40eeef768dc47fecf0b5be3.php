@@ -77,7 +77,10 @@ unset($__defined_vars); ?>
 <?php endif; ?>
 
         <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
-            <button type="submit" class="w-full rounded-md border border-transparent bg-navBackground px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-navBackground focus:outline-none focus:ring-2 focus:ring-navbg-navBackground focus:ring-offset-2 focus:ring-offset-gray-50">Confirm order</button>
+            <button type="submit" class="w-full rounded-md border border-transparent bg-navBackground px-4 py-3 text-base font-medium text-white shadow-sm 
+                hover:bg-navBackground focus:outline-none focus:ring-2 focus:ring-navbg-navBackground focus:ring-offset-2 focus:ring-offset-gray-50">
+                CONFIRM ORDER
+            </button>
         </div>
     </div>
 </div>

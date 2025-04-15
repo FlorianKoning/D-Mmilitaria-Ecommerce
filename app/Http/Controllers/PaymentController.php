@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewOrderAdmin;
 use Exception;
 use App\Mail\NewOrder;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
 use App\Services\OrderService;
 use Illuminate\Validation\Rule;
+use App\Services\InvoiceService;
 use App\Services\PaymentService;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\RedirectResponse;
 
 class PaymentController extends Controller
 {
@@ -37,7 +39,7 @@ class PaymentController extends Controller
             'shipping.postal-code' => 'required|string|min:6'
         ]);
 
-
+        
         // Checks what payment options has been selected
         $paymentOption = $this->getPaymentOption($request->paymentMethod);
 
@@ -46,9 +48,19 @@ class PaymentController extends Controller
         $order = OrderService::create($request->shipping, $request->items, $request->paymentAmount, $paymentOption);
 
 
-        // Sends email That the order has been made.
+        // Creates the invoice for the new order and saves the url to the order.
+        $invocieService = new InvoiceService($request->items, $request->shipping, $request->paymentAmount / 10, $order);
+        $invocieService->createInvoice();
+
+
+        // Sends email That the order has been made to the customer.
         Mail::to($request->shipping['email-address'])->queue(
             new NewOrder($order, $request->shipping['first-name'])
+        );
+
+        // Sends the email to the admin that a new order has been made.
+        Mail::to(env('ADMIN_EMAIL'))->queue(
+            new NewOrderAdmin($order, $request->shipping['first-name'])
         );
 
 
