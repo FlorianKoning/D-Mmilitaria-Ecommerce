@@ -48,7 +48,7 @@ return [
         'extraImages' => [
             'driver' => 'local',
             'root' => storage_path('app/public/extraImages'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL').'/storage/extraImages',
             'visibility' => 'public',
             'throw' => false,
         ],

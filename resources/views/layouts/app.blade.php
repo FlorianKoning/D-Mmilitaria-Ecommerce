@@ -21,6 +21,7 @@
         <script defer src="{{ asset('js/liveSearch.js') }}" type="text/javascript"></script>
         <script defer src="{{ asset('js/frontPage.js') }}" type="text/javascript"></script>
         <script defer src="{{ asset('js/checkout.js') }}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ URL::asset('js/drag-drop.js') }}"></script>
 
 
         <!-- Scripts -->

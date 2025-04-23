@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\LandCatagories;
 use App\Models\Product_category;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -20,25 +21,9 @@ class HomeController extends Controller
     public function index(Request $request): View
     {
         // Checks there was a filter option selected
-        if (isset($request->category) || isset($request->landCategory)) {
-            $baseQuery = ModelHelper::ProductsBaseQuery()
-                ->leftJoin('land_catagories_links', 'land_catagories_links.product_id', '=', 'products.id')
-                ->leftJoin('product_catagory_links', 'product_catagory_links.product_id', '=', 'products.id');
-
-
-            if (isset($request->category)) {
-                $baseQuery->whereIn('product_catagory_links.product_categories_id', $request->category);
-            }
-
-
-            if (isset($request->landCategory)) {
-                $baseQuery->whereIn('land_catagories_links.land_categories_id', $request->landCategory);
-            }
-
-
-            $products = $baseQuery->get();
+        if (isset($request->category) || isset($request->landCategory) || $request->search) {
+            $products = $this->filter($request->search, $request->category, $request->landCategory);
         }
-
 
         return view('frontPage', [
             'products' => (isset($products)) ? $products->unique() : Product::frontPage(),
@@ -50,52 +35,37 @@ class HomeController extends Controller
 
 
     /**
-     * Show the form for creating a new resource.
+     * Summary of filter
+     * @param string $search
+     * @param int $category
+     * @param int $landCategory
+     * @return Collection<int, Product>
      */
-    public function create()
+    public function filter(?string $search, ?int $category, ?int $landCategory): Collection
     {
-        //
-    }
+        $baseQuery = ModelHelper::ProductsBaseQuery()
+                ->leftJoin('land_catagories_links', 'land_catagories_links.product_id', '=', 'products.id')
+                ->leftJoin('product_catagory_links', 'product_catagory_links.product_id', '=', 'products.id');
 
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // Checks if there was a search
+        if (isset($search)) {
+            $baseQuery->where('name', 'like', '%'.$search.'%');
+        }
 
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product): View
-    {
-    }
+        // Checks if a product category was selected
+        if (isset($category)) {
+            $baseQuery->whereIn('product_catagory_links.product_categories_id', $category);
+        }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        // Checks if a land category was selected
+        if (isset($landCategory)) {
+            $baseQuery->whereIn('land_catagories_links.land_categories_id', $landCategory);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return $baseQuery->get();
     }
 }

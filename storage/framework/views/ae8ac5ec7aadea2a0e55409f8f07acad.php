@@ -43,28 +43,7 @@
             </div>
 
             
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <?php if (isset($component)) { $__componentOriginalb50de6a576c6d7e6ca7a79d9d706a5b6 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalb50de6a576c6d7e6ca7a79d9d706a5b6 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.extra-features-table','data' => ['columnNames' => $featuresColumn,'features' => $extraFeatures,'id' => $product->id]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('extra-features-table'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['columnNames' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($featuresColumn),'features' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($extraFeatures),'id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product->id)]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalb50de6a576c6d7e6ca7a79d9d706a5b6)): ?>
-<?php $attributes = $__attributesOriginalb50de6a576c6d7e6ca7a79d9d706a5b6; ?>
-<?php unset($__attributesOriginalb50de6a576c6d7e6ca7a79d9d706a5b6); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalb50de6a576c6d7e6ca7a79d9d706a5b6)): ?>
-<?php $component = $__componentOriginalb50de6a576c6d7e6ca7a79d9d706a5b6; ?>
-<?php unset($__componentOriginalb50de6a576c6d7e6ca7a79d9d706a5b6); ?>
-<?php endif; ?>
-            </div>
+            
         </div>
     </div>
 

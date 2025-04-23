@@ -21,6 +21,7 @@
         <script defer src="<?php echo e(asset('js/liveSearch.js')); ?>" type="text/javascript"></script>
         <script defer src="<?php echo e(asset('js/frontPage.js')); ?>" type="text/javascript"></script>
         <script defer src="<?php echo e(asset('js/checkout.js')); ?>" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo e(URL::asset('js/drag-drop.js')); ?>"></script>
 
 
         <!-- Scripts -->
@@ -28,7 +29,7 @@
     </head>
     <body class="<?php echo e($functions::requestUriCheck('/cms', 'font-robotoMono', 'font-sans')); ?> antialiased <?php echo e($functions::requestUriCheck('/cms', 'bg-cmsBackground', 'bg-background')); ?> ">
         <?php if(str_contains($_SERVER['REQUEST_URI'], '/cms')): ?>
-            <?php echo $__env->make('layouts.cms.navigation', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('layouts.cms.navigation', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
                 <main class="py-10">
                     <div class="px-4 sm:px-6 lg:px-8">
                         <!-- Your content -->
@@ -40,7 +41,7 @@
             </div>
         <?php else: ?>
             <div class="h-full mt-16">
-                <?php echo $__env->make('layouts.navigation', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                <?php echo $__env->make('layouts.navigation', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
                 <!-- Page Content -->
                 <main>
                     <?php if (isset($component)) { $__componentOriginalff9615640ecc9fe720b9f7641382872b = $component; } ?>

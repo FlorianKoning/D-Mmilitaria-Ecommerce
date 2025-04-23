@@ -23,18 +23,28 @@ class CmsExtraImagesController extends Controller
             return redirect()->route('cms.products.create')->with('noImage', 'U moet wel een foto selecteren om een foto te uploaden!');
         }
 
+        if (count($request->imageCreate) > 0) {
+            $fileArray = FileService::multipleImages($request->imageCreate, $request->extraImageName);
 
-        // Stores the image and returns the location url.
-        $fileUrl = FileService::extraImageUpload($request->imageCreate, $request->extraImageName);
+            // Stores the new images in the database.
+            foreach ($fileArray as $fileUrl) {
+                ProductImage::create([
+                    'image_name' => $fileUrl['name'],
+                    'image_url' => $fileUrl['url'],
+                    'product_id' => $id
+                ]);
+            }
+        } else {
+            // Stores the image and returns the location url.
+            $fileUrl = FileService::extraImageUpload($request->imageCreate, $request->extraImageName);
 
-
-        // Stores the new image in the database.
-        ProductImage::create([
-            'image_name' => $request->extraImageName,
-            'image_url' => $fileUrl,
-            'product_id' => $id
-        ]);
-
+            // Stores the new image in the database.
+            ProductImage::create([
+                'image_name' => $request->extraImageName,
+                'image_url' => $fileUrl,
+                'product_id' => $id
+            ]);
+        }
 
         // Returns the user to the create form
         return redirect()->route('cms.products.extra', $id)->with('extraImageSucces', 'De extra foto is succesfull toegevoegd');

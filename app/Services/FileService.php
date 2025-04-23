@@ -37,6 +37,38 @@ class FileService implements FileServiceInterface
 
 
     /**
+     * Uploads the given images in the array and returns an array with all the image url.
+     * @param array $images
+     * @param string $filenName
+     * @return array
+     */
+    public static function multipleImages(array $images, string $fileName): array
+    {
+        $urlArray = array();
+
+        foreach ($images as $key => $image) {
+            // Creates the correct file name
+            $name = str_replace(',', '', str_replace(' ', '-', $fileName));
+            if ($key != 0) {
+                $newKey = $key + 1;
+                $name .= "(".$newKey.")";
+            }
+
+            // Uploads the file
+            self::uploadPreset($image, $name, 'extraImages');
+
+            // Gets the url of the uploaded file.
+            $urlArray[] = [
+                'name' => $name,
+                'url' => Storage::disk('extraImages')->url($name.'.png'),
+            ];
+        }
+
+        return $urlArray;
+    }
+
+
+    /**
      * Stores the file in the directory.
      * Should be used to just upload the file in the application.
      * @param \Illuminate\Http\UploadedFile $file

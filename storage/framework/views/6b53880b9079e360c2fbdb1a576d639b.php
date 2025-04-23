@@ -69,19 +69,29 @@ unset($__defined_vars); ?>
 
             <div class="hidden lg:block bg-white p-5 rounded-xl border shadow">
                 <form id="catagorieForm" method="GET" action="<?php echo e(route('home.index')); ?>" class="space-y-10 divide-y divide-gray-200">
-                    <div class="pt-10">
-                        
-                        <?php if($catagories->count() != 0): ?>
+                    <div class="pt-2">
+                        <fieldset>
+                            <legend class="block text-sm font-medium text-gray-900">Product Zoeken</legend>
+                            <div class="space-y-3 pt-2">
+                                <div class="mb-6">
+                                    <input value="<?php echo e(isset($_GET['search']) ? $_GET['search'] : ''); ?>" type="text" name="search" id="search" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
+                                </div>  
+                            </div>
+                        </fieldset>
 
+
+
+                        
+                        <?php if($landCatagories->count() != 0): ?>
                             <fieldset>
-                                <legend class="block text-sm font-medium text-gray-900">Category</legend>
-                                <div class="space-y-3 pt-6">
-                                    <?php $__currentLoopData = $catagories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <legend class="block text-sm font-medium text-gray-900">Land catagorien</legend>
+                                <div class="space-y-3 pt-2">
+                                    <?php $__currentLoopData = $landCatagories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="flex gap-3">
                                             <div class="flex h-5 shrink-0 items-center">
                                                 <div class="group grid size-4 grid-cols-1">
-                                                    <input <?php echo e((isset($_GET['category']) && in_array(strval($item->id), $_GET['category'])) ? 'checked' : ''); ?> id="category-0" name="category[]" value="<?php echo e($item->id); ?>" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded border border-gray-400 bg-white checked:border-navBackground checked:bg-navborder-navBackground indeterminate:border-navBackground indeterminate:bg-navborder-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navborder-navBackground disabled:border-gray-400 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto">
-                                                    <svg class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
+                                                    <input <?php echo e((isset($_GET['landCategory']) && in_array(strval($item->id), $_GET['landCategory'])) ? 'checked' : ''); ?> id="category-0" name="landCategory[]" value="<?php echo e($item->id); ?>" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded border border-gray-400 bg-white checked:border-navBackground checked:bg-navborder-navBackground indeterminate:border-navBackground indeterminate:bg-navborder-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navborder-navBackground disabled:border-gray-400 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto">
+                                                        <svg class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
                                                         <path class="opacity-0 group-has-[:checked]:opacity-100" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path class="opacity-0 group-has-[:indeterminate]:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
@@ -94,18 +104,17 @@ unset($__defined_vars); ?>
                             </fieldset>
                         <?php endif; ?>
 
-
                         
-                        <?php if($landCatagories->count() != 0): ?>
+                        <?php if($catagories->count() != 0): ?>
                             <fieldset>
-                                <legend class="block text-sm font-medium text-gray-900 pt-6">Land catagorien</legend>
-                                <div class="space-y-3 pt-6">
-                                    <?php $__currentLoopData = $landCatagories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <legend class="block text-sm font-medium text-gray-900 pt-6">Category</legend>
+                                <div class="space-y-3 pt-2">
+                                    <?php $__currentLoopData = $catagories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="flex gap-3">
                                             <div class="flex h-5 shrink-0 items-center">
                                                 <div class="group grid size-4 grid-cols-1">
-                                                    <input <?php echo e((isset($_GET['landCategory']) && in_array(strval($item->id), $_GET['landCategory'])) ? 'checked' : ''); ?> id="category-0" name="landCategory[]" value="<?php echo e($item->id); ?>" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded border border-gray-400 bg-white checked:border-navBackground checked:bg-navborder-navBackground indeterminate:border-navBackground indeterminate:bg-navborder-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navborder-navBackground disabled:border-gray-400 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto">
-                                                        <svg class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
+                                                    <input <?php echo e((isset($_GET['category']) && in_array(strval($item->id), $_GET['category'])) ? 'checked' : ''); ?> id="category-0" name="category[]" value="<?php echo e($item->id); ?>" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded border border-gray-400 bg-white checked:border-navBackground checked:bg-navborder-navBackground indeterminate:border-navBackground indeterminate:bg-navborder-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navborder-navBackground disabled:border-gray-400 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto">
+                                                    <svg class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
                                                         <path class="opacity-0 group-has-[:checked]:opacity-100" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                         <path class="opacity-0 group-has-[:indeterminate]:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
