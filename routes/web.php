@@ -10,17 +10,11 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 
+// Homepage routes
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-
-
-// All the auth routes
-Route::middleware('auth')->group(function () {
-    // Homepage routes
-    Route::get('/', [HomeController::class, 'index'])->name('home.index');
-
-    // All the cms routes
-    Route::middleware(AclMiddleware::class)->group(function() {
-        
+// All the cms routes
+Route::middleware(AclMiddleware::class)->group(function() {
     // Contact Routes
     Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
@@ -51,6 +45,9 @@ Route::middleware('auth')->group(function () {
     require __DIR__.'/payment.php';
 });
 
+
+// All the auth routes
+Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/profile/shipping', [ProfileController::class, 'shipping'])->name('profile.shipping');
     Route::get('/profile/orders', [ProfileController::class, 'orders'])->name('profile.orders');
