@@ -16,7 +16,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 // All the cms routes
 Route::middleware(AclMiddleware::class)->group(function() {
     // Contact Routes
-    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+    Route::controller(ContactController::class)->group(function() {
+        Route::get('/contact', 'index')->name('contact.index');
+        Route::get('/return-policy', 'returnPolicy')->name('contact.return');
+        Route::post('/contact/message', 'message')->name('contact.message');
+    });
 
     // Cart controller
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
