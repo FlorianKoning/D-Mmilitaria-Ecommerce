@@ -9,7 +9,7 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     
-    <div class="w-full h-svh broder border-t-2 border-black/80 flex flex-col content-start">
+    <div class="w-full h-svh flex flex-col content-start">
         <?php if (isset($component)) { $__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.home-navbar','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -31,6 +31,7 @@
 <?php unset($__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d); ?>
 <?php endif; ?>
 
+        
         <div class="py-12">
             <?php if (isset($component)) { $__componentOriginal75719a873aef52870b75ff337fe33664 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal75719a873aef52870b75ff337fe33664 = $attributes; } ?>

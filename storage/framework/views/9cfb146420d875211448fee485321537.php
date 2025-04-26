@@ -2,9 +2,15 @@
     <header class="fixed inset-x-0 top-0 z-50 bg-navBackground shadow-lg">
         <nav>
             <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+
               <div class="flex h-16 justify-between content-center">
+
                 <div class="flex px-2 lg:px-0">
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+
+                        <div class="flex shrink-0 items-center">
+                            <img class="h-8 w-auto" src="https://media.discordapp.net/attachments/452051857158832128/1362034107336495226/Logo_DBM_militaria_-_Copy-ai-brush-removebg-4hv2lalk.png?ex=680e1b9c&is=680cca1c&hm=163cefcf7d8fe8b554a8b0a6448b864e9df4cd812d9e193ce4025c3d78c31705&=&format=webp&quality=lossless&width=494&height=648" alt="Your Company">
+                        </div>
                         <?php if (isset($component)) { $__componentOriginalc295f12dca9d42f28a259237a5724830 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalc295f12dca9d42f28a259237a5724830 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.nav-link','data' => ['href' => route('home.index'),'active' => request()->routeIs('home.*')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -39,6 +45,29 @@
 <?php endif; ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('contact.index')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('contact.*'))]); ?>
                             <?php echo e(__('Contact')); ?>
+
+                         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalc295f12dca9d42f28a259237a5724830)): ?>
+<?php $attributes = $__attributesOriginalc295f12dca9d42f28a259237a5724830; ?>
+<?php unset($__attributesOriginalc295f12dca9d42f28a259237a5724830); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc295f12dca9d42f28a259237a5724830)): ?>
+<?php $component = $__componentOriginalc295f12dca9d42f28a259237a5724830; ?>
+<?php unset($__componentOriginalc295f12dca9d42f28a259237a5724830); ?>
+<?php endif; ?>
+
+                        <?php if (isset($component)) { $__componentOriginalc295f12dca9d42f28a259237a5724830 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalc295f12dca9d42f28a259237a5724830 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.nav-link','data' => ['href' => route('public.index'),'active' => request()->routeIs('about-us.*')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('public.index')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('about-us.*'))]); ?>
+                            <?php echo e(__('Over Ons')); ?>
 
                          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

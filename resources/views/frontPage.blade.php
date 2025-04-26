@@ -1,8 +1,9 @@
 <x-app-layout>
     {{-- products overview --}}
-    <div class="w-full h-svh broder border-t-2 border-black/80 flex flex-col content-start">
+    <div class="w-full h-svh flex flex-col content-start">
         <x-home-navbar />
 
+        {{-- Item content --}}
         <div class="py-12">
             <x-item-list :products="$products" :catagories="$catagories" :latestUpdate="$latestUpdate" :landCatagories="$landCatagories" :today="$today" />
         </div>

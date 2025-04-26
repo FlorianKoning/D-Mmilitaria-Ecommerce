@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\DownloadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AclMiddleware;
@@ -9,11 +10,17 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicController;
 
-// Homepage routes
+
+// guest/public routes
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/about-us', [PublicController::class,'aboutUs'])->name('public.index');
+Route::get('/terms-of-services', [PublicController::class,'termsOfService'])->name('public.termsOfService');
 
-// All the cms routes
+
+
+// All the auth routes
 Route::middleware(AclMiddleware::class)->group(function() {
     // Contact Routes
     Route::controller(ContactController::class)->group(function() {
@@ -57,6 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/orders', [ProfileController::class, 'orders'])->name('profile.orders');
     Route::post('/profile/shipping/store', [ProfileController::class, 'shippingStore'])->name('profile.shipping.store');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/business', [ProfileController::class, 'business'])->name('profile.update.business');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/profile/order/download/{order}', [ProfileController::class, 'downloadInvoice'])->name('profile.donwload.invoice');

@@ -2,15 +2,25 @@
     <header class="fixed inset-x-0 top-0 z-50 bg-navBackground shadow-lg">
         <nav>
             <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+
               <div class="flex h-16 justify-between content-center">
+
                 <div class="flex px-2 lg:px-0">
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+
+                        <div class="flex shrink-0 items-center">
+                            <img class="h-8 w-auto" src="https://media.discordapp.net/attachments/452051857158832128/1362034107336495226/Logo_DBM_militaria_-_Copy-ai-brush-removebg-4hv2lalk.png?ex=680e1b9c&is=680cca1c&hm=163cefcf7d8fe8b554a8b0a6448b864e9df4cd812d9e193ce4025c3d78c31705&=&format=webp&quality=lossless&width=494&height=648" alt="Your Company">
+                        </div>
                         <x-nav-link :href="route('home.index')" :active="request()->routeIs('home.*')">
                             {{ __('Home') }}
                         </x-nav-link>
 
                         <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.*')">
                             {{ __('Contact') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('public.index')" :active="request()->routeIs('about-us.*')">
+                            {{ __('Over Ons') }}
                         </x-nav-link>
                     </div>
                 </div>
