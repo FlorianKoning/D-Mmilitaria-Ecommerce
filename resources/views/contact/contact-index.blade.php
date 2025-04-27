@@ -10,4 +10,9 @@
             </div>
         </div>
     </div>
+
+    {{-- succesfull new order --}}
+    @if (session()->has('success'))
+        <x-session-succes :sessionText="session('success')" :title="__('Bericht Verstuurd')" />
+    @endif
 </x-app-layout>

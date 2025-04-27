@@ -122,7 +122,7 @@
                     <br><br>
                     U kunt in het CMS meer informatie vinden in het CMS. Kijk hier onder voor de link naar het CMS.
                     <br><br>
-                    Link naar het CMS: <a href="{{ route('cms.orders.index') }}">LINK</a>
+                    Link naar het CMS: {{ route('cms.dashboard.index') }}
                     <br>
                   </p>
                   <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>

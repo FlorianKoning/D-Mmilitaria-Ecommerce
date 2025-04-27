@@ -38,6 +38,30 @@
             </div>
         </div>
     </div>
+
+    
+    <?php if(session()->has('success')): ?>
+        <?php if (isset($component)) { $__componentOriginal17a22b5bd9358a0459eff8ff7a682ee7 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal17a22b5bd9358a0459eff8ff7a682ee7 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.session-succes','data' => ['sessionText' => session('success'),'title' => __('Bericht Verstuurd')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('session-succes'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['sessionText' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(session('success')),'title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('Bericht Verstuurd'))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal17a22b5bd9358a0459eff8ff7a682ee7)): ?>
+<?php $attributes = $__attributesOriginal17a22b5bd9358a0459eff8ff7a682ee7; ?>
+<?php unset($__attributesOriginal17a22b5bd9358a0459eff8ff7a682ee7); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal17a22b5bd9358a0459eff8ff7a682ee7)): ?>
+<?php $component = $__componentOriginal17a22b5bd9358a0459eff8ff7a682ee7; ?>
+<?php unset($__componentOriginal17a22b5bd9358a0459eff8ff7a682ee7); ?>
+<?php endif; ?>
+    <?php endif; ?>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>

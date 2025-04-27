@@ -9,7 +9,7 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
 
                         <div class="flex shrink-0 items-center">
-                            <img class="h-8 w-auto" src="https://media.discordapp.net/attachments/452051857158832128/1362034107336495226/Logo_DBM_militaria_-_Copy-ai-brush-removebg-4hv2lalk.png?ex=680e1b9c&is=680cca1c&hm=163cefcf7d8fe8b554a8b0a6448b864e9df4cd812d9e193ce4025c3d78c31705&=&format=webp&quality=lossless&width=494&height=648" alt="Your Company">
+                            <img class="h-8 w-auto" src="{{ $business->business_logo }}" alt="Your Company">
                         </div>
                         <x-nav-link :href="route('home.index')" :active="request()->routeIs('home.*')">
                             {{ __('Home') }}

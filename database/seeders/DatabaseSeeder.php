@@ -209,6 +209,7 @@ class DatabaseSeeder extends Seeder
             'kvk_number' => '',
             'btw_number' => '',
             'business_address' => '',
+            'business_logo' => '',
         ]);
     }
 }
