@@ -41,7 +41,7 @@ class HomeController extends Controller
      * @param int $landCategory
      * @return Collection<int, Product>
      */
-    public function filter(?string $search, ?int $category, ?int $landCategory): Collection
+    public function filter(?string $search, ?array $category, ?array $landCategory): Collection
     {
         $baseQuery = ModelHelper::ProductsBaseQuery()
                 ->leftJoin('land_catagories_links', 'land_catagories_links.product_id', '=', 'products.id')

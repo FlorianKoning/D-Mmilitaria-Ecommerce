@@ -46,6 +46,11 @@
                     <x-banner />
                     {{ $slot }}
                 </main>
+
+                {{-- footer --}}
+                <footer class="bg-[#36424b]">
+                    <x-footer-content />
+                </footer>
             </div>
         @endif
     </body>

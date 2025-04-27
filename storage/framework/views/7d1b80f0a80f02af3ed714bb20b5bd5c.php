@@ -67,6 +67,30 @@
                     <?php echo e($slot); ?>
 
                 </main>
+
+                
+                <footer class="bg-[#36424b]">
+                    <?php if (isset($component)) { $__componentOriginal1ad6965a13d836e32d2b9d70591e8bf2 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal1ad6965a13d836e32d2b9d70591e8bf2 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.footer-content','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('footer-content'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal1ad6965a13d836e32d2b9d70591e8bf2)): ?>
+<?php $attributes = $__attributesOriginal1ad6965a13d836e32d2b9d70591e8bf2; ?>
+<?php unset($__attributesOriginal1ad6965a13d836e32d2b9d70591e8bf2); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal1ad6965a13d836e32d2b9d70591e8bf2)): ?>
+<?php $component = $__componentOriginal1ad6965a13d836e32d2b9d70591e8bf2; ?>
+<?php unset($__componentOriginal1ad6965a13d836e32d2b9d70591e8bf2); ?>
+<?php endif; ?>
+                </footer>
             </div>
         <?php endif; ?>
     </body>

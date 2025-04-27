@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BusinessRequest;
+use App\Models\BusinessSettings;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Province;
@@ -16,6 +18,9 @@ use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
+    public static int $businessTableId = 1;
+
+
     /**
      * Display the user's profile form.
      */
@@ -23,6 +28,7 @@ class ProfileController extends Controller
     {
         return view('profile.edit', [
             'user' => $request->user(),
+            'business' => BusinessSettings::find($this->businessTableId),
         ]);
     }
 
@@ -107,6 +113,28 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+
+
+    /**
+     * Updates the business settings of the application
+     * @param \Illuminate\Http\Request $request
+     * @return RedirectResponse
+     */
+    public function business(BusinessRequest $request): RedirectResponse
+    {
+        $businessSettings = BusinessSettings::find($this->businessTableId);
+        $validated = $request->validated();
+
+        $businessSettings->update([
+            'business_email' => $validated['business_email'],
+            'kvk_number' => $validated['kvk_number'],
+            'btw_number' => $validated['btw_number'],
+            'business_address' => $validated['business_address']
+        ]);
+
+        return redirect()->route('profile.edit')->with('status','profile-updated');
+    }
+
 
     /**
      * Delete the user's account.

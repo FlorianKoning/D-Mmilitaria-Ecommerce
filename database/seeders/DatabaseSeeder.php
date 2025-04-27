@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BusinessSettings;
 use App\Models\InvoiceSettings;
 use App\Models\LandCatagories;
 use App\Models\OrderStatus;
@@ -35,6 +36,8 @@ class DatabaseSeeder extends Seeder
 
         // Creates the default invoice settings.
         $this->defaultInvoiceSettings();
+
+        $this->createBusinessTable();
     }
 
 
@@ -192,6 +195,20 @@ class DatabaseSeeder extends Seeder
             'KVK_number' => '97008478',
             'phone_number' => '0628424913',
             'address' => 'Hadrianuslaan 15'
+        ]);
+    }
+
+    /**
+     * Creates a empty table for the business settings.
+     * @return void
+     */
+    private function createBusinessTable(): void
+    {
+        BusinessSettings::factory()->create([
+            'business_email' => '',
+            'kvk_number' => '',
+            'btw_number' => '',
+            'business_address' => '',
         ]);
     }
 }
