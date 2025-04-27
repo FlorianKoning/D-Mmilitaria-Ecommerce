@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BusinessSettings;
 use Illuminate\Contracts\View\View;
 
 class PublicController extends Controller
@@ -21,6 +22,16 @@ class PublicController extends Controller
     */
    public function termsOfService(): View
    {
-        return view("public.termsOfServices");
+        return view("public.termsOfServices", [
+            'business' => BusinessSettings::find(ProfileController::$businessTableId),
+        ]);
+   }
+
+
+   public function privacy(): View
+   {
+        return view('public.privacy', [
+            'business' => BusinessSettings::find(ProfileController::$businessTableId),
+        ]);
    }
 }

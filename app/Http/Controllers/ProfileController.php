@@ -18,7 +18,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
-    private int $businessTableId = 1;
+    public static int $businessTableId = 1;
 
 
     /**

@@ -1,5 +1,3 @@
-
-
 <section>
     <div class="bg-white py-12 sm:py-12">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -9,16 +7,20 @@
             
               <div>
                 <p>
-                    1. Bedrijfsgegevens
+                    <span class="font-semibold">1. Bedrijfsgegevens</span>
                     <br>
                     DBM Militaria is een geregistreerd bedrijf gespecialiseerd in de verkoop van originele militaire collectibles.
-                    Contact:
-                    KvK-nummer:
-                    BTW-nummer:
-                    Vestigingsadres:
+                    <br>
+                    Contact: <span class="font-semibold"><?php echo e($business->business_email); ?></span>
+                    <br>
+                    KvK-nummer: <span class="font-semibold"><?php echo e($business->kvk_number); ?></span>
+                    <br>
+                    BTW-nummer: <span class="font-semibold"><?php echo e($business->btw_number); ?></span>
+                    <br>
+                    Vestigingsadres: <span class="font-semibold"><?php echo e($business->business_address); ?></span>
                 </p>
                 <p class="mt-8">
-                    3. Productinformatie
+                    <span class="font-semibold">3. Productinformatie</span>
                     <br>
                     DBM Militaria verkoopt uitsluitend originele militaire verzamelobjecten, tenzij anders vermeld. Alle producten zijn historisch van aard en worden uitsluitend
                     verkocht voor verzamel- en educatieve doeleinden. We distantiëren ons nadrukkelijk van elk gebruik van deze objecten in contexten die aanzetten tot haat of
@@ -29,13 +31,13 @@
             
               <div>
                 <p>
-                    2. Toepasselijkheid
+                    <span class="font-semibold">2. Toepasselijkheid</span>
                     <br>
                     Deze algemene voorwaarden zijn van toepassing op elk aanbod van DBM Militaria en op elke tot stand gekomen overeenkomst tussen DBM Militaria en de klant, via de website
                     of andere kanalen.
                 </p>
-                <p class="mt-8">
-                    4. Bestellen
+                <p class="mt-[105px]">
+                    <span class="font-semibold">4. Bestellen</span>
                     <br>
                     Bestellingen kunnen worden geplaatst via onze website. Klanten kunnen een account aanmaken voor gemak bij volgende aankopen, maar dit is niet verplicht. Ook als gast
                     kan je een bestelling afronden.
@@ -45,13 +47,13 @@
               
               <div>
                 <p>
-                    5. Betaling
+                    <span class="font-semibold">5. Betaling</span>
                     <br>
                     Betaling dient volledig te worden voldaan voorafgaand aan verzending. Wij accepteren de betaalmethodes zoals weergegeven op de website. De prijzen zijn inclusief btw,
                     tenzij anders aangegeven.
                 </p>
                 <p class="mt-8">
-                    7. Bestellen
+                    <span class="font-semibold">7. Bestellen</span>
                     <br>
                     Bestellingen kunnen worden geplaatst via onze website. Klanten kunnen een account aanmaken voor gemak bij volgende aankopen, maar dit is niet verplicht. Ook als gast
                     kan je een bestelling afronden.
@@ -61,13 +63,13 @@
               
               <div>
                 <p>
-                    6. Betaling
+                    <span class="font-semibold">6. Betaling</span>
                     <br>
                     Betaling dient volledig te worden voldaan voorafgaand aan verzending. Wij accepteren de betaalmethodes zoals weergegeven op de website. De prijzen zijn inclusief btw,
                     tenzij anders aangegeven.
                 </p>
                 <p class="mt-8">
-                    8. Geschillen
+                    <span class="font-semibold">8. Geschillen</span>
                     <br>
                     Op deze voorwaarden is het Nederlands recht van toepassing. Geschillen worden bij voorkeur in onderling overleg opgelost. Lukt dit niet, dan kunnen deze worden
                     voorgelegd aan de bevoegde rechter in Nederland.
@@ -77,7 +79,7 @@
               
               <div>
                 <p>
-                    9. Betaling
+                    <span class="font-semibold">9. Betaling</span>
                     <br>
                     Betaling dient volledig te worden voldaan voorafgaand aan verzending. Wij accepteren de betaalmethodes zoals weergegeven op de website. De prijzen zijn inclusief btw,
                     tenzij anders aangegeven.
@@ -85,7 +87,7 @@
               </div>
               <div>
                 <p>
-                    10. Retourbeleid
+                    <span class="font-semibold">10. Retourbeleid</span>
                     <br>
                     Je hebt het recht om binnen 14 dagen na ontvangst van je bestelling de koop te herroepen.
                     Voorwaarden voor retour:

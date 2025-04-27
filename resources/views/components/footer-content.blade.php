@@ -50,7 +50,7 @@
                 <a href="{{ route('public.termsOfService') }}" class="text-sm/6 text-gray-400 hover:text-white">Servicevoorwaarden</a>
               </li>
               <li>
-                <a href="#" class="text-sm/6 text-gray-400 hover:text-white">Privacybeleid</a>
+                <a href="{{ route('public.privacy') }}" class="text-sm/6 text-gray-400 hover:text-white">Privacybeleid</a>
               </li>
             </ul>
           </div>
