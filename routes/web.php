@@ -15,14 +15,17 @@ use App\Http\Controllers\PublicController;
 
 // guest/public routes
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
-Route::get('/about-us', [PublicController::class,'aboutUs'])->name('public.index');
-Route::get('/terms-of-services', [PublicController::class,'termsOfService'])->name('public.termsOfService');
-Route::get('/privacy', [PublicController::class,'privacy'])->name('public.privacy');
+
 
 
 
 // All the auth routes
 Route::middleware(AclMiddleware::class)->group(function() {
+    // public routes
+    Route::get('/about-us', [PublicController::class,'aboutUs'])->name('public.index');
+    Route::get('/terms-of-services', [PublicController::class,'termsOfService'])->name('public.termsOfService');
+    Route::get('/privacy', [PublicController::class,'privacy'])->name('public.privacy');
+
     // Contact Routes
     Route::controller(ContactController::class)->group(function() {
         Route::get('/contact', 'index')->name('contact.index');

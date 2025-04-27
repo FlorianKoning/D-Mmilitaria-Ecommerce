@@ -2,21 +2,22 @@
 
 namespace App\Mail;
 
-use App\Models\Order;
+use App\Http\Controllers\ProfileController;
+use App\Models\BusinessSettings;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
 
-class NewOrder extends Mailable
+class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(public Order $order, public string $name){}
+    public function __construct(public string $customer_message, public string $customer_email){}
 
     /**
      * Get the message envelope.
@@ -24,8 +25,8 @@ class NewOrder extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: env("APP_NAME")." | Nieuwe Bestelling | ".$this->order['order_number'],
-            from: env("APP_MAIL"),
+            subject: env("APP_NAME")." | Nieuw Contact Bericht |",
+            from: $this->customer_email,
         );
     }
 
@@ -35,10 +36,10 @@ class NewOrder extends Mailable
     public function content(): Content
     {
         return new Content(
-            html: 'mail.emails.order',
+            html: 'mail.emails.contact',
             with: [
-                'orderNumber' => $this->order->order_number,
-                'customerName' => $this->name
+                'customerEmail' => $this->customer_email,
+                'customerMessage' => $this->customer_message,
             ]
         );
     }
@@ -50,8 +51,6 @@ class NewOrder extends Mailable
      */
     public function attachments(): array
     {
-        return [
-           //
-        ];
+        return [];
     }
 }

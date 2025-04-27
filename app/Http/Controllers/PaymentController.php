@@ -39,11 +39,11 @@ class PaymentController extends Controller
             'shipping.postal-code' => 'required|string|min:6'
         ]);
 
-        
+
         // Checks what payment options has been selected
         $paymentOption = $this->getPaymentOption($request->paymentMethod);
 
-        
+
         // Creates a new order with the payment id, items array and the shipping array.
         $order = OrderService::create($request->shipping, $request->items, $request->paymentAmount, $paymentOption);
 

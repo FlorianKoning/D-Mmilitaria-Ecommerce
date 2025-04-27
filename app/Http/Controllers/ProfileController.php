@@ -28,7 +28,7 @@ class ProfileController extends Controller
     {
         return view('profile.edit', [
             'user' => $request->user(),
-            'business' => BusinessSettings::find($this->businessTableId),
+            'business' => BusinessSettings::find(self::$businessTableId),
         ]);
     }
 

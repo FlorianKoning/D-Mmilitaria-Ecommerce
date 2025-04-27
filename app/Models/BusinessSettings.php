@@ -20,7 +20,8 @@ class BusinessSettings extends Model
         'business_email',
         'kvk_number',
         'btw_number',
-        'business_address'
+        'business_address',
+        'business_logo'
     ];
 
 

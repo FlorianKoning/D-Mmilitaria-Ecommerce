@@ -33,17 +33,25 @@ const handleDrop = (e) => {
     const files = dt.files;
     const fileArray = [...files];
 
-    
+
     const dataTransfer  = new DataTransfer();
     const input = document.getElementById('imageCreate');
     const newestFile = (fileArray.length) - 1;
 
-    for (let i = 0; i < newestFile; i++) {
-        dataTransfer.items.add(fileArray[i]);
+    if (fileArray.length > 1) {
+        for (let i = 0; i < newestFile; i++) {
+            dataTransfer.items.add(fileArray[i]);
+        }
+
+        // Puts the file in the input
+        input.files = dataTransfer.files;
+    } else {
+        dataTransfer.items.add(fileArray[0]);
+
+        // Puts the file in the input
+        input.file = dataTransfer.files[0];
     }
-    
-    // Puts the file in the input
-    input.files = dataTransfer.files;
+
     $('#fileDisplay').fadeIn().removeClass('hidden').html('Bestands naam: '+fileArray[0]['name']);
     $('#uploadTitle').fadeOut().addClass('hidden')
 }

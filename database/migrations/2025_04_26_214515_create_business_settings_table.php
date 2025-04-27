@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('kvk_number');
             $table->string('btw_number');
             $table->string('business_address');
+            $table->string('business_logo');
         });
     }
 
