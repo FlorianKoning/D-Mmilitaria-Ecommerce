@@ -49,7 +49,8 @@ const handleDrop = (e) => {
         dataTransfer.items.add(fileArray[0]);
 
         // Puts the file in the input
-        input.file = dataTransfer.files[0];
+        dataTransfer.items.add(fileArray[newestFile]);
+        input.files = dataTransfer.files;
     }
 
     $('#fileDisplay').fadeIn().removeClass('hidden').html('Bestands naam: '+fileArray[0]['name']);

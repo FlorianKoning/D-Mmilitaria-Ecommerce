@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Functions;
+use App\Models\BusinessSettings;
 use App\Services\AclService;
 use App\Services\CartService;
-use App\Models\LandCatagoriesLink;
-use App\Models\Product_catagoryLink;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
@@ -17,6 +16,7 @@ abstract class Controller
     protected int $cartAmount;
     protected object|null $cart;
     protected string $today;
+    protected BusinessSettings $business;
 
 
     public function __construct()
@@ -35,5 +35,8 @@ abstract class Controller
 
         $this->today = date('Y-m-d');
         View::share('today', $this->today);
+
+        $this->business = BusinessSettings::find(ProfileController::$businessTableId);
+        View::share('business', $this->business);
     }
 }

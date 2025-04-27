@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Province;
 use App\Models\Shipping;
+use App\Services\FileService;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -122,14 +123,17 @@ class ProfileController extends Controller
      */
     public function business(BusinessRequest $request): RedirectResponse
     {
-        $businessSettings = BusinessSettings::find($this->businessTableId);
+        $businessSettings = BusinessSettings::find(self::$businessTableId);
         $validated = $request->validated();
+
+        $imageUrl = FileService::imageUpload($validated['business_logo'], 'business_logo');
 
         $businessSettings->update([
             'business_email' => $validated['business_email'],
             'kvk_number' => $validated['kvk_number'],
             'btw_number' => $validated['btw_number'],
-            'business_address' => $validated['business_address']
+            'business_address' => $validated['business_address'],
+            'business_logo' => ($imageUrl != null && strlen($imageUrl) > 0) ? $imageUrl : $businessSettings->business_logo,
         ]);
 
         return redirect()->route('profile.edit')->with('status','profile-updated');

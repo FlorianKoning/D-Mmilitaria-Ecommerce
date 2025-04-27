@@ -1,7 +1,7 @@
 <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
     <div class="xl:grid xl:grid-cols-3 xl:gap-8">
       <div class="space-y-8">
-        <img class="size-24 my-auto" src="https://media.discordapp.net/attachments/452051857158832128/1362034107336495226/Logo_DBM_militaria_-_Copy-ai-brush-removebg-4hv2lalk.png?ex=680e1b9c&is=680cca1c&hm=163cefcf7d8fe8b554a8b0a6448b864e9df4cd812d9e193ce4025c3d78c31705&=&format=webp&quality=lossless&width=267&height=350" alt="Company name">
+        <img class="size-24 my-auto" src="<?php echo e($business->business_logo); ?>" alt="Company name">
         
         <div class="flex gap-x-6">
           <a href="#" class="text-gray-400 hover:text-gray-300">

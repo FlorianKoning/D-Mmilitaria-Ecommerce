@@ -25,7 +25,8 @@ class BusinessRequest extends FormRequest
             'business_email' => 'required|email',
             'kvk_number' => 'required',
             'btw_number' => 'required',
-            'business_address' => 'required'
+            'business_address' => 'required',
+            'business_logo' => 'required|file'
         ];
     }
 }
