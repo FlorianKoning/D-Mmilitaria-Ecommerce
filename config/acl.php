@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
     /*
     |--------------------------------------------------------------------------
@@ -12,11 +12,11 @@ return [
     | To give access to a role, you will need to add the (new?) role to the array.
     | Behind the controller's name, you can specify which functions the
     | role can use by putting the function names in an array.
-    | 
+    |
     |
     | If you want the role to have access to all the functions
     | without typing all the names, just add a "*" in the array.
-    | 
+    |
     | There is also the "global" option. Here you should put all
     | the controllers and functions that every role has access to.
     */
@@ -44,6 +44,7 @@ return [
             "user" => []
         ],
         "global" => [
+            "PublicController" => ["*"],
             "ContactController" => ["*"],
             "CartController" => ["*"],
             "HomeController" => ["*"],
@@ -56,5 +57,5 @@ return [
             "DownloadController" => ['*']
         ]
     ]
-    
+
 ];
