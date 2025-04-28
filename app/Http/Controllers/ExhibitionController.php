@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BusinessSettings;
+use App\Models\Exhibition;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 
 class ExhibitionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view("exhibition.index", [
+            'exhibitions' => Exhibition::all(),
+            'business' => BusinessSettings::find(ProfileController::$businessTableId),
+        ]);
     }
 
     /**

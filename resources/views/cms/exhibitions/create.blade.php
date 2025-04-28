@@ -12,13 +12,8 @@
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                @include('cms.exhibitions.partials.index')
+                @include('cms.exhibitions.partials.create')
             </div>
         </div>
     </div>
-
-    {{-- succesfull new order --}}
-    @if (session()->has('success'))
-        <x-session-succes :sessionText="session('success')" :title="__('Success')" />
-    @endif
 </x-app-layout>

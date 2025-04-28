@@ -19,7 +19,7 @@
                             {{ __('Contact') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.*')">
+                        <x-nav-link :href="route('exhibition.index')" :active="request()->routeIs('exhibition.*')">
                             {{ __('Beurzenkalender') }}
                         </x-nav-link>
                     </div>

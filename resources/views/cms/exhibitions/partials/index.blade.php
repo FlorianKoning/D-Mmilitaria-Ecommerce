@@ -1,11 +1,11 @@
 <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <h1 class="text-base font-semibold text-gray-900">Producten overview</h1>
+        <h1 class="text-base font-semibold text-gray-900">Beursen overview</h1>
         <p class="mt-2 text-sm text-gray-700">Hier heb je de overview tabel van alle producten. Hier kan je ook nieuwe producten toevoegen, editen en verwijderen.</p>
       </div>
       <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-        <x-redirect-button :route="route('cms.products.create')" :name="__('Berus Toevoegen')" />
+        <x-redirect-button :route="route('cms.exhibitions.create')" :name="__('Berus Toevoegen')" />
       </div>
     </div>
     <div class="mt-8 flow-root">
@@ -30,20 +30,28 @@
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $value->exhibition_start_time }}</td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $value->exhibition_end_time }}</td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
-                            @if ($value->is_active == 1)
-                                <button type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 cursor-default">
-                                    <svg class="-ml-0.5 size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
-                                    </svg>
-                                    Actief
-                                </button>
+                            @if ($value->present == 1)
+                                <form id="presentForm-{{ $value->id }}" method="POST" action="{{ route('cms.exhibitions.update.present', $value->id) }}">
+                                    @csrf
+
+                                    <button onclick="document.getElementById('presentForm-{{ $value->id }}').submit();" type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 cursor-pointer">
+                                        <svg class="-ml-0.5 size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
+                                        </svg>
+                                        Aanwezig
+                                    </button>
+                                </form>
                             @else
-                                <button type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 cursor-default">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fizll="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-0.5 size-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                    </svg>
-                                    In Actief
-                                </button>
+                                <form id="presentForm-{{ $value->id }}" method="POST" action="{{ route('cms.exhibitions.update.present', $value->id) }}">
+                                    @csrf
+
+                                    <button onclick="document.getElementById('presentForm-{{ $value->id }}').submit();" type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fizll="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-0.5 size-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                        </svg>
+                                        Niet Aanwezig
+                                    </button>
+                                </form>
                             @endif
                         </td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-white">

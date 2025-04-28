@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('exhibition_name');
             $table->string('exhibition_location');
             $table->date('exhibition_date');
-            $table->date('exhibition_start_time')->nullable();
-            $table->date('exhibition_end_time')->nullable();
+            $table->string('exhibition_start_time')->nullable();
+            $table->string('exhibition_end_time')->nullable();
             $table->boolean('present');
             $table->timestamps();
         });
