@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\cms;
 
 use App\Http\Controllers\Controller;
+use App\Models\Exhibition;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,10 @@ class CmsExhibitionController extends Controller
      */
     public function index(): View
     {
-        return view("cms.exhibitions.index");
+        return view("cms.exhibitions.index", [
+            'exhibitions' => Exhibition::all(),
+            'columnNames' => Exhibition::$columnNames,
+        ]);
     }
 
     /**

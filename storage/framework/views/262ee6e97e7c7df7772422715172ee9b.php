@@ -22,6 +22,7 @@
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <?php echo $__env->make('cms.exhibitions.partials.index', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
             </div>
         </div>
     </div>

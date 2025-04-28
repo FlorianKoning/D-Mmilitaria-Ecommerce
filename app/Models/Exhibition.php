@@ -11,6 +11,16 @@ class Exhibition extends Model
     use HasFactory;
 
 
+    public static $columnNames = [
+        'exhibition_name' => 'Beurs Naam',
+        'exhibition_location' => 'Beurs Locatie',
+        'exhibition_date' => 'Beurs Datum',
+        'exhibition_start_time' => 'Beurs Begin Tijd',
+        'exhibition_end_time' => 'Beurs Eind Tijd',
+        'present' => 'Aanwezig'
+    ];
+
+
     /**
      * The attributes that are mass assignable.
      *
