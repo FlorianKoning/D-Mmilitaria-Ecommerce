@@ -25,8 +25,8 @@ class CmsExhibitionRequest extends FormRequest
             'exhibition_name' => ['required', 'string', 'max:191'],
             'exhibition_location' => ['required', 'string', 'max:191'],
             'exhibition_date' => ['required', 'date'],
-            'exhibition_start_time' => ['nullable', 'max:5'],
-            'exhibition_end_time' => ['nullable', 'max:5'],
+            'exhibition_opening_time' => ['nullable', 'max:5'],
+            'exhibition_closing_time' => ['nullable', 'max:5'],
             'present' => ['nullable', 'string'],
         ];
     }

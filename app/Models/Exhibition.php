@@ -30,8 +30,8 @@ class Exhibition extends Model
         'exhibition_name',
         'exhibition_location',
         'exhibition_date',
-        'exhibition_start_time',
-        'exhibition_end_time',
+        'exhibition_opening_time',
+        'exhibition_closing_time',
         'present',
     ];
 }

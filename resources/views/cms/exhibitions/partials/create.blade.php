@@ -37,17 +37,17 @@
 
             {{-- Exhibition Start Time --}}
             <div>
-                <x-input-label for="exhibition_start_time" :value="__('Begin Tijd Beurs.')" />
-                <x-text-input id="exhibition_start_time" name="exhibition_start_time" type="time" class="mt-1 block w-full" :value="old('exhibition_start_time')" required />
-                <x-input-error class="mt-2" :messages="$errors->get('exhibition_start_time')" />
+                <x-input-label for="exhibition_opening_time" :value="__('Begin Tijd Beurs.')" />
+                <x-text-input id="exhibition_opening_time" name="exhibition_opening_time" type="time" class="mt-1 block w-full" :value="old('exhibition_opening_time')" required />
+                <x-input-error class="mt-2" :messages="$errors->get('exhibition_opening_time')" />
             </div>
 
 
             {{-- Exhibition Start Time --}}
             <div>
-                <x-input-label for="exhibition_end_time" :value="__('Eind Tijd Beurs.')" />
-                <x-text-input id="exhibition_end_time" name="exhibition_end_time" type="time" class="mt-1 block w-full" :value="old('exhibition_end_time')" required />
-                <x-input-error class="mt-2" :messages="$errors->get('exhibition_end_time')" />
+                <x-input-label for="exhibition_closing_time" :value="__('Eind Tijd Beurs.')" />
+                <x-text-input id="exhibition_closing_time" name="exhibition_closing_time" type="time" class="mt-1 block w-full" :value="old('exhibition_closing_time')" required />
+                <x-input-error class="mt-2" :messages="$errors->get('exhibition_closing_time')" />
             </div>
 
 

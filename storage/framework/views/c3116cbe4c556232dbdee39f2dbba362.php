@@ -46,8 +46,8 @@
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><?php echo e($value->exhibition_name); ?></td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><?php echo e($value->exhibition_location); ?></td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><?php echo e($value->exhibition_date); ?></td>
-                        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><?php echo e($value->exhibition_start_time); ?></td>
-                        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><?php echo e($value->exhibition_end_time); ?></td>
+                        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><?php echo e($value->exhibition_opening_time); ?></td>
+                        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><?php echo e($value->exhibition_closing_time); ?></td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
                             <?php if($value->present == 1): ?>
                                 <form id="presentForm-<?php echo e($value->id); ?>" method="POST" action="<?php echo e(route('cms.exhibitions.update.present', $value->id)); ?>">

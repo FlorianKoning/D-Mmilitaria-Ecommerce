@@ -45,14 +45,13 @@ class CmsExhibitionController extends Controller
             "exhibition_name" => $validated["exhibition_name"],
             "exhibition_location" => $validated["exhibition_location"],
             "exhibition_date" => $validated["exhibition_date"],
-            "exhibition_start_time" => $validated["exhibition_start_time"],
-            "exhibition_end_time" => $validated["exhibition_end_time"],
+            "exhibition_opening_time" => $validated["exhibition_opening_time"],
+            "exhibition_closing_time" => $validated["exhibition_closing_time"],
             "present" => (isset($validated["present"])) ? true: false,
         ]);
 
         return redirect()->route('cms.exhibitions.index')->with('success', 'Een beurs is toegevoegd aan de database.');
     }
-
 
     /**
      * Updates the present value of the exhibition.
