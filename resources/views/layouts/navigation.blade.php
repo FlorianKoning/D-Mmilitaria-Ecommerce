@@ -19,8 +19,8 @@
                             {{ __('Contact') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('public.index')" :active="request()->routeIs('about-us.*')">
-                            {{ __('Over Ons') }}
+                        <x-nav-link :href="route('exhibition.index')" :active="request()->routeIs('exhibition.*')">
+                            {{ __('Beurzenkalender') }}
                         </x-nav-link>
                     </div>
                 </div>

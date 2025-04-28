@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\BusinessSettings;
 use App\Models\InvoiceSettings;
 use App\Models\LandCatagories;
+use App\Models\Month;
 use App\Models\OrderStatus;
 use App\Models\PaymentOption;
 use App\Models\Role;
@@ -37,7 +38,11 @@ class DatabaseSeeder extends Seeder
         // Creates the default invoice settings.
         $this->defaultInvoiceSettings();
 
+        // Sets an empty table for businessTable with an id of 1.
         $this->createBusinessTable();
+
+        // Sets up all the months in the database.
+        $this->setMonths();
     }
 
 
@@ -211,5 +216,21 @@ class DatabaseSeeder extends Seeder
             'business_address' => '',
             'business_logo' => '',
         ]);
+    }
+
+
+    /**
+     * Sets all the months in the database.
+     * @return void
+     */
+    private function setMonths(): void
+    {
+        foreach (Month::$months as $key => $value) {
+            Month::factory()->create([
+                'name' => $value,
+                'month_number' => $key
+            ]);
+        }
+
     }
 }

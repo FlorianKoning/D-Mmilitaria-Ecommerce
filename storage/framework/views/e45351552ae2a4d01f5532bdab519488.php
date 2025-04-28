@@ -184,6 +184,45 @@
                     </ul>
                 </li>
 
+
+                
+                <div class="flex flex-row justify-between text-black py-2 border-[#DBDBDB] border-t border-b">
+                    <div class="px-6">
+                        <h3 class="font-extrabold text-sm">Exhibitions Overview</h3>
+                    </div>
+                </div>
+                <li class="px-6">
+                    <ul id="overview" role="list" class="-mx-2 space-y-1">
+                        <?php if (isset($component)) { $__componentOriginal7c31356aca81a64b5d3f4569b8e77442 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7c31356aca81a64b5d3f4569b8e77442 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.cms-nav-link','data' => ['href' => route('cms.exhibitions.index'),'active' => request()->routeIs('cms.exhibitions.*')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('cms-nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('cms.exhibitions.index')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('cms.exhibitions.*'))]); ?>
+                            <div class="flex flex-row gap-x-3 ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 shrink-0">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
+                                </svg>
+                                Exhibitions
+                            </div>
+                         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7c31356aca81a64b5d3f4569b8e77442)): ?>
+<?php $attributes = $__attributesOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
+<?php unset($__attributesOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442)): ?>
+<?php $component = $__componentOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
+<?php unset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
+<?php endif; ?>
+                    </ul>
+                </li>
+
+
                 
                 <li class="mt-auto mx-auto">
                     <?php if (isset($component)) { $__componentOriginal7c31356aca81a64b5d3f4569b8e77442 = $component; } ?>

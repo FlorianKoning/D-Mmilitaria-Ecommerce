@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\ExhibitionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AclMiddleware;
 use App\Http\Controllers\AjaxController;
@@ -12,19 +13,17 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 
-
-// guest/public routes
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
-
-
-
-
 // All the auth routes
 Route::middleware(AclMiddleware::class)->group(function() {
+    // guest/public routes
+    Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
+
     // public routes
     Route::get('/about-us', [PublicController::class,'aboutUs'])->name('public.index');
     Route::get('/terms-of-services', [PublicController::class,'termsOfService'])->name('public.termsOfService');
     Route::get('/privacy', [PublicController::class,'privacy'])->name('public.privacy');
+
 
     // Contact Routes
     Route::controller(ContactController::class)->group(function() {
@@ -33,28 +32,39 @@ Route::middleware(AclMiddleware::class)->group(function() {
         Route::post('/contact/message', 'message')->name('contact.message');
     });
 
+
     // Cart controller
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/store/{product}', [CartController::class, 'store'])->name('cart.store');
     Route::get('/cart/update/{product}/{amount}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/cart/delete/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
 
+
     // Product Controller
     Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
 
     // Ajax routes
     Route::get('/ajax/liveSearch/{input}/{table}', [AjaxController::class, 'livesearch'])->name('ajax.liveSearch');
     Route::get('/ajax/options/{id}/{table}', [AjaxController::class, 'getOptions'])->name('ajax.getOptions');
     Route::get('/ajax/payment-id', [AjaxController::class, 'paymentId'])->name('ajax.paymentId');
 
+
     // Checkout routes
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+
 
     // All public download routes
     Route::get('/donwload/invoice/{order}', [DownloadController::class, 'invoices'])->name('download.invoice');
 
+
+    // Exhibition Calender Routes
+    Route::get('/exhibition-calender', [ExhibitionController::class, 'index'])->name('exhibition.index');
+
+
     // Loads the admin routes.
     require __DIR__.'/admin.php';
+
 
     // Loads the payment routes
     require __DIR__.'/payment.php';

@@ -6,6 +6,7 @@ use App\Http\Controllers\Cms\CmsProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Cms\CmsCatagoriesController;
 use App\Http\Controllers\Cms\CmsDashboardController;
+use App\Http\Controllers\cms\CmsExhibitionController;
 use App\Http\Controllers\Cms\CmsExtraImagesController;
 use App\Http\Controllers\Cms\CmsInvoiceController;
 use App\Http\Controllers\Cms\CmsOrderController;
@@ -83,4 +84,16 @@ Route::get('/cms/order-statuses', [CmsOrderStatusesController::class, 'index'])-
 Route::controller(CmsInvoiceController::class)->group(function() {
     Route::get('/cms/invoices/settings', 'settings')->name('cms.invoice.settings');
     Route::post('/cms/invoice/store', 'storeSettings')->name('cms.invoice.settings.store');
+});
+
+
+// Cms Exhibition Routes
+Route::controller(CmsExhibitionController::class)->group(function() {
+    Route::get('/cms/exhibitions', 'index')->name('cms.exhibitions.index');
+    Route::get('/cms/exhibition/create', 'create')->name('cms.exhibitions.create');
+    Route::get('/cms/exhibition/edit/{exhibition}', 'edit')->name('cms.exhibition.edit');
+    Route::post('/cms/exhibition/store', 'store')->name('cms.exhibition.store');
+    Route::patch('/cms/exhibition/update/{exhibition}', 'update')->name('cms.exhibition.update');
+    Route::post('/cms/exhibition/update/present/{exhibition}', 'updatePresent')->name('cms.exhibitions.update.present');
+    Route::delete('/cms/exhibition/delete/{exhibition}', 'destroy')->name('cms.exhibition.delete');
 });
