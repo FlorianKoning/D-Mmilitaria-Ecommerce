@@ -32,14 +32,16 @@ return [
                 "CmsExtraFeaturesController" => ["*"],
                 "CmsOrderController" => ["*"],
                 "CmsOrderStatusesController" => ["*"],
-                "CmsInvoiceController" => ["*"]
+                "CmsInvoiceController" => ["*"],
+                "CmsExhibitionController" => ["*"],
             ],
             "administator" => [
                 "CmsDashboardController" => ["*"],
                 "AjaxController" => ["*"],
                 "CmsProductsController" => ["index"],
                 "CmsUserController" => ["index"],
-                "CmsCatagoriesController" => ["index"]
+                "CmsCatagoriesController" => ["index"],
+                "CmsExhibitionController" => ["index"],
             ],
             "user" => []
         ],
