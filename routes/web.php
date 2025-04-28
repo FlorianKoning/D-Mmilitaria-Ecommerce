@@ -12,15 +12,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 
-
-// guest/public routes
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
-
-
-
-
 // All the auth routes
 Route::middleware(AclMiddleware::class)->group(function() {
+    // guest/public routes
+    Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
+
     // public routes
     Route::get('/about-us', [PublicController::class,'aboutUs'])->name('public.index');
     Route::get('/terms-of-services', [PublicController::class,'termsOfService'])->name('public.termsOfService');
