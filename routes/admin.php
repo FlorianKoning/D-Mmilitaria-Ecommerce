@@ -91,6 +91,9 @@ Route::controller(CmsInvoiceController::class)->group(function() {
 Route::controller(CmsExhibitionController::class)->group(function() {
     Route::get('/cms/exhibitions', 'index')->name('cms.exhibitions.index');
     Route::get('/cms/exhibition/create', 'create')->name('cms.exhibitions.create');
+    Route::get('/cms/exhibition/edit/{exhibition}', 'edit')->name('cms.exhibition.edit');
     Route::post('/cms/exhibition/store', 'store')->name('cms.exhibition.store');
+    Route::patch('/cms/exhibition/update/{exhibition}', 'update')->name('cms.exhibition.update');
     Route::post('/cms/exhibition/update/present/{exhibition}', 'updatePresent')->name('cms.exhibitions.update.present');
+    Route::delete('/cms/exhibition/delete/{exhibition}', 'destroy')->name('cms.exhibition.delete');
 });

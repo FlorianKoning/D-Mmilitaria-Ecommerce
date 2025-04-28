@@ -74,22 +74,38 @@ class CmsExhibitionController extends Controller
      */
     public function edit(Exhibition $exhibition): View
     {
-        // return view("")
+        return view("cms.exhibitions.edit", [
+            'exhibition' => $exhibition
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CmsExhibitionRequest $request, Exhibition $exhibition): RedirectResponse
     {
-        //
+        $validated = $request->validated();
+
+        $exhibition->update([
+            "exhibition_name" => $validated["exhibition_name"],
+            "exhibition_location" => $validated["exhibition_location"],
+            "exhibition_date" => $validated["exhibition_date"],
+            "exhibition_opening_time" => $validated["exhibition_opening_time"],
+            "exhibition_closing_time" => $validated["exhibition_closing_time"],
+            "present" => (isset($validated["present"])) ? true: false,
+        ]);
+
+        return redirect()->route('cms.exhibitions.index')->with('success', 'De beurs is succesvol geupdate.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Exhibition $exhibition): RedirectResponse
     {
-        //
+        // Deletes the exhibition
+        $exhibition->delete();
+
+        return redirect()->route('cms.exhibitions.index')->with('success','De beurs was succesvol verwijderd');
     }
 }

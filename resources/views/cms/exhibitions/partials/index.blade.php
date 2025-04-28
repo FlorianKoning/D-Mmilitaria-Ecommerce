@@ -73,14 +73,14 @@
 
                                 <x-slot name="content">
                                     {{-- edit options --}}
-                                    <x-dropdown-link :href="route('cms.products.edit', $value->id)">
+                                    <x-dropdown-link :href="route('cms.exhibition.edit', $value->id)">
                                         {{ __('Edit') }}
                                     </x-dropdown-link>
 
 
                                     {{-- delete options --}}
                                     <x-dropdown-link >
-                                        <button onclick="warningModel('{{ route('cms.products.delete', $value->id) }}', '{{ $value->name }}')">{{ __('Verwijder') }}</button>
+                                        <button onclick="warningModel('{{ route('cms.exhibition.delete', $value->id) }}', '{{ $value->exhibition_name }}')">{{ __('Verwijder') }}</button>
                                     </x-dropdown-link>
                                 </x-slot>
                             </x-dropdown>
@@ -96,7 +96,7 @@
 
 
 {{-- warning model --}}
-<x-warning-modal :catagory="__('catagory')" />
+<x-warning-modal :catagory="__('beurs')" />
 
 
 
