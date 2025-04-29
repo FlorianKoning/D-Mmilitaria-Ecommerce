@@ -24,6 +24,8 @@ return new class extends Migration
             $table->decimal('payment_amount');
             $table->unsignedBigInteger('order_status_id');
             $table->foreign('order_status_id')->references('id')->on('order_statuses');
+            $table->unsignedBigInteger('exhibition_id')->nullable();
+            $table->foreign('exhibition_id')->references('id')->on('exhibitions');
             $table->string('invoice_location')->nullable();
             $table->timestamps();
         });

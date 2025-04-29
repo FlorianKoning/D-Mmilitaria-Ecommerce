@@ -48,7 +48,10 @@
                             <div class="ml-6 flex-1 text-sm">
                                 <div class="font-medium text-gray-900 sm:flex sm:justify-between">
                                     <h5 class="font-semibold"><?php echo e($item['product']['name']); ?></h5>
-                                    <p class="mt-2 sm:mt-0">€<?php echo e($item['product']['price']); ?></p>
+                                    <div class="flex flex-col">
+                                        <p class="mt-2 sm:mt-0">€<?php echo e($item['product']['price']); ?></p>
+                                        <p class="mt-2 sm:mt-0">Hoeveelheid: <?php echo e($item['amount']); ?></p>
+                                    </div>
                                 </div>
                                 <p class="hidden text-gray-500 sm:mt-2 sm:block"><?php echo e($item['product']['big_desc']); ?></p>
                             </div>
@@ -68,4 +71,5 @@
 
     <!-- More orders... -->
     </div>
-</div><?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/cms/order/partials/order-view.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/cms/order/partials/order-view.blade.php ENDPATH**/ ?>

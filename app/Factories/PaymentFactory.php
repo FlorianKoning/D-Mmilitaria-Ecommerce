@@ -41,27 +41,10 @@ class PaymentFactory implements PaymentFactoryInterface
     }
 
 
-    /**
-     * This function is used as a controller.
-     * Checks what payment function has to be called based on the payment option
-     * @return void
-     */
+
     public function payment(): void
     {
-        // Checks what function has to be called based on the payment option.
-        switch ($this->paymentOption['id']) {
-            case 1:
-                $this->backTransfer();
-                break;
-            case 2:
-                $this->fairPickUp();
-                break;
-            case 3:
-                $this->other();
-                break;
-            default:
-                throw new Exception('Invalid payment option given.');
-        }
+
     }
 
 

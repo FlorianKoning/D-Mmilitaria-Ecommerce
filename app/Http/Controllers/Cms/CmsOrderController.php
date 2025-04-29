@@ -21,7 +21,7 @@ class CmsOrderController extends Controller
     {
         $columnNames = Order::$columnNames;
         $statusColors = Order::$orderColors;
-        $orders = Order::select('orders.*', 'users.first_name as userFirstName', 'users.last_name as userLastName', 
+        $orders = Order::select('orders.*', 'users.first_name as userFirstName', 'users.last_name as userLastName',
             'guest_users.first_name as guestFirstname', 'guest_users.last_name as guestLastName', 'order_statuses.status as orderStatusName',
             'payment_name')
             ->leftJoin('users', 'user_id', '=', 'users.id')
@@ -111,7 +111,7 @@ class CmsOrderController extends Controller
             $product = Product::find($item->id);
 
             $itemsArray[$count]['product'] = $product;
-            $itemsArray[$count]['amount'] = $item->amount; 
+            $itemsArray[$count]['amount'] = $item->amount;
 
             $count++;
         }

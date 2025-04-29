@@ -2,16 +2,17 @@
 
 namespace App\Services;
 
-use App\Models\PaymentOption;
 use Exception;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\GuestUser;
 use App\Models\OrderStatus;
+use App\Models\PaymentOption;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Interfaces\OrderServiceInterface;
 
-class OrderService
+class OrderService implements OrderServiceInterface
 {
     /**
      * Creates a new order in the database.
@@ -47,7 +48,7 @@ class OrderService
             'user_id' => (isset($guest)) ? null : Auth::user()->id,
             'guest_user_id' => (isset($guest)) ? $guest['id'] : null,
             'order_items' => $productsArray,
-            'payment_amount' => $paymentAmount / 10,
+            'payment_amount' => $paymentAmount,
             'order_status_id' => OrderStatus::$open
         ]);
 

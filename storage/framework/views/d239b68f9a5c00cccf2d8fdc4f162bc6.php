@@ -36,6 +36,29 @@
 <?php unset($__componentOriginaleb6d0197656b14961c20e30ce418a460); ?>
 <?php endif; ?>
     <?php endif; ?>
+
+    <?php if(session()->has('erorr')): ?>
+        <?php if (isset($component)) { $__componentOriginaleb6d0197656b14961c20e30ce418a460 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginaleb6d0197656b14961c20e30ce418a460 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.session-warning','data' => ['sessionText' => session('error')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('session-warning'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['sessionText' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(session('error'))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginaleb6d0197656b14961c20e30ce418a460)): ?>
+<?php $attributes = $__attributesOriginaleb6d0197656b14961c20e30ce418a460; ?>
+<?php unset($__attributesOriginaleb6d0197656b14961c20e30ce418a460); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginaleb6d0197656b14961c20e30ce418a460)): ?>
+<?php $component = $__componentOriginaleb6d0197656b14961c20e30ce418a460; ?>
+<?php unset($__componentOriginaleb6d0197656b14961c20e30ce418a460); ?>
+<?php endif; ?>
+    <?php endif; ?>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>

@@ -8,4 +8,8 @@
     @if (session()->has('duplicateOrder'))
         <x-session-warning :sessionText="session('duplicateOrder')" />
     @endif
+
+    @if (session()->has('erorr'))
+        <x-session-warning :sessionText="session('error')" />
+    @endif
 </x-app-layout>

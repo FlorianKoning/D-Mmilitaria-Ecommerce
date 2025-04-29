@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Functions;
-use App\Models\BusinessSettings;
 use App\Services\AclService;
 use App\Services\CartService;
+use App\Models\BusinessSettings;
+use App\Services\OrderMailService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use App\Repositories\ProviceRepository;
+use App\Repositories\BusinessRepository;
+use App\Repositories\ExhibitionRepository;
+use App\Repositories\PaymentOptionRepository;
 
 abstract class Controller
 {
@@ -17,7 +22,6 @@ abstract class Controller
     protected object|null $cart;
     protected string $today;
     protected BusinessSettings $business;
-
 
     public function __construct()
     {
