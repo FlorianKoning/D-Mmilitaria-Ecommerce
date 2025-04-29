@@ -5,9 +5,9 @@ namespace App\Interfaces;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
-interface PaymentServiceInterface
+interface PaymentFactoryInterface
 {
     public function backTransfer(): RedirectResponse;
-    public function fairPickUp(): RedirectResponse;
+    public function fairPickUp(): void;
     public function other(): RedirectResponse;
 }

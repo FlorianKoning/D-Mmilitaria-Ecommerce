@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\PaymentFactory;
 use App\Mail\NewOrderAdmin;
 use Exception;
 use App\Mail\NewOrder;
@@ -10,7 +11,6 @@ use App\Models\PaymentOption;
 use App\Services\OrderService;
 use Illuminate\Validation\Rule;
 use App\Services\InvoiceService;
-use App\Services\PaymentService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
@@ -58,6 +58,7 @@ class PaymentController extends Controller
             new NewOrder($order, $request->shipping['first-name'])
         );
 
+
         // Sends the email to the admin that a new order has been made.
         Mail::to(env('ADMIN_EMAIL'))->queue(
             new NewOrderAdmin($order, $request->shipping['first-name'])
@@ -65,8 +66,8 @@ class PaymentController extends Controller
 
 
         // Activates the payment
-        $paymentService = new PaymentService($order, $paymentOption, $request->shipping['first-name']." ".$request->shipping['last-name']);
-        $paymentService->payment();
+        $paymentFactory = new PaymentFactory($order, $paymentOption, $request->shipping['first-name']." ".$request->shipping['last-name']);
+        $paymentFactory->payment();
 
 
         return redirect()->route('home.index');
