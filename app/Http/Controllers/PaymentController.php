@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\User;
 use App\Models\Order;
+use App\Helper\Functions;
+use App\Models\GuestUser;
 use App\Models\Exhibition;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
+use App\Utils\ReservedHelper;
 use App\Services\OrderService;
 use Illuminate\Validation\Rule;
 use App\Services\InvoiceService;
@@ -31,6 +35,7 @@ class PaymentController extends Controller
         protected PaymentOptionRepository $paymentOptionRepository,
         protected ExhibitionRepository $exhibitionRepository,
         protected BusinessRepository $businessRepository,
+        protected ReservedHelper $ReservedHelper,
     ){parent::__construct();}
 
 
@@ -91,7 +96,7 @@ class PaymentController extends Controller
     public function exhibition(Order $order): View
     {
         return view("payments.fairPickUp", [
-            'exhibitions' => $this->exhibitionRepository->all(),
+            'exhibitions' => $this->exhibitionRepository->all($order),
             'business' => $this->businessRepository->all(),
             'order' => $order,
         ]);
@@ -104,9 +109,25 @@ class PaymentController extends Controller
      * @param \App\Models\Order $order
      * @return never
      */
-    public function fairPickUp(Exhibition $exhibition, Order $order)
+    public function fairPickUp(Exhibition $exhibition, Order $order): RedirectResponse
     {
-        dd($order, $exhibition);
+        $user = ($order->user_id != null) ? User::find($order->user_id) : GuestUser::find($order->guest_user_id);
+        $email = $user->email;
+        $name = "$user->first_name $user->last_name";
+
+        // Updates the order exhibition_id to the new value.
+        $order->update([
+            'exhibition_id' => $exhibition->id,
+        ]);
+
+        // Sends a mail to the user with all the information about the bank transfer.
+        $this->orderMailService->bankTransfer($order, $email, $name);
+
+        // Deletes all the items of the users cart.
+        Functions::itemHandle($this->cart);
+
+        // Sends the user to a "thank you" page.
+        return redirect()->route('home.index')->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
     }
 
 
@@ -146,5 +167,8 @@ class PaymentController extends Controller
 
          // Creates a new order with the payment id, items array and the shipping array.
         $this->order = OrderService::create($shipping, $items, $paymentAmount, $this->paymentOption);
+
+        // Sets the items from the item object in the reserved database table.
+        $this->ReservedHelper->reserveProduct($this->order);
     }
 }

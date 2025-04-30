@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Mail\BankTransfer;
 use App\Models\Order;
 use App\Mail\NewOrder;
 use App\Mail\NewOrderAdmin;
@@ -28,7 +29,7 @@ class OrderMailService
      * @param \App\Models\Order $order
      * @return void
      */
-    private function newOrder(array $shipping, Order $order): void
+    public function newOrder(array $shipping, Order $order): void
     {
         Mail::to($shipping['email-address'])->queue(
             new NewOrder($order, $shipping['first-name'])
@@ -42,10 +43,25 @@ class OrderMailService
      * @param \App\Models\Order $order
      * @return void
      */
-    private function newOrderAdmin(array $shipping, Order $order): void
+    public function newOrderAdmin(array $shipping, Order $order): void
     {
         Mail::to(env('ADMIN_EMAIL'))->queue(
             new NewOrderAdmin($order, $shipping['first-name'])
+        );
+    }
+
+
+    /**
+     * Send a mail to the user on how the bank transfer works.
+     * @param \App\Models\Order $order
+     * @param string $email
+     * @param string $name
+     * @return void
+     */
+    public function bankTransfer(Order $order, string $email, string $name): void
+    {
+        Mail::to($email)->queue(
+            new BankTransfer($order, $email, $name)
         );
     }
 }

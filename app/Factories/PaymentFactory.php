@@ -65,18 +65,6 @@ class PaymentFactory implements PaymentFactoryInterface
 
 
     /**
-     * Creates a order for a fair pickup.
-     * @return void
-     */
-    public function fairPickUp(): void
-    {
-        // Calls the fair pick up service.
-        $fairPickUpService = new FairPickUpService($this->email, $this->cart, $this->name, $this->order);
-        $fairPickUpService->exhibitions();
-    }
-
-
-    /**
      * Creates other payment using Molli.
      * @return void
      */
