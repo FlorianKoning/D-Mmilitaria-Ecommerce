@@ -16,7 +16,7 @@ use App\Http\Controllers\PublicController;
 
 // All the auth routes
 Route::middleware(AclMiddleware::class)->group(function() {
-    // guest/public routes
+    // Home Route
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 
@@ -24,6 +24,7 @@ Route::middleware(AclMiddleware::class)->group(function() {
     Route::get('/about-us', [PublicController::class,'aboutUs'])->name('public.index');
     Route::get('/terms-of-services', [PublicController::class,'termsOfService'])->name('public.termsOfService');
     Route::get('/privacy', [PublicController::class,'privacy'])->name('public.privacy');
+    Route::get('/order/confirmation/{order}/{shipping}', [PublicController::class, 'confirmation'])->name('public.confirmation');
 
 
     // Contact Routes
@@ -61,6 +62,7 @@ Route::middleware(AclMiddleware::class)->group(function() {
 
     // Exhibition Calender Routes
     Route::get('/exhibition-calender', [ExhibitionController::class, 'index'])->name('exhibition.index');
+
 
 
     // Loads the admin routes.

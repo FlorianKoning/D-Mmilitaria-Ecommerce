@@ -133,7 +133,7 @@
                     In de bijlage vindt u tevens de factuur van uw bestelling.
                   </p>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Bank rekening nummer: <span style="font-weight: 500"><?php echo e(env('BANKTRANSFER_NUMBER')); ?></span>
+                    Bank rekening nummer: <span style="font-weight: 500"></span>
                   </p>
                   <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
                     Met vriendelijke groet,
@@ -165,4 +165,5 @@
     </div>
   </div>
 </body>
-</html><?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/mail/emails/bankTransfer.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/mail/emails/bankTransfer.blade.php ENDPATH**/ ?>

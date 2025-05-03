@@ -126,14 +126,16 @@ class ProfileController extends Controller
         $businessSettings = BusinessSettings::find(self::$businessTableId);
         $validated = $request->validated();
 
-        $imageUrl = FileService::imageUpload($validated['business_logo'], 'business_logo');
+        if (isset($validated['business_logo'])) {
+            $imageUrl = FileService::imageUpload($validated['business_logo'], 'business_logo');
+        }
 
         $businessSettings->update([
-            'business_email' => $validated['business_email'],
-            'kvk_number' => $validated['kvk_number'],
-            'btw_number' => $validated['btw_number'],
-            'business_address' => $validated['business_address'],
-            'business_logo' => ($imageUrl != null && strlen($imageUrl) > 0) ? $imageUrl : $businessSettings->business_logo,
+            'business_email' => (isset($validated['business_email'])) ? $validated['business_email'] : $businessSettings->business_email,
+            'kvk_number' => (isset($validated['kvk_number'])) ? $validated['kvk_number'] : $businessSettings->kvk_number,
+            'btw_number' => (isset($validated['btw_number'])) ? $validated['btw_number'] : $businessSettings->btw_number,
+            'business_address' => (isset($validated['business_address'])) ? $validated['business_address'] : $businessSettings->business_address,
+            'business_logo' => (isset($imageUrl) && $imageUrl != null && strlen($imageUrl) > 0) ? $imageUrl : $businessSettings->business_logo,
         ]);
 
         return redirect()->route('profile.edit')->with('status','profile-updated');

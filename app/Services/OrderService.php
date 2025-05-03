@@ -21,7 +21,7 @@ class OrderService implements OrderServiceInterface
      * @param int $paymentAmount
      * @return Order|bool
      */
-    public static function create(array $orderInfo, array $orderItems, int $paymentAmount, PaymentOption $paymentOption): Order|bool
+    public function create(array $orderInfo, array $orderItems, int $paymentAmount, PaymentOption $paymentOption): Order|bool
     {
         // Creates a new guest account if needed.
         if (!Auth::check()) {
@@ -37,8 +37,8 @@ class OrderService implements OrderServiceInterface
 
 
         // Creates a usable json array from the order items
-        $productsArray = self::createItemArray($orderItems);
-        $orderNumber = self::createOrderNumber();
+        $productsArray = $this->createItemArray($orderItems);
+        $orderNumber = $this->createOrderNumber();
 
 
         // creates the new order
@@ -56,6 +56,26 @@ class OrderService implements OrderServiceInterface
         return $order;
     }
 
+    /**
+     * Returns the amount of items that where in the order.
+     * @param string $orderItems
+     * @return int
+     */
+    public function itemAmount(string $orderItems): int
+    {
+        $items = json_decode($orderItems);
+        $count = 0;
+
+        foreach ($items as $item) {
+            $amount = (int) $item->amount;
+            for ($i = 0; $i <= $amount - 1; $i++) {
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
 
     /**
      * Creates a usable json array for the order.
@@ -63,7 +83,7 @@ class OrderService implements OrderServiceInterface
      * @throws \Exception
      * @return bool|string
      */
-    private static function createItemArray(array $orderItems): bool|string
+    private function createItemArray(array $orderItems): bool|string
     {
         $itemArray = array();
         $count = 0;
@@ -90,7 +110,7 @@ class OrderService implements OrderServiceInterface
      * Creates the order number for the new order.
      * @return string
      */
-    private static function createOrderNumber(): string
+    private function createOrderNumber(): string
     {
         $template = "";
         $intSize = 7;

@@ -18,6 +18,8 @@ class Shipping extends Model
      */
     protected $fillable = [
         'user_id',
+        'guest_user_id',
+        'order_id',
         'first_name',
         'last_name',
         'company',
