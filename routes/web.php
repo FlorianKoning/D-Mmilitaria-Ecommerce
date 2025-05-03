@@ -1,18 +1,18 @@
 <?php
 
-use App\Http\Controllers\DownloadController;
-use App\Http\Controllers\ExhibitionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AclMiddleware;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PublicController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\ExhibitionController;
 
 // All the auth routes
 Route::middleware(AclMiddleware::class)->group(function() {
@@ -63,6 +63,10 @@ Route::middleware(AclMiddleware::class)->group(function() {
     // Exhibition Calender Routes
     Route::get('/exhibition-calender', [ExhibitionController::class, 'index'])->name('exhibition.index');
 
+
+    // All the public shipping routes.
+    Route::get('/shipping/edit/{order}', [ShippingController::class, 'edit'])->name('shipping.edit');
+    Route::patch('/shipping/udpate/{order}/{shipping}', [ShippingController::class, 'update'])->name('shipping.update');
 
 
     // Loads the admin routes.

@@ -91,6 +91,7 @@ class PaymentController extends Controller
         }
 
 
+
         return redirect()->route('public.confirmation', [$this->order, $shipping]);
     }
 

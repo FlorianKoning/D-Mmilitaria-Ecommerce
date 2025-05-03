@@ -42,6 +42,10 @@ class PublicController extends Controller
    }
 
 
+   /**
+    * Displays the privacy policy page.
+    * @return View
+    */
    public function privacy(): View
    {
         return view('public.privacy', [
@@ -50,6 +54,12 @@ class PublicController extends Controller
    }
 
 
+   /**
+    * Displays the order confirmation page.
+    * @param \App\Models\Order $order
+    * @param \App\Models\Shipping $shipping
+    * @return View
+    */
    public function confirmation(Order $order, Shipping $shipping): View
    {
         return view('public.confirmation', [

@@ -106,7 +106,7 @@
                       </svg>
                       Klanten Informatie
                     </dt>
-                    <dd class="mt-2 flex flex-auto flex-col text-base/7 text-gray-600">
+                    <dd class="mt-2 flex flex-auto flex-col justify-between text-base/7 text-gray-600">
                         <ul class="pl-6 list-disc">
                             <li class="flex-auto text-gray-500"><span class="text-gray-900 font-semibold">Naam: </span><?php echo e($user->first_name); ?> <?php echo e($user->last_name); ?></li>
                             <li class="flex-auto text-gray-500"><span class="text-gray-900 font-semibold">Email: </span><?php echo e($user->email); ?>
@@ -137,7 +137,9 @@
                             <li class="flex-auto text-gray-500"><span class="text-gray-900 font-semibold">Stad: </span><?php echo e($shipping->city); ?>
 
                         </ul>
-                      
+                        <p class="mt-4">
+                            <a href="<?php echo e(route('shipping.edit', $order->id)); ?>" class="text-sm/6 font-semibold text-navBackground hover:text-navBackground/80 transition duration-300 ease-in-out">Bewerk Verzending Settings <span aria-hidden="true">→</span></a>
+                        </p>
                     </dd>
                 </div>
               </dl>

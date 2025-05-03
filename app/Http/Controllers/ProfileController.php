@@ -16,11 +16,15 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ShippingRequest;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Repositories\ShippingRepository;
 
 class ProfileController extends Controller
 {
     public static int $businessTableId = 1;
 
+    public function __construct(
+        protected ShippingRepository $shippingRepository,
+    ){parent::__construct();}
 
     /**
      * Display the user's profile form.
@@ -55,6 +59,7 @@ class ProfileController extends Controller
     {
         return view('profile.orders', [
             'orders' => Order::getUserOrder(Auth::user()->id),
+            'shippingRepository' => $this->shippingRepository,
             'productModel' => new Product()
         ]);
     }

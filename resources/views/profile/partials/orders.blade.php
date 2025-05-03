@@ -4,6 +4,10 @@
     <div class="mx-auto max-w-full space-y-8 sm:px-4 lg:px-0">
         @if (count($orders) > 0)
             @foreach ($orders as $order)
+                @php
+                    $shipping = $shippingRepository->findWithOrder($order);
+                @endphp
+
                 <div class="border-b border-t border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
                     <div class="flex items-center border-b border-gray-200 p-4 sm:grid sm:grid-cols-4 sm:gap-x-6 sm:p-6">
                         <dl class="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-3 lg:col-span-2">
@@ -35,6 +39,10 @@
                         <div class="hidden lg:col-span-2 lg:flex lg:items-center lg:justify-end lg:space-x-4">
                             <a href="{{ route('download.invoice', $order->id) }}" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                 <span>Download Factuur</span>
+                            </a>
+
+                            <a href="{{ route('shipping.edit', [$order->id, $shipping->id]) }}" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                <span>Verzending Details</span>
                             </a>
                         </div>
                     </div>
