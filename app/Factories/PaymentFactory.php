@@ -40,14 +40,6 @@ class PaymentFactory implements PaymentFactoryInterface
         $this->cart = (Auth::check()) ? CartService::get(Auth::user()->id) : session('cart');
     }
 
-
-
-    public function payment(): void
-    {
-
-    }
-
-
     /**
      * Creates a bank transfer payment
      * @return never
@@ -61,33 +53,5 @@ class PaymentFactory implements PaymentFactoryInterface
 
         // Returns the user to the home page.
         return redirect()->route('home.index')->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
-    }
-
-
-    /**
-     * Creates other payment using Molli.
-     * @return void
-     */
-    public function other(): RedirectResponse
-    {
-        //
-    }
-
-
-    /**
-     * Sends confirmation email to the user.
-     * @param \App\Models\Order $order
-     * @return bool
-     */
-    public static function paymentReceived(Order $order): bool
-    {
-        $email = (isset($order['user_id'])) ? User::find($order['user_id'])['email'] : GuestUser::find($order['guest_user_id'])['email'];
-
-        // Sends email to the user
-        Mail::to($email)->queue(
-            new PaymentReceived($order)
-        );
-
-        return true;
     }
 }

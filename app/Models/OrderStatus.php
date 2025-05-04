@@ -17,6 +17,8 @@ class OrderStatus extends Model
     public static int $expired = 5;
     public static int $failed = 6;
     public static int $paid = 7;
+    public static int $transit = 8;
+    public static int $shipped = 9;
 
 
     // Static array with all available roles
@@ -27,7 +29,9 @@ class OrderStatus extends Model
         'authorized',
         'expired',
         'failed',
-        'paid'
+        'paid',
+        'transit',
+        'shipped'
     ];
 
     /**

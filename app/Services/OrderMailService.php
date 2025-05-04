@@ -2,13 +2,15 @@
 
 namespace App\Services;
 
-use App\Mail\BankTransfer;
+use App\Interfaces\services\OrderMailServiceInterface;
 use App\Models\Order;
 use App\Mail\NewOrder;
+use App\Mail\BankTransfer;
 use App\Mail\NewOrderAdmin;
+use App\Mail\PaymentReceived;
 use Illuminate\Support\Facades\Mail;
 
-class OrderMailService
+class OrderMailService implements OrderMailServiceInterface
 {
     /**
      * Handles all all the emails for when a new order came in
@@ -62,6 +64,21 @@ class OrderMailService
     {
         Mail::to($email)->queue(
             new BankTransfer($order, $email, $name)
+        );
+    }
+
+
+    /**
+     * Sends a email to the user that the payment has been received.
+     * @param string $email
+     * @param \App\Models\Order $order
+     * @return void
+     */
+    public function paymentReceived(string $email, Order $order): void
+    {
+        // Sends email to the user
+        Mail::to($email)->queue(
+            new PaymentReceived($order)
         );
     }
 }

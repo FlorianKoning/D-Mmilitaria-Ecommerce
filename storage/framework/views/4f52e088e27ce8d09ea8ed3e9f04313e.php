@@ -25,6 +25,10 @@
                                 <dt class="font-medium text-gray-900">Bestel bedrag</dt>
                                 <dd class="mt-1 font-medium text-gray-900">€<?php echo e($order->payment_amount); ?></dd>
                             </div>
+                            <div>
+                                <dt class="font-medium text-gray-900">Bestelling Status</dt>
+                                <dd class="mt-1 font-medium text-gray-900">€<?php echo e($order->payment_amount); ?></dd>
+                            </div>
                         </dl>
 
                         <div class="relative flex justify-end lg:hidden">
@@ -41,9 +45,11 @@
                                 <span>Download Factuur</span>
                             </a>
 
-                            <a href="<?php echo e(route('shipping.edit', [$order->id, $shipping->id])); ?>" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                <span>Verzending Details</span>
-                            </a>
+                            <?php if(in_array($order->order_status_id, $shippingStatusArray)): ?>
+                                <a href="<?php echo e(route('shipping.edit', [$order->id, $shipping->id])); ?>" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                    <span>Verzending Details</span>
+                                </a>    
+                            <?php endif; ?>
                         </div>
                     </div>
 

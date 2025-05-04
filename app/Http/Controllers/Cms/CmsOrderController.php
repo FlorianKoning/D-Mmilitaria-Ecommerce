@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers\Cms;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Order;
-use App\Models\OrderStatus;
-use App\Models\PaymentOption;
 use App\Models\Product;
-use App\Services\PaymentService;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
+use App\Models\GuestUser;
+use App\Models\OrderStatus;
 use Illuminate\Http\Request;
+use App\Mail\PaymentReceived;
+use App\Models\PaymentOption;
+use App\Factories\PaymentFactory;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Factories\OrderStatusFactory;
+use Illuminate\Http\RedirectResponse;
 
 class CmsOrderController extends Controller
 {
+    public function __construct(
+        protected OrderStatusFactory $orderStatusFactory,
+    ){parent::__construct();}
+
+
     /**
      * Display a listing of the resource.
      */
@@ -75,10 +85,8 @@ class CmsOrderController extends Controller
             'order_status' => ['required', 'numeric']
         ]);
 
-        // Checks if order status option was said to paid
-        if ($request->order_status == OrderStatus::$paid) {
-            PaymentService::paymentReceived($order);
-        }
+        // Order status factory
+        $this->orderStatusFactory->make($request->order_status, $order);
 
         // Updates the order
         $order->update([
@@ -86,14 +94,6 @@ class CmsOrderController extends Controller
         ]);
 
         return redirect()->route('cms.orders.index')->with('orderUpdated', 'Uw order is succesvol geupdate.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 
 
@@ -117,5 +117,5 @@ class CmsOrderController extends Controller
         }
 
         return $itemsArray;
-    }
+    }    
 }

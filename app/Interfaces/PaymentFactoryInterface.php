@@ -8,5 +8,4 @@ use Illuminate\Http\RedirectResponse;
 interface PaymentFactoryInterface
 {
     public function backTransfer(): RedirectResponse;
-    public function other(): RedirectResponse;
 }

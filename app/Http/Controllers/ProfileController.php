@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BusinessRequest;
-use App\Models\BusinessSettings;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Province;
 use App\Models\Shipping;
-use App\Services\FileService;
 use Illuminate\View\View;
+use App\Models\OrderStatus;
 use Illuminate\Http\Request;
+use App\Services\FileService;
+use App\Models\BusinessSettings;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\BusinessRequest;
 use App\Http\Requests\ShippingRequest;
+use App\Repositories\ShippingRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Repositories\ShippingRepository;
 
 class ProfileController extends Controller
 {
@@ -57,10 +58,19 @@ class ProfileController extends Controller
      */
     public function orders(): View
     {
+        $shippingStatusArray = [
+            OrderStatus::$open,
+            OrderStatus::$pending,
+            OrderStatus::$authorized
+        ];
+
+        
+
         return view('profile.orders', [
             'orders' => Order::getUserOrder(Auth::user()->id),
             'shippingRepository' => $this->shippingRepository,
-            'productModel' => new Product()
+            'productModel' => new Product(),
+            'shippingStatusArray' => $shippingStatusArray
         ]);
     }
 
