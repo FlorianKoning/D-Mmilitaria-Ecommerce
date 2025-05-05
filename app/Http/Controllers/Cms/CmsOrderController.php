@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers\Cms;
 
-use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\GuestUser;
 use App\Models\OrderStatus;
 use Illuminate\Http\Request;
-use App\Mail\PaymentReceived;
 use App\Models\PaymentOption;
-use App\Factories\PaymentFactory;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
 use App\Factories\OrderStatusFactory;
 use Illuminate\Http\RedirectResponse;
 

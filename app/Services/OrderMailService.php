@@ -4,15 +4,22 @@ namespace App\Services;
 
 use App\Interfaces\services\OrderMailServiceInterface;
 use App\Mail\Canceled;
+use App\Mail\Transit;
 use App\Models\Order;
 use App\Mail\NewOrder;
 use App\Mail\BankTransfer;
 use App\Mail\NewOrderAdmin;
 use App\Mail\PaymentReceived;
+use App\Repositories\BusinessRepository;
 use Illuminate\Support\Facades\Mail;
 
 class OrderMailService implements OrderMailServiceInterface
 {
+    public function __construct(
+        protected BusinessRepository $businessRepository,
+    ){}
+
+
     /**
      * Handles all all the emails for when a new order came in
      * @param array $shipping
@@ -93,7 +100,22 @@ class OrderMailService implements OrderMailServiceInterface
     public function canceledOrder(string $email, string $name, Order $order): void
     {
         Mail::to($email)->queue(
-            new Canceled($order, $name)
+            new Canceled($order, $name, $this->businessRepository)
+        );
+    }
+
+
+    /**
+     * Sends email to the user that the order has been send.
+     * @param string $email
+     * @param string $name
+     * @param \App\Models\Order $order
+     * @return void
+     */
+    public function transit(string $email, string $name, Order $order): void
+    {
+        Mail::to($email)->queue(
+            new Transit($order, $name)
         );
     }
 }

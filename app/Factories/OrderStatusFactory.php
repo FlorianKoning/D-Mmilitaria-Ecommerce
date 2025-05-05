@@ -4,15 +4,19 @@ namespace App\Factories;
 
 use App\Interfaces\Factories\OrderStatusFactoryInterface;
 use App\Models\Order;
-use App\Services\CanceledOrderStatusService;
+use App\Repositories\GuestUserRepository;
+use App\Repositories\UserRepository;
+use App\Services\OrderStatusService;
 use App\Services\PaidOrderStatusService;
+use App\Services\TransitOrderStatusService;
 use Exception;
 
 class OrderStatusFactory implements OrderStatusFactoryInterface
 {
     public function __construct(
-        protected PaidOrderStatusService $paidOrderStatusService,
-        protected CanceledOrderStatusService $canceledOrderStatusService,
+        protected OrderStatusService $orderStatusService,
+        protected UserRepository $userRepository,
+        protected GuestUserRepository $guestUserRepository,
     ){}
 
     /**
@@ -22,12 +26,16 @@ class OrderStatusFactory implements OrderStatusFactoryInterface
      */
     public function make(string $orderStatus, Order $order): void
     {
+        $model = (isset($order['user_id'])) ? $this->userRepository->find($order['user_id']) : $this->guestUserRepository->find($order['guest_user_ud']);
+        $email = $model->email;
+        $name = "$model->first_name $model->last_name";
+
         switch ($orderStatus) {
             case '1':
                 //
                 break;
             case '2':
-                $this->canceledOrderStatusService->canceled($order);
+                $this->orderStatusService->canceled($order, $email, $name);
                 break;
             case '3':
                 //
@@ -42,10 +50,10 @@ class OrderStatusFactory implements OrderStatusFactoryInterface
                 //
                 break;
             case '7':
-                $this->paidOrderStatusService->paid($order);
+                $this->orderStatusService->paid($order, $email);
                 break;
             case '8':
-                //
+                $this->orderStatusService->transit($order, $email, $name);
                 break;
             case '9':
                 //

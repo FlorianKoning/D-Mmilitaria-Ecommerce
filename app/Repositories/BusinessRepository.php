@@ -23,4 +23,20 @@ class BusinessRepository
 
         return $business;
    }
+
+
+   /**
+    * Returns a string of the business email.
+    * @return void
+    */
+   public function email(): string
+   {
+        $email = BusinessSettings::find(ProfileController::$businessTableId)->business_email;
+
+        if (!$email) {
+          throw new Exception("There was no business email found in the database!");
+        }
+
+        return $email;
+   }
 }

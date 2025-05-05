@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 
-class Canceled extends Mailable
+class Transit extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,7 +20,6 @@ class Canceled extends Mailable
     public function __construct(
         public Order $order, 
         public string $name,
-        protected BusinessRepository $businessRepository,
     ){}
 
     /**
@@ -29,7 +28,7 @@ class Canceled extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Betaling mislukt – we houden je op de hoogte',
+            subject: 'Uw bestelling is onderweg!',
             from: env("APP_MAIL"),
         );
     }
@@ -40,11 +39,10 @@ class Canceled extends Mailable
     public function content(): Content
     {
         return new Content(
-            html: 'mail.emails.canceled',
+            html: 'mail.emails.transit',
             with: [
-                'orderNumber' => $this->order->order_number,
+                'orderNumber' => $this->order['order_number'],
                 'customerName' => $this->name,
-                'businessRepository' => $this->businessRepository
             ]
         );
     }

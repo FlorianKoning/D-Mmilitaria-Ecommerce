@@ -116,15 +116,18 @@
                   <div role="separator" style="line-height: 24px">&zwj;</div>
                   <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
                     Uw bestel nummer is:<br>
+                    <?php echo e($orderNumber); ?>
+
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Beste,
+                    Beste, <?php echo e($customerName); ?>
+
                     <br><br>
                     Je bestelling op <?php echo e(env('APP_NAME')); ?> is geannuleerd omdat de betaling niet succesvol is afgerond.
                     <br><br>
                     <span style="font-weight: 600">LET OP: </span>Als er toch een bedrag is afgeschreven, dan wordt dit automatisch teruggestort. Dit kan enkele werkdagen duren, afhankelijk van de betaalmethode en de bank.
                     <br><br>
-                    Heb je vragen of wil je de bestelling opnieuw proberen? Neem gerust contact met ons op via <span style="font-weight: 600">BUSINESS_EMAIL</span>.
+                    Heb je vragen of wil je de bestelling opnieuw proberen? Neem gerust contact met ons op via <span style="font-weight: 600"><?php echo e($businessRepository->email()); ?></span>.
                     <br>
                   </p>
                   <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">

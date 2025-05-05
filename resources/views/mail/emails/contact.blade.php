@@ -115,7 +115,8 @@
                   </a>
                   <div role="separator" style="line-height: 24px">&zwj;</div>
                   <h1 style="margin: 0 0 24px; font-size: 18px; font-weight: 600; color: #0f172a">
-                    Je hebt een nieuw bericht gekregen van een klant!
+                    Je hebt een nieuw bericht gekregen van een klant!<br>
+                    {{ $customerEmail }}
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
                     Bericht van de klant:
