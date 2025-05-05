@@ -8,6 +8,7 @@ use App\Models\BusinessSettings;
 use App\Models\Product;
 use App\Models\Shipping;
 use App\Repositories\GuestUserRepository;
+use App\Repositories\OrderStatusRepository;
 use App\Repositories\UserRepository;
 use App\Services\OrderService;
 use Illuminate\Contracts\View\View;
@@ -18,6 +19,7 @@ class PublicController extends Controller
         protected UserRepository $userRepository,
         protected GuestUserRepository $guestUserRepository,
         protected OrderService $orderService,
+        protected OrderStatusRepository $orderStatusRepository,
     ){parent::__construct();}
 
 
@@ -68,6 +70,8 @@ class PublicController extends Controller
             'productModel' => new Product(),
             'user' => (isset($order->user_id)) ? $this->userRepository->find($order->user_id) : $this->guestUserRepository->find($order->guest_user_id),
             'itemAmount' => $this->orderService->itemAmount($order->order_items),
+            'orderStatusColor' => Order::$orderColors,
+            'orderStatusRepository' => $this->orderStatusRepository,
         ]);
    }
 }

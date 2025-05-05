@@ -135,7 +135,7 @@ class PaymentController extends Controller
         Functions::itemHandle($this->cart);
 
         // Sends the user to a "thank you" page.
-        return redirect()->route('home.index')->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
+        return redirect()->route('public.confirmation')->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
     }
 
 
@@ -155,9 +155,6 @@ class PaymentController extends Controller
                 break;
             case 2:
                 return "redirect";
-            case 3:
-                $paymentFactory->other();
-                break;
             default:
                 throw new Exception('Invalid payment option given.');
         }

@@ -10,7 +10,7 @@
 
                 <div class="border-b border-t border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
                     <div class="flex items-center border-b border-gray-200 p-4 sm:grid sm:grid-cols-4 sm:gap-x-6 sm:p-6">
-                        <dl class="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-3 lg:col-span-2">
+                        <dl class="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-4 lg:col-span-2">
                             <div>
                                 <dt class="font-medium text-gray-900">Bestellings Nummer</dt>
                                 <dd class="mt-1 text-gray-500">{{ $order->order_number }}</dd>
@@ -27,7 +27,11 @@
                             </div>
                             <div>
                                 <dt class="font-medium text-gray-900">Bestelling Status</dt>
-                                <dd class="mt-1 font-medium text-gray-900">€{{ $order->payment_amount }}</dd>
+                                <dd class="mt-1 font-medium text-gray-900">
+                                    <button type="button" class="rounded {{ $orderStatusColor[$orderStatusRepository->find($order->order_status_id)['status']] }} px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                        {{ $orderStatusRepository->find($order->order_status_id)['status'] }}
+                                    </button>
+                                </dd>
                             </div>
                         </dl>
 
@@ -91,3 +95,6 @@
         @endif
     </div>
 </div>
+
+{{-- div to load in the orderStatus colors --}}
+<div class="bg-blue-600 bg-sky-500 bg-amber-500 bg-purple-500 bg-yellow-300 bg-red-600 bg-emerald-400"></div>

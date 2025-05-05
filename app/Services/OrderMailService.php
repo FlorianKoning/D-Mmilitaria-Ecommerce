@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Interfaces\services\OrderMailServiceInterface;
+use App\Mail\Canceled;
 use App\Models\Order;
 use App\Mail\NewOrder;
 use App\Mail\BankTransfer;
@@ -79,6 +80,20 @@ class OrderMailService implements OrderMailServiceInterface
         // Sends email to the user
         Mail::to($email)->queue(
             new PaymentReceived($order)
+        );
+    }
+
+
+    /**
+     * Sends email to the user that the order has been canceled.
+     * @param string $email
+     * @param \App\Models\Order $order
+     * @return void
+     */
+    public function canceledOrder(string $email, string $name, Order $order): void
+    {
+        Mail::to($email)->queue(
+            new Canceled($order, $name)
         );
     }
 }

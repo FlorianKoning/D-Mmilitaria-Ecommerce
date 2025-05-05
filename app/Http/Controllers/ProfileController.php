@@ -18,6 +18,8 @@ use App\Http\Requests\ShippingRequest;
 use App\Repositories\ShippingRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Repositories\OrderStatusRepository;
+use App\Services\OrderStatusService;
 
 class ProfileController extends Controller
 {
@@ -25,6 +27,8 @@ class ProfileController extends Controller
 
     public function __construct(
         protected ShippingRepository $shippingRepository,
+        protected OrderStatusService $orderStatusService,
+        protected OrderStatusRepository $orderStatusRepository,
     ){parent::__construct();}
 
     /**
@@ -64,13 +68,13 @@ class ProfileController extends Controller
             OrderStatus::$authorized
         ];
 
-        
-
-        return view('profile.orders', [
+        return view('profile.orders', [ 
             'orders' => Order::getUserOrder(Auth::user()->id),
             'shippingRepository' => $this->shippingRepository,
             'productModel' => new Product(),
-            'shippingStatusArray' => $shippingStatusArray
+            'shippingStatusArray' => $shippingStatusArray,
+            'orderStatusColor' => Order::$orderColors,
+            'orderStatusRepository' => $this->orderStatusRepository,
         ]);
     }
 

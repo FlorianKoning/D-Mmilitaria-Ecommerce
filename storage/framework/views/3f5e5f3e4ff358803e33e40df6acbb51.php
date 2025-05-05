@@ -24,9 +24,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" media="screen">
   <style>
-    .hover-bg-slate-800:hover {
-      background-color: #1e293b !important
-    }
     @media (max-width: 600px) {
       .sm-p-6 {
         padding: 24px !important
@@ -118,27 +115,26 @@
                   </a>
                   <div role="separator" style="line-height: 24px">&zwj;</div>
                   <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
-                    Welkom bij {{ env('APP_NAME') }}
+                    Uw bestel nummer is:<br>
                   </h1>
-                  <p style="margin: 0 0 24px; font-size: 16px; line-height: 24px; color: #475569">
-                    We zijn blij om u bij ons welkom te noemen.
+                  <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
+                    Beste,
+                    <br><br>
+                    Je bestelling op <?php echo e(env('APP_NAME')); ?> is geannuleerd omdat de betaling niet succesvol is afgerond.
+                    <br><br>
+                    <span style="font-weight: 600">LET OP: </span>Als er toch een bedrag is afgeschreven, dan wordt dit automatisch teruggestort. Dit kan enkele werkdagen duren, afhankelijk van de betaalmethode en de bank.
+                    <br><br>
+                    Heb je vragen of wil je de bestelling opnieuw proberen? Neem gerust contact met ons op via <span style="font-weight: 600">BUSINESS_EMAIL</span>.
+                    <br>
                   </p>
-                  <div>
-                    <a href="https://maizzle.com" style="display: inline-block; text-decoration: none; padding: 16px 24px; font-size: 16px; line-height: 1; border-radius: 4px; color: #fffffe; background-color: #4C5C41" class="hover-bg-slate-800">
-                      <!--[if mso]><i style="mso-font-width: 150%; mso-text-raise: 31px" hidden>&emsp;</i><![endif]-->
-                      <span style="mso-text-raise: 16px">Log hier in</span>
-                      <!--[if mso]><i hidden style="mso-font-width: 150%">&emsp;&#8203;</i><![endif]-->
-                    </a>
-                  </div>
-                  <div role="separator" style="line-height: 24px">&zwj;</div>
                   <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
                     Met vriendelijke groet,
                     <br>
-                    <span style="font-weight: 600">{{ env('APP_NAME') }}</span>
+                    <span style="font-weight: 600"><?php echo e(env('APP_NAME')); ?></span>
                   </p>
                   <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
-                  <p class="mso-break-all" style="margin: 0; font-size: 12px; line-height: 20px; color: #475569">
-                    Als u moeite heeft met inloggen op de website. Neem graag contact met ons development team op:
+                  <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
+                    Als u niks heeft besteld bij ons of iest fout is gegaan, neem graag contact met ons team op:
                     <a href="mailto:florian.koning2004@gmail.com?subject=Moeite met inloggen%20there&body=This%20is%20a%20predefined%20email%20body.">
                       Klick hier om de mail te sturen.
                     </a>
@@ -150,7 +146,7 @@
               <tr>
                 <td class="sm-px-6" style="padding: 24px 36px">
                   <p style="margin: 0; font-size: 12px; color: #64748b">
-                    &copy; 2025 {{ env('APP_NAME') }}. All rights reserved.
+                    &copy; 2025 <?php echo e(env('APP_NAME')); ?>. All rights reserved.
                   </p>
                 </td>
               </tr>
@@ -161,4 +157,4 @@
     </div>
   </div>
 </body>
-</html>
+</html><?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/mail/emails/canceled.blade.php ENDPATH**/ ?>

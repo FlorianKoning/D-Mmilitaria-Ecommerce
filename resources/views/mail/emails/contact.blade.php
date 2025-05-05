@@ -118,7 +118,7 @@
                     Je hebt een nieuw bericht gekregen van een klant!
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Bericht van de klant: {{ $customerEmail }}
+                    Bericht van de klant:
                     <br><br>
                     {{ $customerMessage }}
                     <br>

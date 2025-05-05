@@ -70,7 +70,7 @@ class CmsOrderController extends Controller
     {
         $orderStatuses = OrderStatus::all();
 
-        return view('cms.order.order-update-status', [
+        return view('cms.order.order-update-status', data: [
             'order' => $order,
             'orderStatuses' => $orderStatuses,
         ]);

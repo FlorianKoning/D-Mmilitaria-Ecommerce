@@ -165,5 +165,4 @@
     </div>
   </div>
 </body>
-</html>
-<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/mail/emails/bankTransfer.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/mail/emails/bankTransfer.blade.php ENDPATH**/ ?>
