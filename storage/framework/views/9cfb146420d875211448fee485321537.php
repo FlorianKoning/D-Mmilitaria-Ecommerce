@@ -199,7 +199,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('register')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('register'))]); ?>
-                                <?php echo e(__('Regristreer')); ?>
+                                <?php echo e(__('Registreer')); ?>
 
                              <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

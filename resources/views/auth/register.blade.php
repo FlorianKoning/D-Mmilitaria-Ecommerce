@@ -4,28 +4,28 @@
 
         <!-- Frist Name -->
         <div class="mt-4">
-            <x-input-label class="text-white" for="first_name" :value="__('Voor Naam')" />
+            <x-input-label class="text-white" for="first_name" :value="__('Voornaam')" />
             <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autocomplete="first_name" />
             <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
         </div>
 
         <!-- Last Name -->
         <div class="mt-4">
-            <x-input-label class="text-white" for="last_name" :value="__('Achter Naam')" />
+            <x-input-label class="text-white" for="last_name" :value="__('Achternaam')" />
             <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autocomplete="last_name" />
             <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
 
         <!-- name Address -->
         <div class="mt-4">
-            <x-input-label class="text-white" for="email" :value="__('Email')" />
+            <x-input-label class="text-white" for="email" :value="__('Emailadres')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label class="text-white" for="password" :value="__('Password')" />
+            <x-input-label class="text-white" for="password" :value="__('Wachtwoord')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
@@ -37,7 +37,7 @@
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label class="text-white" for="password_confirmation" :value="__('Confirm Password')" />
+            <x-input-label class="text-white" for="password_confirmation" :value="__('Wachtwoord herhalen')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
                             type="password"
@@ -48,11 +48,11 @@
 
         <div class="flex items-center justify-end mt-4">
             <a  class="underline text-sm text-white hover:text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Heeft u al een account?') }}
+                {{ __('Al een account?') }}
             </a>
 
             <x-primary-button class="ms-4">
-                {{ __('Register') }}
+                {{ __('Registreren') }}
             </x-primary-button>
         </div>
     </form>
