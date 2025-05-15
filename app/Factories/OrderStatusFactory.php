@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Factories;
 
@@ -7,8 +7,6 @@ use App\Models\Order;
 use App\Repositories\GuestUserRepository;
 use App\Repositories\UserRepository;
 use App\Services\OrderStatusService;
-use App\Services\PaidOrderStatusService;
-use App\Services\TransitOrderStatusService;
 use Exception;
 
 class OrderStatusFactory implements OrderStatusFactoryInterface
@@ -47,7 +45,7 @@ class OrderStatusFactory implements OrderStatusFactoryInterface
                 //
                 break;
             case '6':
-                //
+                $this->orderStatusService->canceled($order, $email, $name);
                 break;
             case '7':
                 $this->orderStatusService->paid($order, $email);

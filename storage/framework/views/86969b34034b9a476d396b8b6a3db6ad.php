@@ -1,4 +1,4 @@
-<form method="GET" action="<?php echo e(route('exhibition.index')); ?>">
+<form method="GET" action="#">
     <?php echo csrf_field(); ?>
 
     <div class="px-4 sm:px-6 lg:px-8">
@@ -45,7 +45,7 @@
                     </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
                     <?php $__currentLoopData = $exhibitions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $exhibition): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <tr onclick="window.location='<?php echo e(route('payment.fairPickUp', [$exhibition->id, $order->id])); ?>'" class="even:bg-gray-50 hover:bg-sky-400 cursor-pointer transition duration-300 ease-in-out">
+                        <tr onclick="window.location='<?php echo e(route('fairPickUp.choicePayment', [$exhibition->id, $order->id])); ?>'" class="even:bg-gray-50 hover:bg-sky-400 cursor-pointer transition duration-300 ease-in-out">
                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo e($exhibition->exhibition_name); ?></td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo e($exhibition->exhibition_location); ?></td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo e($exhibition->exhibition_date); ?></td>

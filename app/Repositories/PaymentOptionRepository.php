@@ -4,10 +4,36 @@ namespace App\Repositories;
 
 use Exception;
 use App\Models\PaymentOption;
+use Illuminate\Database\Eloquent\Collection;
+use App\Interfaces\Repositories\PaymentOptionsRepositoryInterface;
 
-class PaymentOptionRepository
+class PaymentOptionRepository implements PaymentOptionsRepositoryInterface
 {
-    public function find(array $paymentOption)
+    /**
+     * Returns all payment options from the database.
+     * @param bool $isNotEmpty
+     * @throws \Exception
+     * @return Collection<int, PaymentOption>
+     */
+    public function all(bool $isNotEmpty = true): Collection
+    {
+        $paymentOptions = PaymentOption::all();
+
+        if (count($paymentOptions) == 0 && $isNotEmpty) {
+            throw new Exception("There where no payment options found in the database!");
+        }
+
+        return $paymentOptions;
+    }
+
+
+    /**
+     * Looks through the database to find the right payment option.
+     * @param array $paymentOption
+     * @throws \Exception
+     * @return \Illuminate\Database\Eloquent\Builder<PaymentOption>|\Illuminate\Database\Eloquent\Collection<int, PaymentOption>
+     */
+    public function find(array $paymentOption): PaymentOption
     {
         // Checks if "nothing" was selected, use default payment option.
         if ($paymentOption == null) {

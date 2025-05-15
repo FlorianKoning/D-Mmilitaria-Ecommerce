@@ -1,4 +1,4 @@
-<form method="GET" action="{{ route('exhibition.index') }}">
+<form method="GET" action="#">
     @csrf
 
     <div class="px-4 sm:px-6 lg:px-8">
@@ -45,7 +45,7 @@
                     </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
                     @foreach ($exhibitions as $exhibition)
-                        <tr onclick="window.location='{{ route('payment.fairPickUp', [$exhibition->id, $order->id]) }}'" class="even:bg-gray-50 hover:bg-sky-400 cursor-pointer transition duration-300 ease-in-out">
+                        <tr onclick="window.location='{{ route('fairPickUp.choicePayment', [$exhibition->id, $order->id]) }}'" class="even:bg-gray-50 hover:bg-sky-400 cursor-pointer transition duration-300 ease-in-out">
                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $exhibition->exhibition_name }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exhibition->exhibition_location }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exhibition->exhibition_date }}</td>

@@ -74,12 +74,12 @@ class Functions
         // Checks if the user is logged in.
         if (!Auth::check()) {
             foreach ($cart as $key => $item) {
-                $product = Product::find($item['id']);
+                $product = Product::find($item->id);
                 $product->update([
-                    'inventory'  => ($product['inventory'] - $item['amount'])
+                    'inventory'  => ($product['inventory'] - $item->amount)
                 ]);
 
-                unset($cart[$key]);
+                unset($cart->{$key});
             }
 
             Session::put('cart', $cart);

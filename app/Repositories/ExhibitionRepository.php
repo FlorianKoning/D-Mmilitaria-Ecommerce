@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Factories\OrderStatusFactory;
 use App\Utils\ReservedHelper;
 use Exception;
 use App\Models\Order;
@@ -13,6 +14,7 @@ class ExhibitionRepository
 {
     public function __construct(
         protected ReservedHelper $reservedHelper,
+        protected OrderStatusFactory $orderStatusFactory,
     ){}
 
    /**
@@ -31,6 +33,7 @@ class ExhibitionRepository
             ]);
 
             $this->reservedHelper->unReserveProduct($order);
+            $this->orderStatusFactory->make(OrderStatus::$failed, $order);
 
             throw new Exception('There are no exhibitions at the moment, please select a different payment method.');
         }
