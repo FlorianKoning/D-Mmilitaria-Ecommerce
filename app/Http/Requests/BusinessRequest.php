@@ -22,11 +22,11 @@ class BusinessRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'business_email' => 'required|email',
-            'kvk_number' => 'required',
-            'btw_number' => 'required',
-            'business_address' => 'required',
-            'business_logo' => 'required|file'
+            'business_email' => 'nullable|email',
+            'kvk_number' => 'nullable',
+            'btw_number' => 'nullable',
+            'business_address' => 'nullable',
+            'business_logo' => 'nullable|file'
         ];
     }
 }

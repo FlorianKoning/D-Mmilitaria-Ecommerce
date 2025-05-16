@@ -17,4 +17,9 @@
     @if (session()->has('bankTransfer'))
         <x-session-succes :sessionText="session('bankTransfer')" :title="__('Nieuwe Order')" />
     @endif
+
+    {{-- error messages --}}
+    @if (session()->has('error'))
+        <x-session-succes :sessionText="session('error')" :title="__('Er is iets fout gegaan')" />
+    @endif
 </x-app-layout>

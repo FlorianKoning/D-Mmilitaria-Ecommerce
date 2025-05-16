@@ -48,7 +48,10 @@
                             <div class="ml-6 flex-1 text-sm">
                                 <div class="font-medium text-gray-900 sm:flex sm:justify-between">
                                     <h5 class="font-semibold">{{ $item['product']['name'] }}</h5>
-                                    <p class="mt-2 sm:mt-0">€{{ $item['product']['price'] }}</p>
+                                    <div class="flex flex-col">
+                                        <p class="mt-2 sm:mt-0">€{{ $item['product']['price'] }}</p>
+                                        <p class="mt-2 sm:mt-0">Hoeveelheid: {{ $item['amount'] }}</p>
+                                    </div>
                                 </div>
                                 <p class="hidden text-gray-500 sm:mt-2 sm:block">{{ $item['product']['big_desc'] }}</p>
                             </div>

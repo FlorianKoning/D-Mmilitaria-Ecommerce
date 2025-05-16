@@ -2,21 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\NewOrderAdmin;
 use Exception;
-use App\Mail\NewOrder;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
+use App\Utils\ReservedHelper;
 use App\Services\OrderService;
 use Illuminate\Validation\Rule;
 use App\Services\InvoiceService;
-use App\Services\PaymentService;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
+use App\Factories\PaymentFactory;
+use App\Services\OrderMailService;
 use Illuminate\Http\RedirectResponse;
+use App\Repositories\ProviceRepository;
+use App\Repositories\BusinessRepository;
+use App\Repositories\ExhibitionRepository;
+use App\Repositories\PaymentOptionRepository;
+use App\Services\ShippingService;
 
 class PaymentController extends Controller
 {
+    protected PaymentOption $paymentOption;
+    protected Order $order;
+
+
+    public function __construct(
+        protected OrderMailService $orderMailService,
+        protected ProviceRepository $proviceRepository,
+        protected PaymentOptionRepository $paymentOptionRepository,
+        protected ExhibitionRepository $exhibitionRepository,
+        protected BusinessRepository $businessRepository,
+        protected ReservedHelper $ReservedHelper,
+        protected OrderService $orderService,
+        protected ShippingService $shippingService,
+    ){parent::__construct();}
+
+
     /**
      * Handles the payment option, items and payment service.
      * @param \Illuminate\Http\Request $request
@@ -24,8 +44,11 @@ class PaymentController extends Controller
      */
     public function index(Request $request): RedirectResponse
     {
-        // Validates Shipping information
-        $provinceIds = $this->getProvince();
+        // Gets all the province id's
+        $provinceIds = $this->proviceRepository->get();
+
+
+        // Validates the request data.
         $request->validate([
             'shipping.email-address' => 'required|email|string|max:191',
             'shipping.phone' => 'required|min:10|',
@@ -40,69 +63,69 @@ class PaymentController extends Controller
         ]);
 
 
-        // Checks what payment options has been selected
-        $paymentOption = $this->getPaymentOption($request->paymentMethod);
+        // Handles the important variables
+        $this->variableHandler($request->paymentMethod, $request->shipping, $request->items, $request->paymentAmount);
 
 
-        // Creates a new order with the payment id, items array and the shipping array.
-        $order = OrderService::create($request->shipping, $request->items, $request->paymentAmount, $paymentOption);
+        // Creates a new shipping instance
+        $shipping = $this->shippingService->create($request->shipping, $this->order);
 
 
         // Creates the invoice for the new order and saves the url to the order.
-        $invocieService = new InvoiceService($request->items, $request->shipping, $request->paymentAmount / 10, $order);
-        $invocieService->createInvoice();
+        $invoiceService = new InvoiceService($request->items, $request->shipping, $request->paymentAmount, $this->order);
+        $invoiceService->createInvoice();
 
 
         // Sends email That the order has been made to the customer.
-        Mail::to($request->shipping['email-address'])->queue(
-            new NewOrder($order, $request->shipping['first-name'])
-        );
-
-        // Sends the email to the admin that a new order has been made.
-        Mail::to(env('ADMIN_EMAIL'))->queue(
-            new NewOrderAdmin($order, $request->shipping['first-name'])
-        );
+        $this->orderMailService->newOrderHandler($request->shipping, $this->order);
 
 
-        // Activates the payment
-        $paymentService = new PaymentService($order, $paymentOption, $request->shipping['first-name']." ".$request->shipping['last-name']);
-        $paymentService->payment();
-
-
-        return redirect()->route('home.index');
-    }
-
-    private function getProvince(): array
-    {
-        $returnArray = array();
-        $provinces = DB::table('provinces')->select('id')->get();
-
-        foreach ($provinces as $province) {
-            $returnArray[] = $province->id;
+        // Handles what payment method has to be used.
+        if($this->paymentHandler($request->shipping) == "redirect") {
+            return redirect()->route('payment.exhibition', $this->order);
         }
 
-        return $returnArray;
+
+
+        return redirect()->route('public.confirmation', [$this->order, $shipping]);
     }
 
 
-    private function getPaymentOption(?array $paymentMethods): PaymentOption
+    /**
+     * This function is used as a controller.
+     * Checks what payment function has to be called based on the payment option
+     * @return void
+     */
+    private function paymentHandler(array $shipping)
     {
-        // Checks if "nothing" was selected, use default payment option.
-        if ($paymentMethods == null) {
-            return PaymentOption::find(PaymentOption::$other);
+        $paymentFactory = new PaymentFactory($this->order, $this->paymentOption, $shipping['first-name']." ".$shipping['last-name']);
+
+        // Checks what function has to be called based on the payment option.
+        switch ($this->paymentOption['id']) {
+            case 1:
+                $paymentFactory->backTransfer();
+                break;
+            case 2:
+                return "redirect";
+            default:
+                throw new Exception('Invalid payment option given.');
         }
+    }
 
 
-        foreach ($paymentMethods as $key => $checked) {
-            if ($checked === "checked") {
-                if (PaymentOption::find($key) == null) {
-                    throw new Exception('The given payment method does not exist.');
-                }
+    /**
+     * Handles all the variables and new order
+     * @return void
+     */
+    private function variableHandler(array $paymentMethod, array $shipping, array $items, string $paymentAmount): void
+    {
+        // Checks what payment options has been selected
+        $this->paymentOption = $this->paymentOptionRepository->find($paymentMethod);
 
-                return PaymentOption::find($key);
-            }
-        }
+         // Creates a new order with the payment id, items array and the shipping array.
+        $this->order = $this->orderService->create($shipping, $items, $paymentAmount, $this->paymentOption);
 
-        throw new Exception('Something went wrong. No payment option selected or not found');
+        // Sets the items from the item object in the reserved database table.
+        $this->ReservedHelper->reserveProduct($this->order);
     }
 }

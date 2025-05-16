@@ -4,9 +4,13 @@
     <div class="mx-auto max-w-full space-y-8 sm:px-4 lg:px-0">
         <?php if(count($orders) > 0): ?>
             <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php
+                    $shipping = $shippingRepository->findWithOrder($order);
+                ?>
+
                 <div class="border-b border-t border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
                     <div class="flex items-center border-b border-gray-200 p-4 sm:grid sm:grid-cols-4 sm:gap-x-6 sm:p-6">
-                        <dl class="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-3 lg:col-span-2">
+                        <dl class="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-4 lg:col-span-2">
                             <div>
                                 <dt class="font-medium text-gray-900">Bestellings Nummer</dt>
                                 <dd class="mt-1 text-gray-500"><?php echo e($order->order_number); ?></dd>
@@ -20,6 +24,15 @@
                             <div>
                                 <dt class="font-medium text-gray-900">Bestel bedrag</dt>
                                 <dd class="mt-1 font-medium text-gray-900">€<?php echo e($order->payment_amount); ?></dd>
+                            </div>
+                            <div>
+                                <dt class="font-medium text-gray-900">Bestelling Status</dt>
+                                <dd class="mt-1 font-medium text-gray-900">
+                                    <button type="button" class="rounded <?php echo e($orderStatusColor[$orderStatusRepository->find($order->order_status_id)['status']]); ?> px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                        <?php echo e($orderStatusRepository->find($order->order_status_id)['status']); ?>
+
+                                    </button>
+                                </dd>
                             </div>
                         </dl>
 
@@ -36,6 +49,12 @@
                             <a href="<?php echo e(route('download.invoice', $order->id)); ?>" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                 <span>Download Factuur</span>
                             </a>
+
+                            <?php if(in_array($order->order_status_id, $shippingStatusArray)): ?>
+                                <a href="<?php echo e(route('shipping.edit', [$order->id, $shipping->id])); ?>" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                    <span>Verzending Details</span>
+                                </a>    
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -77,4 +96,7 @@
         <?php endif; ?>
     </div>
 </div>
+
+
+<div class="bg-blue-600 bg-sky-500 bg-amber-500 bg-purple-500 bg-yellow-300 bg-red-600 bg-emerald-400"></div>
 <?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/profile/partials/orders.blade.php ENDPATH**/ ?>

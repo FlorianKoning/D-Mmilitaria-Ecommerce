@@ -46,6 +46,9 @@ return [
             "user" => []
         ],
         "global" => [
+            "FairPickUpController" => ["*"],
+            "ShippingController" => ["*"],
+            "PaymentsExhibitionController" => ["*"],
             "ExhibitionController" => ["*"],
             "PublicController" => ["*"],
             "ContactController" => ["*"],

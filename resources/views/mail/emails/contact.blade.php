@@ -115,13 +115,15 @@
                   </a>
                   <div role="separator" style="line-height: 24px">&zwj;</div>
                   <h1 style="margin: 0 0 24px; font-size: 18px; font-weight: 600; color: #0f172a">
-                    Je hebt een nieuw bericht gekregen van een klant!
+                    Je hebt een nieuw bericht gekregen van een klant!<br>
+                    {{ $customerEmail }}
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Bericht van de klant: {{ $customerEmail }}
+                    Bericht van de klant:
                     <br><br>
                     {{ $customerMessage }}
                     <br>
+                    Reageer hier op de klant: <a class="text-sky-600" href="https://mail.google.com/mail/?view=cm&fs=1&to={{ $customerEmail }}&su={{ env('APP_NAME') }} | Reactie opcontact bericht&body=">LINK</a>
                   </p>
                   <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
                   <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">

@@ -2,25 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BusinessRequest;
-use App\Models\BusinessSettings;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Province;
 use App\Models\Shipping;
-use App\Services\FileService;
 use Illuminate\View\View;
+use App\Models\OrderStatus;
 use Illuminate\Http\Request;
+use App\Services\FileService;
+use App\Models\BusinessSettings;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\BusinessRequest;
 use App\Http\Requests\ShippingRequest;
+use App\Repositories\ShippingRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Repositories\OrderStatusRepository;
+use App\Services\OrderStatusService;
 
 class ProfileController extends Controller
 {
     public static int $businessTableId = 1;
 
+    public function __construct(
+        protected ShippingRepository $shippingRepository,
+        protected OrderStatusService $orderStatusService,
+        protected OrderStatusRepository $orderStatusRepository,
+    ){parent::__construct();}
 
     /**
      * Display the user's profile form.
@@ -53,9 +62,19 @@ class ProfileController extends Controller
      */
     public function orders(): View
     {
-        return view('profile.orders', [
+        $shippingStatusArray = [
+            OrderStatus::$open,
+            OrderStatus::$pending,
+            OrderStatus::$authorized
+        ];
+
+        return view('profile.orders', [ 
             'orders' => Order::getUserOrder(Auth::user()->id),
-            'productModel' => new Product()
+            'shippingRepository' => $this->shippingRepository,
+            'productModel' => new Product(),
+            'shippingStatusArray' => $shippingStatusArray,
+            'orderStatusColor' => Order::$orderColors,
+            'orderStatusRepository' => $this->orderStatusRepository,
         ]);
     }
 
@@ -126,14 +145,16 @@ class ProfileController extends Controller
         $businessSettings = BusinessSettings::find(self::$businessTableId);
         $validated = $request->validated();
 
-        $imageUrl = FileService::imageUpload($validated['business_logo'], 'business_logo');
+        if (isset($validated['business_logo'])) {
+            $imageUrl = FileService::imageUpload($validated['business_logo'], 'business_logo');
+        }
 
         $businessSettings->update([
-            'business_email' => $validated['business_email'],
-            'kvk_number' => $validated['kvk_number'],
-            'btw_number' => $validated['btw_number'],
-            'business_address' => $validated['business_address'],
-            'business_logo' => ($imageUrl != null && strlen($imageUrl) > 0) ? $imageUrl : $businessSettings->business_logo,
+            'business_email' => (isset($validated['business_email'])) ? $validated['business_email'] : $businessSettings->business_email,
+            'kvk_number' => (isset($validated['kvk_number'])) ? $validated['kvk_number'] : $businessSettings->kvk_number,
+            'btw_number' => (isset($validated['btw_number'])) ? $validated['btw_number'] : $businessSettings->btw_number,
+            'business_address' => (isset($validated['business_address'])) ? $validated['business_address'] : $businessSettings->business_address,
+            'business_logo' => (isset($imageUrl) && $imageUrl != null && strlen($imageUrl) > 0) ? $imageUrl : $businessSettings->business_logo,
         ]);
 
         return redirect()->route('profile.edit')->with('status','profile-updated');

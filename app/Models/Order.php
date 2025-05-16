@@ -31,7 +31,9 @@ class Order extends Model
         'authorized' => 'bg-purple-500',
         'expired' => 'bg-yellow-300',
         'failed' => 'bg-red-600',
-        'paid' => 'bg-emerald-400'
+        'paid' => 'bg-emerald-400',
+        'transit' => 'bg-teal-400',
+        'shipped' => 'bg-green-400'
     ];
 
 

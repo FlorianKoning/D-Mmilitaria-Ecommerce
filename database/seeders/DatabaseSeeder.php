@@ -181,12 +181,12 @@ class DatabaseSeeder extends Seeder
             'extra_service_costs' => false
         ]);
 
-        PaymentOption::factory()->create([
-            'payment_name' => 'other',
-            'shipping' => 'one_week',
-            'shipping_cost' => 5.00,
-            'extra_service_costs' => true
-        ]);
+        // PaymentOption::factory()->create([
+        //     'payment_name' => 'other',
+        //     'shipping' => 'one_week',
+        //     'shipping_cost' => 5.00,
+        //     'extra_service_costs' => true
+        // ]);
     }
 
 

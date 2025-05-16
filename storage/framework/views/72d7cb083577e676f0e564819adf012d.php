@@ -92,11 +92,13 @@
 
 
             <div class="mt-10">
-                <?php if($product->inventory != 0): ?>
+                <?php if($product->inventory > 0): ?>
                     <form method="POST" action="<?php echo e(route('cart.store', $product->id)); ?>" class="mt-6">
                         <?php echo csrf_field(); ?>
                         <button type="submit" class="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-navBackground px-8 py-3 text-base font-medium text-white hover:bg-navBackground/80 focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">Voeg toe</button>
                     </form>
+                <?php else: ?>
+                    <button type="button" class="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-navBackground px-8 py-3 text-base font-medium text-white sm:w-full cursor-not-allowed">Product Uitverkocht</button>
                 <?php endif; ?>
 
                 <button type="button" class="hidden ml-4 flex items-center justify-center rounded-md px-3 py-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500">

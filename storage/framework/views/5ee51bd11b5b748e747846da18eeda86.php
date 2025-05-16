@@ -9,7 +9,7 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     
-    <div class="w-full h-svh broder border-t-2 border-black/80 flex flex-col content-start">
+    <div class="w-full broder border-t-2 border-black/80 flex flex-col content-start">
         <div class="py-12">
             <?php echo $__env->make('products.partials.products-show', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
         </div>

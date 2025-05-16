@@ -2,11 +2,14 @@
 
 namespace App\Helper;
 
-use App\Models\LatestUpdate;
-use App\Models\Product;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
 use stdClass;
+use App\Models\Cart;
+use App\Models\Product;
+use App\Models\LatestUpdate;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\Collection;
 
 class Functions
 {
@@ -63,5 +66,39 @@ class Functions
         }
 
         return false;
+    }
+
+
+    public static function itemHandle(array|object $cart): bool
+    {
+        // Checks if the user is logged in.
+        if (!Auth::check()) {
+            foreach ($cart as $key => $item) {
+                $product = Product::find($item->id);
+                $product->update([
+                    'inventory'  => ($product['inventory'] - $item->amount)
+                ]);
+
+                unset($cart->{$key});
+            }
+
+            Session::put('cart', $cart);
+
+            return true;
+        }
+
+        foreach ($cart as $key => $item) {
+            // Deletes the products from the cart
+            $cartItem = Cart::where('product_id', $item->product_id)->where('user_id', $item->user_id)->first();
+            $cartItem->delete();
+
+            // Removes the inventory from the product based on the order.
+            $product = Product::find($item->product_id);
+            $product->update([
+                'inventory' => $product->inventory - $item->amount
+            ]);
+        }
+
+        return true;
     }
 }

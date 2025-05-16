@@ -37,8 +37,8 @@
 <?php unset($__componentOriginaleff8cb9c4dfcfd2b45d01d7e4f8dbcf2); ?>
 <?php endif; ?>
 
-    <div class="py-12 h-screen">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+    <div class="py-12">
+        <div class="max-w-full mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-full">
                     <?php echo $__env->make('profile.partials.orders', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>

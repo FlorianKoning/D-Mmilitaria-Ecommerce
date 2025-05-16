@@ -7,7 +7,6 @@ use App\Http\Requests\CmsExhibitionRequest;
 use App\Models\Exhibition;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class CmsExhibitionController extends Controller
 {

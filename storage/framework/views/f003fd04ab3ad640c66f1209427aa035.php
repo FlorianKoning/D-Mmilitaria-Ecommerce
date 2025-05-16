@@ -151,4 +151,4 @@
 <?php $component = $__componentOriginal6a4f9248e22234a0b486211ad8b1b3c5; ?>
 <?php unset($__componentOriginal6a4f9248e22234a0b486211ad8b1b3c5); ?>
 <?php endif; ?>
-<input class="bg-blue-600 bg-sky-500 bg-amber-500 bg-purple-500 bg-yellow-300 bg-red-600 bg-emerald-400" type="hidden"><?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/cms/order/partials/order-index.blade.php ENDPATH**/ ?>
+<input class="bg-blue-600 bg-sky-500 bg-amber-500 bg-purple-500 bg-yellow-300 bg-red-600 bg-emerald-400 bg-teal-400 bg-green-400" type="hidden"><?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/cms/order/partials/order-index.blade.php ENDPATH**/ ?>

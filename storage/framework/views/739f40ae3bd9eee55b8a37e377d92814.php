@@ -115,7 +115,8 @@
                   </a>
                   <div role="separator" style="line-height: 24px">&zwj;</div>
                   <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
-                    Bank overschrijving | Bestel nummer | <?php echo e($orderNumber); ?>
+                    Bank overschrijving | Bestel nummer |<br>
+                    <?php echo e($orderNumber); ?>
 
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
@@ -133,7 +134,7 @@
                     In de bijlage vindt u tevens de factuur van uw bestelling.
                   </p>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Bank rekening nummer: <span style="font-weight: 500"><?php echo e(env('BANKTRANSFER_NUMBER')); ?></span>
+                    Bank rekening nummer: <span style="font-weight: 500"></span>
                   </p>
                   <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
                     Met vriendelijke groet,

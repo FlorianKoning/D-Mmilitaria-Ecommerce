@@ -74,4 +74,4 @@
 
 {{-- warning model --}}
 <x-warning-modal :catagory="__('catagory')" />
-<input class="bg-blue-600 bg-sky-500 bg-amber-500 bg-purple-500 bg-yellow-300 bg-red-600 bg-emerald-400" type="hidden">
+<input class="bg-blue-600 bg-sky-500 bg-amber-500 bg-purple-500 bg-yellow-300 bg-red-600 bg-emerald-400 bg-teal-400 bg-green-400" type="hidden">

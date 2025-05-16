@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('shippings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('guest_user_id')->nullable();
+            $table->foreign('guest_user_id')->references('id')->on('guest_user');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('company')->nullable();

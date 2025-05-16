@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\DownloadController;
-use App\Http\Controllers\ExhibitionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AclMiddleware;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PublicController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\ExhibitionController;
 
 // All the auth routes
 Route::middleware(AclMiddleware::class)->group(function() {
-    // guest/public routes
+    // Home Route
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 
@@ -23,6 +24,7 @@ Route::middleware(AclMiddleware::class)->group(function() {
     Route::get('/about-us', [PublicController::class,'aboutUs'])->name('public.index');
     Route::get('/terms-of-services', [PublicController::class,'termsOfService'])->name('public.termsOfService');
     Route::get('/privacy', [PublicController::class,'privacy'])->name('public.privacy');
+    Route::get('/order/confirmation/{order}/{shipping}', [PublicController::class, 'confirmation'])->name('public.confirmation');
 
 
     // Contact Routes
@@ -60,6 +62,11 @@ Route::middleware(AclMiddleware::class)->group(function() {
 
     // Exhibition Calender Routes
     Route::get('/exhibition-calender', [ExhibitionController::class, 'index'])->name('exhibition.index');
+
+
+    // All the public shipping routes.
+    Route::get('/shipping/edit/{order}', [ShippingController::class, 'edit'])->name('shipping.edit');
+    Route::patch('/shipping/udpate/{order}/{shipping}', [ShippingController::class, 'update'])->name('shipping.update');
 
 
     // Loads the admin routes.
