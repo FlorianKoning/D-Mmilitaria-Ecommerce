@@ -3,11 +3,14 @@
 namespace App\Services;
 
 use App\Helper\Functions;
+use App\Models\BusinessSettings;
 use App\Models\InvoiceSettings;
 use App\Models\Order;
 use App\Models\PaymentOption;
 use Exception;
 use App\Models\Product;
+use App\Repositories\BusinessRepository;
+use Illuminate\Database\Eloquent\Builder;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
@@ -20,15 +23,23 @@ class InvoiceService
     protected int $paymentAmount;
     protected Order $order;
     protected Invoice $invoice;
-    protected $invoiceSettings;
-    
-    public function __construct(array $orderItems, array $shippingInfo, int $paymentAmount, Order $order)
+    protected InvoiceSettings $invoiceSettings;
+    protected BusinessRepository $businessRepository;
+    protected BusinessSettings $businessSettings;
+
+    public function __construct(
+        array $orderItems,
+        array $shippingInfo,
+        int $paymentAmount,
+        Order $order)
     {
         $this->orderItems = $orderItems;
         $this->shippingInfo = $shippingInfo;
         $this->paymentAmount = $paymentAmount;
         $this->order = $order;
         $this->invoiceSettings = InvoiceSettings::find(1);
+        $this->businessRepository = new BusinessRepository();
+        $this->businessSettings = $this->businessRepository->all();
     }
 
 
@@ -55,7 +66,7 @@ class InvoiceService
         if (!$this->order->payment_option_id == PaymentOption::$fairPickup) {
             $this->invoice->shipping(5.00);
         }
-        
+
 
         // Saves the invoice and return the url of the storage path
         $invoiceUrl = $this->invoice->save('invoice')->filename($fileName)->url();
@@ -66,7 +77,7 @@ class InvoiceService
             'invoice_location' => $invoiceUrl
         ]);
 
-        
+
         return true;
     }
 
@@ -106,7 +117,7 @@ class InvoiceService
     {
         $customer = new Buyer([
             'name' => $this->shippingInfo['first-name'].' '.$this->shippingInfo['last-name'],
-            'address' => $this->shippingInfo['address'].' '.$this->shippingInfo['city'],
+            'address' => $this->shippingInfo['business_address'].' '.$this->shippingInfo['city'],
             'custom_fields' => [
                 'email' => $this->shippingInfo['email-address']
             ]
@@ -125,10 +136,10 @@ class InvoiceService
         $client = new Party([
             'name' => $this->invoiceSettings['bankaccount_name'].', '.$this->invoiceSettings['company_name'],
             'phone' => $this->invoiceSettings['phone_number'],
-            'address' => $this->invoiceSettings['address'],
+            'address' => $this->businessSettings['address'],
             'custom_fields' => [
-                'bankaccount number' => $this->invoiceSettings['bankaccount_number'],
-                'KVK number' => $this->invoiceSettings['KVK_number']
+                'bankaccount number' => $this->businessSettings['bankaccount_number'],
+                'KVK number' => $this->businessSettings['kvk_number']
             ]
         ]);
 

@@ -9,15 +9,6 @@
 
     <form method="POST" action="{{ route('cms.invoice.settings.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data" >
         @csrf
-
-        {{-- Bank Account Number --}}
-        <div>
-            <x-input-label for="bankaccount_number" :value="__('Bankaccount Nummer')" />
-            <x-text-input id="bankaccount_number" name="bankaccount_number" type="text" class="mt-1 block w-full" :value="old('bankaccount_number', $invoiceSettings->bankaccount_number)" required autocomplete="bankaccount_number" />
-            <x-input-error class="mt-2" :messages="$errors->get('bankaccount_number')" />
-        </div>
-
-
         {{-- Bank Account Number --}}
         <div>
             <x-input-label for="address" :value="__('Bankaccount Naam')" />
@@ -31,14 +22,6 @@
             <x-input-label for="KVK_number" :value="__('Bedrijfs Naam')" />
             <x-text-input id="company_name" name="company_name" type="text" class="mt-1 block w-full" :value="old('company_name', $invoiceSettings->company_name)" required autocomplete="company_name" />
             <x-input-error class="mt-2" :messages="$errors->get('company_name')" />
-        </div>
-
-
-        {{-- KVK Number --}}
-        <div>
-            <x-input-label for="KVK_number" :value="__('KVK Nummer')" />
-            <x-text-input id="KVK_number" name="KVK_number" type="text" class="mt-1 block w-full" :value="old('KVK_number', $invoiceSettings->KVK_number)" required autocomplete="KVK_number" />
-            <x-input-error class="mt-2" :messages="$errors->get('KVK_number')" />
         </div>
 
 

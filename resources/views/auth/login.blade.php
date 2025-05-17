@@ -38,7 +38,7 @@
                 {{ __('Nog geen account?') }}
                 </a>
 
-                <x-primary-button class="ms-3 bg-navBackground hover:bg-navBackground/90">
+                <x-primary-button class="ms-3 bg-navBackground hover:bg-navBackground/90 focus:bg-navBackground active:bg-navBackground">
                     {{ __('Log in') }}
                 </x-primary-button>
             </div>

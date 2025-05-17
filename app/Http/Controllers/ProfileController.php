@@ -68,7 +68,7 @@ class ProfileController extends Controller
             OrderStatus::$authorized
         ];
 
-        return view('profile.orders', [ 
+        return view('profile.orders', [
             'orders' => Order::getUserOrder(Auth::user()->id),
             'shippingRepository' => $this->shippingRepository,
             'productModel' => new Product(),

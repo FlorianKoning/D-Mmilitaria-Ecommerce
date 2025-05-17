@@ -1,6 +1,6 @@
 <x-app-layout>
     {{-- products overview --}}
-    <div class="w-full h-svh flex flex-col content-start">
+    <div class="w-full flex flex-col content-start">
         <x-home-navbar />
 
         {{-- Item content --}}

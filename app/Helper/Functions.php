@@ -73,7 +73,11 @@ class Functions
     {
         // Checks if the user is logged in.
         if (!Auth::check()) {
+            $cart = (object) $cart;
+
             foreach ($cart as $key => $item) {
+                $item = (object) $item;
+
                 $product = Product::find($item->id);
                 $product->update([
                     'inventory'  => ($product['inventory'] - $item->amount)
