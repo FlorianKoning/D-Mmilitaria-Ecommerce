@@ -5,7 +5,7 @@
         <p class="mt-2 text-sm text-gray-700">Hier heb je de overview tabel van alle producten. Hier kan je ook nieuwe producten toevoegen, editen en verwijderen.</p>
       </div>
       <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-        <x-redirect-button :route="route('cms.exhibitions.create')" :name="__('Berus Toevoegen')" />
+        <x-redirect-button :route="route('cms.exhibitions.create')" :name="__('Beurs Toevoegen')" />
       </div>
     </div>
     <div class="mt-8 flow-root">

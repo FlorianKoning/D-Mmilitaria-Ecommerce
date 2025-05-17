@@ -15,12 +15,16 @@ use Illuminate\Http\RedirectResponse;
 
 class CheckoutController extends Controller
 {
+    public function __construct(
+        protected CartService $cartService
+    ){parent::__construct();}
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request): View|RedirectResponse
     {
-        $cart = (Auth::check()) ? CartService::get(Auth::user()->id) : json_decode(json_encode(session()->get('cart')), associative: FALSE);
+        $cart = (Auth::check()) ? $this->cartService->get(Auth::user()->id) : json_decode(json_encode(session()->get('cart')), associative: FALSE);
 
 
 

@@ -46,36 +46,34 @@
                 <div>
                   <label for="first-name" class="block text-sm/6 font-semibold text-gray-900">Voor naam</label>
                   <div class="mt-2.5">
-                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-navBackground">
+                    <x-text-input id="first-name" class="bg-[#F3F5F7] border-[#F3F5F7]/80 block mt-1 w-full" type="text" name="first-name" :value="old('first-name')" required autocomplete="username" />
                   </div>
+                  <x-input-error :messages="$errors->get('first-name')" class="mt-2" />
                 </div>
                 <div>
                   <label for="last-name" class="block text-sm/6 font-semibold text-gray-900">Achter naam</label>
                   <div class="mt-2.5">
-                    <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-navBackground">
+                   <x-text-input id="last-name" class="bg-[#F3F5F7] border-[#F3F5F7]/80 block mt-1 w-full" type="text" name="last-name" :value="old('last-name')" required autocomplete="username" />
                   </div>
+                  <x-input-error :messages="$errors->get('last-name')" class="mt-2" />
                 </div>
                 <div class="sm:col-span-2">
                   <label for="email" class="block text-sm/6 font-semibold text-gray-900">Email</label>
                   <div class="mt-2.5">
-                    <input type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-navBackground">
+                    <x-text-input id="email" class="bg-[#F3F5F7] border-[#F3F5F7]/80 block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
                   </div>
-                </div>
-                <div class="sm:col-span-2">
-                  <label for="phone-number" class="block text-sm/6 font-semibold text-gray-900">Telefoon nummer</label>
-                  <div class="mt-2.5">
-                    <input type="tel" name="phone-number" id="phone-number" autocomplete="tel" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-navBackground">
-                  </div>
+                  <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
                 <div class="sm:col-span-2">
                   <label for="message" class="block text-sm/6 font-semibold text-gray-900">Bericht</label>
                   <div class="mt-2.5">
-                    <textarea name="message" id="message" rows="4" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-navBackground"></textarea>
+                    <textarea name="message" id="message" rows="4" class="block w-full rounded-md bg-[#F3F5F7] border-[#F3F5F7]/80 px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2"></textarea>
                   </div>
+                  <x-input-error :messages="$errors->get('message')" class="mt-2" />
                 </div>
               </div>
               <div class="mt-8 flex justify-end">
-                <button type="submit" class="rounded-md bg-navBackground px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navBackground">Send message</button>
+                <button type="submit" class="rounded-md bg-navBackground px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Send message</button>
               </div>
             </div>
           </form>

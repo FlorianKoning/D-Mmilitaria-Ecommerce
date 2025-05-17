@@ -35,10 +35,11 @@ unset($__defined_vars); ?>
             <label for="email-address" class="block text-sm/6 font-medium text-gray-700">Email address <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="email" id="email-address" name="shipping[email-address]" value="<?php echo e((Auth::check()) ? Auth::user()->email : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.email-address')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
+            </div>
+            <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.email-address')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
@@ -47,24 +48,24 @@ unset($__defined_vars); ?>
 <?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.email-address'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-            </div>
         </div>
         <div class="sm:col-span-2">
             <label for="phone" class="block text-sm/6 font-medium text-gray-700">Telefoon nummer <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" name="shipping[phone]" id="phone" value="<?php echo e(($shipping != null) ? $shipping->phone_number : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.phone')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
+            </div>
+            <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.phone')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
@@ -73,15 +74,14 @@ unset($__defined_vars); ?>
 <?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.phone'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-            </div>
         </div>
     </div>
     </div>
@@ -94,10 +94,11 @@ unset($__defined_vars); ?>
             <label for="first-name" class="block text-sm/6 font-medium text-gray-700">Voornaam <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" id="first-name" name="shipping[first-name]" value="<?php echo e(($shipping != null) ? $shipping->first_name : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.first-name')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
+            </div>
+            <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.first-name')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
@@ -106,25 +107,25 @@ unset($__defined_vars); ?>
 <?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.first-name'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-            </div>
         </div>
 
         <div>
             <label for="last-name" class="block text-sm/6 font-medium text-gray-700">Achternaam <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" id="last-name" name="shipping[last-name]" value="<?php echo e(($shipping != null) ? $shipping->last_name : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.last-name')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
+            </div>
+            <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.last-name')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
@@ -133,25 +134,25 @@ unset($__defined_vars); ?>
 <?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.last-name'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-            </div>
         </div>
 
         <div class="sm:col-span-2">
             <label for="company" class="block text-sm/6 font-medium text-gray-700">Bedrijf</label>
             <div class="mt-2">
                 <input type="text" name="shipping[company]" id="company" value="<?php echo e(($shipping != null) ? $shipping->company : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.company')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
+            </div>
+            <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.company')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
@@ -160,25 +161,25 @@ unset($__defined_vars); ?>
 <?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.company'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-            </div>
         </div>
 
         <div class="sm:col-span-2">
             <label for="address" class="block text-sm/6 font-medium text-gray-700">Address <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" name="shipping[address]" id="address" value="<?php echo e(($shipping != null) ? $shipping->address : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.address')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
+            </div>
+            <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.address')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
@@ -187,25 +188,26 @@ unset($__defined_vars); ?>
 <?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.address'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-            </div>
+
         </div>
 
         <div class="sm:col-span-2">
             <label for="apartment" class="block text-sm/6 font-medium text-gray-700">Apartement</label>
             <div class="mt-2">
                 <input type="text" name="shipping[apartment]" id="apartment" value="<?php echo e(($shipping != null) ? $shipping->apartment : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.apartment')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
+            </div>
+            <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.apartment')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
@@ -214,25 +216,25 @@ unset($__defined_vars); ?>
 <?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.apartment'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-            </div>
         </div>
 
         <div>
             <label for="city" class="block text-sm/6 font-medium text-gray-700">Stad <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" name="shipping[city]" id="city" value="<?php echo e(($shipping != null) ? $shipping->city : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.city')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
+            </div>
+            <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.city')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
@@ -241,15 +243,14 @@ unset($__defined_vars); ?>
 <?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.city'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-            </div>
         </div>
 
         
@@ -262,10 +263,10 @@ unset($__defined_vars); ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </select>
             </div>
-            <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.provinces')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
+            <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.provinces')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
@@ -274,13 +275,13 @@ unset($__defined_vars); ?>
 <?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.provinces'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
         </div>
 
@@ -288,10 +289,10 @@ unset($__defined_vars); ?>
             <label for="postal-code" class="block text-sm/6 font-medium text-gray-700">Post code <span class="text-red-500">*</span></label>
             <div class="mt-2">
                 <input type="text" name="shipping[postal-code]" id="postal-code" value="<?php echo e(($shipping != null) ? $shipping->postal_code : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.postal-code')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
+                <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.postal-code')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
@@ -300,13 +301,13 @@ unset($__defined_vars); ?>
 <?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.postal-code'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
 <?php endif; ?>
             </div>
         </div>

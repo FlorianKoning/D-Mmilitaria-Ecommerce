@@ -15,11 +15,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use App\Interfaces\PaymentFactoryInterface;
+use App\Repositories\CartRepository;
 
 class PaymentFactory implements PaymentFactoryInterface
 {
     protected Order $order;
     protected PaymentOption $paymentOption;
+    protected CartService $cartService;
     protected string $name;
     protected string $email;
     protected array|object $cart;
@@ -34,10 +36,11 @@ class PaymentFactory implements PaymentFactoryInterface
         $this->order = $order;
         $this->paymentOption = $paymentOption;
         $this->name = $name;
+        $this->cartService = app(CartService::class);
 
         // Sets up the email and cart.
         $this->email = ($this->order['user_id'] == null) ? GuestUser::find($this->order['guest_user_id'])->email : User::find($this->order['user_id'])->email;
-        $this->cart = (Auth::check()) ? CartService::get(Auth::user()->id) : session('cart');
+        $this->cart = (Auth::check()) ? $this->cartService->get(Auth::user()->id) : session('cart');
     }
 
     /**

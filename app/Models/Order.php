@@ -47,6 +47,7 @@ class Order extends Model
         'payment_option_id',
         'user_id',
         'guest_user_id',
+        'exhibition_id',
         'order_items',
         'payment_amount',
         'order_status_id',
@@ -63,7 +64,7 @@ class Order extends Model
      * @return Collection<int, Order>
      */
     public static function getUserOrder(int $userId, ?int $amount = null): Collection
-    {   
+    {
         // Checks if the given user exists
         if (User::find($userId) == null) {
             throw  new Exception("The given user does not exist.");

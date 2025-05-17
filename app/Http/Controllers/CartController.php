@@ -11,13 +11,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    public function __construct(
+        protected CartService $cartService,
+    ){parent::__construct();}
+
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
         // Variables
-        $cart = (Auth::check()) ? CartService::get(Auth::user()->id) : json_decode(json_encode(session()->get('cart')), associative: FALSE);
+        $cart = (Auth::check()) ? $this->cartService->get(Auth::user()->id) : json_decode(json_encode(session()->get('cart')), associative: FALSE);
 
         // Checks if the cart is not empty
         if ($cart != null) {
@@ -25,14 +29,14 @@ class CartController extends Controller
         }
 
 
-        // Sets the totalprice in an session
+        // Sets the total price in an session
         if (isset($totalPrice)) {
             session(['totalPrice' => $totalPrice]);
         }
 
 
         return view('cart.cart-index', [
-            'cartService' => new CartService,
+            'cartService' => $this->cartService,
             'cart' => $cart,
             'totalPrice' => (isset($totalPrice)) ? $totalPrice : null,
             'paymentOptions' => PaymentOption::all(),
@@ -46,7 +50,7 @@ class CartController extends Controller
     public function store(Product $product): RedirectResponse
     {
         // add product to cart
-        if (CartService::add($product) == true) {
+        if ($this->cartService->add($product) == true) {
             return redirect()->route('products.show', $product->id)->with('productAdded', 'Product is toegevoegd aan uw winkelmandje.');
         } else { // CartService::add returned false
             return redirect()->route('products.show', $product->id)->with('productNotAdded', 'Product kon niet worden toegevoegt, er zijn niet genoeg producten in verkoop.');
@@ -59,7 +63,7 @@ class CartController extends Controller
     public function update(Product $product, int $amount): RedirectResponse
     {
         // Updates the amount from the product in the cart
-        CartService::update($product, $amount);
+        $this->cartService->update($product, $amount);
 
         // Return the user to the last page
         return redirect()->route('cart.index')->with('productUpdated', 'Het product is succesful geupdate in uw winkelmandje.');
@@ -73,7 +77,7 @@ class CartController extends Controller
     public function destroy(Product $product): RedirectResponse
     {
         // Removes one amount from the product, or deletes the product from the cart
-        CartService::destroy($product);
+        $this->cartService->destroy($product);
 
         // Return the user to the last page
         return redirect()->route('cart.index')->with('productRemoved', 'Het product is succesful verwijderd uit uw winkelmandje.');
@@ -91,7 +95,7 @@ class CartController extends Controller
 
 
         foreach($cart as $item) {
-            $price = CartService::price($item->id);
+            $price = $this->cartService->price($item->id);
 
 
             if (isset($price['newPrice'])) {

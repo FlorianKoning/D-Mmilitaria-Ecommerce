@@ -5,30 +5,33 @@ namespace App\Services;
 use stdClass;
 use App\Models\Cart;
 use App\Models\Product;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Interfaces\CartServiceInterface;
+use App\Repositories\CartRepository;
 
 class CartService implements CartServiceInterface
 {
+    public function __construct(
+        protected CartRepository $cartRepository,
+    ){}
+
     /**
      * Adds product to the cart depending if the user is logged in.
      * @param \App\Models\Product $product
      * @return void
      */
-    public static function add(Product $product): bool
+    public function add(Product $product): bool
     {
         // Checks if the user is logged in.
         if (Auth::check()) {
             // Adds the product to the cart in the database.
-            return self::authAdd($product->id);
+            return $this->authAdd($product->id);
 
         } else { // User is nog logged in, store product in session array.
             $cart = (session()->exists('cart')) ? session()->get('cart') : array();
 
             // Adds the product to the session cart.
-            return self::nonAuthAdd($product, $cart);
+            return $this->nonAuthAdd($product, $cart);
         }
     }
 
@@ -39,7 +42,7 @@ class CartService implements CartServiceInterface
      * @param int $amount
      * @return void
      */
-    public static function update(Product $product, int $amount): void
+    public function update(Product $product, int $amount): void
     {
         $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
 
@@ -73,7 +76,7 @@ class CartService implements CartServiceInterface
      * If the users has no items it will return null.
      * @return int
      */
-    public static function count(): int
+    public function count(): int
     {
         // based on if user is logged in, get database or session cart.
         $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
@@ -97,12 +100,9 @@ class CartService implements CartServiceInterface
      * @param int $userId
      * @return \Illuminate\Support\Collection
      */
-    public static function get(int $userId)
+    public function get(int $userId)
     {
-        return DB::table('carts')
-            ->select('*')
-            ->leftJoin('products', 'carts.product_id', '=', 'products.id')
-            ->get();
+        return $this->cartRepository->userId($userId);
     }
 
 
@@ -111,7 +111,7 @@ class CartService implements CartServiceInterface
      * @param \App\Models\Product $product
      * @return void
      */
-    public static function destroy(Product $product): void
+    public function destroy(Product $product): void
     {
         // Gets the cart.
         $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
@@ -143,7 +143,7 @@ class CartService implements CartServiceInterface
      * @param int $productId
      * @return array
      */
-    public static function price(int $productId): array
+    public function price(int $productId): array
     {
         // Variables.
         $product = Product::find($productId);
@@ -172,7 +172,7 @@ class CartService implements CartServiceInterface
      * @param int $productId
      * @return bool
      */
-    private static function authAdd(int $productId): bool
+    private function authAdd(int $productId): bool
     {
         // checks if user already has the same product in cart.
         if (Cart::where('product_id', $productId)->where('user_id', Auth::user()->id)->count() > 0) {
@@ -214,7 +214,7 @@ class CartService implements CartServiceInterface
      * @param array $cart
      * @return bool
      */
-    private static function nonAuthAdd(Product $product, array $cart)
+    private function nonAuthAdd(Product $product, array $cart)
     {
         // Checks if you can add a nother product. (Can't add a nother product to cart when amount is equal to the inventory).
         if (empty($cart) || isset($cart[$product->name]) == false || ($cart[$product->name]['amount'] + 1) <= $cart[$product->name]['inventory']) {

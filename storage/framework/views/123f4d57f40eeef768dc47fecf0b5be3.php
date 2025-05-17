@@ -28,12 +28,13 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars); ?>
 
-<div class="mt-10 mx-auto lg:mt-0">
-    <h2 class="text-lg font-medium text-gray-900">Uw Bestelling</h2>
+<div class="flex flex-col">
+    <div class="mt-10 mx-auto lg:mt-0">
+        <h2 class="text-lg font-medium text-gray-900">Uw Bestelling</h2>
 
-    <div class="mt-4 w-[350px] rounded-lg border border-gray-200 bg-white shadow-sm">
-        
-        <?php if (isset($component)) { $__componentOriginala5c47d95930bc3ef5466bd46b5c3027a = $component; } ?>
+        <div class="mt-4 w-[350px] rounded-lg border border-gray-200 bg-white shadow-sm">
+            
+            <?php if (isset($component)) { $__componentOriginala5c47d95930bc3ef5466bd46b5c3027a = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginala5c47d95930bc3ef5466bd46b5c3027a = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout.item-list','data' => ['cart' => $cart]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('checkout.item-list'); ?>
@@ -54,8 +55,8 @@ unset($__defined_vars); ?>
 <?php unset($__componentOriginala5c47d95930bc3ef5466bd46b5c3027a); ?>
 <?php endif; ?>
 
-        
-        <?php if (isset($component)) { $__componentOriginal5d8bd32a15160793a1d2ca052d32fa0b = $component; } ?>
+            
+            <?php if (isset($component)) { $__componentOriginal5d8bd32a15160793a1d2ca052d32fa0b = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal5d8bd32a15160793a1d2ca052d32fa0b = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout.checkout-cost','data' => ['paymentValue' => $paymentValue]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('checkout.checkout-cost'); ?>
@@ -76,12 +77,37 @@ unset($__defined_vars); ?>
 <?php unset($__componentOriginal5d8bd32a15160793a1d2ca052d32fa0b); ?>
 <?php endif; ?>
 
-        <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
-            <button type="submit" class="w-full rounded-md border border-transparent bg-navBackground px-4 py-3 text-base font-medium text-white shadow-sm 
-                hover:bg-navBackground focus:outline-none focus:ring-2 focus:ring-navbg-navBackground focus:ring-offset-2 focus:ring-offset-gray-50">
-                CONFIRM ORDER
-            </button>
+            <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
+                <button type="submit" class="w-full rounded-md border border-transparent bg-navBackground px-4 py-3 text-base font-medium text-white shadow-sm
+                    hover:bg-navBackground focus:outline-none focus:ring-2 focus:ring-navbg-navBackground focus:ring-offset-2 focus:ring-offset-gray-50">
+                    CONFIRM ORDER
+                </button>
+            </div>
         </div>
+
+        
+        <?php if (isset($component)) { $__componentOriginale775591f2fd37f51365fdd76143c23ba = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale775591f2fd37f51365fdd76143c23ba = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout.payment-methods','data' => ['paymentOptions' => $paymentOptions,'paymentOptionTranslation' => $paymentOptionTranslation]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout.payment-methods'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['paymentOptions' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($paymentOptions),'paymentOptionTranslation' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($paymentOptionTranslation)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginale775591f2fd37f51365fdd76143c23ba)): ?>
+<?php $attributes = $__attributesOriginale775591f2fd37f51365fdd76143c23ba; ?>
+<?php unset($__attributesOriginale775591f2fd37f51365fdd76143c23ba); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginale775591f2fd37f51365fdd76143c23ba)): ?>
+<?php $component = $__componentOriginale775591f2fd37f51365fdd76143c23ba; ?>
+<?php unset($__componentOriginale775591f2fd37f51365fdd76143c23ba); ?>
+<?php endif; ?>
     </div>
 </div>
+
+
 <?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/components/checkout/checkout-box.blade.php ENDPATH**/ ?>
