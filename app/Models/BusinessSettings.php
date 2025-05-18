@@ -18,6 +18,7 @@ class BusinessSettings extends Model
      */
     protected $fillable = [
         'business_email',
+        'bankaccount_number',
         'kvk_number',
         'btw_number',
         'business_address',

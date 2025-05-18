@@ -70,8 +70,10 @@ class OrderMailService implements OrderMailServiceInterface
      */
     public function bankTransfer(Order $order, string $email, string $name): void
     {
+        $businessRepository = app(BusinessRepository::class);
+
         Mail::to($email)->queue(
-            new BankTransfer($order, $email, $name)
+            new BankTransfer($order, $email, $name, $businessRepository->all())
         );
     }
 

@@ -30,12 +30,21 @@ class FairPickUpController extends Controller
     /**
      * Returns a view with all the available exhibitions.
      * Here the user will chose at what exhibition to pick up the order.
-     * @return View
+     * @param \App\Models\Order $order
+     * @return RedirectResponse|View
      */
-    public function exhibition(Order $order): View
+    public function exhibition(Order $order): View|RedirectResponse
     {
+        try {
+            $exhibitions = $this->exhibitionRepository->all($order);
+        } catch (Exception $exception) {
+            return redirect()->route('checkout.index')->withErrors([
+                'paymentOptions' => $exception->getMessage(),
+            ]);
+        }
+
         return view("payments.fairPickUp", [
-            'exhibitions' => $this->exhibitionRepository->all($order),
+            'exhibitions' => $exhibitions,
             'business' => $this->businessRepository->all(),
             'order' => $order,
         ]);

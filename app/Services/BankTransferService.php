@@ -2,15 +2,12 @@
 
 namespace App\Services;
 
-use App\Helper\Functions;
-use App\Interfaces\PaymentServicesInterface;
-use App\Models\Cart;
 use App\Models\Order;
-use App\Models\Product;
+use App\Helper\Functions;
 use App\Mail\BankTransfer;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
+use App\Repositories\BusinessRepository;
+use App\Interfaces\PaymentServicesInterface;
 
 class BankTransferService implements PaymentServicesInterface
 {
@@ -41,9 +38,11 @@ class BankTransferService implements PaymentServicesInterface
     */
     public function send(): void
     {
+        $businessRepository = app(BusinessRepository::class);
+
         // Send mail to the payer.
         Mail::to($this->email)->queue(
-            new BankTransfer($this->order, $this->email, $this->name)
+            new BankTransfer($this->order, $this->email, $this->name, $businessRepository->all())
         );
 
         // Removes everything from the users cart and calculates the new inventory

@@ -117,7 +117,7 @@ class InvoiceService
     {
         $customer = new Buyer([
             'name' => $this->shippingInfo['first-name'].' '.$this->shippingInfo['last-name'],
-            'address' => $this->shippingInfo['business_address'].' '.$this->shippingInfo['city'],
+            'address' => $this->shippingInfo['address'].' '.$this->shippingInfo['city'],
             'custom_fields' => [
                 'email' => $this->shippingInfo['email-address']
             ]
@@ -136,7 +136,7 @@ class InvoiceService
         $client = new Party([
             'name' => $this->invoiceSettings['bankaccount_name'].', '.$this->invoiceSettings['company_name'],
             'phone' => $this->invoiceSettings['phone_number'],
-            'address' => $this->businessSettings['address'],
+            'address' => $this->businessSettings['business_address'],
             'custom_fields' => [
                 'bankaccount number' => $this->businessSettings['bankaccount_number'],
                 'KVK number' => $this->businessSettings['kvk_number']

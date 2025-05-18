@@ -39,7 +39,7 @@
         {{-- business business_email --}}
         <div>
             <x-input-label for="business_email" :value="__('Bedrijfs Email')" />
-            <x-text-input id="business_email" name="business_email" type="email" class="mt-1 block w-full" :value="old('business_email', )" required />
+            <x-text-input id="business_email" name="business_email" type="email" class="mt-1 block w-full" :value="old('business_email', $business->business_email)" required />
             <x-input-error class="mt-2" :messages="$errors->get('business_email')" />
         </div>
 

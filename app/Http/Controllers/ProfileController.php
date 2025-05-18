@@ -151,6 +151,7 @@ class ProfileController extends Controller
 
         $businessSettings->update([
             'business_email' => (isset($validated['business_email'])) ? $validated['business_email'] : $businessSettings->business_email,
+            'bankaccount_number' => (isset($validated['bankaccount_number'])) ? $validated['bankaccount_number'] : $businessSettings->bankaccount_number,
             'kvk_number' => (isset($validated['kvk_number'])) ? $validated['kvk_number'] : $businessSettings->kvk_number,
             'btw_number' => (isset($validated['btw_number'])) ? $validated['btw_number'] : $businessSettings->btw_number,
             'business_address' => (isset($validated['business_address'])) ? $validated['business_address'] : $businessSettings->business_address,

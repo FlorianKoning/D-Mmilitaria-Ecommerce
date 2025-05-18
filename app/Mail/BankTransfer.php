@@ -2,8 +2,11 @@
 
 namespace App\Mail;
 
+use App\Models\BusinessSettings;
 use App\Models\Order;
+use App\Repositories\BusinessRepository;
 use Illuminate\Bus\Queueable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
@@ -16,11 +19,17 @@ class BankTransfer extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public Order $order, public string $email, public string $name)
+    public function __construct(
+        public Order $order,
+        public string $email,
+        public string $name,
+        public BusinessSettings $businessSettings,
+    )
     {
         $this->order = $order;
         $this->email = $email;
         $this->name = $name;
+        $this->businessSettings = $businessSettings;
     }
 
     /**
@@ -44,6 +53,7 @@ class BankTransfer extends Mailable
             with: [
                 'orderNumber' => $this->order['order_number'],
                 'customerName' => $this->name,
+                'businessSettings' => $this->businessSettings,
             ]
         );
     }

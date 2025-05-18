@@ -7,14 +7,14 @@
       <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
         <?php if (isset($component)) { $__componentOriginalde8fa99d7d164450ac21f9a0af9f14e4 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalde8fa99d7d164450ac21f9a0af9f14e4 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.redirect-button','data' => ['route' => route('cms.exhibitions.create'),'name' => __('Berus Toevoegen')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.redirect-button','data' => ['route' => route('cms.exhibitions.create'),'name' => __('Beurs Toevoegen')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('redirect-button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['route' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('cms.exhibitions.create')),'name' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('Berus Toevoegen'))]); ?>
+<?php $component->withAttributes(['route' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('cms.exhibitions.create')),'name' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('Beurs Toevoegen'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalde8fa99d7d164450ac21f9a0af9f14e4)): ?>
