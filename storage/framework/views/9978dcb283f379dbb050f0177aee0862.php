@@ -1,0 +1,1 @@
+<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/cms/email/partials/index.blade.php ENDPATH**/ ?>

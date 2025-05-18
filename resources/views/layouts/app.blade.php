@@ -27,7 +27,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="{{ $functions::requestUriCheck('/cms', 'font-robotoMono', 'font-sans') }} antialiased {{ $functions::requestUriCheck('/cms', 'bg-cmsBackground', 'bg-background') }} ">
+    <body class="{{ $functions::requestUriCheck('/cms', 'font-robotoMono', 'font-sans') }} antialiased {{ $functions::requestUriCheck('/cms', 'bg-[#F5F5F5]', 'bg-background') }} ">
         @if (str_contains($_SERVER['REQUEST_URI'], '/cms'))
             @include('layouts.cms.navigation')
                 <main class="py-10">

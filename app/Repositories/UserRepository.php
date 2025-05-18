@@ -5,6 +5,7 @@ namespace App\Repositories;
 use Exception;
 use App\Models\User;
 use App\Interfaces\Repositories\UserRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -17,5 +18,17 @@ class UserRepository implements UserRepositoryInterface
         }
 
         return $user;
+    }
+
+
+    public function all(): Collection
+    {
+        $users = User::all();
+
+        if (count($users) == 0) {
+            throw new Exception("There where no users found in the database!");
+        }
+
+        return $users;
     }
 }

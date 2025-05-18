@@ -27,7 +27,7 @@
         <!-- Scripts -->
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
     </head>
-    <body class="<?php echo e($functions::requestUriCheck('/cms', 'font-robotoMono', 'font-sans')); ?> antialiased <?php echo e($functions::requestUriCheck('/cms', 'bg-cmsBackground', 'bg-background')); ?> ">
+    <body class="<?php echo e($functions::requestUriCheck('/cms', 'font-robotoMono', 'font-sans')); ?> antialiased <?php echo e($functions::requestUriCheck('/cms', 'bg-[#F5F5F5]', 'bg-background')); ?> ">
         <?php if(str_contains($_SERVER['REQUEST_URI'], '/cms')): ?>
             <?php echo $__env->make('layouts.cms.navigation', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
                 <main class="py-10">

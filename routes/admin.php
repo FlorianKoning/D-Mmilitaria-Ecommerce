@@ -11,7 +11,7 @@ use App\Http\Controllers\Cms\CmsExtraImagesController;
 use App\Http\Controllers\Cms\CmsInvoiceController;
 use App\Http\Controllers\Cms\CmsOrderController;
 use App\Http\Controllers\Cms\CmsUserController;
-
+use App\Http\Controllers\Cms\EmailSettingsController;
 
 // CMS dashboard route
 Route::get('/cms', [CmsDashboardController::class, 'index'])->name('cms.dashboard.index');
@@ -96,4 +96,9 @@ Route::controller(CmsExhibitionController::class)->group(function() {
     Route::patch('/cms/exhibition/update/{exhibition}', 'update')->name('cms.exhibition.update');
     Route::post('/cms/exhibition/update/present/{exhibition}', 'updatePresent')->name('cms.exhibitions.update.present');
     Route::delete('/cms/exhibition/delete/{exhibition}', 'destroy')->name('cms.exhibition.delete');
+});
+
+
+Route::controller(EmailSettingsController::class)->group(function() {
+    Route::get('/cms/email-settings/', 'index')->name('cms.emailSettings.index');
 });

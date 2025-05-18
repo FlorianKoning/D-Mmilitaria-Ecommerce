@@ -46,28 +46,28 @@
                 <div>
                   <label for="first-name" class="block text-sm/6 font-semibold text-gray-900">Voor naam</label>
                   <div class="mt-2.5">
-                    <x-text-input id="first-name" class="bg-[#F3F5F7] border-[#F3F5F7]/80 block mt-1 w-full" type="text" name="first-name" :value="old('first-name')" required autocomplete="username" />
+                    <x-text-input id="first-name" class="block mt-1 w-full" type="text" name="first-name" :value="old('first-name')" required autocomplete="username" />
                   </div>
                   <x-input-error :messages="$errors->get('first-name')" class="mt-2" />
                 </div>
                 <div>
                   <label for="last-name" class="block text-sm/6 font-semibold text-gray-900">Achter naam</label>
                   <div class="mt-2.5">
-                   <x-text-input id="last-name" class="bg-[#F3F5F7] border-[#F3F5F7]/80 block mt-1 w-full" type="text" name="last-name" :value="old('last-name')" required autocomplete="username" />
+                   <x-text-input id="last-name" class="block mt-1 w-full" type="text" name="last-name" :value="old('last-name')" required autocomplete="username" />
                   </div>
                   <x-input-error :messages="$errors->get('last-name')" class="mt-2" />
                 </div>
                 <div class="sm:col-span-2">
                   <label for="email" class="block text-sm/6 font-semibold text-gray-900">Email</label>
                   <div class="mt-2.5">
-                    <x-text-input id="email" class="bg-[#F3F5F7] border-[#F3F5F7]/80 block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
                   </div>
                   <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
                 <div class="sm:col-span-2">
                   <label for="message" class="block text-sm/6 font-semibold text-gray-900">Bericht</label>
                   <div class="mt-2.5">
-                    <textarea name="message" id="message" rows="4" class="block w-full rounded-md bg-[#F3F5F7] border-[#F3F5F7]/80 px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2"></textarea>
+                    <textarea name="message" id="message" rows="4" class="bg-[#F3F5F7] border-[#F3F5F7]/80 block w-full rounded-md px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2"></textarea>
                   </div>
                   <x-input-error :messages="$errors->get('message')" class="mt-2" />
                 </div>
