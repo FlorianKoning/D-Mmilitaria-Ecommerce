@@ -32,7 +32,6 @@ class ExhibitionRepository
                 'order_status_id' => OrderStatus::$failed,
             ]);
 
-            $this->reservedHelper->unReserveProduct($order);
             $this->orderStatusFactory->make(OrderStatus::$failed, $order);
 
             throw new Exception('There are no exhibitions at the moment, please select a different payment method.');

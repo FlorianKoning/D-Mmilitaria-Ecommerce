@@ -6,6 +6,7 @@ use Exception;
 use App\Models\PaymentOption;
 use Illuminate\Database\Eloquent\Collection;
 use App\Interfaces\Repositories\PaymentOptionsRepositoryInterface;
+use Illuminate\Http\RedirectResponse;
 
 class PaymentOptionRepository implements PaymentOptionsRepositoryInterface
 {
@@ -35,12 +36,6 @@ class PaymentOptionRepository implements PaymentOptionsRepositoryInterface
      */
     public function find(array $paymentOption): PaymentOption
     {
-        // Checks if "nothing" was selected, use default payment option.
-        if ($paymentOption == null) {
-            return PaymentOption::find(PaymentOption::$other);
-        }
-
-
         foreach ($paymentOption as $key => $checked) {
             if ($checked === "checked") {
                 if (PaymentOption::find($key) == null) {

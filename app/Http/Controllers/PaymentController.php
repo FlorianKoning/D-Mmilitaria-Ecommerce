@@ -47,7 +47,6 @@ class PaymentController extends Controller
         // Gets all the province id's
         $provinceIds = $this->proviceRepository->get();
 
-
         // Validates the request data.
         $request->validate([
             'shipping.email-address' => 'required|email|string|max:191',
@@ -61,6 +60,14 @@ class PaymentController extends Controller
             'shipping.provinces' => 'required|string|'.Rule::in($provinceIds),
             'shipping.postal-code' => 'required|string|min:6'
         ]);
+
+
+        // Checks if there was no payment method given from the user.
+        if (!isset($request->paymentMethod)) {
+            return redirect()->route('checkout.index')->withErrors([
+                'paymentOptions' => 'There was no payment method selected!'
+            ]);
+        }
 
 
         // Handles the important variables

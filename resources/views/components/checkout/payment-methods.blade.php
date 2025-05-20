@@ -1,12 +1,13 @@
 @props(['paymentOptions', 'paymentOptionTranslation'])
 
-<div class="mt-10 border-t border-gray-200 pt-10">
+<div class="pt-10">
     <fieldset>
         <legend class="text-lg font-medium text-gray-900">Betalings methodes</legend>
-        <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+        <x-checkout-input-error class="mt-2" :messages="$errors->get('paymentOptions')" />
+        <div class="mt-4 flex flex-col gap-y-6">
             @if ($paymentOptions != null)
                 @foreach ($paymentOptions as $option)
-                    <label onclick="paymentMethod('{{ $option->id }}')" aria-label="Standard" aria-description="4–10 business days for $5.00" class="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none">
+                    <label onclick="paymentMethod('{{ $option->id }}')" aria-label="Standard" aria-description="4–10 business days for $5.00" class="relative flex cursor-pointer rounded-lg bg-white p-4 shadow focus:outline-none w-[350px]">
                         <input id="{{ $option->id }}" name="paymentMethod[{{ $option->id }}]"  type="radio" class="sr-only">
                         <span class="flex flex-1">
                             <span class="flex flex-col">

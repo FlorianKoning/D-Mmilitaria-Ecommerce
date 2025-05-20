@@ -21,14 +21,14 @@
                                         <a href="#" class="font-medium text-gray-700 hover:text-gray-800"><?php echo e($item->name); ?></a>
                                         </h3>
                                     </div>
-                                    <?php if(count($cartService::price($item->id)) > 1): ?>
+                                    <?php if(count($cartService->price($item->id)) > 1): ?>
                                         <div class="flex flex-row gap-x-1">
-                                            <span class="line-through text-sm text-red-500"><?php echo e($cartService::price($item->id)['oldPrice']); ?></span>
-                                            <p class="text-sm text-gray-900"><?php echo e($cartService::price($item->id)['newPrice']); ?></p>
+                                            <span class="line-through text-sm text-red-500"><?php echo e($cartService->price($item->id)['oldPrice']); ?></span>
+                                            <p class="text-sm text-gray-900"><?php echo e($cartService->price($item->id)['newPrice']); ?></p>
                                         </div>
                                     <?php else: ?>
                                         <div class="flex flex-row gap-x-1">
-                                            <p class="text-sm text-gray-900"><?php echo e($cartService::price($item->id)['oldPrice']); ?></p>
+                                            <p class="text-sm text-gray-900"><?php echo e($cartService->price($item->id)['oldPrice']); ?></p>
                                         </div>
                                     <?php endif; ?>
                                 </div>

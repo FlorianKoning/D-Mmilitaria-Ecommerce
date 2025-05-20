@@ -132,7 +132,9 @@
                     In de bijlage vindt u tevens de factuur van uw bestelling.
                   </p>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Bank rekening nummer: <span style="font-weight: 500"></span>
+                    Bank account number: <span style="font-weight: 700">{{ $businessSettings->bankaccount_number }}</span><br>
+                    Bank account name: <span style="font-weight: 700">{{ env('APP_NAME') }}</span><br>
+                    Company Owner: <span style="font-weight: 700">{{ env('SELLER_NAME') }}</span><br>
                   </p>
                   <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
                     Met vriendelijke groet,

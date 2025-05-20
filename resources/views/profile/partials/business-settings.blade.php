@@ -43,11 +43,18 @@
             <x-input-error class="mt-2" :messages="$errors->get('business_email')" />
         </div>
 
-        {{-- business kvk_number --}}
+        {{-- Bank Account Number --}}
         <div>
-            <x-input-label for="kvk_number" :value="__('Bedrijfs KVK Nummer')" />
-            <x-text-input id="kvk_number" name="kvk_number" type="text" class="mt-1 block w-full" :value="old('kvk_number', $business->kvk_number)" required />
-            <x-input-error class="mt-2" :messages="$errors->get('kvk_number')" />
+            <x-input-label for="bankaccount_number" :value="__('Bankaccount Nummer')" />
+            <x-text-input id="bankaccount_number" name="bankaccount_number" type="text" class="mt-1 block w-full" :value="old('bankaccount_number', $business->bankaccount_number)" required autocomplete="bankaccount_number" />
+            <x-input-error class="mt-2" :messages="$errors->get('bankaccount_number')" />
+        </div>
+
+        {{-- KVK Number --}}
+        <div>
+            <x-input-label for="KVK_number" :value="__('KVK Nummer')" />
+            <x-text-input id="KVK_number" name="KVK_number" type="text" class="mt-1 block w-full" :value="old('KVK_number', $business->kvk_number)" required autocomplete="KVK_number" />
+            <x-input-error class="mt-2" :messages="$errors->get('KVK_number')" />
         </div>
 
         {{-- business btw_number --}}

@@ -25,41 +25,19 @@
 <?php $component = $__componentOriginal3293e551444562dcdf620e32cb7ea99b; ?>
 <?php unset($__componentOriginal3293e551444562dcdf620e32cb7ea99b); ?>
 <?php endif; ?>
-
-            
-            <?php if (isset($component)) { $__componentOriginale775591f2fd37f51365fdd76143c23ba = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginale775591f2fd37f51365fdd76143c23ba = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout.payment-methods','data' => ['paymentOptions' => $paymentOptions,'paymentOptionTranslation' => $paymentOptionTranslation]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('checkout.payment-methods'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['paymentOptions' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($paymentOptions),'paymentOptionTranslation' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($paymentOptionTranslation)]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginale775591f2fd37f51365fdd76143c23ba)): ?>
-<?php $attributes = $__attributesOriginale775591f2fd37f51365fdd76143c23ba; ?>
-<?php unset($__attributesOriginale775591f2fd37f51365fdd76143c23ba); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginale775591f2fd37f51365fdd76143c23ba)): ?>
-<?php $component = $__componentOriginale775591f2fd37f51365fdd76143c23ba; ?>
-<?php unset($__componentOriginale775591f2fd37f51365fdd76143c23ba); ?>
-<?php endif; ?>
         </div>
 
         <!-- Order summary -->
         <?php if (isset($component)) { $__componentOriginal6a9789b7f97a1ea996dce918cddf4447 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal6a9789b7f97a1ea996dce918cddf4447 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout.checkout-box','data' => ['cart' => $cart,'paymentValue' => $paymentValue]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout.checkout-box','data' => ['cart' => $cart,'paymentValue' => $paymentValue,'paymentOptions' => $paymentOptions,'paymentOptionTranslation' => $paymentOptionTranslation]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('checkout.checkout-box'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['cart' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($cart),'paymentValue' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($paymentValue)]); ?>
+<?php $component->withAttributes(['cart' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($cart),'paymentValue' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($paymentValue),'paymentOptions' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($paymentOptions),'paymentOptionTranslation' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($paymentOptionTranslation)]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal6a9789b7f97a1ea996dce918cddf4447)): ?>

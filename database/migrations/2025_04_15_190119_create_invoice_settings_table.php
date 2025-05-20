@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('invoice_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('bankaccount_number');
             $table->string('bankaccount_name');
             $table->string('company_name');
-            $table->string('KVK_number');
             $table->string('phone_number');
             $table->string('address');
         });

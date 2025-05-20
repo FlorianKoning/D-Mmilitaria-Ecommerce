@@ -46,8 +46,8 @@
                             <legend class="block text-sm font-medium text-gray-900">Product Zoeken</legend>
                             <div class="space-y-3 pt-2">
                                 <div class="mb-6">
-                                    <input value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}" type="text" name="search" id="search" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
-                                </div>  
+                                    <x-text-input  name="search" id="search" class="bg-[#F3F5F7] border-[#F3F5F7]/80 block mt-1 w-full" type="text" :value="isset($_GET['search']) ? $_GET['search'] : ''" required autocomplete="username" />
+                                </div>
                             </div>
                         </fieldset>
 

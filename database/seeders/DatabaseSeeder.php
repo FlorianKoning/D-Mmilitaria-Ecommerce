@@ -194,10 +194,8 @@ class DatabaseSeeder extends Seeder
     {
         InvoiceSettings::factory()->create([
             'id' => 1,
-            'bankaccount_number' => 'NL60RABO0128258292',
             'bankaccount_name' => 'Florian Koning',
             'company_name' => 'DBM militaria',
-            'KVK_number' => '97008478',
             'phone_number' => '0628424913',
             'address' => 'Hadrianuslaan 15'
         ]);
@@ -211,7 +209,8 @@ class DatabaseSeeder extends Seeder
     {
         BusinessSettings::factory()->create([
             'business_email' => '',
-            'kvk_number' => '',
+            'bankaccount_number' => 'NL60RABO0128258292',
+            'kvk_number' => '97008478',
             'btw_number' => '',
             'business_address' => '',
             'business_logo' => '',

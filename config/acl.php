@@ -34,6 +34,7 @@ return [
                 "CmsOrderStatusesController" => ["*"],
                 "CmsInvoiceController" => ["*"],
                 "CmsExhibitionController" => ["*"],
+                "EmailSettingsController" => ["*"],
             ],
             "administator" => [
                 "CmsDashboardController" => ["*"],
@@ -42,6 +43,7 @@ return [
                 "CmsUserController" => ["index"],
                 "CmsCatagoriesController" => ["index"],
                 "CmsExhibitionController" => ["index"],
+                "EmailSettingsController" => ["index"],
             ],
             "user" => []
         ],

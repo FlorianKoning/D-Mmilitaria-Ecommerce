@@ -6,12 +6,9 @@
         <div>
             {{-- checkout form --}}
             <x-checkout.shipping-form :shipping="$shippingInfo" :provinces="$provinces" />
-
-            {{-- betaling en ophaal methodes --}}
-            <x-checkout.payment-methods :paymentOptions="$paymentOptions" :paymentOptionTranslation="$paymentOptionTranslation" />
         </div>
 
         <!-- Order summary -->
-        <x-checkout.checkout-box :cart="$cart" :paymentValue="$paymentValue" />
+        <x-checkout.checkout-box :cart="$cart" :paymentValue="$paymentValue" :paymentOptions="$paymentOptions" :paymentOptionTranslation="$paymentOptionTranslation" />
     </form>
 </div>
