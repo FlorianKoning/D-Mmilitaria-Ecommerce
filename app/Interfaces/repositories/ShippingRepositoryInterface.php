@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Interfaces\Repositories;
+namespace App\Interfaces\repositories;
 
 use App\Models\Order;
 use App\Models\Shipping;

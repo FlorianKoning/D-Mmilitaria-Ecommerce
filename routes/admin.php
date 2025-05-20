@@ -6,7 +6,7 @@ use App\Http\Controllers\Cms\CmsProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Cms\CmsCatagoriesController;
 use App\Http\Controllers\Cms\CmsDashboardController;
-use App\Http\Controllers\cms\CmsExhibitionController;
+use App\Http\Controllers\Cms\CmsExhibitionController;
 use App\Http\Controllers\Cms\CmsExtraImagesController;
 use App\Http\Controllers\Cms\CmsInvoiceController;
 use App\Http\Controllers\Cms\CmsOrderController;
