@@ -31,4 +31,17 @@ class UserRepository implements UserRepositoryInterface
 
         return $users;
     }
+
+
+    public function newsletter(bool $noEmptyValue = true): Collection
+    {
+        $users = User::select('first_name', 'last_name', 'email')
+            ->where('newsletter', true)->get();
+
+        if (count($users) == 0 && $noEmptyValue) {
+            throw new Exception("There where no users found in the database who subscribed to the database.");
+        }
+
+        return $users;
+    }
 }

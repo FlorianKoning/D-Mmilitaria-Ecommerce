@@ -4,6 +4,15 @@
         <h1 class="text-base font-semibold text-gray-900">Newsletter Overzicht</h1>
         <p class="mt-2 text-sm text-gray-700">Hier heb je een overzicht van alle gebruikers die zich hebben aangemeld voor een nieuwsbrief. Je kunt alle gebruikers exporteren als een excel bestand.</p>
       </div>
+      <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+        <form method="POST" action="<?php echo e(route('cms.newsletter.excel.download')); ?>">
+            <?php echo csrf_field(); ?>
+
+            <button class="block rounded-md bg-logoBackground px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#3C8DBC] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3C8DBC]">
+                Excel Download
+            </button>
+        </form>
+      </div>
     </div>
     <div class="mt-8 flow-root">
       <div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">

@@ -9,4 +9,5 @@ interface UserRepositoryInterface
 {
     public function find($id): User;
     public function all(): Collection;
+    public function newsletter(bool $noEmptyValue = true): Collection;
 }

@@ -109,5 +109,6 @@ Route::controller(EmailSettingsController::class)->group(function() {
 // Cms Newsletter Routes
 Route::controller(NewsletterController::class)->group(function() {
     Route::get('/cms/newsletter/', 'index')->name('cms.newsletter.index');
+    Route::post('/cms/newsletter/excel/download', 'excelDownload')->name('cms.newsletter.excel.download');
     Route::delete('/cms/newsletter/destroy/{user}', 'destroy')->name('cms.newsletter.destroy');
 });

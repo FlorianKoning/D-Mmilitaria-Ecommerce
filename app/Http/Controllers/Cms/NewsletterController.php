@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Cms;
 
+use App\Exports\NewsletterExport;
 use Exception;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\RedirectResponse;
 use App\Repositories\NewsletterRepository;
 
 class NewsletterController extends Controller
@@ -19,7 +22,7 @@ class NewsletterController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         return view("cms.newsletter.index", [
             'newsletters' => $this->newsletterRepository->all(false),
@@ -28,9 +31,18 @@ class NewsletterController extends Controller
     }
 
     /**
+     * Download een excel bestand van alle users die geaboneerd zijn op de newsbrief.
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function excelDownload()
+    {
+        return Excel::download(new NewsletterExport, 'newsletter.xlsx');
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(User $user): RedirectResponse
     {
         try {
             if ($this->userRepository->find($user->id)) {
