@@ -14,7 +14,7 @@ class UserRepository implements UserRepositoryInterface
         $user = User::find($id);
 
         if (!$user) {
-            throw new Exception("There is no user with that id/key!");
+            throw new Exception("There is no user with that id: [$id]");
         }
 
         return $user;

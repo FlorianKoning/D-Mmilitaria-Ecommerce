@@ -147,6 +147,36 @@
 <?php endif; ?>
                     </ul>
                 </li>
+                <li class="px-6">
+                    <ul id="overview" role="list" class="-mx-2 space-y-1">
+                        <?php if (isset($component)) { $__componentOriginal7c31356aca81a64b5d3f4569b8e77442 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7c31356aca81a64b5d3f4569b8e77442 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.cms-nav-link','data' => ['href' => route('cms.newsletter.index'),'active' => request()->routeIs('cms.newsletter.*')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('cms-nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('cms.newsletter.index')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('cms.newsletter.*'))]); ?>
+                            <div class="flex flex-row gap-x-3 ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 shrink-0">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                </svg>
+                                Newsletter
+                            </div>
+                         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7c31356aca81a64b5d3f4569b8e77442)): ?>
+<?php $attributes = $__attributesOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
+<?php unset($__attributesOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442)): ?>
+<?php $component = $__componentOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
+<?php unset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
+<?php endif; ?>
+                    </ul>
+                </li>
 
 
                 
@@ -220,36 +250,6 @@
                         <h3 class="font-bold text-sm">Website Settings</h3>
                     </div>
                 </div>
-                <li class="px-6">
-                    <ul id="overview" role="list" class="-mx-2 space-y-1">
-                        <?php if (isset($component)) { $__componentOriginal7c31356aca81a64b5d3f4569b8e77442 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal7c31356aca81a64b5d3f4569b8e77442 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.cms-nav-link','data' => ['href' => route('cms.emailSettings.index'),'active' => request()->routeIs('cms.emailSettings.*')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('cms-nav-link'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('cms.emailSettings.index')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('cms.emailSettings.*'))]); ?>
-                            <div class="flex flex-row gap-x-3 ml-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 shrink-0">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                                </svg>
-                                Email Settings
-                            </div>
-                         <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal7c31356aca81a64b5d3f4569b8e77442)): ?>
-<?php $attributes = $__attributesOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
-<?php unset($__attributesOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442)): ?>
-<?php $component = $__componentOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
-<?php unset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
-<?php endif; ?>
-                    </ul>
-                </li>
 
 
                 

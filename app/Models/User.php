@@ -14,6 +14,17 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * This array can return all the column names and there website ready names
+     * @var array
+     */
+    public static array $columnNames = [
+        'first_name' => 'Voornaam',
+        'last_name' => 'Achternaam',
+        'email' => 'Email',
+        'created_at' => 'Aanmeldings Datum',
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>

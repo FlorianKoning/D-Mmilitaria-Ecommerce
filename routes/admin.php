@@ -3,6 +3,7 @@ use App\Http\Controllers\Cms\CmsExtraFeaturesController;
 use App\Http\Controllers\Cms\CmsOrderStatusesController;
 use App\Http\Controllers\Cms\CmsProductCategoryController;
 use App\Http\Controllers\Cms\CmsProductsController;
+use App\Http\Controllers\Cms\NewsletterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Cms\CmsCatagoriesController;
 use App\Http\Controllers\Cms\CmsDashboardController;
@@ -99,6 +100,14 @@ Route::controller(CmsExhibitionController::class)->group(function() {
 });
 
 
+// Cms Email Settings Routes
 Route::controller(EmailSettingsController::class)->group(function() {
     Route::get('/cms/email-settings/', 'index')->name('cms.emailSettings.index');
+});
+
+
+// Cms Newsletter Routes
+Route::controller(NewsletterController::class)->group(function() {
+    Route::get('/cms/newsletter/', 'index')->name('cms.newsletter.index');
+    Route::delete('/cms/newsletter/destroy/{user}', 'destroy')->name('cms.newsletter.destroy');
 });
