@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Cms;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Shipping;
 use App\Models\OrderStatus;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Factories\OrderStatusFactory;
 use Illuminate\Http\RedirectResponse;
 
@@ -55,6 +57,19 @@ class CmsOrderController extends Controller
         return view('cms.order.order-view', [
             'order' => $order,
             'orderItems' => $orderItems
+        ]);
+    }
+
+    /**
+     * Shows the shipping information of the order
+     * @param \App\Models\Order $order
+     * @return View
+     */
+    public function shipping(Order $order): View
+    {
+        return view("cms.order.order-shipping", [
+            'order' => $order,
+            'shipping' => Shipping::where('user_id', Auth::user()->id)->first(),
         ]);
     }
 
@@ -112,5 +127,5 @@ class CmsOrderController extends Controller
         }
 
         return $itemsArray;
-    }    
+    }
 }

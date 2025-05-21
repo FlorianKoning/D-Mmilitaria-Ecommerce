@@ -41,6 +41,13 @@ class OrderService implements OrderServiceInterface
         $orderNumber = $this->createOrderNumber();
 
 
+        // Checks if the payment option is banktransfer
+        // Devides the payment amount by 10
+        if ($paymentOption['id'] == 1) {
+            $paymentAmount = $paymentAmount / 10;
+        }
+
+
         // creates the new order
         $order = Order::create([
             'order_number' => $orderNumber,

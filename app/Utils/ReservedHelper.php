@@ -29,11 +29,6 @@ class ReservedHelper
                     'order_id' => $order->id
                 ]);
             }
-
-            // Updates the Product inventory
-            $product->update([
-                'inventory' => $product->inventory - $item->amount,
-            ]);
         }
 
         return true;
@@ -53,9 +48,9 @@ class ReservedHelper
         foreach ($itemsObject as $item) {
             $product = Product::find($item->id);
 
-            for ($i = 0; $i <= $item->amount - 1; $i++) {
-                Reserved::where('product_id', $item->id)->delete();
-            }
+            // for ($i = 0; $i < $item->amount - 1; $i++) {
+            //     Reserved::where('product_id', $item->id)->delete();
+            // }
 
             // Updates the Product inventory
             $product->update([

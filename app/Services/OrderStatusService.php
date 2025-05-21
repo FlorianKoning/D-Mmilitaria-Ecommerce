@@ -25,9 +25,6 @@ class OrderStatusService
      */
     public function canceled(Order $order, string $email, string $name): void
     {
-        // Removes the items from the reserveProducts.
-        $this->reservedHelper->unReserveProduct($order);
-
         // Sends a email to the user that the order has been canceled.
         $this->orderMailService->canceledOrder($email, $name, $order);
     }
@@ -42,9 +39,6 @@ class OrderStatusService
      */
     public function paid(Order $order, string $email): void
     {
-        // Removes the items from the reserveProducts.
-        $this->reservedHelper->unReserveProduct($order);
-
         // Sends email to the user that the payment has been received.
         $this->orderMailService->paymentReceived($email, $order);
     }

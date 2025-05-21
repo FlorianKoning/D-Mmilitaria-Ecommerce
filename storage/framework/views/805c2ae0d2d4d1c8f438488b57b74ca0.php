@@ -30,7 +30,7 @@ unset($__defined_vars); ?>
 
 <div class="pt-10">
     <fieldset>
-        <legend class="text-lg font-medium text-gray-900">Betalings methodes</legend>
+        <legend class="text-lg font-medium text-gray-900">Payment Methods</legend>
         <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('paymentOptions')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -58,11 +58,11 @@ unset($__defined_vars); ?>
                         <input id="<?php echo e($option->id); ?>" name="paymentMethod[<?php echo e($option->id); ?>]"  type="radio" class="sr-only">
                         <span class="flex flex-1">
                             <span class="flex flex-col">
-                                <span class="block text-sm font-medium text-gray-900"><?php echo e($paymentOptionTranslation['nl']['payment_name'][$option->payment_name]); ?>.</span>
-                                <span class="mt-1 flex items-center text-sm text-gray-500"><?php echo e($paymentOptionTranslation['nl']['shipping'][$option->shipping]); ?>.</span>
-                                <span class="mt-6 flex items-center text-sm text-gray-900"><?php echo e($paymentOptionTranslation['nl']['shipping_cost'][$option->shipping_cost]); ?>.</span>
+                                <span class="block text-sm font-medium text-gray-900"><?php echo e($paymentOptionTranslation['en']['payment_name'][$option->payment_name]); ?>.</span>
+                                <span class="mt-1 flex items-center text-sm text-gray-500"><?php echo e($paymentOptionTranslation['en']['shipping'][$option->shipping]); ?>.</span>
+                                <span class="mt-6 flex items-center text-sm text-gray-900"><?php echo e($paymentOptionTranslation['en']['shipping_cost'][$option->shipping_cost]); ?>.</span>
                                 <?php if($option->extra_service_costs == 1): ?>
-                                    <span class="text-sm font-medium text-gray-500"><?php echo e($paymentOptionTranslation['nl']['extra_service_costs'][$option->extra_service_costs]); ?>.</span>
+                                    <span class="text-sm font-medium text-gray-500"><?php echo e($paymentOptionTranslation['en']['extra_service_costs'][$option->extra_service_costs]); ?>.</span>
                                 <?php endif; ?>
                             </span>
                         </span>

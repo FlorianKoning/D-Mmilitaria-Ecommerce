@@ -30,7 +30,7 @@ unset($__defined_vars); ?>
 
 <div class="flex flex-col">
     <div class="mt-10 mx-auto lg:mt-0">
-        <h2 class="text-lg font-medium text-gray-900">Uw Bestelling</h2>
+        <h2 class="text-lg font-medium text-gray-900">Your Order</h2>
 
         <div class="mt-4 w-[350px] rounded-lg border border-gray-200 bg-white shadow-sm">
             

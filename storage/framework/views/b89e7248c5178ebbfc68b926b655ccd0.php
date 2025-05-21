@@ -43,7 +43,7 @@ unset($__defined_vars); ?>
                         </div>
                     </div>
                     <div class="flex flex-1 items-end justify-between pt-2">
-                        <p class="mt-1 text-xs font-medium text-gray-500">Hoeveelheid: <?php echo e($item->amount); ?></p>
+                        <p class="mt-1 text-xs font-medium text-gray-500">Amount: <?php echo e($item->amount); ?></p>
                     </div>
                     <div class="flex flex-1 items-end justify-between pt-2">
                         <?php if (isset($component)) { $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79 = $component; } ?>

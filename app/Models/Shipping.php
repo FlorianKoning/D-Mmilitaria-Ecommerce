@@ -25,8 +25,8 @@ class Shipping extends Model
         'company',
         'address',
         'apartment',
+        'country',
         'city',
-        'province_id',
         'postal_code',
         'phone_number',
     ];

@@ -73,6 +73,7 @@ Route::controller(CmsOrderController::class)->group(function() {
     Route::get('/cms/orders', [CmsOrderController::class, 'index'])->name('cms.orders.index');
     Route::get('/cms/orders/{order}', [CmsOrderController::class, 'edit'])->name('cms.orders.edit');
     Route::get('/cms/orders/show/{order}', [CmsOrderController::class, 'show'])->name('cms.orders.show');
+    Route::get('/cms/orders/shipping/{order}', [CmsOrderController::class, 'shipping'])->name('cms.orders.shipping');
     Route::put('/cms/orders/update/{order}', [CmsOrderController::class, 'update'])->name('cms.order.udpate');
 });
 

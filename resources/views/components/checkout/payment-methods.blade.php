@@ -2,7 +2,7 @@
 
 <div class="pt-10">
     <fieldset>
-        <legend class="text-lg font-medium text-gray-900">Betalings methodes</legend>
+        <legend class="text-lg font-medium text-gray-900">Payment Methods</legend>
         <x-checkout-input-error class="mt-2" :messages="$errors->get('paymentOptions')" />
         <div class="mt-4 flex flex-col gap-y-6">
             @if ($paymentOptions != null)
@@ -11,11 +11,11 @@
                         <input id="{{ $option->id }}" name="paymentMethod[{{ $option->id }}]"  type="radio" class="sr-only">
                         <span class="flex flex-1">
                             <span class="flex flex-col">
-                                <span class="block text-sm font-medium text-gray-900">{{ $paymentOptionTranslation['nl']['payment_name'][$option->payment_name] }}.</span>
-                                <span class="mt-1 flex items-center text-sm text-gray-500">{{ $paymentOptionTranslation['nl']['shipping'][$option->shipping] }}.</span>
-                                <span class="mt-6 flex items-center text-sm text-gray-900">{{ $paymentOptionTranslation['nl']['shipping_cost'][$option->shipping_cost] }}.</span>
+                                <span class="block text-sm font-medium text-gray-900">{{ $paymentOptionTranslation['en']['payment_name'][$option->payment_name] }}.</span>
+                                <span class="mt-1 flex items-center text-sm text-gray-500">{{ $paymentOptionTranslation['en']['shipping'][$option->shipping] }}.</span>
+                                <span class="mt-6 flex items-center text-sm text-gray-900">{{ $paymentOptionTranslation['en']['shipping_cost'][$option->shipping_cost] }}.</span>
                                 @if ($option->extra_service_costs == 1)
-                                    <span class="text-sm font-medium text-gray-500">{{ $paymentOptionTranslation['nl']['extra_service_costs'][$option->extra_service_costs] }}.</span>
+                                    <span class="text-sm font-medium text-gray-500">{{ $paymentOptionTranslation['en']['extra_service_costs'][$option->extra_service_costs] }}.</span>
                                 @endif
                             </span>
                         </span>

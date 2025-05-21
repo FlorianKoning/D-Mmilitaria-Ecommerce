@@ -29,6 +29,11 @@ class ShippingService implements ShippingServiceInterface
             $guestUser = $this->guestUserRepository->find($order->guest_user_id);
         }
 
+        // Sets the default country to the netherlands
+        if ($shipping['country'] == null) {
+            $shipping['country'] = 'Netherlands';
+        }
+
         $shipping = Shipping::create([
             'user_id' => (isset($user)) ? $user->id : null,
             'guest_user_id' => (isset($guestUser)) ? $guestUser->id : null,
@@ -38,8 +43,8 @@ class ShippingService implements ShippingServiceInterface
             'company' => $shipping['company'],
             'address' => $shipping['address'],
             'apartment' => $shipping['apartment'],
+            'country' => $shipping['country'],
             'city' => $shipping['city'],
-            'province_id' => $shipping['provinces'],
             'postal_code' => $shipping['postal-code'],
             'phone_number' => $shipping['phone'],
         ]);

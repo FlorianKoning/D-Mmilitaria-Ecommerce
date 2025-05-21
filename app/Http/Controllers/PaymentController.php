@@ -56,8 +56,8 @@ class PaymentController extends Controller
             'shipping.company' => 'nullable|string|max:191',
             'shipping.address' => 'required|string|max:191',
             'shipping.apartment' => 'nullable|number|max:1000',
+            'shipping.country' => 'nullable|string|max:191',
             'shipping.city' => 'required|string|max:191',
-            'shipping.provinces' => 'required|string|'.Rule::in($provinceIds),
             'shipping.postal-code' => 'required|string|min:6'
         ]);
 
@@ -91,7 +91,6 @@ class PaymentController extends Controller
         if($this->paymentHandler($request->shipping) == "redirect") {
             return redirect()->route('payment.exhibition', $this->order);
         }
-
 
 
         return redirect()->route('public.confirmation', [$this->order, $shipping]);
@@ -129,7 +128,7 @@ class PaymentController extends Controller
         // Checks what payment options has been selected
         $this->paymentOption = $this->paymentOptionRepository->find($paymentMethod);
 
-         // Creates a new order with the payment id, items array and the shipping array.
+        // Creates a new order with the payment id, items array and the shipping array.
         $this->order = $this->orderService->create($shipping, $items, $paymentAmount, $this->paymentOption);
 
         // Sets the items from the item object in the reserved database table.

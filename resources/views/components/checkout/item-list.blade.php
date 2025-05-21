@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     <div class="flex flex-1 items-end justify-between pt-2">
-                        <p class="mt-1 text-xs font-medium text-gray-500">Hoeveelheid: {{ $item->amount }}</p>
+                        <p class="mt-1 text-xs font-medium text-gray-500">Amount: {{ $item->amount }}</p>
                     </div>
                     <div class="flex flex-1 items-end justify-between pt-2">
                         <x-discount-price :item="$item" :textSize="__('xs')" />

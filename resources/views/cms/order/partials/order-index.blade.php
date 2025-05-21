@@ -51,14 +51,19 @@
                               </x-slot>
 
                               <x-slot name="content">
-                                  {{-- Edit order --}}
-                                  <x-dropdown-link :href="route('cms.orders.edit', $order->id)">
+                                {{-- Edit order --}}
+                                <x-dropdown-link :href="route('cms.orders.edit', $order->id)">
                                       {{ __('Update Status') }}
-                                  </x-dropdown-link>
+                                </x-dropdown-link>
 
-                                  {{-- View Product --}}
-                                  <x-dropdown-link :href="route('cms.orders.show', $order->id)">
+                                {{-- View Product --}}
+                                <x-dropdown-link :href="route('cms.orders.show', $order->id)">
                                     {{ __('Bestelling Producten') }}
+                                </x-dropdown-link>
+
+                                 {{-- Shipping Information --}}
+                                <x-dropdown-link :href="route('cms.orders.shipping', $order->id)">
+                                    {{ __('Verzendings Informatie') }}
                                 </x-dropdown-link>
                               </x-slot>
                           </x-dropdown>

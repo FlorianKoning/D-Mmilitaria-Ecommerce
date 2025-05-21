@@ -27,9 +27,9 @@ class PaymentOption extends Model
      * @var array
      */
     public static array $columnTranslations = [
-        'bank_transfer' => 'Betalen via bankoverschrijving.',
-        'fair_pickup' => 'Ophalen bij een beurs.',
-        'other' => 'Anders betalen',
+        'bank_transfer' => 'Pay with bank transfer.',
+        'fair_pickup' => 'Pick up at fair.',
+        'other' => 'Other payments',
     ];
 
     /**

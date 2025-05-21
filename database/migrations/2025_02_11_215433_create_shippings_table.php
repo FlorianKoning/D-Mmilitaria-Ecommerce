@@ -24,9 +24,8 @@ return new class extends Migration
             $table->string('company')->nullable();
             $table->string('address');
             $table->string('apartment')->nullable();
+            $table->string('country')->nullable();
             $table->string('city');
-            $table->unsignedBigInteger('province_id');
-            $table->foreign('province_id')->references('id')->on('provinces');
             $table->string('postal_code');
             $table->string('phone_number');
         });

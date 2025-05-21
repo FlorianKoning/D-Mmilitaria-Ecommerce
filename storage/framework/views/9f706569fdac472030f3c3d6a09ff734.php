@@ -35,16 +35,16 @@ unset($__defined_vars); ?>
         <input id="inputSubtotal" type="hidden" value="<?php echo e($paymentValue); ?>">
     </div>
     <div id="shippingCost" class="flex items-center justify-between">
-        <dt class="text-sm">Verzend kosten</dt>
+        <dt class="text-sm">Shipping Cost</dt>
         <dd class="text-sm font-medium text-gray-900">$5.00</dd>
     </div>
     <div class="border-t border-gray-200 pt-4">
         <div class="flex items-center justify-between">
-            <dt class="text-base font-medium text-gray-900">Totaal</dt>
+            <dt class="text-base font-medium text-gray-900">Total</dt>
             <dd class="text-base font-bold text-gray-900">€<?php echo e((isset($paymentValue)) ? $paymentValue + 5 : session('totalPrice') + 5); ?></dd>
         </div>
         <input id="inputPayment" name="paymentAmount" type="hidden" value="<?php echo e($paymentValue); ?>">
-        <p class="text-xs text-gray-500 float-right">(Extra service kosten bij Mollie)</p>
+        <p class="text-xs text-gray-500 float-right">(Extra service cost with Mollie)</p>
     </div>
 </dl>
 <?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/components/checkout/checkout-cost.blade.php ENDPATH**/ ?>
