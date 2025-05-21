@@ -11,6 +11,9 @@ class BusinessSettings extends Model
     use HasFactory;
 
 
+    public static int $id = 1;
+
+
     /**
      * The attributes that are mass assignable.
      *

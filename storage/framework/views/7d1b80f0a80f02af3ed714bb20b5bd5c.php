@@ -15,12 +15,6 @@
         <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-        <!-- Include stylesheet -->
-        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
-
-        <!-- Include the Quill library -->
-        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-
         
         <script defer src="<?php echo e(asset('js/main.js')); ?>" type="text/javascript"></script>
         <script defer src="<?php echo e(asset('js/liveSearch.js')); ?>" type="text/javascript"></script>
