@@ -18,6 +18,7 @@ use App\Http\Requests\ShippingRequest;
 use App\Repositories\ShippingRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\UserShipping;
 use App\Repositories\OrderStatusRepository;
 use App\Services\OrderStatusService;
 
@@ -51,7 +52,7 @@ class ProfileController extends Controller
     {
         return view('profile.shipping', [
             'provinces' => Province::select('*')->orderBy('province_name')->get(),
-            'shipping' => Shipping::where('user_id', Auth::user()->id)->first(),
+            'shipping' => UserShipping::where('user_id', Auth::user()->id)->first(),
         ]);
     }
 
@@ -89,6 +90,7 @@ class ProfileController extends Controller
     {
         $validated  = $request->validated();
         $userId = Auth::user()->id;
+
         $updateArray = [
             'user_id' => $userId,
             'first_name' => $validated['first-name'],
@@ -97,21 +99,19 @@ class ProfileController extends Controller
             'address' => $validated['address'],
             'apartment' => $validated['apartment'],
             'city' => $validated['city'],
-            'province_id' => $validated['provinces'],
+            'country' => (isset($validated['country']) ? $validated['country'] : 'Netherlands'),
             'postal_code' => $validated['postal-code'],
             'phone_number' => $validated['phone']
         ];
 
-
         // Checks if a update or create function should be called
-        if (Shipping::where('user_id', $userId)->exists()) {
-            $shipping = Shipping::where('user_id', $userId)->first();
+        if (UserShipping::where('user_id', $userId)->exists()) {
+            $userShipping = UserShipping::where('user_id', $userId)->first();
 
-            $shipping->update($updateArray);
+            $userShipping->update($updateArray);
         } else {
-            Shipping::create($updateArray);
+            UserShipping::create($updateArray);
         }
-
 
         // Returns the user back to the shipping form.
         return redirect()->route('profile.shipping')->with('shippingSucces', 'Uw verzendings informatie is opgeslagen.');

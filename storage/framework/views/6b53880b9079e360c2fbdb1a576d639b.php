@@ -153,24 +153,25 @@ unset($__defined_vars); ?>
           <section aria-labelledby="product-heading" class="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3">
             <h2 id="product-heading" class="sr-only">Products</h2>
 
-            <div class="grid grid-cols-1 gap-y-3 sm:grid-cols-1 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
-                <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
-                        <img src="<?php echo e($item->main_image); ?>" alt="Helm" class="bg-gray-100 object-cover group-hover:opacity-75 sm:h-96">
-                        <div class="flex flex-1 flex-col space-y-2 p-4">
-                            <h3 class="text-sm font-medium text-gray-900">
-                                <a href="<?php echo e(route('products.show', $item->id)); ?>">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                    <?php echo e($item->name); ?>
+            <?php if(count($products) > 0): ?>
+                <div class="grid grid-cols-1 gap-y-3 sm:grid-cols-1 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
+                    <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
+                            <img src="<?php echo e($item->main_image); ?>" alt="Helm" class="bg-gray-100 object-cover group-hover:opacity-75 sm:h-96">
+                            <div class="flex flex-1 flex-col space-y-2 p-4">
+                                <h3 class="text-sm font-medium text-gray-900">
+                                    <a href="<?php echo e(route('products.show', $item->id)); ?>">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                        <?php echo e($item->name); ?>
 
-                                </a>
-                            </h3>
-                            <p class="text-sm text-gray-500"><?php echo e(substr($item->small_desc, 0, 100)); ?></p>
-                            <div class="flex flex-1 flex-col justify-end">
-                                <div class="flex flex-row justify-between">
-                                    
-                                    <?php if($item->inventory > 0): ?>
-                                        <?php if (isset($component)) { $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79 = $component; } ?>
+                                    </a>
+                                </h3>
+                                <p class="text-sm text-gray-500"><?php echo e(substr($item->small_desc, 0, 100)); ?></p>
+                                <div class="flex flex-1 flex-col justify-end">
+                                    <div class="flex flex-row justify-between">
+                                        
+                                        <?php if($item->inventory > 0): ?>
+                                            <?php if (isset($component)) { $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.discount-price','data' => ['item' => $item]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('discount-price'); ?>
@@ -190,30 +191,35 @@ unset($__defined_vars); ?>
 <?php $component = $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79; ?>
 <?php unset($__componentOriginal4eba5a0f5430be374961e51d7c8c9e79); ?>
 <?php endif; ?>
-                                    <?php endif; ?>
+                                        <?php endif; ?>
 
-                                    
-                                    <?php if($item->inventory > 0): ?>
-                                        <div class="flex flex-row gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                            </svg>
-                                            <p class="text-sm text-gray-900">In vooraad</p>
-                                        </div>
-                                    <?php else: ?>
-                                        <div class="flex flex-row gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                            </svg>
-                                            <p class="text-sm text-gray-900">Uit vooraad</p>
-                                        </div>
-                                    <?php endif; ?>
+                                        
+                                        <?php if($item->inventory > 0): ?>
+                                            <div class="flex flex-row gap-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                                </svg>
+                                                <p class="text-sm text-gray-900">In vooraad</p>
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="flex flex-row gap-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                                </svg>
+                                                <p class="text-sm text-gray-900">Uit vooraad</p>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+            <?php else: ?>
+                <div class="w-full flex text-center">
+                    <h1 class="w-full text-3xl font-bold">There where no products found.</h1>
+                </div>
+            <?php endif; ?>
           </section>
         </div>
       </main>

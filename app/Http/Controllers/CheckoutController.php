@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Province;
-use App\Models\Shipping;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
 use App\Services\CartService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Helper\Translate\TranslatePaymentOption;
 use Illuminate\Http\RedirectResponse;
+use App\Helper\Translate\TranslatePaymentOption;
+use App\Models\UserShipping;
 
 class CheckoutController extends Controller
 {
@@ -40,7 +40,7 @@ class CheckoutController extends Controller
 
 
         return view('checkout.checkout-index', [
-            'shippingInfo' => (Auth::check()) ? Shipping::where('user_id', Auth::user()->id)->first() : null,
+            'shippingInfo' => (Auth::check()) ? UserShipping::where('user_id', Auth::user()->id)->first() : null,
             'provinces' => Province::select('*')->orderBy('province_name')->get(),
             'paymentValue' => $request->paymentValue,
             'cart' => $cart,

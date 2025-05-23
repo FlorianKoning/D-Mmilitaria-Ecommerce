@@ -19,6 +19,6 @@
     </div>
 
     @if (session()->has('shippingSucces'))
-        <x-session-warning :sessionText="session('shippingSucces')" />
+        <x-session-succes :sessionText="session('shippingSucces')" />
     @endif
 </x-app-layout>

@@ -10,21 +10,21 @@
 
               {{-- user first name --}}
               <div>
-                <label for="first-name" class="block text-sm/6 font-medium text-gray-700">Voornaam <span class="text-red-500">*</span></label>
+                <label for="first-name" class="block text-sm/6 font-medium text-gray-700">First name <span class="text-red-500">*</span></label>
                 <x-text-input id="first-name" name="first-name" type="text" class="mt-2 block w-full" :value="(isset($shipping->first_name)) ? $shipping->first_name : old('first-name')" required />
                 <x-input-error class="mt-2" :messages="$errors->get('first-name')" />
               </div>
 
               {{-- user last name --}}
               <div>
-                <label for="last-name" class="block text-sm/6 font-medium text-gray-700">Achternaam <span class="text-red-500">*</span></label>
+                <label for="last-name" class="block text-sm/6 font-medium text-gray-700">Last name <span class="text-red-500">*</span></label>
                 <x-text-input id="last-name" name="last-name" type="text" class="mt-2 block w-full" :value="(isset($shipping->last_name)) ? $shipping->last_name : old('last-name')" required />
                 <x-input-error class="mt-2" :messages="$errors->get('last-name')" />
               </div>
 
               {{-- user company name --}}
               <div class="sm:col-span-2">
-                <label for="company" class="block text-sm/6 font-medium text-gray-700">Bedrijf</label>
+                <label for="company" class="block text-sm/6 font-medium text-gray-700">Company</label>
                 <x-text-input id="company" name="company" type="text" class="mt-2 block w-full" :value="(isset($shipping->company)) ? $shipping->company : old('company')" />
                 <x-input-error class="mt-2" :messages="$errors->get('company')" />
               </div>
@@ -43,36 +43,30 @@
                 <x-input-error class="mt-2" :messages="$errors->get('apartment')" />
               </div>
 
+              {{-- user country --}}
+              <div>
+                <label for="country" class="block text-sm/6 font-medium text-gray-700">Shipping Country </label>
+                <x-text-input id="country" name="country" type="text" class="mt-2 block w-full" placeholder="Leave empty when you live in the netherlands" :value="(isset($shipping->country)) ? $shipping->country : old('country')" />
+                <x-input-error class="mt-2" :messages="$errors->get('country')" />
+              </div>
+
               {{-- user city --}}
               <div>
-                <label for="city" class="block text-sm/6 font-medium text-gray-700">Stad <span class="text-red-500">*</span></label>
+                <label for="city" class="block text-sm/6 font-medium text-gray-700">City <span class="text-red-500">*</span></label>
                 <x-text-input id="city" name="city" type="text" class="mt-2 block w-full" :value="(isset($shipping->city)) ? $shipping->city : old('city')" required />
                 <x-input-error class="mt-2" :messages="$errors->get('city')" />
               </div>
 
-              {{-- netherlands provinces --}}
-              <div>
-                <label for="provinces" class="block text-sm/6 font-medium text-gray-700">Provincies <span class="text-red-500">*</span></label>
-                <div class="mt-2 grid grid-cols-1">
-                  <select required id="provinces" name="provinces" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-2 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-600 sm:text-sm/6">
-                    @foreach ($provinces as $province)
-                        <option {{ ($shipping != null && $province->id == $shipping->province_id) ? 'selected' : '' }} value="{{ $province->id }}">{{ $province->province_name }}</option>
-                    @endforeach
-                  </select>
-                </div>
-                <x-input-error class="mt-2" :messages="$errors->get('provinces')" />
-              </div>
-
               {{-- postal code --}}
               <div>
-                <label for="postal-code" class="block text-sm/6 font-medium text-gray-700">Post code <span class="text-red-500">*</span></label>
+                <label for="postal-code" class="block text-sm/6 font-medium text-gray-700">Postal code <span class="text-red-500">*</span></label>
                 <x-text-input id="postal-code" name="postal-code" type="text" class="mt-2 block w-full" :value="(isset($shipping->postal_code)) ? $shipping->postal_code : old('postal-code')" required />
                 <x-input-error class="mt-2" :messages="$errors->get('postal-code')" />
               </div>
 
               {{-- phone number --}}
               <div class="sm:col-span-2">
-                <label for="phone" class="block text-sm/6 font-medium text-gray-700">Telefoon nummer <span class="text-red-500">*</span></label>
+                <label for="phone" class="block text-sm/6 font-medium text-gray-700">Phone number <span class="text-red-500">*</span></label>
                 <x-text-input id="phone" name="phone" type="text" class="mt-2 block w-full" :value="(isset($shipping->phone_number)) ? $shipping->phone_number : old('phone')" required />
                 <x-input-error class="mt-2" :messages="$errors->get('phone')" />
               </div>

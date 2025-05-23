@@ -106,47 +106,53 @@
           <section aria-labelledby="product-heading" class="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3">
             <h2 id="product-heading" class="sr-only">Products</h2>
 
-            <div class="grid grid-cols-1 gap-y-3 sm:grid-cols-1 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
-                @foreach ($products as $item)
-                    <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
-                        <img src="{{ $item->main_image }}" alt="Helm" class="bg-gray-100 object-cover group-hover:opacity-75 sm:h-96">
-                        <div class="flex flex-1 flex-col space-y-2 p-4">
-                            <h3 class="text-sm font-medium text-gray-900">
-                                <a href="{{ route('products.show', $item->id) }}">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                    {{ $item->name }}
-                                </a>
-                            </h3>
-                            <p class="text-sm text-gray-500">{{ substr($item->small_desc, 0, 100) }}</p>
-                            <div class="flex flex-1 flex-col justify-end">
-                                <div class="flex flex-row justify-between">
-                                    {{-- item price --}}
-                                    @if ($item->inventory > 0)
-                                        <x-discount-price :item="$item" />
-                                    @endif
+            @if (count($products) > 0)
+                <div class="grid grid-cols-1 gap-y-3 sm:grid-cols-1 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
+                    @foreach ($products as $item)
+                        <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
+                            <img src="{{ $item->main_image }}" alt="Helm" class="bg-gray-100 object-cover group-hover:opacity-75 sm:h-96">
+                            <div class="flex flex-1 flex-col space-y-2 p-4">
+                                <h3 class="text-sm font-medium text-gray-900">
+                                    <a href="{{ route('products.show', $item->id) }}">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                        {{ $item->name }}
+                                    </a>
+                                </h3>
+                                <p class="text-sm text-gray-500">{{ substr($item->small_desc, 0, 100) }}</p>
+                                <div class="flex flex-1 flex-col justify-end">
+                                    <div class="flex flex-row justify-between">
+                                        {{-- item price --}}
+                                        @if ($item->inventory > 0)
+                                            <x-discount-price :item="$item" />
+                                        @endif
 
-                                    {{-- in stock --}}
-                                    @if ($item->inventory > 0)
-                                        <div class="flex flex-row gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                            </svg>
-                                            <p class="text-sm text-gray-900">In vooraad</p>
-                                        </div>
-                                    @else
-                                        <div class="flex flex-row gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                            </svg>
-                                            <p class="text-sm text-gray-900">Uit vooraad</p>
-                                        </div>
-                                    @endif
+                                        {{-- in stock --}}
+                                        @if ($item->inventory > 0)
+                                            <div class="flex flex-row gap-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                                </svg>
+                                                <p class="text-sm text-gray-900">In vooraad</p>
+                                            </div>
+                                        @else
+                                            <div class="flex flex-row gap-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                                </svg>
+                                                <p class="text-sm text-gray-900">Uit vooraad</p>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="w-full flex text-center">
+                    <h1 class="w-full text-3xl font-bold">There where no products found.</h1>
+                </div>
+            @endif
           </section>
         </div>
       </main>
