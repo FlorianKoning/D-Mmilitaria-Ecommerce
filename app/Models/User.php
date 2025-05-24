@@ -21,6 +21,8 @@ class User extends Authenticatable
         'first_name' => 'Voornaam',
         'last_name' => 'Achternaam',
         'email' => 'Email',
+        'role_id' => 'Role',
+        'newsletter' => 'Niewsbrief',
         'created_at' => 'Aanmeldings Datum',
     ];
 

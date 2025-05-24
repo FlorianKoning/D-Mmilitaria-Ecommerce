@@ -19,9 +19,9 @@ class Role extends Model
 
     // Static array with all available roles
     public static array $roleArray = [
-        'user',
-        'administator',
-        'super_user'
+        'user' => 'Gebruiker',
+        'administator' => 'Administrator',
+        'super_user' => 'Super Gebruiker'
     ];
 
 

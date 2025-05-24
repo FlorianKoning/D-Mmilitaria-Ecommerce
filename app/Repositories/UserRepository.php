@@ -21,9 +21,10 @@ class UserRepository implements UserRepositoryInterface
     }
 
 
-    public function all(): Collection
+    public function all(bool $noEmptyValues = true): Collection
     {
-        $users = User::all();
+        $users = User::select('users.*', 'roles.name as role_name')
+            ->leftJoin('roles', 'users.role_id', '=', 'roles.id')->get();
 
         if (count($users) == 0) {
             throw new Exception("There where no users found in the database!");

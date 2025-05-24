@@ -177,6 +177,37 @@
 <?php endif; ?>
                     </ul>
                 </li>
+                <li class="px-6">
+                    <ul id="overview" role="list" class="-mx-2 space-y-1">
+                        <?php if (isset($component)) { $__componentOriginal7c31356aca81a64b5d3f4569b8e77442 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7c31356aca81a64b5d3f4569b8e77442 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.cms-nav-link','data' => ['href' => route('cms.users.index'),'active' => request()->routeIs('cms.users.*')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('cms-nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('cms.users.index')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('cms.users.*'))]); ?>
+                            <div class="flex flex-row gap-x-3 ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 shrink-0">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                                </svg>
+
+                                Users
+                            </div>
+                         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7c31356aca81a64b5d3f4569b8e77442)): ?>
+<?php $attributes = $__attributesOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
+<?php unset($__attributesOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442)): ?>
+<?php $component = $__componentOriginal7c31356aca81a64b5d3f4569b8e77442; ?>
+<?php unset($__componentOriginal7c31356aca81a64b5d3f4569b8e77442); ?>
+<?php endif; ?>
+                    </ul>
+                </li>
 
 
                 

@@ -38,7 +38,14 @@ Route::controller(CmsProductsController::class)->group(function() {
 
 
 // User routes
-Route::get('/cms/users', [CmsUserController::class, 'index'])->name('cms.users.index');
+Route::controller(CmsUserController::class)->group(function() {
+    Route::get('/cms/users', 'index')->name('cms.users.index');
+    Route::get('/cms/users/create', 'create')->name('cms.users.create');
+    Route::get('/cms/users/edit/{user}', 'edit')->name('cms.users.edit');
+    Route::post('/cms/users/store', 'store')->name('cms.users.store');
+    Route::patch('/cms/users/update/{user}', 'update')->name('cms.users.update');
+    Route::delete('/cms/users/delete/{user}', 'destroy')->name('cms.users.delete');
+});
 
 
 // Catagory routes
