@@ -131,9 +131,9 @@ class DatabaseSeeder extends Seeder
     private function defaultOptions(): void
     {
         // inserts all the roles
-        foreach (Role::$roleArray as $value) {
+        foreach (Role::$roleArray as $key => $value) {
             Role::factory()->create([
-                'name' => $value
+                'name' => $key
             ]);
         }
 
