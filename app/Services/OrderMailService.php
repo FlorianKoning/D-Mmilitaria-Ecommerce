@@ -42,7 +42,7 @@ class OrderMailService implements OrderMailServiceInterface
     public function newOrder(array $shipping, Order $order): void
     {
         Mail::to($shipping['email-address'])->queue(
-            new NewOrder($order, $shipping['first-name'])
+            new NewOrder($order, $shipping['first-name'], $this->businessRepository->all())
         );
     }
 
@@ -56,7 +56,7 @@ class OrderMailService implements OrderMailServiceInterface
     public function newOrderAdmin(array $shipping, Order $order): void
     {
         Mail::to(env('ADMIN_EMAIL'))->queue(
-            new NewOrderAdmin($order, $shipping['first-name'])
+            new NewOrderAdmin($order, $shipping['first-name'], $this->businessRepository->all())
         );
     }
 
@@ -70,10 +70,8 @@ class OrderMailService implements OrderMailServiceInterface
      */
     public function bankTransfer(Order $order, string $email, string $name): void
     {
-        $businessRepository = app(BusinessRepository::class);
-
         Mail::to($email)->queue(
-            new BankTransfer($order, $email, $name, $businessRepository->all())
+            new BankTransfer($order, $email, $name, $this->businessRepository->all())
         );
     }
 
@@ -88,7 +86,7 @@ class OrderMailService implements OrderMailServiceInterface
     {
         // Sends email to the user
         Mail::to($email)->queue(
-            new PaymentReceived($order)
+            new PaymentReceived($order, $this->businessRepository->all())
         );
     }
 
@@ -102,7 +100,7 @@ class OrderMailService implements OrderMailServiceInterface
     public function canceledOrder(string $email, string $name, Order $order): void
     {
         Mail::to($email)->queue(
-            new Canceled($order, $name, $this->businessRepository)
+            new Canceled($order, $name, $this->businessRepository->all())
         );
     }
 

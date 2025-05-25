@@ -3,9 +3,9 @@
 namespace App\Mail;
 
 use App\Models\Order;
-use App\Repositories\BusinessRepository;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use App\Models\BusinessSettings;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
@@ -18,9 +18,9 @@ class Canceled extends Mailable
      * Create a new message instance.
      */
     public function __construct(
-        public Order $order, 
+        public Order $order,
         public string $name,
-        protected BusinessRepository $businessRepository,
+        protected BusinessSettings $businessSettings,
     ){}
 
     /**
@@ -44,7 +44,7 @@ class Canceled extends Mailable
             with: [
                 'orderNumber' => $this->order->order_number,
                 'customerName' => $this->name,
-                'businessRepository' => $this->businessRepository
+                'businessSettings' => $this->businessSettings
             ]
         );
     }

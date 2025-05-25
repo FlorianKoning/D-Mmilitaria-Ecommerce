@@ -4,11 +4,11 @@ namespace App\Mail;
 
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use App\Models\BusinessSettings;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
 
 class NewOrderAdmin extends Mailable
 {
@@ -17,7 +17,11 @@ class NewOrderAdmin extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public Order $order, public string $name){}
+    public function __construct(
+        public Order $order,
+        public string $name,
+        public BusinessSettings $businessSettings,
+    ){}
 
     /**
      * Get the message envelope.
@@ -39,7 +43,8 @@ class NewOrderAdmin extends Mailable
             html: 'mail.emails.orderAdmin',
             with: [
                 'orderNumber' => $this->order->order_number,
-                'customerName' => $this->name
+                'customerName' => $this->name,
+                'businessSettings' => $this->businessSettings,
             ]
         );
     }

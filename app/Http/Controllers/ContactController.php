@@ -8,9 +8,14 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ContactMessageRequest;
+use App\Repositories\BusinessRepository;
 
 class ContactController extends Controller
 {
+    public function __construct(
+        protected BusinessRepository $businessRepository,
+    ){parent::__construct();}
+
     /**
      * Displays the contact form and information.
      */
@@ -41,7 +46,7 @@ class ContactController extends Controller
 
         // Sends email That the order has been made to the customer.
         Mail::to($business->business_email)->queue(
-            new ContactMail($validated['message'], $validated['email'])
+            new ContactMail($validated['message'], $validated['email'], $this->businessRepository->all())
         );
 
         return redirect()->route('contact.index')->with('success','Uw bericht is verstuurd!');

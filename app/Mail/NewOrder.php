@@ -2,7 +2,9 @@
 
 namespace App\Mail;
 
+use App\Models\BusinessSettings;
 use App\Models\Order;
+use App\Repositories\BusinessRepository;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
@@ -16,7 +18,11 @@ class NewOrder extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public Order $order, public string $name){}
+    public function __construct(
+        public Order $order,
+        public string $name,
+        public BusinessSettings $businessSettings,
+    ){}
 
     /**
      * Get the message envelope.
@@ -38,7 +44,8 @@ class NewOrder extends Mailable
             html: 'mail.emails.order',
             with: [
                 'orderNumber' => $this->order->order_number,
-                'customerName' => $this->name
+                'customerName' => $this->name,
+                'businessSettings' => $this->businessSettings,
             ]
         );
     }

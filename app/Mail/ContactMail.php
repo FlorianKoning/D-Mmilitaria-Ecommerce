@@ -2,13 +2,12 @@
 
 namespace App\Mail;
 
-use App\Http\Controllers\ProfileController;
-use App\Models\BusinessSettings;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use App\Models\BusinessSettings;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
 
 class ContactMail extends Mailable
 {
@@ -17,7 +16,11 @@ class ContactMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public string $customer_message, public string $customer_email){}
+    public function __construct(
+        public string $customer_message,
+        public string $customer_email,
+        protected BusinessSettings $businessSettings,
+    ){}
 
     /**
      * Get the message envelope.
@@ -40,6 +43,7 @@ class ContactMail extends Mailable
             with: [
                 'customerEmail' => $this->customer_email,
                 'customerMessage' => $this->customer_message,
+                'businessSettings' => $this->businessSettings,
             ]
         );
     }

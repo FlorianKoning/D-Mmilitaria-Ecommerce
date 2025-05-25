@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\BusinessSettings;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
@@ -15,10 +16,9 @@ class UserSignedUp extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(
+        public BusinessSettings $businessSettings,
+    ){}
 
     /**
      * Get the message envelope.
@@ -37,6 +37,9 @@ class UserSignedUp extends Mailable
     {
         return new Content(
             view: 'mail.emails.signup',
+            with: [
+                'businessSettings' => $this->businessSettings,
+            ]
         );
     }
 

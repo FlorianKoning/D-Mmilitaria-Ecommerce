@@ -55,19 +55,20 @@
             <div role="separator" style="line-height: 24px">&zwj;</div>
             <table style="width: 100%" cellpadding="0" cellspacing="0" role="none">
               <tr>
-                <td class="sm-p-6" style="border-radius: 8px; background-color: #fffffe; padding: 24px 36px; border: 1px solid #e2e8f0">
-                  <a href="https://maizzle.com">
-                    <img src="{{ $business }}" alt="">
-                  </a>
+                <td style="border-radius: 8px; background-color: #fffffe; border: 1px solid #e2e8f0">
+                    {{-- header --}}
+
+
+
                   <div role="separator" style="line-height: 24px">&zwj;</div>
-                  <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
+                  <h1 style="margin: 0 0 24px; font-size: 20px; line-height: 32px; font-weight: 600; color: #0f172a">
                     Welkom bij {{ env('APP_NAME') }}
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 16px; line-height: 24px; color: #475569">
                     We zijn blij om u bij ons welkom te noemen.
                   </p>
                   <div>
-                    <a href="{{ route('home.index') }}" style="display: inline-block; text-decoration: none; padding: 16px 24px; font-size: 16px; line-height: 1; border-radius: 4px; color: #fffffe; background-color: #4C5C41" class="hover-bg-slate-800">
+                    <a href="{{ route('login') }}" style="display: inline-block; text-decoration: none; padding: 16px 24px; font-size: 16px; line-height: 1; border-radius: 4px; color: #fffffe; background-color: #4C5C41" class="hover-bg-slate-800">
                       <!--[if mso]><i style="mso-font-width: 150%; mso-text-raise: 31px" hidden>&emsp;</i><![endif]-->
                       <span style="mso-text-raise: 16px">Log hier in</span>
                       <!--[if mso]><i hidden style="mso-font-width: 150%">&emsp;&#8203;</i><![endif]-->

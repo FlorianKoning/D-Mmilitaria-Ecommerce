@@ -118,9 +118,9 @@
                     Uw bestelling is onderweg!
                   </h1>
                   <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                    Beste, {{ $customerName }}
+                    Beste,
                     <br><br>
-                    Goed nieuws! Uw bestelling met ordernummer: [{{ $orderNumber }}], is inmiddels verzonden en onderweg naar u toe.
+                    Goed nieuws! Uw bestelling met ordernummer: [ordernummer], is inmiddels verzonden en onderweg naar u toe.
                     <br><br>
                     Zodra de track & trace-code beschikbaar is, ontvangt u van ons een aparte e-mail met de link om uw zending te volgen.
                     <br><br>
@@ -130,7 +130,7 @@
                   <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
                     Met vriendelijke groet,
                     <br>
-                    <span style="font-weight: 600">{{ env('APP_NAME') }}</span>
+                    <span style="font-weight: 600">APP_NAME</span>
                   </p>
                   <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
                   <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
@@ -146,7 +146,7 @@
               <tr>
                 <td class="sm-px-6" style="padding: 24px 36px">
                   <p style="margin: 0; font-size: 12px; color: #64748b">
-                    &copy; 2025 {{ env('APP_NAME') }}. All rights reserved.
+                    &copy; 2025 APP_NAME. All rights reserved.
                   </p>
                 </td>
               </tr>

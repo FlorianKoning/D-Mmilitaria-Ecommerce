@@ -5,10 +5,10 @@ namespace App\Mail;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use App\Models\BusinessSettings;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class PaymentReceived extends Mailable
 {
@@ -17,7 +17,10 @@ class PaymentReceived extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public Order $order){}
+    public function __construct(
+        public Order $order,
+        public BusinessSettings $businessSettings,
+    ){}
 
     /**
      * Get the message envelope.
@@ -37,6 +40,9 @@ class PaymentReceived extends Mailable
     {
         return new Content(
             view: 'mail.emails.paymentReceived',
+            with: [
+                'businessSettings' => $this->businessSettings,
+            ]
         );
     }
 
