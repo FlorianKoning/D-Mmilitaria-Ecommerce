@@ -125,8 +125,6 @@ class OrderService implements OrderServiceInterface
         $orderAmountLen = strlen((string)$orderAmount);
 
         $randomNumber = random_int(10000, 99999);
-        $checkSum = 12;
-
 
         for ($i = 1; $i <= ($intSize - $orderAmountLen); $i++) {
             $template .= "0";
@@ -134,7 +132,6 @@ class OrderService implements OrderServiceInterface
         $template .= ($orderAmount == 0) ? 1 : $orderAmount;
         $template .= "-".$randomNumber;
 
-
-        return $template .= "-".$checkSum;
+        return $template;
     }
 }

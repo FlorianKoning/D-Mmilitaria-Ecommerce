@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use App\Models\BusinessSettings;
 use App\Models\Order;
+use App\Models\Shipping;
 use App\Repositories\BusinessRepository;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -20,6 +21,7 @@ class NewOrder extends Mailable
      */
     public function __construct(
         public Order $order,
+        public Shipping $shipping,
         public string $name,
         public BusinessSettings $businessSettings,
     ){}
@@ -46,6 +48,8 @@ class NewOrder extends Mailable
                 'orderNumber' => $this->order->order_number,
                 'customerName' => $this->name,
                 'businessSettings' => $this->businessSettings,
+                'order' => $this->order,
+                'shipping' => $this->shipping,
             ]
         );
     }

@@ -58,7 +58,7 @@ class PaymentController extends Controller
             'shipping.apartment' => 'nullable|number|max:1000',
             'shipping.country' => 'nullable|string|max:191',
             'shipping.city' => 'required|string|max:191',
-            'shipping.postal-code' => 'required|string|min:6'
+            'shipping.postal-code' => 'required|string|min:6|max:7'
         ]);
 
 

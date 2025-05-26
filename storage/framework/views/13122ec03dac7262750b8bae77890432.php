@@ -65,32 +65,33 @@
                     
                     <div class="sm-p-6" style="padding: 24px 36px">
                         <div role="separator" style="line-height: 24px">&zwj;</div>
-                        <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
-                            Uw bestel nummer is: <?php echo e($orderNumber); ?>
+                        <h1 style="margin: 0 0 24px; font-size: 20px; line-height: 32px; font-weight: 600; color: #0f172a">
+                            Your order number: <?php echo e($orderNumber); ?>
 
                         </h1>
                         <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                            Beste, <?php echo e($customerName); ?>
+                            best, <?php echo e($customerName); ?>
 
                             <br><br>
-                            Hartelijk dank voor uw bestelling bij ons.
+                            Thank you for your order with us.
                             <br><br>
-                            In de bijlage van deze e-mail vindt u de factuur van uw bestelling. Wij raden aan deze goed te bewaren, aangezien dit het bewijs van uw aankoop is.
+                            Your order has been received. To view your order, click this <a class="text-sky-600" href="<?php echo e(route('public.confirmation', [$order->id, $shipping->id])); ?>">link</a>.
+                            Here you can also download the invoice. Please keep it safe, as it serves as proof of payment.
                             <br>
                         </p>
                         <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                            U ontvangt nog een mail over de betaling.
+                            You will receive a email from us about the payment.
                         </p>
                         <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
-                            Met vriendelijke groet,
+                            With best regards,
                             <br>
                             <span style="font-weight: 600"><?php echo e(env('APP_NAME')); ?></span>
                         </p>
                         <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
                         <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
-                            Als u niks heeft besteld bij ons of iest fout is gegaan, neem graag contact met ons team op:
+                            Did you not order with us or did something go wrong? Get in contact with our teawm:
                             <a href="mailto:florian.koning2004@gmail.com?subject=Moeite met inloggen%20there&body=This%20is%20a%20predefined%20email%20body.">
-                            Klick hier om de mail te sturen.
+                            Click here to email our team.
                             </a>
                         </p>
                     </div>

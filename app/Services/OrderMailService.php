@@ -2,16 +2,17 @@
 
 namespace App\Services;
 
-use App\Interfaces\services\OrderMailServiceInterface;
-use App\Mail\Canceled;
 use App\Mail\Transit;
 use App\Models\Order;
+use App\Mail\Canceled;
 use App\Mail\NewOrder;
 use App\Mail\BankTransfer;
 use App\Mail\NewOrderAdmin;
 use App\Mail\PaymentReceived;
-use App\Repositories\BusinessRepository;
 use Illuminate\Support\Facades\Mail;
+use App\Repositories\BusinessRepository;
+use App\Repositories\ShippingRepository;
+use App\Interfaces\services\OrderMailServiceInterface;
 
 class OrderMailService implements OrderMailServiceInterface
 {
@@ -41,8 +42,10 @@ class OrderMailService implements OrderMailServiceInterface
      */
     public function newOrder(array $shipping, Order $order): void
     {
+        $shippingRepository = app(ShippingRepository::class);;
+
         Mail::to($shipping['email-address'])->queue(
-            new NewOrder($order, $shipping['first-name'], $this->businessRepository->all())
+            new NewOrder($order,  $shippingRepository->findWithOrder($order), $shipping['first-name'], $this->businessRepository->all())
         );
     }
 
