@@ -18,9 +18,9 @@
             <x-checkout-input-error class="mt-2" :messages="$errors->get('shipping.phone')" />
         </div>
     </div>
-    </div>
+</div>
 
-    <div class="mt-10 border-t border-gray-200 pt-10">
+<div class="mt-10 border-t border-gray-200 pt-10">
     <h2 class="text-lg font-medium text-gray-900">Shipping Information</h2>
 
     <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
@@ -57,15 +57,7 @@
 
         </div>
 
-        <div>
-            <label for="apartment" class="block text-sm/6 font-medium text-gray-700">Apartement</label>
-            <div class="mt-2">
-                <input type="text" name="shipping[apartment]" id="apartment" value="{{ ($shipping != null) ? $shipping->apartment : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-            </div>
-            <x-checkout-input-error class="mt-2" :messages="$errors->get('shipping.apartment')" />
-        </div>
-
-        <div>
+        <div class="sm:col-span-2">
             <label for="country" class="block text-sm/6 font-medium text-gray-700">Country</label>
             <div class="mt-2">
                 <input placeholder="Keep empty when in the netherlands" type="text" name="shipping[country]" id="country" value="{{ ($shipping != null) ? $shipping->country : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">

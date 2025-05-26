@@ -23,24 +23,17 @@
               </div>
 
               {{-- user company name --}}
-              <div class="sm:col-span-2">
+              <div>
                 <label for="company" class="block text-sm/6 font-medium text-gray-700">Company</label>
                 <x-text-input id="company" name="company" type="text" class="mt-2 block w-full" :value="(isset($shipping->company)) ? $shipping->company : old('company')" />
                 <x-input-error class="mt-2" :messages="$errors->get('company')" />
               </div>
 
               {{-- user address --}}
-              <div class="sm:col-span-2">
+              <div>
                 <label for="address" class="block text-sm/6 font-medium text-gray-700">Address <span class="text-red-500">*</span></label>
                 <x-text-input id="address" name="address" type="text" class="mt-2 block w-full" :value="(isset($shipping->address)) ? $shipping->address : old('address')" required />
                 <x-input-error class="mt-2" :messages="$errors->get('address')" />
-              </div>
-
-              {{-- user apartment --}}
-              <div class="sm:col-span-2">
-                <label for="apartment" class="block text-sm/6 font-medium text-gray-700">Apartment, suite, etc.</label>
-                <x-text-input id="apartment" name="apartment" type="text" class="mt-2 block w-full" :value="(isset($shipping->apartment)) ? $shipping->apartment : old('apartment')" />
-                <x-input-error class="mt-2" :messages="$errors->get('apartment')" />
               </div>
 
               {{-- user country --}}
@@ -65,7 +58,7 @@
               </div>
 
               {{-- phone number --}}
-              <div class="sm:col-span-2">
+              <div>
                 <label for="phone" class="block text-sm/6 font-medium text-gray-700">Phone number <span class="text-red-500">*</span></label>
                 <x-text-input id="phone" name="phone" type="text" class="mt-2 block w-full" :value="(isset($shipping->phone_number)) ? $shipping->phone_number : old('phone')" required />
                 <x-input-error class="mt-2" :messages="$errors->get('phone')" />

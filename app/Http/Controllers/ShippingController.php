@@ -33,7 +33,7 @@ class ShippingController extends Controller
      * Update the specified resource in storage.
      */
     public function update(ShippingRequest $request, Order $order, Shipping $shipping)
-    {   
+    {
         $validated = $request->validated();
 
         $shipping->update([
@@ -41,7 +41,6 @@ class ShippingController extends Controller
             'last_name' => $validated['last_name'],
             'company' => $validated['company'],
             'address' => $validated['address'],
-            'apartment' => $validated['apartment'],
             'city' => $validated['city'],
             'province_id' => $validated['province_id'],
             'postal_code' => $validated['postal_code'],

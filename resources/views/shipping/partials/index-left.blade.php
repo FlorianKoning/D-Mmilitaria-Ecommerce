@@ -36,12 +36,5 @@
             <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" :value="old('address', $shipping->address)" required />
             <x-input-error class="mt-2" :messages="$errors->get('address')" />
         </div>
-
-        {{-- shipping apartment --}}
-        <div>
-            <x-input-label for="apartment" :value="__('Verzending: Apartement')" />
-            <x-text-input id="apartment" name="apartment" type="text" class="mt-1 block w-full" :value="old('apartment', $shipping->apartment)" />
-            <x-input-error class="mt-2" :messages="$errors->get('apartment')" />
-        </div>
     </div>
 </section>

@@ -44,13 +44,13 @@
                         <?php echo e(__('Verzending informatie bewerken.')); ?>
 
                     </h2>
-            
+
                     <div class="flex flex-row justify-between">
                         <p class="mt-1 text-sm text-gray-600">
                             <?php echo e(__("Hier kunt u uw verzendings informatie bewerken van uw bestelling.")); ?>
 
                         </p>
-            
+
                         <p class="mt-1 text-sm font-semibold text-gray-600">
                             <span>Bestellings Nummer:</span> #<?php echo e($order->order_number); ?>
 

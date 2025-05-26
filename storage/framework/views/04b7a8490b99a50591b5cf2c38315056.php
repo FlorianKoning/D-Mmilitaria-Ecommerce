@@ -199,34 +199,7 @@ unset($__defined_vars); ?>
 
         </div>
 
-        <div>
-            <label for="apartment" class="block text-sm/6 font-medium text-gray-700">Apartement</label>
-            <div class="mt-2">
-                <input type="text" name="shipping[apartment]" id="apartment" value="<?php echo e(($shipping != null) ? $shipping->apartment : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-            </div>
-            <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.apartment')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('checkout-input-error'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.apartment'))]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
-<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
-<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
-<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
-<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
-<?php endif; ?>
-        </div>
-
-        <div>
+        <div class="sm:col-span-2">
             <label for="country" class="block text-sm/6 font-medium text-gray-700">Country</label>
             <div class="mt-2">
                 <input placeholder="Keep empty when in the netherlands" type="text" name="shipping[country]" id="country" value="<?php echo e(($shipping != null) ? $shipping->country : ''); ?>" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">

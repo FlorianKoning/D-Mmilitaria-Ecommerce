@@ -47,6 +47,25 @@ class PaymentController extends Controller
         // Gets all the province id's
         $provinceIds = $this->proviceRepository->get();
 
+        // Error Handler
+        switch (true) {
+            // shipping error
+            case $request->shipping == null || count($request->shipping) != 9:
+                return redirect()->route('checkout.index')->withErrors([
+                    'shipping.email' => 'you need to fill in the shipping information'
+                ]);
+
+            // items/products error
+            case $request->items == null || count($request->items) == 0:
+                return redirect()->route('home.index')->with('wrongPermission', 'Please select your product before paying.');
+
+            // payment method error
+            case count($request->paymentMethod) == 0:
+                return redirect()->route('checkout.index')->withErrors([
+                    'paymentOptions' => 'There was no payment method selected!'
+                ]);
+        }
+
         // Validates the request data.
         $request->validate([
             'shipping.email-address' => 'required|email|string|max:191',
@@ -55,20 +74,10 @@ class PaymentController extends Controller
             'shipping.last-name' => 'required|string|max:191',
             'shipping.company' => 'nullable|string|max:191',
             'shipping.address' => 'required|string|max:191',
-            'shipping.apartment' => 'nullable|number|max:1000',
             'shipping.country' => 'nullable|string|max:191',
             'shipping.city' => 'required|string|max:191',
             'shipping.postal-code' => 'required|string|min:6|max:7'
         ]);
-
-
-        // Checks if there was no payment method given from the user.
-        if (!isset($request->paymentMethod)) {
-            return redirect()->route('checkout.index')->withErrors([
-                'paymentOptions' => 'There was no payment method selected!'
-            ]);
-        }
-
 
         // Handles the important variables
         $this->variableHandler($request->paymentMethod, $request->shipping, $request->items, $request->paymentAmount);

@@ -97,7 +97,6 @@ class ProfileController extends Controller
             'last_name' => $validated['last-name'],
             'company' => $validated['company'],
             'address' => $validated['address'],
-            'apartment' => $validated['apartment'],
             'city' => $validated['city'],
             'country' => (isset($validated['country']) ? $validated['country'] : 'Netherlands'),
             'postal_code' => $validated['postal-code'],
