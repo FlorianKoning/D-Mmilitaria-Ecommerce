@@ -111,6 +111,7 @@ Route::controller(CmsExhibitionController::class)->group(function() {
 // Cms Email Settings Routes
 Route::controller(EmailSettingsController::class)->group(function() {
     Route::get('/cms/email-settings/', 'index')->name('cms.emailSettings.index');
+    Route::post('/cms/email-settings/store', 'store')->name('cms.emailsSettings.store');
 });
 
 

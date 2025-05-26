@@ -16,4 +16,8 @@
             </div>
         </div>
     </div>
+
+     @if (session()->has('success'))
+        <x-session-succes :title="__('Opdracht Gelukt!')" :sessionText="session('success')" />
+    @endif
 </x-app-layout>

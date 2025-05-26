@@ -32,8 +32,6 @@ class PaymentController extends Controller
         protected ExhibitionRepository $exhibitionRepository,
         protected BusinessRepository $businessRepository,
         protected ReservedHelper $ReservedHelper,
-        protected OrderService $orderService,
-        protected ShippingService $shippingService,
     ){parent::__construct();}
 
 
@@ -46,6 +44,7 @@ class PaymentController extends Controller
     {
         // Gets all the province id's
         $provinceIds = $this->proviceRepository->get();
+        $shippingService = app(ShippingService::class);
 
         // Error Handler
         switch (true) {
@@ -84,7 +83,7 @@ class PaymentController extends Controller
 
 
         // Creates a new shipping instance
-        $shipping = $this->shippingService->create($request->shipping, $this->order);
+        $shipping = $shippingService->create($request->shipping, $this->order);
 
 
         // Creates the invoice for the new order and saves the url to the order.
@@ -134,11 +133,13 @@ class PaymentController extends Controller
      */
     private function variableHandler(array $paymentMethod, array $shipping, array $items, string $paymentAmount): void
     {
+        $orderService = app(OrderService::class);
+
         // Checks what payment options has been selected
         $this->paymentOption = $this->paymentOptionRepository->find($paymentMethod);
 
         // Creates a new order with the payment id, items array and the shipping array.
-        $this->order = $this->orderService->create($shipping, $items, $paymentAmount, $this->paymentOption);
+        $this->order = $orderService->create($shipping, $items, $paymentAmount, $this->paymentOption);
 
         // Sets the items from the item object in the reserved database table.
         $this->ReservedHelper->reserveProduct($this->order);

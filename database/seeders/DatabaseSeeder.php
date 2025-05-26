@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\BusinessSettings;
 use App\Models\InvoiceSettings;
 use App\Models\LandCatagories;
+use App\Models\MailSettings;
 use App\Models\Month;
 use App\Models\OrderStatus;
 use App\Models\PaymentOption;
@@ -40,6 +41,8 @@ class DatabaseSeeder extends Seeder
 
         // Sets an empty table for businessTable with an id of 1.
         $this->createBusinessTable();
+
+        $this->createEmailSettings();
 
         // Sets up all the months in the database.
         $this->setMonths();
@@ -214,6 +217,18 @@ class DatabaseSeeder extends Seeder
             'btw_number' => '',
             'business_address' => '',
             'business_logo' => '',
+        ]);
+    }
+
+
+    /**
+     * Creates a empty table for the email settings.
+     * @return void
+     */
+    private function createEmailSettings(): void
+    {
+        MailSettings::factory()->create([
+            'order_email' => ''
         ]);
     }
 

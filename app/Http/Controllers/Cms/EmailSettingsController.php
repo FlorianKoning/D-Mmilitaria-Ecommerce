@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Cms;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CmsEmailSettingsRequest;
+use App\Models\MailSettings;
 use App\Repositories\UserRepository;
 
 class EmailSettingsController extends Controller
@@ -18,58 +20,23 @@ class EmailSettingsController extends Controller
      */
     public function index(): View
     {
-        $userRepository = app(UserRepository::class);
-
         return view("cms.email.index", [
-            'users' => $userRepository->all(),
+            'emailSettings' => MailSettings::find(MailSettings::$mailSettingsId),
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CmsEmailSettingsRequest $request)
     {
-        //
-    }
+        $validated = $request->validated();
+        $mailSettings = MailSettings::find(MailSettings::$mailSettingsId);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $mailSettings->update([
+            'order_email' => $validated['order_email'],
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('cms.emailSettings.index')->with('success', 'Je email settings zijn geupdate');
     }
 }

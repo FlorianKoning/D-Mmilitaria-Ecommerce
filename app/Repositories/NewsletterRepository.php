@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
-use App\Interfaces\Repositories\NewsletterRepositoryInterface;
+use App\Interfaces\repositories\NewsletterRepositoryInterface;
 use App\Models\User;
 
 class NewsletterRepository implements NewsletterRepositoryInterface
