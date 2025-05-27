@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
             'big_desc' => 'Nederlands geweer uit 1941 van een nederlandse soldaat. Nederlands geweer uit 1941 van een nederlandse soldaat. Nederlands geweer uit 1941 van een nederlandse soldaat.',
             'inventory' => '3',
             'price' => '499.00',
-            'main_image' => 'http://127.0.0.1:3000/storage/images/Nederlands-geweer-uit-1941.png',
+            'main_image' => 'http://127.0.0.1:8080/storage/images/Nederlands-geweer-uit-1941.png',
             'is_active' => true,
             'created_at' => '2025-01-19 21:20:08',
             'updated_at' => '2025-01-19 21:20:08'
@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
             'discount_percentage' => '10',
             'discount_start_date' => '2025-01-20',
             'discount_end_date' => '2025-01-27',
-            'main_image' => 'http://127.0.0.1:3000/storage/images/uniform-van-nederlandse-soldaat.png',
+            'main_image' => 'http://127.0.0.1:8080/storage/images/uniform-van-nederlandse-soldaat.png',
             'is_active' => true,
             'created_at' => '2025-01-19 21:20:08',
             'updated_at' => '2025-01-19 21:20:08'
@@ -216,7 +216,7 @@ class DatabaseSeeder extends Seeder
             'kvk_number' => '97008478',
             'btw_number' => '',
             'business_address' => '',
-            'business_logo' => '',
+            'business_logo' => 'http://127.0.0.1:8080/storage/images/business_logo.png',
         ]);
     }
 
