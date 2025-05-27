@@ -84,9 +84,9 @@ unset($__defined_vars); ?>
 <?php endif; ?>
         </div>
     </div>
-    </div>
+</div>
 
-    <div class="mt-10 border-t border-gray-200 pt-10">
+<div class="mt-10 border-t border-gray-200 pt-10">
     <h2 class="text-lg font-medium text-gray-900">Shipping Information</h2>
 
     <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">

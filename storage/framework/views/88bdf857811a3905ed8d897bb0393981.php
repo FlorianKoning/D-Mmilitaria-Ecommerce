@@ -11,7 +11,7 @@
      <?php $__env->slot('header', null, []); ?> 
         <div class="flex justify-around">
             <h2 class="font-semibold text-xl text-white leading-tight flex-1">
-                <?php echo e(__('Email Settings')); ?>
+                <?php echo e(__('Business Settings')); ?>
 
             </h2>
         </div>
@@ -22,7 +22,7 @@
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <?php echo $__env->make('cms.email.partials.index', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+                <?php echo $__env->make('cms.businessSettings.partials.index', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
             </div>
         </div>
     </div>
@@ -59,4 +59,4 @@
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
 <?php endif; ?>
-<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/cms/email/index.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/cms/businessSettings/index.blade.php ENDPATH**/ ?>

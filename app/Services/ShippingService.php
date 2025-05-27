@@ -42,7 +42,6 @@ class ShippingService implements ShippingServiceInterface
             'last_name' => $shipping['last-name'],
             'company' => $shipping['company'],
             'address' => $shipping['address'],
-            'apartment' => $shipping['apartment'],
             'country' => $shipping['country'],
             'city' => $shipping['city'],
             'postal_code' => $shipping['postal-code'],

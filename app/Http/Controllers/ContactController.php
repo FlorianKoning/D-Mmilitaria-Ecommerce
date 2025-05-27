@@ -21,7 +21,9 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        return view('contact.contact-index', []);
+        return view('contact.contact-index', [
+            'business' => $this->businessRepository->all(),
+        ]);
     }
 
 

@@ -212,6 +212,7 @@ class DatabaseSeeder extends Seeder
     {
         BusinessSettings::factory()->create([
             'business_email' => '',
+            'business_phone_number' => '',
             'bankaccount_number' => 'NL60RABO0128258292',
             'kvk_number' => '97008478',
             'btw_number' => '',

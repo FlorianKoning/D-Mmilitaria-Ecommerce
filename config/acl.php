@@ -36,6 +36,7 @@ return [
                 "CmsExhibitionController" => ["*"],
                 "EmailSettingsController" => ["*"],
                 "NewsletterController" => ["*"],
+                "CmsBusinessSettingsController" => ["*"],
             ],
             "administator" => [
                 "CmsDashboardController" => ["*"],
@@ -46,6 +47,7 @@ return [
                 "CmsExhibitionController" => ["index"],
                 "EmailSettingsController" => ["index"],
                 "NewsletterController" => ["index"],
+                "CmsBusinessSettingsController" => ["index"],
             ],
             "user" => []
         ],

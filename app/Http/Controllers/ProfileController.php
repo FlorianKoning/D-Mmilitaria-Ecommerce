@@ -135,33 +135,6 @@ class ProfileController extends Controller
 
 
     /**
-     * Updates the business settings of the application
-     * @param \Illuminate\Http\Request $request
-     * @return RedirectResponse
-     */
-    public function business(BusinessRequest $request): RedirectResponse
-    {
-        $businessSettings = BusinessSettings::find(self::$businessTableId);
-        $validated = $request->validated();
-
-        if (isset($validated['business_logo'])) {
-            $imageUrl = FileService::imageUpload($validated['business_logo'], 'business_logo');
-        }
-
-        $businessSettings->update([
-            'business_email' => (isset($validated['business_email'])) ? $validated['business_email'] : $businessSettings->business_email,
-            'bankaccount_number' => (isset($validated['bankaccount_number'])) ? $validated['bankaccount_number'] : $businessSettings->bankaccount_number,
-            'kvk_number' => (isset($validated['kvk_number'])) ? $validated['kvk_number'] : $businessSettings->kvk_number,
-            'btw_number' => (isset($validated['btw_number'])) ? $validated['btw_number'] : $businessSettings->btw_number,
-            'business_address' => (isset($validated['business_address'])) ? $validated['business_address'] : $businessSettings->business_address,
-            'business_logo' => (isset($imageUrl) && $imageUrl != null && strlen($imageUrl) > 0) ? $imageUrl : $businessSettings->business_logo,
-        ]);
-
-        return redirect()->route('profile.edit')->with('status','profile-updated');
-    }
-
-
-    /**
      * Delete the user's account.
      */
     public function destroy(Request $request): RedirectResponse

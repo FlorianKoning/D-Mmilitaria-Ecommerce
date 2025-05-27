@@ -58,7 +58,9 @@ class OrderMailService implements OrderMailServiceInterface
      */
     public function newOrderAdmin(array $shipping, Order $order): void
     {
-        Mail::to(env('ADMIN_EMAIL'))->queue(
+        $businessSettings = $this->businessRepository->all();
+
+        Mail::to($businessSettings->business_email)->queue(
             new NewOrderAdmin($order, $shipping['first-name'], $this->businessRepository->all())
         );
     }

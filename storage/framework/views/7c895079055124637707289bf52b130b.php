@@ -6,12 +6,12 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            <?php echo e(__("Here you can set important settings for the website and the business.")); ?>
+            <?php echo e(__("Hier kan je een paar belangrijke settings aanpassen voor de applicatie.")); ?>
 
         </p>
     </header>
 
-    <form method="post" action="<?php echo e(route('profile.update.business')); ?>" class="mt-6 space-y-6" enctype="multipart/form-data">
+    <form method="post" action="<?php echo e(route('cms.businessSettings.update')); ?>" class="mt-6 space-y-6" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
         <?php echo method_field('patch'); ?>
 
@@ -445,4 +445,4 @@
         </div>
     </form>
 </section>
-<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/profile/partials/business-settings.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/cms/businessSettings/partials/index.blade.php ENDPATH**/ ?>

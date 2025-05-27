@@ -10,8 +10,7 @@ class BusinessSettings extends Model
     /** @use HasFactory<\Database\Factories\BusinessSettingsFactory> */
     use HasFactory;
 
-
-    public static int $id = 1;
+    public static int $businessTableId = 1;
 
 
     /**
@@ -21,6 +20,7 @@ class BusinessSettings extends Model
      */
     protected $fillable = [
         'business_email',
+        'business_phone_number',
         'bankaccount_number',
         'kvk_number',
         'btw_number',

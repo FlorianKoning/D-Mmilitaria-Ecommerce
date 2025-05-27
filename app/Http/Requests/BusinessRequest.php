@@ -23,6 +23,7 @@ class BusinessRequest extends FormRequest
     {
         return [
             'business_email' => 'nullable|email',
+            'business_phone_number' => 'nullable|string|min:9|max:17',
             'kvk_number' => 'nullable',
             'btw_number' => 'nullable',
             'business_address' => 'nullable',

@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Cms\CmsBusinessSettingsController;
 use App\Http\Controllers\Cms\CmsExtraFeaturesController;
 use App\Http\Controllers\Cms\CmsOrderStatusesController;
 use App\Http\Controllers\Cms\CmsProductCategoryController;
@@ -120,4 +122,11 @@ Route::controller(NewsletterController::class)->group(function() {
     Route::get('/cms/newsletter/', 'index')->name('cms.newsletter.index');
     Route::post('/cms/newsletter/excel/download', 'excelDownload')->name('cms.newsletter.excel.download');
     Route::delete('/cms/newsletter/destroy/{user}', 'destroy')->name('cms.newsletter.destroy');
+});
+
+
+// Cms Business Routes
+Route::controller(CmsBusinessSettingsController::class)->group(function() {
+    Route::get('/cms/business-settings', 'index')->name('cms.businessSettings.index');
+    Route::patch('/cms/business-settings/update', 'update')->name('cms.businessSettings.update');
 });

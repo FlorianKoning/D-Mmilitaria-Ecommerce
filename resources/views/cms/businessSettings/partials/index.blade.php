@@ -5,11 +5,11 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Here you can set important settings for the website and the business.") }}
+            {{ __("Hier kan je een paar belangrijke settings aanpassen voor de applicatie.") }}
         </p>
     </header>
 
-    <form method="post" action="{{ route('profile.update.business') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+    <form method="post" action="{{ route('cms.businessSettings.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -41,6 +41,13 @@
             <x-input-label for="business_email" :value="__('Bedrijfs Email')" />
             <x-text-input id="business_email" name="business_email" type="email" class="mt-1 block w-full" :value="old('business_email', $business->business_email)" required />
             <x-input-error class="mt-2" :messages="$errors->get('business_email')" />
+        </div>
+
+        {{-- business business phone number --}}
+        <div>
+            <x-input-label for="business_phone_number" :value="__('Bedrijfs Telefoon Nummer')" />
+            <x-text-input id="business_phone_number" name="business_phone_number" type="text" class="mt-1 block w-full" :value="old('business_phone_number', $business->business_phone_number)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('business_phone_number')" />
         </div>
 
         {{-- Bank Account Number --}}
