@@ -20,6 +20,8 @@ class ReCaptcha implements ValidationRule
             'response' => $value,
         ])->json();
 
-        dd($response);
+        if (!$response['success']) {
+            $fail("The google reCAPTCHA is not valid.");
+        }
     }
 }
