@@ -23,6 +23,10 @@
         <script type="text/javascript" src="{{ URL::asset('js/drag-drop.js') }}"></script>
 
 
+        {{-- google recaptcha --}}
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

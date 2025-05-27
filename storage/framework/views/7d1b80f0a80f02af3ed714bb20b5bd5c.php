@@ -23,6 +23,10 @@
         <script type="text/javascript" src="<?php echo e(URL::asset('js/drag-drop.js')); ?>"></script>
 
 
+        
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
         <!-- Scripts -->
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
     </head>
