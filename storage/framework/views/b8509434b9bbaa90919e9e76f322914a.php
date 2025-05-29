@@ -303,14 +303,14 @@
 <?php endif; ?>
             <?php if (isset($component)) { $__componentOriginal18c21970322f9e5c938bc954620c12bb = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal18c21970322f9e5c938bc954620c12bb = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.text-input','data' => ['id' => 'inventory','name' => 'inventory','type' => 'number','min' => '1','class' => 'mt-1 block w-full','value' => old('inventory', $product->inventory),'required' => true,'autofocus' => true,'autocomplete' => 'inventory']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.text-input','data' => ['id' => 'inventory','name' => 'inventory','type' => 'number','min' => '0','class' => 'mt-1 block w-full','value' => old('inventory', $product->inventory),'required' => true,'autofocus' => true,'autocomplete' => 'inventory']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('text-input'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['id' => 'inventory','name' => 'inventory','type' => 'number','min' => '1','class' => 'mt-1 block w-full','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(old('inventory', $product->inventory)),'required' => true,'autofocus' => true,'autocomplete' => 'inventory']); ?>
+<?php $component->withAttributes(['id' => 'inventory','name' => 'inventory','type' => 'number','min' => '0','class' => 'mt-1 block w-full','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(old('inventory', $product->inventory)),'required' => true,'autofocus' => true,'autocomplete' => 'inventory']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal18c21970322f9e5c938bc954620c12bb)): ?>

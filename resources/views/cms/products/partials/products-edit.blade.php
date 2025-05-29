@@ -73,7 +73,7 @@
         {{-- product inventory --}}
         <div>
             <x-input-label for="inventory" :value="__('Product kwantiteit.')" />
-            <x-text-input id="inventory" name="inventory" type="number" min="1" class="mt-1 block w-full" :value="old('inventory', $product->inventory)" required autofocus autocomplete="inventory" />
+            <x-text-input id="inventory" name="inventory" type="number" min="0" class="mt-1 block w-full" :value="old('inventory', $product->inventory)" required autofocus autocomplete="inventory" />
             <x-input-error class="mt-2" :messages="$errors->get('inventory')" />
         </div>
 

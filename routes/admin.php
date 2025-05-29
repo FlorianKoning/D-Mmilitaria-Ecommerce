@@ -5,6 +5,7 @@ use App\Http\Controllers\Cms\CmsExtraFeaturesController;
 use App\Http\Controllers\Cms\CmsOrderStatusesController;
 use App\Http\Controllers\Cms\CmsProductCategoryController;
 use App\Http\Controllers\Cms\CmsProductsController;
+use App\Http\Controllers\Cms\CmsSoldProductsController;
 use App\Http\Controllers\Cms\NewsletterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Cms\CmsCatagoriesController;
@@ -22,14 +23,24 @@ Route::get('/cms', [CmsDashboardController::class, 'index'])->name('cms.dashboar
 
 // Cms products routes
 Route::controller(CmsProductsController::class)->group(function() {
-    Route::get('/cms/products', [CmsProductsController::class, 'index'])->name('cms.products.index');
-    Route::get('/cms/products/create', [CmsProductsController::class, 'create'])->name('cms.products.create');
-    Route::get('/cms/products/edit/{product}', [CmsProductsController::class, 'edit'])->name('cms.products.edit');
-    Route::get('/cms/product/extra/{product}', [CmsProductsController::class, 'extra'])->name('cms.products.extra');
-    Route::post('/cms/product/store', [CmsProductsController::class, 'store'])->name('cms.products.store');
-    Route::post('/cms/product/update/{product}', [CmsProductsController::class, 'update'])->name('cms.products.update');
-    Route::delete('/cms/products/delete/{product}', [CmsProductsController::class, 'destroy'])->name('cms.products.delete');
+    Route::get('/cms/products', 'index')->name('cms.products.index');
+    Route::get('/cms/products/create', 'create')->name('cms.products.create');
+    Route::get('/cms/products/edit/{product}', 'edit')->name('cms.products.edit');
+    Route::get('/cms/product/extra/{product}', 'extra')->name('cms.products.extra');
+    Route::post('/cms/product/store', 'store')->name('cms.products.store');
+    Route::post('/cms/product/update/{product}', 'update')->name('cms.products.update');
+    Route::patch('/cms/products/active/{product}', 'updateActive')->name('cms.products.update.active');
+    Route::delete('/cms/products/delete/{product}', 'destroy')->name('cms.products.delete');
 });
+
+
+// Cms Sold Products Routes
+Route::controller(CmsSoldProductsController::class)->group(function() {
+    Route::get('/cms/sold-products/', 'index')->name('cms.soldProducts.index');
+    Route::patch('/cms/sold-products/update/{product}/', 'update')->name('cms.soldProducts.update');
+    Route::patch('/cms/sold-product/active/{product}/', 'active')->name('cms.soldProducts.active');
+});
+
 
 // Extra Product Routes
 Route::controller(CmsProductsController::class)->group(function() {

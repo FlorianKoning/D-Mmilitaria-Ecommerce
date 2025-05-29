@@ -34,12 +34,13 @@ class ProductUpdateRequest extends FormRequest
             'name' => ['required', 'string'],
             'smallDesc' => ['required', 'string'],
             'bigDesc' => ['required', 'string'],
-            'inventory' => ['required', 'string', 'numeric'],
+            'inventory' => ['nullable', 'string', 'numeric'],
             'price' => ['required', 'string', 'numeric'],
             'discountPercentage' => ['nullable', 'string', 'numeric'],
             'discountStartDate' => ['nullable', 'date'],
             'discountEndDate' => ['nullable', 'date'],
             'makeActive' => ['nullable'],
+            'active' => ['nullable', 'string'],
             'makeInActive' => ['nullable'],
         ];
     }

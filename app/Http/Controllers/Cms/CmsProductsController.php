@@ -17,18 +17,20 @@ use App\Models\Product_catagoryLink;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Repositories\ProductRepository;
+use App\Services\ProductService;
 
 class CmsProductsController extends Controller
 {
     private $model;
     private array $options = array();
 
-
-    public function __construct()
-    {
+    public function __construct(
+        protected ProductRepository $productRepository,
+        protected ProductService $productService,
+    ){
         // * Extends the parent constructor class
         parent::__construct();
-
 
         $this->options = [
             'land' => new LandCatagoriesLink(),
@@ -50,8 +52,8 @@ class CmsProductsController extends Controller
     public function index(): View
     {
         return view('cms.products.products-index', [
-            'products' => Product::getAll(50),
-            'columnNames' => Product::$columnNames
+            'products' => $this->productRepository->available(false, $this->paginateAmount),
+            'columnNames' => Product::$columnNames,
         ]);
     }
 
@@ -141,7 +143,7 @@ class CmsProductsController extends Controller
             }
 
             return redirect()->route('cms.products.'.$option.'Categories', $product->id)
-                ->with('productCategorieDelete', 'All links have been removed');
+                ->with('success', 'All links have been removed');
         }
 
 
@@ -287,8 +289,25 @@ class CmsProductsController extends Controller
 
 
         // returns the user back to the overview table
-        return redirect()->route('cms.products.index')->withErrors('updateSucces', "$product->inventory_number is succesvol geupdate.");
+        return redirect()->route('cms.products.index')->withErrors('success', "$product->inventory_number is succesvol geupdate.");
     }
+
+    /**
+     * Updates the is_active column from the given product.
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Product $product
+     * @return RedirectResponse
+     */
+    public function updateActive(Request $request, Product $product): RedirectResponse
+    {
+        $this->productService->update([
+            'is_active' => ($request->active == 'true') ? true : false,
+        ], $product);
+
+
+        return redirect()->route('cms.products.index')->with('success', 'Product is geupdate');
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -301,7 +320,7 @@ class CmsProductsController extends Controller
 
         $product->delete();
 
-        return redirect()->route('cms.products.index')->with('deleteSucces', "Product $inventory_number is succesvol verwijderd.");
+        return redirect()->route('cms.products.index')->with('success', "Product $inventory_number is succesvol verwijderd.");
     }
 
 

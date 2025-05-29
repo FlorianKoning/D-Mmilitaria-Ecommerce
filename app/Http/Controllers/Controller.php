@@ -17,6 +17,7 @@ use App\Repositories\PaymentOptionRepository;
 
 abstract class Controller
 {
+    protected int $paginateAmount = 15;
     protected AclService $aclService;
     protected CartService $cartService;
     protected CartRepository $cartRepository;

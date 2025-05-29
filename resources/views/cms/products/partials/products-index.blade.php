@@ -32,21 +32,27 @@
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ ($value->discount_start_date != null) ? $value->discount_start_date : '-' }}</td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ ($value->discount_end_date != null) ? $value->discount_end_date : '-' }}</td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
-                            @if ($value->is_active == 1)
-                                <button type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 cursor-default">
-                                    <svg class="-ml-0.5 size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
-                                    </svg>
-                                    Actief
-                                </button>
-                            @else
-                                <button type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 cursor-default">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fizll="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-0.5 size-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                    </svg>
-                                    In Actief
-                                </button>
-                            @endif
+                            <form method="POST" action="{{ route('cms.products.update.active', $value->id) }}">
+                                @csrf
+                                @method('PATCH')
+
+                                @if ($value->is_active == 1)
+
+                                    <button value="false" name="active" type="submit" class="inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+                                        <svg class="-ml-0.5 size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
+                                        </svg>
+                                        Actief
+                                    </button>
+                                @else
+                                    <button value="true" name="active" type="submit" class="inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fizll="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-0.5 size-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                        </svg>
+                                        In Actief
+                                    </button>
+                                @endif
+                            </form>
                         </td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-white">
                             <x-dropdown align="left" width="48">
