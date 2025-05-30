@@ -2,14 +2,14 @@
     <div class="bg-white py-12 sm:py-12">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-            <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Algemene Voorwaarden – DBM Militaria</h1>
+            <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Terms of Services – <?php echo e(env('APP_NAME')); ?></h1>
             <div class="mt-10 grid max-w-xl grid-cols-1 gap-8 text-base/7 text-gray-700 lg:max-w-none lg:grid-cols-2">
             
               <div>
                 <p>
-                    <span class="font-semibold">1. Bedrijfsgegevens</span>
+                    <span class="font-semibold">1. Company Information</span>
                     <br>
-                    DBM Militaria is een geregistreerd bedrijf gespecialiseerd in de verkoop van originele militaire collectibles.
+                    DBM Militaria is a registered company specializing in the sale of original military collectibles.
                     <br>
                     Contact: <span class="font-semibold"><?php echo e($business->business_email); ?></span>
                     <br>
@@ -17,89 +17,86 @@
                     <br>
                     BTW-nummer: <span class="font-semibold"><?php echo e($business->btw_number); ?></span>
                     <br>
-                    Vestigingsadres: <span class="font-semibold"><?php echo e($business->business_address); ?></span>
+                    Business address:: <span class="font-semibold"><?php echo e($business->business_address); ?></span>
                 </p>
+
                 <p class="mt-8">
-                    <span class="font-semibold">3. Productinformatie</span>
+                    <span class="font-semibold">3. Product Information</span>
                     <br>
-                    DBM Militaria verkoopt uitsluitend originele militaire verzamelobjecten, tenzij anders vermeld. Alle producten zijn historisch van aard en worden uitsluitend
-                    verkocht voor verzamel- en educatieve doeleinden. We distantiëren ons nadrukkelijk van elk gebruik van deze objecten in contexten die aanzetten tot haat of
-                    discriminatie.
+                    DBM Militaria sells only original military collectibles, unless stated otherwise. All items are historical in nature and sold solely for collecting and educational purposes. 
+                    We explicitly distance ourselves from any use of these objects in contexts that promote hatred or discrimination.
                 </p>
               </div>
 
             
               <div>
                 <p>
-                    <span class="font-semibold">2. Toepasselijkheid</span>
+                    <span class="font-semibold">2. Applicability</span>
                     <br>
-                    Deze algemene voorwaarden zijn van toepassing op elk aanbod van DBM Militaria en op elke tot stand gekomen overeenkomst tussen DBM Militaria en de klant, via de website
-                    of andere kanalen.
+                    These terms and conditions apply to every offer made by DBM Militaria and to every agreement established between DBM Militaria and the customer, 
+                    whether through the website or other channels.
                 </p>
+
                 <p class="mt-[105px]">
-                    <span class="font-semibold">4. Bestellen</span>
+                    <span class="font-semibold">4. Ordering</span>
                     <br>
-                    Bestellingen kunnen worden geplaatst via onze website. Klanten kunnen een account aanmaken voor gemak bij volgende aankopen, maar dit is niet verplicht. Ook als gast
-                    kan je een bestelling afronden.
+                    Orders can be placed through our website. Customers may create an account for easier future purchases, but this is not required. Orders can also be completed as a guest.
                 </p>
               </div>
 
               
               <div>
                 <p>
-                    <span class="font-semibold">5. Betaling</span>
+                    <span class="font-semibold">5. Payment</span>
                     <br>
-                    Betaling dient volledig te worden voldaan voorafgaand aan verzending. Wij accepteren de betaalmethodes zoals weergegeven op de website. De prijzen zijn inclusief btw,
-                    tenzij anders aangegeven.
+                    Payment must be completed in full before shipment. We accept the payment methods listed on our website. Prices include VAT, unless stated otherwise.
+                </p>
+
+                <p class="mt-8">
+                    <span class="font-semibold">7. Return Policy</span>
+                    <br>
+                    You have the right to withdraw from the purchase within 14 days of receiving your order.
+                    <br>
+                    <br>
+                    Return conditions:
+                    <br>
+                    &emsp;– The item must be returned in the same condition as it was received: undamaged and unaltered.
+                    <br>
+                    &emsp;– Return shipping costs are the responsibility of the customer, unless the return is due to an error on our part.
+                    <br>
+                    &emsp;– Refunds will be processed within 14 days after receipt and inspection of the returned item.
+                </p>
+              </div>
+
+              
+              <div>
+                <p>
+                    <span class="font-semibold">6. Shipping Policy</span>
+                    <br>
+                    We ship worldwide. Shipping costs, as well as any import duties or taxes for international shipments, are the responsibility of the customer.
+                     Orders are shipped within 2–5 business days after payment has been received, unless otherwise communicated.
                 </p>
                 <p class="mt-8">
-                    <span class="font-semibold">7. Bestellen</span>
+                    <span class="font-semibold">8. Liability</span>
                     <br>
-                    Bestellingen kunnen worden geplaatst via onze website. Klanten kunnen een account aanmaken voor gemak bij volgende aankopen, maar dit is niet verplicht. Ook als gast
-                    kan je een bestelling afronden.
+                    DBM Militaria is not liable for any damage resulting from the use of the sold products. Our items are collectables and not intended for practical use.
                 </p>
               </div>
 
               
               <div>
                 <p>
-                    <span class="font-semibold">6. Betaling</span>
+                    <span class="font-semibold">9. Privacy</span>
                     <br>
-                    Betaling dient volledig te worden voldaan voorafgaand aan verzending. Wij accepteren de betaalmethodes zoals weergegeven op de website. De prijzen zijn inclusief btw,
-                    tenzij anders aangegeven.
-                </p>
-                <p class="mt-8">
-                    <span class="font-semibold">8. Geschillen</span>
-                    <br>
-                    Op deze voorwaarden is het Nederlands recht van toepassing. Geschillen worden bij voorkeur in onderling overleg opgelost. Lukt dit niet, dan kunnen deze worden
-                    voorgelegd aan de bevoegde rechter in Nederland.
-                </p>
-              </div>
-
-              
-              <div>
-                <p>
-                    <span class="font-semibold">9. Betaling</span>
-                    <br>
-                    Betaling dient volledig te worden voldaan voorafgaand aan verzending. Wij accepteren de betaalmethodes zoals weergegeven op de website. De prijzen zijn inclusief btw,
-                    tenzij anders aangegeven.
+                    We respect your privacy. Personal data is used solely for processing orders and will not be shared with third parties without your consent. 
+                    For more details, see our <a class="italic font-bold border-black hover:border-b-2" href="<?php echo e(route('public.privacy')); ?>">privacy policy</a>.
                 </p>
               </div>
               <div>
                 <p>
-                    <span class="font-semibold">10. Retourbeleid</span>
+                    <span class="font-semibold">10. Disputes  </span>
                     <br>
-                    Je hebt het recht om binnen 14 dagen na ontvangst van je bestelling de koop te herroepen.
-                    Voorwaarden voor retour:
-                    <br>
-                    <br>
-                    Het artikel moet in dezelfde staat worden geretourneerd als waarin het is ontvangen: onbeschadigd en onveranderd.
-                    <br>
-                    <br>
-                    Retourkosten zijn voor rekening van de klant, tenzij het om een fout van onze kant gaat.
-                    <br>
-                    <br>
-                    Restitutie vindt plaats binnen 14 dagen na ontvangst en controle van het geretourneerde product.
+                    These terms are governed by Dutch law. Disputes should preferably be resolved through mutual consultation. If that fails, disputes may be submitted to the competent court in the Netherlands.
                 </p>
               </div>
             </div>

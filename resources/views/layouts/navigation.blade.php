@@ -20,7 +20,7 @@
                         </x-nav-link>
 
                         <x-nav-link :href="route('exhibition.index')" :active="request()->routeIs('exhibition.*')">
-                            {{ __('Beurzenkalender') }}
+                            {{ __('Fairs/Beurzen') }}
                         </x-nav-link>
                     </div>
                 </div>
@@ -53,8 +53,9 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         @if (Auth::check())
                             <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                                {{ __('Profiel') }}
+                                {{ __('Profile') }}
                             </x-nav-link>
+
                             {{-- Checks if the user has the right to view the cms --}}
                             @if ($aclService->superUserCheck())
                                 <x-nav-link :href="route('cms.dashboard.index')" :active="request()->routeIs('cms.dashboard.index')">
@@ -66,7 +67,7 @@
                                 @csrf
 
                                 <button type="submit" class="flex items-center px-1 pt-1 border-b-2 border-transparent text-base font-bold text-white/70 hover:text-white hover:border-white focus:text-white focus:border-white transition duration-150 ease-in-out">
-                                    {{ __('Log uit') }}
+                                    {{ __('Log out') }}
                                 </button>
                             </form>
                         @else
@@ -75,7 +76,7 @@
                             </x-nav-link>
 
                             <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
-                                {{ __('Registreer') }}
+                                {{ __('Register') }}
                             </x-nav-link>
                         @endif
 

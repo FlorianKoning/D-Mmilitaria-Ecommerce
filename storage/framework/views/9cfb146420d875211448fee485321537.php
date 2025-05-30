@@ -67,7 +67,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('exhibition.index')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('exhibition.*'))]); ?>
-                            <?php echo e(__('Beurzenkalender')); ?>
+                            <?php echo e(__('Fairs/Beurzen')); ?>
 
                          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -119,7 +119,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('profile.edit')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('profile.edit'))]); ?>
-                                <?php echo e(__('Profiel')); ?>
+                                <?php echo e(__('Profile')); ?>
 
                              <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -131,6 +131,7 @@
 <?php $component = $__componentOriginalc295f12dca9d42f28a259237a5724830; ?>
 <?php unset($__componentOriginalc295f12dca9d42f28a259237a5724830); ?>
 <?php endif; ?>
+
                             
                             <?php if($aclService->superUserCheck()): ?>
                                 <?php if (isset($component)) { $__componentOriginalc295f12dca9d42f28a259237a5724830 = $component; } ?>
@@ -161,7 +162,7 @@
                                 <?php echo csrf_field(); ?>
 
                                 <button type="submit" class="flex items-center px-1 pt-1 border-b-2 border-transparent text-base font-bold text-white/70 hover:text-white hover:border-white focus:text-white focus:border-white transition duration-150 ease-in-out">
-                                    <?php echo e(__('Log uit')); ?>
+                                    <?php echo e(__('Log out')); ?>
 
                                 </button>
                             </form>
@@ -199,7 +200,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('register')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('register'))]); ?>
-                                <?php echo e(__('Registreer')); ?>
+                                <?php echo e(__('Register')); ?>
 
                              <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

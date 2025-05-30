@@ -7,9 +7,9 @@
                 
                 <div class="flex flex-row justify-between">
                     <p class="w-full">
-                        <span class="font-semibold">1. Wie zijn wij?</span>
+                        <span class="font-semibold">1. Who are we?</span>
                         <br>
-                        &emsp;DBM Militaria is een geregistreerd bedrijf gespecialiseerd in de verkoop van originele militaire collectibles.
+                        &emsp;<?php echo e(env('APP_NAME')); ?> is a registered company specializing in the sale of original military collectibles.
                         <br>
                         &emsp;Contact: <span class="font-semibold"><?php echo e($business->business_email); ?></span>
                         <br>
@@ -24,27 +24,27 @@
                 
                 <div class="flex flex-row justify-between">
                     <p class="w-full">
-                        <span class="font-semibold">2. Persoonsgegevens die wij verwerken</span>
+                        <span class="font-semibold">2. Personal data that we process</span>
                         <br>
-                        &emsp;<span class="font-semibold">Wij verwerken je persoonsgegevens wanneer je:</span>
+                        &emsp;<span class="font-semibold">We process your personal data when you:</span>
                         <br>
-                        &emsp;&emsp;-   Een bestelling plaatst
+                        &emsp;&emsp;– Place an order
                         <br>
-                        &emsp;&emsp; -   Een account aanmaakt (optioneel)
+                        &emsp;&emsp;– Create an account (optional)
                         <br>
-                        &emsp;&emsp;-   Contact met ons opneemt via e-mail of het contactformulier
+                        &emsp;&emsp;– Contact us via email or the contact form
                         <br>
-                        &emsp;<span class="font-semibold">Wij kunnen de volgende gegevens verwerken:</span>
+                        &emsp;<span class="font-semibold">We may process the following data:</span>
                         <br>
-                        &emsp;&emsp;-   Voor- en achternaam
+                        &emsp;&emsp;– First and last name
                         <br>
-                        &emsp;&emsp;-   Adresgegevens
+                        &emsp;&emsp;– Address details
                         <br>
-                        &emsp;&emsp;-   Telefoonnummer (optioneel)
+                        &emsp;&emsp;– Phone number (optional)
                         <br>
-                        &emsp;&emsp;-   E-mailadres
+                        &emsp;&emsp;– Email address
                         <br>
-                        &emsp;&emsp;-   Betaalgegevens (via beveiligde betaalprovider)
+                        &emsp;&emsp;– Payment details (via secure payment provider)
                     </p>
                 </div>
 
@@ -52,17 +52,17 @@
                 
                 <div class="flex flex-row justify-between">
                     <p class="w-full">
-                        <span class="font-semibold">3. Met welk doel verwerken wij persoonsgegevens?</span>
+                        <span class="font-semibold">3. Why do we process personal data?</span>
                         <br>
-                        &emsp;<span class="font-semibold">Wij gebruiken jouw gegevens voor de volgende doeleinden:</span>
+                        &emsp;<span class="font-semibold">We use your data for the following purposes:</span>
                         <br>
-                        &emsp;&emsp;-   Het afhandelen van bestellingen en betalingen
+                        &emsp;&emsp;– Processing orders and payments
                         <br>
-                        &emsp;&emsp;-   Het verzenden van producten
+                        &emsp;&emsp;– Shipping products
                         <br>
-                        &emsp;&emsp;-   Contact opnemen bij vragen of updates over je bestelling
+                        &emsp;&emsp;– Contacting you with questions or updates about your order
                         <br>
-                        &emsp;&emsp;-   Voldoen aan wettelijke verplichtingen (zoals belastingaangifte)
+                        &emsp;&emsp;– Complying with legal obligations (such as tax reporting)
                     </p>
                 </div>
 
@@ -70,9 +70,9 @@
                 
                 <div class="flex flex-row justify-between">
                     <p class="w-full">
-                        <span class="font-semibold">4. Hoe lang bewaren wij jouw gegevens?</span>
+                        <span class="font-semibold">4. How long do we retain your data?</span>
                         <br>
-                        &emsp;Wij bewaren je persoonsgegevens niet langer dan noodzakelijk is. Bestel- en facturatiegegevens worden bewaard zolang dat wettelijk verplicht is.
+                        &emsp;We do not retain your personal data longer than necessary. Order and billing information is kept as long as required by law.
                     </p>
                 </div>
 
@@ -80,17 +80,17 @@
                 
                 <div class="flex flex-row justify-between">
                     <p class="w-full">
-                        <span class="font-semibold">5. Delen van gegevens met derden</span>
+                        <span class="font-semibold">5. Sharing data with third parties</span>
                         <br>
-                        <span class="font-semibold">Wij delen jouw gegevens alleen met derden als dat nodig is voor de uitvoering van de overeenkomst, bijvoorbeeld:</span>
+                        <span class="font-semibold">We only share your data with third parties if necessary to fulfill the agreement, such as:</span>
                         <br>
-                        &emsp;-   Betaalproviders (zoals Mollie, PayPal, etc.)
+                        &emsp;– Payment providers (e.g., Mollie, PayPal, etc.)
                         <br>
-                        &emsp;-   Verzenddiensten (zoals PostNL, DHL, etc.)
+                        &emsp;– Shipping services (e.g., PostNL, DHL, etc.)
                         <br>
-                        &emsp;-   Boekhouder of accountant (alleen indien van toepassing)
+                        &emsp;– Accountant or bookkeeper (if applicable)
                         <br>
-                        <span class="font-semibold">Deze partijen zijn verplicht om zorgvuldig met jouw gegevens om te gaan en deze niet voor eigen doeleinden te gebruiken.</span>
+                        <span class="font-semibold">These parties are obligated to handle your data with care and not use it for their own purposes.</span>
                     </p>
                 </div>
 
@@ -98,10 +98,9 @@
                 
                 <div class="flex flex-row justify-between">
                     <p class="w-full">
-                        <span class="font-semibold">6. Cookies of vergelijkbare technieken</span>
+                        <span class="font-semibold">6. Cookies or similar technologies</span>
                         <br>
-                        Onze website maakt mogelijk gebruik van cookies om de website goed te laten functioneren en om inzicht te krijgen in het gebruik van de site.
-                        Je kunt cookies zelf uitschakelen via je browserinstellingen.
+                        Our website may use cookies to ensure proper functionality and to gain insight into site usage. You can disable cookies through your browser settings.
                     </p>
                 </div>
 
@@ -109,21 +108,21 @@
                 
                 <div class="flex flex-row justify-between">
                     <p class="w-full">
-                        <span class="font-semibold">7. Jouw rechten</span>
+                        <span class="font-semibold">7. Your rights</span>
                         <br>
-                        <span class="font-semibold">Je hebt het recht om:</span>
+                        <span class="font-semibold">You have the right to:</span>
                         <br>
-                        &emsp;-   Je persoonsgegevens in te zien
+                        &emsp;– Access your personal data
                         <br>
-                        &emsp;-   Je gegevens te laten corrigeren
+                        &emsp;– Have your data corrected
                         <br>
-                        &emsp;-   Je gegevens te laten verwijderen
+                        &emsp;– Have your data deleted
                         <br>
-                        &emsp;-   Je toestemming voor gegevensverwerking in te trekken
+                        &emsp;– Withdraw your consent for data processing
                         <br>
-                        &emsp;-   Een klacht in te dienen bij de Autoriteit Persoonsgegevens
+                        &emsp;– File a complaint with the Data Protection Authority
                         <br>
-                        Wil je een van deze rechten uitoefenen? Neem dan contact met ons op via: <span class="font-semibold"><?php echo e($business->business_email); ?></span>.
+                        Would you like to exercise one of these rights? Please contact us at: <span class="font-semibold"><?php echo e($business->business_email); ?></span>.
                     </p>
                 </div>
 
@@ -131,10 +130,9 @@
                 
                 <div class="flex flex-row justify-between">
                     <p class="w-full">
-                        <span class="font-semibold">8. Beveiliging</span>
+                        <span class="font-semibold">8. Security</span>
                         <br>
-                        Wij nemen passende technische en organisatorische maatregelen om jouw gegevens te beveiligen tegen verlies of ongeautoriseerde toegang.
-                        Gegevens worden bijvoorbeeld via beveiligde SSL-verbindingen verzonden.
+                        We take appropriate technical and organizational measures to protect your data against loss or unauthorized access. For example, data is transmitted via secure SSL connections.
                     </p>
                 </div>
 
@@ -142,9 +140,9 @@
                 
                 <div class="flex flex-row justify-between">
                     <p class="w-full">
-                        <span class="font-semibold">9. Wijzigingen in deze privacyverklaring</span>
+                        <span class="font-semibold">9. Changes to this privacy statement</span>
                         <br>
-                        Wij behouden het recht om deze privacyverklaring aan te passen. De meest actuele versie is altijd beschikbaar op onze website.
+                        We reserve the right to make changes to this privacy statement. The most current version is always available on our website.
                     </p>
                 </div>
             </div>

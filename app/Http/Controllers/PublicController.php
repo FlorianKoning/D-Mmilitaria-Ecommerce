@@ -7,6 +7,7 @@ use App\Models\PaymentOption;
 use App\Models\BusinessSettings;
 use App\Models\Product;
 use App\Models\Shipping;
+use App\Repositories\BusinessRepository;
 use App\Repositories\GuestUserRepository;
 use App\Repositories\OrderStatusRepository;
 use App\Repositories\UserRepository;
@@ -20,6 +21,7 @@ class PublicController extends Controller
         protected GuestUserRepository $guestUserRepository,
         protected OrderService $orderService,
         protected OrderStatusRepository $orderStatusRepository,
+        protected BusinessRepository $businessRepository,
     ){parent::__construct();}
 
 
@@ -39,7 +41,7 @@ class PublicController extends Controller
    public function termsOfService(): View
    {
         return view("public.termsOfServices", [
-            'business' => BusinessSettings::find(ProfileController::$businessTableId),
+            'business' => $this->businessRepository->all(),
         ]);
    }
 
@@ -51,7 +53,7 @@ class PublicController extends Controller
    public function privacy(): View
    {
         return view('public.privacy', [
-            'business' => BusinessSettings::find(ProfileController::$businessTableId),
+            'business' => $this->businessRepository->all(),
         ]);
    }
 

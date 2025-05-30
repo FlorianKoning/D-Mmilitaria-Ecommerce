@@ -52,9 +52,8 @@ unset($__defined_vars); ?>
       
       <main class="mx-auto max-w-full px-4 lg:max-w-full lg:px-8">
         <div class="border-b max-w-full border-gray-400 pb-10">
-            <h1 class="text-4xl font-bold tracking-tight text-gray-900">Nieuwe Producten</h1>
-            <p class="mt-4 text-base text-gray-500">Hier vind u de nieuwste producten.</p>
-            <p class="mt-4 text-base text-gray-500">Producten voor het laatst geupdate: <br class="lg:hidden"> <span class="text-gray-900 underline break-words"><?php echo e($latestUpdate); ?></span></p>
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900">New Products</h1>
+            <p class="mt-4 text-base text-gray-500">Latest update: <br class="lg:hidden"> <span class="text-gray-900 underline break-words"><?php echo e($latestUpdate); ?></span></p>
         </div>
 
         <div class="pb-24 pt-12 lg:grid lg:grid-cols-4 lg:gap-x-8 xl:grid-cols-4">
@@ -71,7 +70,7 @@ unset($__defined_vars); ?>
                 <form id="catagorieForm" method="GET" action="<?php echo e(route('home.index')); ?>" class="space-y-10 divide-y divide-gray-200">
                     <div class="pt-2">
                         <fieldset>
-                            <legend class="block text-sm font-medium text-gray-900">Product Zoeken</legend>
+                            <legend class="block text-sm font-medium text-gray-900">Search Products</legend>
                             <div class="space-y-3 pt-2">
                                 <div class="mb-6">
                                     <?php if (isset($component)) { $__componentOriginal18c21970322f9e5c938bc954620c12bb = $component; } ?>
@@ -103,7 +102,7 @@ unset($__defined_vars); ?>
                         
                         <?php if($landCatagories->count() != 0): ?>
                             <fieldset>
-                                <legend class="block text-sm font-medium text-gray-900">Land catagorien</legend>
+                                <legend class="block text-sm font-medium text-gray-900">Categories: Country</legend>
                                 <div class="space-y-3 pt-2">
                                     <?php $__currentLoopData = $landCatagories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="flex gap-3">
@@ -126,7 +125,7 @@ unset($__defined_vars); ?>
                         
                         <?php if($catagories->count() != 0): ?>
                             <fieldset>
-                                <legend class="block text-sm font-medium text-gray-900 pt-6">Category</legend>
+                                <legend class="block text-sm font-medium text-gray-900 pt-6">Categories: Items</legend>
                                 <div class="space-y-3 pt-2">
                                     <?php $__currentLoopData = $catagories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="flex gap-3">
