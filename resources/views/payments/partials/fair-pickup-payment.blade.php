@@ -1,11 +1,10 @@
 <section class="w-full">
     <div class="flex flex-col">
-        <h2 class="text-pretty text-xl font-semibold tracking-tight text-navBackground sm:text-2xl mb-1">Betalings Methode.</h2>
+        <h2 class="text-pretty text-xl font-semibold tracking-tight text-navBackground sm:text-2xl mb-1">Payment Method</h2>
         <p class="text-pretty text-sm tracking-tight text-gray-900 sm:text-base mb-1">
-            Hier kunt u zien wat de volgende betalings mogelijkheden zijn zodat u uw bestelling kunt ophalen op een beurs
+            Here you can see the available payment options so you can collect your order at a trade show.
         </p>
     </div>
-
     <div class="flex flex-row justify-between items-center gap-10">
         {{-- bankTransfer payment --}}
         <form id="bankTransfer" method="POST" action="{{ route('fairPickUp.payment', [$exhibition->id, $order->id, 1]) }}" class="w-full h-full">
@@ -15,7 +14,7 @@
                 <div class="flex flex-row w-full h-full p-6">
                     <div class="flex-1 flex flex-col justify-center">
                         <div class="flex flex-row gap-2">
-                            <h3 class="text-white text-sm font-medium">Bankoverschrijving</h3>
+                            <h3 class="text-white text-sm font-medium">Banktransfer</h3>
                             <svg class="text-white size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                             </svg>
@@ -52,7 +51,7 @@
 
 
         {{-- Molli payment --}}
-        <form id="molli" method="POST" action="{{ route('fairPickUp.payment', [$exhibition->id, $order->id, 2]) }}" class="w-full h-full">
+        {{-- <form id="molli" method="POST" action="{{ route('fairPickUp.payment', [$exhibition->id, $order->id, 2]) }}" class="w-full h-full">
             @csrf
 
             <div class="flex flex-col bg-gray-500 justify-y-8 w-full mt-12 h-20 rounded-lg hover:bg-gray-500/95 hover:cursor-pointer shadow">
@@ -71,8 +70,7 @@
                     </div>
                 </div>
             </div>
-        </form>
-
+        </form> --}}
     </div>
 </section>
 

@@ -63,28 +63,27 @@
 
                     
                     <div class="sm-p-6" style="padding: 24px 36px">
-                        <div role="separator" style="line-height: 24px">&zwj;</div>
-                        <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
-                            Niewe Bestelling van: <?php echo e($customerName); ?>
+                      <div role="separator" style="line-height: 24px">&zwj;</div>
+                      <h1 style="margin: 0 0 24px; font-size: 20px; line-height: 32px; font-weight: 600; color: #0f172a">
+                          New Order from: <?php echo e($customerName); ?>
 
-                        </h1>
-                        <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                            <span style="font-size: 18px; font-weight: 600">U heeft een nieuwe bestelling!</span>
-                            <br><br>
-                            U kunt in het CMS meer informatie vinden in het CMS. Kijk hier onder voor de link naar het CMS.
-                            <br><br>
-                            Link naar het CMS: <?php echo e(route('cms.products.index')); ?>
-
-                            <br>
-                        </p>
-                        <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
-                        <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
-                            Dit is een geautomatizeerde mail. Als u vragen heeft over deze mail neem contact op met ons development team:
-                            <a href="mailto:florian.koning2004@gmail.com?subject=Moeite met inloggen%20there&body=This%20is%20a%20predefined%20email%20body.">
-                            Klick hier om de mail te sturen.
-                            </a>
-                        </p>
-                    </div>
+                      </h1>
+                      <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
+                          <span style="font-size: 18px; font-weight: 600">You have a new order!</span>
+                          <br><br>
+                          You can find more information in the CMS. See below for the link to the CMS.
+                          <br><br>
+                          Link to the CMS: <a class="text-sky-600" href="<?php echo e(route('cms.products.index')); ?>">link</a>
+                          <br>
+                      </p>
+                      <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
+                      <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
+                          If you did not place an order with us or if something went wrong, please contact our team:
+                          <a href="mailto:support@dbmmilitaria.nl?subject=Something went wrong with the order%20there&body=This%20is%20a%20predefined%20email%20body.">
+                          Click here to send an email.
+                          </a>
+                      </p>
+                  </div>
                 </td>
               </tr>
             </table>

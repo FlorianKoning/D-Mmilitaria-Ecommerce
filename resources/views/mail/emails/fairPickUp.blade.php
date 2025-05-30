@@ -64,39 +64,39 @@
 
                     {{-- content --}}
                     <div class="sm-p-6" style="padding: 24px 36px">
-                        <div role="separator" style="line-height: 24px">&zwj;</div>
-                        <h1 style="margin: 0 0 24px; font-size: 20px; line-height: 32px; font-weight: 600; color: #0f172a">
-                            Bank overschrijving | Bestel nummer | ORDER_NUMBER
-                        </h1>
-                        <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                            Beste, CUSTOMER_NAME
-                            <br><br>
-                            Dit is de e-mail met de betaalmethode die u heeft gekozen. Hieronder vindt u het bankrekeningnummer waarop u het bedrag kunt overmaken.
-                            <br><br>
-                            Vermeld bij de betaling altijd uw bestelnummer in de omschrijving. Op die manier kunnen wij uw betaling aan de juiste bestelling koppelen.
-                            <br><br>
-                            Zodra de betaling is ontvangen, wordt dit handmatig gecontroleerd. Als alles in orde is, ontvangt u van ons een bevestigingsmail waarin staat dat de betaling succesvol is verwerkt en dat uw bestelling in behandeling wordt genomen.
-                            <br><br>
-                            Controleer altijd goed of het bestelnummer overeenkomt met het nummer in de vorige e-mail. Als dit niet het geval is, negeer dan deze e-mail en neem contact op met ons supportteam.
-                            <br><br>
-                            In de bijlage vindt u tevens de factuur van uw bestelling.
-                        </p>
-                        <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                            Bank rekening nummer: <span style="font-weight: 500"></span>
-                        </p>
-                        <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
-                            Met vriendelijke groet,
-                            <br>
-                            <span style="font-weight: 600">APP_NAME</span>
-                        </p>
-                        <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
-                        <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
-                            Heeft u niks besteld? Of komt het bestellings nummer niet overheen met uw bestelling? Neem dan contact op met ons team:
-                            <a href="mailto:florian.koning2004@gmail.com?subject=Moeite met inloggen%20there&body=This%20is%20a%20predefined%20email%20body.">
-                            Klick hier om de mail te sturen.
-                            </a>
-                        </p>
-                    </div>
+                      <div role="separator" style="line-height: 24px">&zwj;</div>
+                      <h1 style="margin: 0 0 24px; font-size: 20px; line-height: 32px; font-weight: 600; color: #0f172a">
+                          Bank Transfer | Order Number | ORDER_NUMBER
+                      </h1>
+                      <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
+                          Dear CUSTOMER_NAME,
+                          <br><br>
+                          This is the email with the payment method you have chosen. Below you will find the bank account number to which you can transfer the amount.
+                          <br><br>
+                          Please always mention your order number in the payment description. This way we can link your payment to the correct order.
+                          <br><br>
+                          Once the payment is received, it will be manually verified. If everything is in order, you will receive a confirmation email stating that the payment has been successfully processed and your order is being processed.
+                          <br><br>
+                          Always check carefully whether the order number matches the number in the previous email. If this is not the case, please ignore this email and contact our support team.
+                          <br><br>
+                          Attached you will also find the invoice for your order.
+                      </p>
+                      <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
+                          Bank account number: <span style="font-weight: 500"></span>
+                      </p>
+                      <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
+                          Kind regards,
+                          <br>
+                          <span style="font-weight: 600">APP_NAME</span>
+                      </p>
+                      <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
+                      <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
+                          Did you not place an order? Or does the order number not match your order? Please contact our team:
+                          <a href="mailto:florian.koning2004@gmail.com?subject=Moeite met inloggen%20there&body=This%20is%20a%20predefined%20email%20body.">
+                          Click here to send an email.
+                          </a>
+                      </p>
+                  </div>
                 </td>
               </tr>
             </table>

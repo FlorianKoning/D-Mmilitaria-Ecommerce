@@ -66,33 +66,33 @@
 
                     {{-- content --}}
                     <div class="sm-p-6" style="padding: 24px 36px">
-                        <div role="separator" style="line-height: 24px">&zwj;</div>
-                        <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
-                            Uw bestel nummer is: {{ $orderNumber }}<br>
-                        </h1>
-                        <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                            Beste, {{ $customerName }}
-                            <br><br>
-                            Je bestelling op {{ env('APP_NAME') }} is geannuleerd omdat de betaling niet succesvol is afgerond.
-                            <br><br>
-                            <span style="font-weight: 600">LET OP: </span>Als er toch een bedrag is afgeschreven, dan wordt dit automatisch teruggestort. Dit kan enkele werkdagen duren, afhankelijk van de betaalmethode en de bank.
-                            <br><br>
-                            Heb je vragen of wil je de bestelling opnieuw proberen? Neem gerust contact met ons op via <span style="font-weight: 600">{{ $businessSettings->business_email }}</span>.
-                            <br>
-                        </p>
-                        <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
-                            Met vriendelijke groet,
-                            <br>
-                            <span style="font-weight: 600">{{ env('APP_NAME') }}</span>
-                        </p>
-                        <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
-                        <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
-                            Als u niks heeft besteld bij ons of iest fout is gegaan, neem graag contact met ons team op:
-                            <a href="mailto:florian.koning2004@gmail.com?subject=Moeite met inloggen%20there&body=This%20is%20a%20predefined%20email%20body.">
-                            Klick hier om de mail te sturen.
-                            </a>
-                        </p>
-                    </div>
+                      <div role="separator" style="line-height: 24px">&zwj;</div>
+                      <h1 style="margin: 0 0 24px; font-size: 24px; line-height: 32px; font-weight: 600; color: #0f172a">
+                          Your order number is: {{ $orderNumber }}<br>
+                      </h1>
+                      <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
+                          Dear {{ $customerName }},
+                          <br><br>
+                          Your order on {{ env('APP_NAME') }} has been cancelled because the payment was not successfully completed.
+                          <br><br>
+                          <span style="font-weight: 600">PLEASE NOTE: </span>If any amount has been charged, it will be automatically refunded. This may take several business days, depending on the payment method and bank.
+                          <br><br>
+                          If you have any questions or want to try placing the order again, please feel free to contact us at <span style="font-weight: 600">{{ $businessSettings->business_email }}</span>.
+                          <br>
+                      </p>
+                      <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
+                          Kind regards,
+                          <br>
+                          <span style="font-weight: 600">{{ env('APP_NAME') }}</span>
+                      </p>
+                      <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
+                      <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
+                          If you did not place an order with us or if something went wrong, please contact our team:
+                          <a href="mailto:support@dbmmilitaria.nl?subject=Something went wrong with the order%20there&body=This%20is%20a%20predefined%20email%20body.">
+                          Click here to send an email.
+                          </a>
+                      </p>
+                  </div>
                 </td>
               </tr>
             </table>

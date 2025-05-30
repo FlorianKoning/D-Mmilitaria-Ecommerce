@@ -198,14 +198,14 @@ unset($__defined_vars); ?>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                                                 </svg>
-                                                <p class="text-sm text-gray-900">In vooraad</p>
+                                                <p class="text-sm text-gray-900">In stock</p>
                                             </div>
                                         <?php else: ?>
                                             <div class="flex flex-row gap-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                                 </svg>
-                                                <p class="text-sm text-gray-900">Uit vooraad</p>
+                                                <p class="text-sm text-gray-900">Out of stock</p>
                                             </div>
                                         <?php endif; ?>
                                     </div>

@@ -54,6 +54,7 @@ class BankTransfer extends Mailable
                 'orderNumber' => $this->order['order_number'],
                 'customerName' => $this->name,
                 'businessSettings' => $this->businessSettings,
+                'order' => $this->order,
             ]
         );
     }

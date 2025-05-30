@@ -267,7 +267,7 @@
                                 
                                 <a href="<?php echo e(route('cart.index')); ?>">
                                     <button type="submit" class="max-w-full items-center justify-center rounded-md border border-transparent bg-navBackground px-8 py-3 text-base font-medium text-white hover:bg-navBackground/80 focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">
-                                        Bekijk Winkelwagen
+                                        View Cart
                                     </button>
                                 </a>
                             </div>

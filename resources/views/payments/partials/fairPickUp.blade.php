@@ -3,13 +3,16 @@
 
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col">
-            <h2 class="text-pretty text-xl font-semibold tracking-tight text-navBackground sm:text-2xl mb-1">Kies hier de beurs waar u uw bestelling wilt ophalen.</h2>
+            <h2 class="text-pretty text-xl font-semibold tracking-tight text-navBackground sm:text-2xl mb-1">
+                Select the fair where you would like to pick up your order.
+            </h2>
             <p class="text-pretty text-sm tracking-tight text-gray-900 sm:text-base mb-1">
-                U ziet nu hier voor uw een tabel met alle beursen waar ik aanwezig zal zijn. Let goed op de datum en locatie van de beurs.
-                We willen elkaar natuurlijk niet langslopen.
+                Below you will see all the fairs we will be attending. Pay close attention to the date and location of each event.
+                We don’t want to miss each other, of course.
             </p>
             <p class="text-pretty text-sm tracking-tight text-gray-900 sm:text-base mb-1">
-                U kunt een beurs kiezen door er simpel weg op te klikken.
+                You can select a show simply by clicking on it.
+            </p>
         </div>
         <div class="mt-2 flow-root">
           <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -40,7 +43,6 @@
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Beurs Datum</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Beurs Openings Tijd</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Beurs Sluitings Tijd</th>
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Aanwezigheid</th>
                         </tr>
                     </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
@@ -51,23 +53,6 @@
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exhibition->exhibition_date }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exhibition->exhibition_opening_time }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exhibition->exhibition_closing_time }}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                @if ($exhibition->present == 1)
-                                    <button type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 cursor-pointer">
-                                        <svg class="-ml-0.5 size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                            <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
-                                        </svg>
-                                        Aanwezig
-                                    </button>
-                                @else
-                                    <button type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 cursor-pointer">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fizll="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-0.5 size-5">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                        </svg>
-                                        Niet Aanwezig
-                                    </button>
-                                @endif
-                            </td>
                         </tr>
                     @endforeach
                   </tbody>

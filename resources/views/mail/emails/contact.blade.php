@@ -65,24 +65,17 @@
 
                     {{-- content --}}
                     <div class="sm-p-6" style="padding: 24px 36px">
-                        <div role="separator" style="line-height: 24px">&zwj;</div>
-                        <h1 style="margin: 0 0 24px; font-size: 18px; font-weight: 600; color: #0f172a">
-                            Je hebt een nieuw bericht gekregen van een klant!<br>
-                        </h1>
-                        <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                            Bericht van de klant:
-                            <br><br>
-                            {{ $customerMessage }}
-                            <br>
-                        </p>
-                        <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
-                        <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
-                            Als u niks heeft besteld bij ons of iest fout is gegaan, neem graag contact met ons team op:
-                            <a href="mailto:florian.koning2004@gmail.com?subject=Moeite met inloggen%20there&body=This%20is%20a%20predefined%20email%20body.">
-                            Klick hier om de mail te sturen.
-                            </a>
-                        </p>
-                    </div>
+                      <div role="separator" style="line-height: 24px">&zwj;</div>
+                      <h1 style="margin: 0 0 24px; font-size: 18px; font-weight: 600; color: #0f172a">
+                          You have received a new message from a customer!<br>
+                      </h1>
+                      <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
+                          Message from the customer:
+                          <br><br>
+                          {{ $customerMessage }}
+                          <br>
+                      </p>
+                  </div>
                 </td>
               </tr>
             </table>

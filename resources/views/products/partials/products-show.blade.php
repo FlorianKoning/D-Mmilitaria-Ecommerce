@@ -55,11 +55,11 @@
 
 
             {{-- amount in stock --}}
-            <div class="mt-3">
+            {{-- <div class="mt-3">
                 <div class="flex flex-row gap-x-1">
-                    <p class="text-sm font-medium text-gray-900">Hoeveelheid in verkoop: {{ $product->inventory }}</p>
+                    <p class="text-sm font-medium text-gray-900">qnt: {{ $product->inventory }}</p>
                 </div>
-            </div>
+            </div> --}}
 
 
             {{-- description --}}

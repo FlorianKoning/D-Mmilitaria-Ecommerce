@@ -59,34 +59,35 @@
                     {{-- header --}}
 
 
-
-                  <div role="separator" style="line-height: 24px">&zwj;</div>
-                  <h1 style="margin: 0 0 24px; font-size: 20px; line-height: 32px; font-weight: 600; color: #0f172a">
-                    Welkom bij {{ env('APP_NAME') }}
-                  </h1>
-                  <p style="margin: 0 0 24px; font-size: 16px; line-height: 24px; color: #475569">
-                    We zijn blij om u bij ons welkom te noemen.
-                  </p>
-                  <div>
-                    <a href="{{ route('login') }}" style="display: inline-block; text-decoration: none; padding: 16px 24px; font-size: 16px; line-height: 1; border-radius: 4px; color: #fffffe; background-color: #4C5C41" class="hover-bg-slate-800">
-                      <!--[if mso]><i style="mso-font-width: 150%; mso-text-raise: 31px" hidden>&emsp;</i><![endif]-->
-                      <span style="mso-text-raise: 16px">Log hier in</span>
-                      <!--[if mso]><i hidden style="mso-font-width: 150%">&emsp;&#8203;</i><![endif]-->
-                    </a>
+                 <div class="sm-p-6" style="padding: 24px 36px">
+                    <div role="separator" style="line-height: 24px">&zwj;</div>
+                    <h1 style="margin: 0 0 24px; font-size: 20px; line-height: 32px; font-weight: 600; color: #0f172a">
+                      Welcome to {{ env('APP_NAME') }}
+                    </h1>
+                    <p style="margin: 0 0 24px; font-size: 16px; line-height: 24px; color: #475569">
+                      We are happy to welcome you with us.
+                    </p>
+                    <div>
+                      <a href="{{ route('login') }}" style="display: inline-block; text-decoration: none; padding: 16px 24px; font-size: 16px; line-height: 1; border-radius: 4px; color: #fffffe; background-color: #4C5C41" class="hover-bg-slate-800">
+                        <!--[if mso]><i style="mso-font-width: 150%; mso-text-raise: 31px" hidden>&emsp;</i><![endif]-->
+                        <span style="mso-text-raise: 16px">Log in here</span>
+                        <!--[if mso]><i hidden style="mso-font-width: 150%">&emsp;&#8203;</i><![endif]-->
+                      </a>
+                    </div>
+                    <div role="separator" style="line-height: 24px">&zwj;</div>
+                    <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
+                      Best regards,
+                      <br>
+                      <span style="font-weight: 600">{{ env('APP_NAME') }}</span>
+                    </p>
+                    <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
+                    <p class="mso-break-all" style="margin: 0; font-size: 12px; line-height: 20px; color: #475569">
+                      If you have trouble logging into the website, please contact our development team:
+                      <a href="mailto:support@dbmmilitaria.nl?subject=Trouble%20logging%20in&body=This%20is%20a%20predefined%20email%20body.">
+                        Click here to send an email.
+                      </a>
+                    </p>
                   </div>
-                  <div role="separator" style="line-height: 24px">&zwj;</div>
-                  <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
-                    Met vriendelijke groet,
-                    <br>
-                    <span style="font-weight: 600">{{ env('APP_NAME') }}</span>
-                  </p>
-                  <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
-                  <p class="mso-break-all" style="margin: 0; font-size: 12px; line-height: 20px; color: #475569">
-                    Als u moeite heeft met inloggen op de website. Neem graag contact met ons development team op:
-                    <a href="mailto:florian.koning2004@gmail.com?subject=Moeite met inloggen%20there&body=This%20is%20a%20predefined%20email%20body.">
-                      Klick hier om de mail te sturen.
-                    </a>
-                  </p>
                 </td>
               </tr>
             </table>

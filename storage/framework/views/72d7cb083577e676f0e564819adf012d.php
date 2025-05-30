@@ -74,11 +74,7 @@
 
 
             
-            <div class="mt-3">
-                <div class="flex flex-row gap-x-1">
-                    <p class="text-sm font-medium text-gray-900">Hoeveelheid in verkoop: <?php echo e($product->inventory); ?></p>
-                </div>
-            </div>
+            
 
 
             

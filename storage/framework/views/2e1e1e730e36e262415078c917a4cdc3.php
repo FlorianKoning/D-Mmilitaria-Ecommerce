@@ -65,14 +65,14 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                                     </svg>
-                                    <p class="text-sm text-gray-900">In vooraad</p>
+                                    <p class="text-sm text-gray-900">In stock</p>
                                 </div>
                             <?php else: ?>
                                 <div class="flex flex-row gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                     </svg>
-                                    <p class="text-sm text-gray-900">Uit vooraad</p>
+                                    <p class="text-sm text-gray-900">Out of stock</p>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -85,18 +85,18 @@
         <section aria-labelledby="summary-heading" class="mt-16 w-[350px] rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 space-y-10 border border-navBackground">
             <!-- Order summary -->
             <div>
-                <h2 id="summary-heading" class="text-2xl font-bold text-gray-900 mb-4">Totale Winkelmandje</h2>
+                <h2 id="summary-heading" class="text-2xl font-bold text-gray-900 mb-4">Order Amount</h2>
 
                 <div class="space-y-4">
                     <div>
                         <div class="flex items-center justify-between">
-                            <dt class="text-base text-gray-900">Subtotal</dt>
+                            <dt class="text-base text-gray-900">Sub Amount</dt>
                             <dd class="text-base font-bold text-gray-900">€<?php echo e((isset($totalPrice)) ? $totalPrice : '0'); ?></dd>
                         </div>
-                        <p class="text-xs text-gray-500 float-right">(Exclusief verzond kosten)</p>
+                        <p class="text-xs text-gray-500 float-right">(Excluding shipping costs)</p>
                     </div>
                     <div class=" flex flex-col border-t border-gray-200 space-y-4 pt-4">
-                        <p class="text-xs text-gray-500 float-right">De beschikbare verzendopties worden weergegeven tijdens het afrekenproces, waarbij de bijbehorende verzendkosten automatisch worden berekend.</p>
+                        <p class="text-xs text-gray-500 float-right">The available shipping options will be displayed during the checkout process, with the corresponding shipping costs calculated automatically</p>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
             <input type="hidden" name="paymentValue" value="<?php echo e($totalPrice); ?>">
 
             <div>
-                <button type="submit" class="w-full rounded-md border border-transparent bg-navBackground px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-navBackground focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50">DOORGAAN NAAR AFREKENEN</button>
+                <button type="submit" class="w-full rounded-md border border-transparent bg-navBackground px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-navBackground focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50">Proceed to checkout</button>
             </div>
         </section>
       </form>

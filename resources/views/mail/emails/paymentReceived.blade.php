@@ -63,27 +63,27 @@
 
                     {{-- content --}}
                     <div class="sm-p-6" style="padding: 24px 36px">
-                        <div role="separator" style="line-height: 24px">&zwj;</div>
-                        <h1 style="margin: 0 0 24px; font-size: 20px; line-height: 32px; font-weight: 600; color: #0f172a">
-                            Uw betaling is binnengekomen!
-                        </h1>
-                        <p style="margin: 0 0 24px; font-size: 16px; line-height: 24px; color: #475569">
-                            Hartelijk dank voor uw bestelling bij ons. We hebben uw betaling in goede orde ontvangen en zullen ons best doen om uw bestelling zo snel mogelijk te verzenden.
-                        </p>
-                        <div role="separator" style="line-height: 24px">&zwj;</div>
-                        <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
-                            Met vriendelijke groet,
-                            <br>
-                            <span style="font-weight: 600">{{ env('APP_NAME') }}</span>
-                        </p>
-                        <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
-                        <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
-                            Heeft u niks besteld? Of komt het bestellings nummer niet overheen met uw bestelling? Neem dan contact op met ons team:
-                            <a href="mailto:florian.koning2004@gmail.com?subject=Moeite met inloggen%20there&body=This%20is%20a%20predefined%20email%20body.">
-                            Klick hier om de mail te sturen.
-                            </a>
-                        </p>
-                    </div>
+                      <div role="separator" style="line-height: 24px">&zwj;</div>
+                      <h1 style="margin: 0 0 24px; font-size: 20px; line-height: 32px; font-weight: 600; color: #0f172a">
+                          Your payment has been received!
+                      </h1>
+                      <p style="margin: 0 0 24px; font-size: 16px; line-height: 24px; color: #475569">
+                          Thank you very much for your order with us. We have received your payment successfully and will do our best to ship your order as soon as possible.
+                      </p>
+                      <div role="separator" style="line-height: 24px">&zwj;</div>
+                      <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
+                          Best regards,
+                          <br>
+                          <span style="font-weight: 600">{{ env('APP_NAME') }}</span>
+                      </p>
+                      <div role="separator" style="height: 1px; line-height: 1px; background-color: #cbd5e1; margin-top: 24px; margin-bottom: 24px">&zwj;</div>
+                      <p class="mso-break-all" style="margin: 0; border-radius: 6px; background-color: #4C5C41; padding: 8px; font-size: 12px; line-height: 20px; color: #fffffe">
+                          If you did not place an order with us or if something went wrong, please contact our team:
+                          <a href="mailto:support@dbmmilitaria.nl?subject=Something went wrong with the order%20there&body=This%20is%20a%20predefined%20email%20body.">
+                          Click here to send an email.
+                          </a>
+                      </p>
+                  </div>
                 </td>
               </tr>
             </table>
