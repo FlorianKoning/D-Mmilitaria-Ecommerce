@@ -2,15 +2,24 @@
 function hideLayer(layer_id) {
     if ($('#'+layer_id).is(":visible")) {
         $('#'+layer_id).fadeOut().addClass('hidden');
-        console.log('hello there');
     } else {
         $('#'+layer_id).fadeIn().removeClass('hidden');
-        console.log('hello there');
     }
 }
 
 
 function flexHideLayer(layer_id) {
+    if ($('#'+layer_id).is(":visible")) {
+        $('#'+layer_id).fadeOut().addClass('hidden');
+        $('#'+layer_id).css('display', 'flex');
+    } else {
+        $('#'+layer_id).fadeIn().removeClass('hidden');
+        $('#'+layer_id).css('display', 'flex');
+    }
+}
+
+
+function phoneHideLayer(layer_id) {
     if ($('#'+layer_id).is(":visible")) {
         $('#'+layer_id).fadeOut().addClass('hidden');
         $('#'+layer_id).css('display', 'flex');

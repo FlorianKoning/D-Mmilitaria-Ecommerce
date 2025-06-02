@@ -15,6 +15,7 @@ class Order extends Model
 
     public static array $columnNames = [
         'order_number' => 'Bestellings Nummer',
+        'exhibition' => 'Beurs naam',
         'payment_option_id' => 'Betalings Optie',
         'user_id' => 'Gebruiker',
         'payment_amount' => 'Bedrag Van Bestelling',

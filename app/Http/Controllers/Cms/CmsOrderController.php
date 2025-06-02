@@ -12,12 +12,14 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Factories\OrderStatusFactory;
+use App\Repositories\OrderRepository;
 use Illuminate\Http\RedirectResponse;
 
 class CmsOrderController extends Controller
 {
     public function __construct(
         protected OrderStatusFactory $orderStatusFactory,
+        protected OrderRepository $orderRepository,
     ){parent::__construct();}
 
 
@@ -26,21 +28,10 @@ class CmsOrderController extends Controller
      */
     public function index(): View
     {
-        $columnNames = Order::$columnNames;
-        $statusColors = Order::$orderColors;
-        $orders = Order::select('orders.*', 'users.first_name as userFirstName', 'users.last_name as userLastName',
-            'guest_users.first_name as guestFirstname', 'guest_users.last_name as guestLastName', 'order_statuses.status as orderStatusName',
-            'payment_name')
-            ->leftJoin('users', 'user_id', '=', 'users.id')
-            ->leftJoin('guest_users', 'guest_user_id', '=', 'guest_users.id')
-            ->leftJoin('order_statuses', 'order_status_id', '=', 'order_statuses.id')
-            ->leftJoin('payment_options', 'payment_option_id', '=', 'payment_options.id')
-            ->get();
-
         return view('cms.order.order-index', [
-            'orders' => $orders,
-            'columnNames' => $columnNames,
-            'statusColors' => $statusColors,
+            'orders' => $this->orderRepository->all(false),
+            'columnNames' => Order::$columnNames,
+            'statusColors' => Order::$orderColors,
             'paymentOptions' => PaymentOption::$columnTranslations
         ]);
     }

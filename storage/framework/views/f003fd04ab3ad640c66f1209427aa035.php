@@ -22,6 +22,7 @@
                 <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><?php echo e($order->order_number); ?></td>
+                        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><?php echo e($order->exhibition_name); ?></td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><?php echo e($paymentOptions[$order->payment_name]); ?></td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
                           <?php echo e((isset($order->user_id)) ? $order->userFirstName.' '. $order->userLastName : $order->guestFirstname.' '.$order->guestLastName.' (Guest)'); ?>

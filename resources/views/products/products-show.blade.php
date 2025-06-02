@@ -3,6 +3,8 @@
 
     {{-- products overview --}}
     <div class="w-full broder border-t-2 border-black/80 flex flex-col content-start">
+        <x-home-navbar />   
+
         <div class="py-12">
             @include('products.partials.products-show')
         </div>

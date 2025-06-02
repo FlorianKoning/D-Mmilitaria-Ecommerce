@@ -22,6 +22,7 @@
                 @foreach ($orders as $order)
                     <tr>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $order->order_number }}</td>
+                        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $order->exhibition_name }}</td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $paymentOptions[$order->payment_name] }}</td>
                         <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
                           {{ (isset($order->user_id)) ? $order->userFirstName.' '. $order->userLastName : $order->guestFirstname.' '.$order->guestLastName.' (Guest)'  }}

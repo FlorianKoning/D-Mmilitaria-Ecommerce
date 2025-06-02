@@ -9,7 +9,7 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     
-    <div class="max-w-7xl mx-auto h-svh border-t-2 border-black/80 flex flex-col content-start">
+    <div class="max-w-7xl h-fit mx-auto border-t-2 border-black/80 flex flex-col content-start">
         <div class="py-12">
             <?php echo $__env->make('cart.partials.cart-index', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
         </div>

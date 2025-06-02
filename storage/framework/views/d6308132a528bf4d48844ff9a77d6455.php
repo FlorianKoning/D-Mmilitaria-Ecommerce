@@ -9,7 +9,7 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     
-    <div class="w-full flex flex-col content-start">
+    <div class="flex flex-col content-start w-fit">
         <?php if (isset($component)) { $__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.home-navbar','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -32,7 +32,7 @@
 <?php endif; ?>
 
         
-        <div class="py-12 h-screen">
+        <div class="py-12">
             <?php if (isset($component)) { $__componentOriginal75719a873aef52870b75ff337fe33664 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal75719a873aef52870b75ff337fe33664 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.item-list','data' => ['products' => $products,'catagories' => $catagories,'latestUpdate' => $latestUpdate,'landCatagories' => $landCatagories,'today' => $today]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>

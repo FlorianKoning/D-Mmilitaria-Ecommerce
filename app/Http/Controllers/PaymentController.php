@@ -48,20 +48,26 @@ class PaymentController extends Controller
 
         // Error Handler
         switch (true) {
-            // shipping error
+            // shipping error.
             case $request->shipping == null || count($request->shipping) != 9:
                 return redirect()->route('checkout.index')->withErrors([
                     'shipping.email' => 'you need to fill in the shipping information'
                 ]);
 
-            // items/products error
+            // items/products error.
             case $request->items == null || count($request->items) == 0:
                 return redirect()->route('home.index')->with('wrongPermission', 'Please select your product before paying.');
 
-            // payment method error
-            case count($request->paymentMethod) == 0:
+            // payment method error.
+            case isset($request->paymentMethod) && count($request->paymentMethod) == 0:
                 return redirect()->route('checkout.index')->withErrors([
                     'paymentOptions' => 'There was no payment method selected!'
+                ]);
+
+            // no items/products error.
+            case count($request->items) == 0 || $request->items == null:
+                return redirect()->route('checkout.index')->withErrors([
+                    'paymentOptions' => 'Something went wrong! There where no products found. Try again.'
                 ]);
         }
 
@@ -112,12 +118,12 @@ class PaymentController extends Controller
      */
     private function paymentHandler(array $shipping)
     {
-        $paymentFactory = new PaymentFactory($this->order, $this->paymentOption, $shipping['first-name']." ".$shipping['last-name']);
+        $orderMailService = app(OrderMailService::class);
 
         // Checks what function has to be called based on the payment option.
         switch ($this->paymentOption['id']) {
             case 1:
-                $paymentFactory->backTransfer();
+                $orderMailService->bankTransfer($this->order, $shipping['email-address'], $shipping['first-name'].' '.$shipping['last-name']);
                 break;
             case 2:
                 return "redirect";

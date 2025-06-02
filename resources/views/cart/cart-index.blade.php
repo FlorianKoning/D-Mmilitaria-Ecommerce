@@ -1,6 +1,6 @@
 <x-app-layout>
     {{-- products overview --}}
-    <div class="max-w-7xl mx-auto h-svh border-t-2 border-black/80 flex flex-col content-start">
+    <div class="max-w-7xl h-fit mx-auto border-t-2 border-black/80 flex flex-col content-start">
         <div class="py-12">
             @include('cart.partials.cart-index')
         </div>

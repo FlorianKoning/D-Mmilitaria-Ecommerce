@@ -106,7 +106,7 @@
             <h2 id="product-heading" class="sr-only">Products</h2>
 
             @if (count($products) > 0)
-                <div class="grid grid-cols-1 gap-y-3 sm:grid-cols-1 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
+                <div class="grid grid-cols-1 gap-y-3 sm:grid-cols-1 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-4">
                     @foreach ($products as $item)
                         <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-400 bg-white">
                             <img src="{{ $item->main_image }}" alt="Helm" class="bg-gray-100 object-cover group-hover:opacity-75 sm:h-96">
@@ -117,7 +117,7 @@
                                         {{ $item->name }}
                                     </a>
                                 </h3>
-                                <p class="text-sm text-gray-500">{{ substr($item->small_desc, 0, 100) }}</p>
+                                {{-- <p class="text-sm text-gray-500">{{ substr($item->small_desc, 0, 100) }}</p> --}}
                                 <div class="flex flex-1 flex-col justify-end">
                                     <div class="flex flex-row justify-between">
                                         {{-- item price --}}

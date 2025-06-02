@@ -39,7 +39,7 @@ class FairPickUpController extends Controller
             $exhibitions = $this->exhibitionRepository->all($order);
         } catch (Exception $exception) {
             return redirect()->route('checkout.index')->withErrors([
-                'paymentOptions' => $exception->getMessage(),
+                'paymentOptions' => 'Error: '.$exception->getMessage(),
             ]);
         }
 

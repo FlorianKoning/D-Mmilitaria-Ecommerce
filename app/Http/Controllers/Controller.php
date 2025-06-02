@@ -9,11 +9,9 @@ use App\Models\BusinessSettings;
 use App\Services\OrderMailService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-use App\Repositories\ProviceRepository;
 use App\Repositories\BusinessRepository;
 use App\Repositories\CartRepository;
-use App\Repositories\ExhibitionRepository;
-use App\Repositories\PaymentOptionRepository;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 abstract class Controller
 {
@@ -26,11 +24,12 @@ abstract class Controller
     protected object|null $cart;
     protected string $today;
     protected BusinessSettings $business;
+    protected BusinessRepository $businessRepository;
 
     public function __construct()
     {
-        $this->cartRepository = new CartRepository();
-        $this->cartService = new CartService($this->cartRepository);
+        $this->cartService = app(CartService::class);
+        $this->businessRepository = app(BusinessRepository::class);
 
         $this->aclService = new AclService;
         View::share('aclService', $this->aclService);
@@ -47,7 +46,7 @@ abstract class Controller
         $this->today = date('Y-m-d');
         View::share('today', $this->today);
 
-        $this->business = BusinessSettings::find(ProfileController::$businessTableId);
+        $this->business = $this->businessRepository->all(false);
         View::share('business', $this->business);
     }
 }

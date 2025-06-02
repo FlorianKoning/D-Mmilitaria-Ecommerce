@@ -47,14 +47,10 @@ class PaymentFactory implements PaymentFactoryInterface
      * Creates a bank transfer payment
      * @return never
      */
-    public function backTransfer(): RedirectResponse
+    public function backTransfer(): void
     {
         // Calls the bankTransferService.
         $bankTransferService = new BankTransferService($this->email, $this->cart, $this->name, $this->order);
         $bankTransferService->send();
-
-
-        // Returns the user to the home page.
-        return redirect()->route('home.index')->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
     }
 }

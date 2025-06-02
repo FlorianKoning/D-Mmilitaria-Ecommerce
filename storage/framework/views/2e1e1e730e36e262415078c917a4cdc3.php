@@ -34,7 +34,7 @@
                                 </div>
 
                                 <div class="mt-4 sm:mt-0 sm:pr-9">
-                                    <div class="grid w-full max-w-16 grid-cols-1">
+                                    <div class="lg:hiddens grid w-full max-w-16 grid-cols-1">
                                         <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" name="quantity-0" aria-label="Quantity, Basic Tee" class="col-start-1 row-start-1 appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-navBackground sm:text-sm/6">
                                             <?php if($item->inventory != 0): ?>
                                                 <?php for($i = 1; $i <= $item->inventory; $i++): ?>
@@ -58,23 +58,28 @@
                                 </div>
                             </div>
 
+                            <div>
 
+                                <div>
+                                    
+                                    <?php if($item->inventory > 0): ?>
+                                        <div class="flex flex-row gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                            </svg>
+                                            <p class="text-sm text-gray-900">In stock</p>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="flex flex-row gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                            </svg>
+                                            <p class="text-sm text-gray-900">Out of stock</p>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
                             
-                            <?php if($item->inventory > 0): ?>
-                                <div class="flex flex-row gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                    </svg>
-                                    <p class="text-sm text-gray-900">In stock</p>
-                                </div>
-                            <?php else: ?>
-                                <div class="flex flex-row gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                    </svg>
-                                    <p class="text-sm text-gray-900">Out of stock</p>
-                                </div>
-                            <?php endif; ?>
                         </div>
                     </li>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -82,7 +87,7 @@
           </ul>
         </section>
 
-        <section aria-labelledby="summary-heading" class="mt-16 w-[350px] rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 space-y-10 border border-navBackground">
+        <section aria-labelledby="summary-heading" class="mt-16j w-fit lg:w-[350px] rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 space-y-10 border border-navBackground">
             <!-- Order summary -->
             <div>
                 <h2 id="summary-heading" class="text-2xl font-bold text-gray-900 mb-4">Order Amount</h2>
