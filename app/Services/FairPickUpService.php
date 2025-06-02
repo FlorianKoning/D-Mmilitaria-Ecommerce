@@ -33,8 +33,5 @@ class FairPickUpService implements PaymentServicesInterface
         // Mail::to($this->email)->queue(
         //     new BankTransfer($this->order, $this->email, $this->name)
         // );
-
-        // Removes everything from the users cart and calculates the new inventory
-        Functions::itemHandle($this->cart);
     }
 }

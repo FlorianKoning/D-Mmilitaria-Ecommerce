@@ -10,10 +10,12 @@ use App\Models\Month;
 use App\Models\OrderStatus;
 use App\Models\PaymentOption;
 use App\Models\Role;
+use App\Models\ShippingCountry;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Product_category;
 use App\Models\Province;
+use App\Utils\ShippingCountries;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,6 +48,8 @@ class DatabaseSeeder extends Seeder
 
         // Sets up all the months in the database.
         $this->setMonths();
+
+        $this->setShippingCountries();
     }
 
 
@@ -247,5 +251,19 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+    }
+
+    /**
+     * Puts all the shipping countries in the database.
+     * @return void
+     */
+    private function setShippingCountries(): void
+    {
+        foreach (ShippingCountries::$list as $key => $value) {
+            ShippingCountry::create([
+                'country_name' => $key,
+                'shipping_cost' => $value
+            ]);
+        }
     }
 }

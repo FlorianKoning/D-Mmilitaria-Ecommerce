@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('company')->nullable();
             $table->string('address');
-            $table->string('country');
+            $table->unsignedBigInteger('shippingCountry_id');
+            $table->foreign('shippingCountry_id')->references('id')->on('shipping_countries');
             $table->string('city');
             $table->string('postal_code');
             $table->string('phone_number');

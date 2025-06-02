@@ -5,7 +5,7 @@
         @csrf
         <div>
           <div class="border-gray-200 pt-10">
-            <h2 class="text-lg font-medium text-gray-900">Verzending informatie</h2>
+            <h2 class="text-lg font-medium text-gray-900">Your personal shipping information</h2>
             <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
 
               {{-- user first name --}}
@@ -39,7 +39,13 @@
               {{-- user country --}}
               <div>
                 <label for="country" class="block text-sm/6 font-medium text-gray-700">Shipping Country </label>
-                <x-text-input id="country" name="country" type="text" class="mt-2 block w-full" placeholder="Leave empty when you live in the netherlands" :value="(isset($shipping->country)) ? $shipping->country : old('country')" />
+                <div class="grid grid-cols-1">
+                    <select id="shippingCountry" name="shippingCountry" class="mt-2 block w-full rounded-md bg-[#F3F5F7] border-[#F3F5F7]/80 px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-600 sm:text-sm/6">
+                        @foreach ($countries as $country)
+                            <option {{ (isset($shipping->shippingCountry_id) && $shipping->shippingCountry_id == $country->id) ? "checked" : null }} value="{{ $country->id }}">{{ $country->country_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <x-input-error class="mt-2" :messages="$errors->get('country')" />
               </div>
 

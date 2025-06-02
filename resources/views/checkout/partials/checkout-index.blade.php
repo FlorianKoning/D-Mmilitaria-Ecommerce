@@ -5,7 +5,7 @@
         @csrf
         <div>
             {{-- checkout form --}}
-            <x-checkout.shipping-form :shipping="$shippingInfo" :provinces="$provinces" />
+            <x-checkout.shipping-form :shipping="$shippingInfo" :provinces="$provinces" :countries="$countries" />
         </div>
 
         <!-- Order summary -->

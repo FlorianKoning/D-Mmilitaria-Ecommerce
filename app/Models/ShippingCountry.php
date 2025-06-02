@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Shipping extends Model
+class ShippingCountry extends Model
 {
-    /** @use HasFactory<\Database\Factories\ShippingFactory> */
+    /** @use HasFactory<\Database\Factories\ShippingCountryFactory> */
     use HasFactory;
-
 
     /**
      * The attributes that are mass assignable.
@@ -17,20 +16,9 @@ class Shipping extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'user_id',
-        'guest_user_id',
-        'order_id',
-        'first_name',
-        'last_name',
-        'company',
-        'address',
-        'apartment',
-        'shippingCountry_id',
-        'city',
-        'postal_code',
-        'phone_number',
+        'country_name',
+        'shipping_cost',
     ];
-
 
     /**
      * Tells laravel that there are no timestamps

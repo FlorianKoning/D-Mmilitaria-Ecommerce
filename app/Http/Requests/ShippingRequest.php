@@ -28,7 +28,7 @@ class ShippingRequest extends FormRequest
             'company' => ['nullable', 'string', 'max:141'],
             'address' => ['required', 'string', 'max:141'],
             'apartment' => ['nullable', 'string', 'max:141'],
-            'country' => ['nullable', 'string', 'max:141'],
+            'shippingCountry' => ['required', 'string', 'numeric'],
             'city' => ['required', 'string', 'max:141'],
             'postal-code' => ['required', 'string', 'max:7'],
             'phone' => ['required', 'string', 'max:20']

@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Province;
 use Illuminate\View\View;
+use App\Models\UserShipping;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
 use App\Services\CartService;
+use App\Models\ShippingCountry;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Helper\Translate\TranslatePaymentOption;
-use App\Models\UserShipping;
 
 class CheckoutController extends Controller
 {
@@ -44,6 +45,7 @@ class CheckoutController extends Controller
             'provinces' => Province::select('*')->orderBy('province_name')->get(),
             'paymentValue' => $request->paymentValue,
             'cart' => $cart,
+            'countries' => ShippingCountry::all(),
             'paymentOptions' => PaymentOption::all(),
             'paymentOptionTranslation' => TranslatePaymentOption::$translate
         ]);

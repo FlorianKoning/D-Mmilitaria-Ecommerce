@@ -7,14 +7,14 @@
             
             <?php if (isset($component)) { $__componentOriginal3293e551444562dcdf620e32cb7ea99b = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal3293e551444562dcdf620e32cb7ea99b = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout.shipping-form','data' => ['shipping' => $shippingInfo,'provinces' => $provinces]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout.shipping-form','data' => ['shipping' => $shippingInfo,'provinces' => $provinces,'countries' => $countries]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('checkout.shipping-form'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['shipping' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($shippingInfo),'provinces' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($provinces)]); ?>
+<?php $component->withAttributes(['shipping' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($shippingInfo),'provinces' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($provinces),'countries' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($countries)]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal3293e551444562dcdf620e32cb7ea99b)): ?>

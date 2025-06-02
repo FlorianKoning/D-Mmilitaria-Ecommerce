@@ -47,9 +47,13 @@ Route::middleware(AclMiddleware::class)->group(function() {
 
 
     // Ajax routes
-    Route::get('/ajax/liveSearch/{input}/{table}', [AjaxController::class, 'livesearch'])->name('ajax.liveSearch');
-    Route::get('/ajax/options/{id}/{table}', [AjaxController::class, 'getOptions'])->name('ajax.getOptions');
-    Route::get('/ajax/payment-id', [AjaxController::class, 'paymentId'])->name('ajax.paymentId');
+    Route::controller(AjaxController::class)->group(function() {
+        Route::get('/ajax/liveSearch/{input}/{table}', 'livesearch')->name('ajax.liveSearch');
+        Route::get('/ajax/options/{id}/{table}', 'getOptions')->name('ajax.getOptions');
+        Route::get('/ajax/payment-id', 'paymentId')->name('ajax.paymentId');
+        Route::get('/ajax/shipping-country/{shippingCountry}', 'shippingCountry')->name('ajax.shippingCountry');
+    });
+
 
 
     // Checkout routes

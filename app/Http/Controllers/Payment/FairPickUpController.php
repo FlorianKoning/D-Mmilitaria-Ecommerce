@@ -112,9 +112,6 @@ class FairPickUpController extends Controller
             'exhibition_id' => $exhibition->id,
         ]);
 
-        // Deletes all the items of the users cart.
-        Functions::itemHandle($this->cart);
-
         // Sends the user to a "thank you" page.
         return redirect()->route('public.confirmation', [$order, $shipping])->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
     }

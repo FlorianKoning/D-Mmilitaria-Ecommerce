@@ -3,21 +3,22 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\Cart;
 use App\Models\Order;
+use App\Helper\Functions;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
 use App\Utils\ReservedHelper;
 use App\Services\OrderService;
-use Illuminate\Validation\Rule;
 use App\Services\InvoiceService;
-use App\Factories\PaymentFactory;
+use App\Services\ShippingService;
 use App\Services\OrderMailService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Repositories\ProviceRepository;
 use App\Repositories\BusinessRepository;
 use App\Repositories\ExhibitionRepository;
 use App\Repositories\PaymentOptionRepository;
-use App\Services\ShippingService;
 
 class PaymentController extends Controller
 {
@@ -79,7 +80,7 @@ class PaymentController extends Controller
             'shipping.last-name' => 'required|string|max:191',
             'shipping.company' => 'nullable|string|max:191',
             'shipping.address' => 'required|string|max:191',
-            'shipping.country' => 'nullable|string|max:191',
+            'shipping.shippingCountry' => 'required|string|numeric',
             'shipping.city' => 'required|string|max:191',
             'shipping.postal-code' => 'required|string|min:6|max:7'
         ]);
@@ -105,6 +106,10 @@ class PaymentController extends Controller
         if($this->paymentHandler($request->shipping) == "redirect") {
             return redirect()->route('payment.exhibition', $this->order);
         }
+
+        // Deletes all the items of the users cart.
+        $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
+        Functions::itemHandle($cart);
 
 
         return redirect()->route('public.confirmation', [$this->order, $shipping]);

@@ -22,7 +22,7 @@ class UserShipping extends Model
         'company',
         'address',
         'apartment',
-        'country',
+        'shippingCountry_id',
         'city',
         'postal_code',
         'phone_number',

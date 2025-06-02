@@ -82,14 +82,12 @@ class CartService implements CartServiceInterface
         $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
         $amount = 0;
 
-
         // counts how many items there are in cart.
         if ($cart != null) {
             foreach($cart as $value) {
                 $amount += $value['amount'];
             }
         }
-
 
         return $amount;
     }

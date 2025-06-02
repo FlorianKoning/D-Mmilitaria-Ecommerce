@@ -19,7 +19,7 @@ class ShippingRepository implements ShippingRepositoryInterface
     {
         $shipping = Shipping::where('order_id', $order->id)->first();
 
-        if (!$shipping) {
+        if ($shipping == null) {
             Throw new Exception('There is no shipping collection with that order id in the database.');
         }
 

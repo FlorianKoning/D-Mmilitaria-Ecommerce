@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ShippingCountry;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -42,5 +43,11 @@ class AjaxController extends Controller
             ->get();
 
         return response()->json($paymentId);
+    }
+
+
+    public function shippingCountry(ShippingCountry $shippingCountry)
+    {
+        return response()->json($shippingCountry);
     }
 }

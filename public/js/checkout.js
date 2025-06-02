@@ -1,3 +1,5 @@
+const shippingCountry = document.getElementById('shippingCountry');
+
 function paymentMethod(id, shipping = null, serviceCost = null) {
     const subtotal =$('#inputSubtotal').val();
     switch (id) {
@@ -15,8 +17,6 @@ function paymentMethod(id, shipping = null, serviceCost = null) {
             // Changes the pricing
             $('#shippingCost').fadeIn().removeClass('hidden');
             $('#shippingCost').removeAttr('style');
-            $('#total').html("€"+(Number(subtotal) + 5));
-            $('#inputPayment').attr('value', subtotal + 5);
             break;
         case '2':
             // Displays the check
@@ -32,8 +32,6 @@ function paymentMethod(id, shipping = null, serviceCost = null) {
 
             // Changes the pricing
             $('#shippingCost').fadeOut().addClass('hidden');
-            $('#total').html("€"+(subtotal));
-            $('#inputPayment').attr('value', subtotal);
             break;
         case '3':
             // Displays the check
@@ -49,8 +47,6 @@ function paymentMethod(id, shipping = null, serviceCost = null) {
             // Changes the pricing
             $('#shippingCost').fadeIn().removeClass('hidden');
             $('#shippingCost').removeAttr('style');
-            $('#total').html("€"+(Number(subtotal) + 5));
-            $('#inputPayment').attr('value', subtotal + 5);
             break;
 
         default:
@@ -67,8 +63,42 @@ function paymentMethod(id, shipping = null, serviceCost = null) {
              // Changes the pricing
              $('#shippingCost').fadeIn().removeClass('hidden');
              $('#shippingCost').removeAttr('style');
-             $('#total').html("€"+(Number(subtotal) + 5));
-             $('#inputPayment').attr('value', subtotal + 5);
             break;
     }
 }
+
+window.onload = function() {
+    id = shippingCountry.value;
+
+    $.ajax({
+        type:'GET',
+        url:'/ajax/shipping-country/'+id,
+        dataType: "json",
+        success: function(data) {
+            total = parseInt(document.getElementById('subtotal').innerHTML);
+
+            $('#total').html(total + data.shipping_cost);
+            $('#shippingAmount').html(data.shipping_cost);
+            $('#inputPayment').val(total + data.shipping_cost);
+        }
+    });
+};
+
+
+shippingCountry.addEventListener('click', function() {
+    id = shippingCountry.value;
+
+    $.ajax({
+        type:'GET',
+        url:'/ajax/shipping-country/'+id,
+        dataType: "json",
+        success: function(data) {
+            total = parseInt(document.getElementById('subtotal').innerHTML);
+
+            $('#total').html(total + data.shipping_cost);
+            $('#shippingAmount').html(data.shipping_cost);
+            $('#inputPayment').val(total + data.shipping_cost);
+        }
+    });
+});
+

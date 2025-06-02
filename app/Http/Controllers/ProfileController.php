@@ -5,15 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Province;
-use App\Models\Shipping;
+use App\Models\ShippingCountry;
 use Illuminate\View\View;
 use App\Models\OrderStatus;
 use Illuminate\Http\Request;
-use App\Services\FileService;
 use App\Models\BusinessSettings;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\BusinessRequest;
 use App\Http\Requests\ShippingRequest;
 use App\Repositories\ShippingRepository;
 use Illuminate\Support\Facades\Redirect;
@@ -52,6 +50,7 @@ class ProfileController extends Controller
     {
         return view('profile.shipping', [
             'provinces' => Province::select('*')->orderBy('province_name')->get(),
+            'countries' => ShippingCountry::all(),
             'shipping' => UserShipping::where('user_id', Auth::user()->id)->first(),
         ]);
     }
@@ -98,7 +97,7 @@ class ProfileController extends Controller
             'company' => $validated['company'],
             'address' => $validated['address'],
             'city' => $validated['city'],
-            'country' => (isset($validated['country']) ? $validated['country'] : 'Netherlands'),
+            'shippingCountry_id' => $validated['shippingCountry'],
             'postal_code' => $validated['postal-code'],
             'phone_number' => $validated['phone']
         ];

@@ -1,4 +1,4 @@
-@props(['shipping', 'provinces'])
+@props(['shipping', 'provinces', 'countries'])
 <div>
     <h2 class="text-lg font-medium text-gray-900">Contact information</h2>
 
@@ -58,11 +58,15 @@
         </div>
 
         <div class="sm:col-span-2">
-            <label for="country" class="block text-sm/6 font-medium text-gray-700">Country</label>
-            <div class="mt-2">
-                <input placeholder="Keep empty when in the netherlands" type="text" name="shipping[country]" id="country" value="{{ ($shipping != null) ? $shipping->country : '' }}" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-            </div>
-            <x-checkout-input-error class="mt-2" :messages="$errors->get('shipping.country')" />
+            <label for="shippingCountry" class="block text-sm/6 font-medium text-gray-700">Country</label>
+            <div class="grid grid-cols-1">
+                    <select id="shippingCountry" name="shipping[shippingCountry]" class="mt-2 block w-full rounded-md bg-[#F3F5F7] border-[#F3F5F7]/80 px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-600 sm:text-sm/6">
+                        @foreach ($countries as $country)
+                            <option {{ (isset($shipping->shippingCountry_id) && $shipping->shippingCountry_id == $country->id) ? "checked" : null }} value="{{ $country->id }}">{{ $country->country_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            <x-checkout-input-error class="mt-2" :messages="$errors->get('shipping.shippingCountry')" />
         </div>
 
         <div>

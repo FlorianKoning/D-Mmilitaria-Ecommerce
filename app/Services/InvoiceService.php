@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\PaymentOption;
 use Exception;
 use App\Models\Product;
+use App\Models\ShippingCountry;
 use App\Repositories\BusinessRepository;
 use Illuminate\Database\Eloquent\Builder;
 use LaravelDaily\Invoices\Invoice;
@@ -63,8 +64,8 @@ class InvoiceService
 
 
         // Checks if shipping cost have to be added.
-        if (!$this->order->payment_option_id == PaymentOption::$fairPickup) {
-            $this->invoice->shipping(5.00);
+        if ($this->order->payment_option_id != PaymentOption::$fairPickup) {
+            $this->invoice->shipping($this->getShipping());
         }
 
 
@@ -119,7 +120,8 @@ class InvoiceService
             'name' => $this->shippingInfo['first-name'].' '.$this->shippingInfo['last-name'],
             'address' => $this->shippingInfo['address'].' '.$this->shippingInfo['city'],
             'custom_fields' => [
-                'email' => $this->shippingInfo['email-address']
+                'email' => $this->shippingInfo['email-address'],
+                'country' => ShippingCountry::find($this->shippingInfo['shippingCountry'])->country_name,
             ]
         ]);
 
@@ -158,5 +160,15 @@ class InvoiceService
         $invoiceCount = count(Order::all());
 
         return $year.'-'.$invoiceCount;
+    }
+
+    /**
+     * Returns the shipping cost of the order.
+     */
+    protected function getShipping()
+    {
+        $countryId = $this->shippingInfo['shippingCountry'];
+
+        return ShippingCountry::find($countryId)->shipping_cost;
     }
 }
