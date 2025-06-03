@@ -197,7 +197,8 @@
 
 
 
-              <div class="mt-8 flex justify-between">
+              <div class="mt-8 flex flex-col lg:flex-row justify-between gap-2">
+                
                 <div class="flex flex-col">
                     <div class="g-recaptcha" data-sitekey="<?php echo e(env('RECAPTCHA_SITE_KEY')); ?>"></div>
                     <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
@@ -222,8 +223,8 @@
 <?php endif; ?>
                 </div>
 
-
-                <button type="submit" class="rounded-md bg-navBackground px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Send message</button>
+                
+                <button type="submit" class="w-full rounded-md bg-navBackground px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Send message</button>
               </div>
             </div>
           </form>

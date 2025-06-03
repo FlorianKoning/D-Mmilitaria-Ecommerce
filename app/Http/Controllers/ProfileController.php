@@ -92,14 +92,14 @@ class ProfileController extends Controller
 
         $updateArray = [
             'user_id' => $userId,
-            'first_name' => $validated['first-name'],
-            'last_name' => $validated['last-name'],
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
             'company' => $validated['company'],
             'address' => $validated['address'],
             'city' => $validated['city'],
             'shippingCountry_id' => $validated['shippingCountry'],
-            'postal_code' => $validated['postal-code'],
-            'phone_number' => $validated['phone']
+            'postal_code' => $validated['postal_code'],
+            'phone_number' => $validated['phone_number']
         ];
 
         // Checks if a update or create function should be called

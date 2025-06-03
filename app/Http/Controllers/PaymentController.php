@@ -109,6 +109,8 @@ class PaymentController extends Controller
 
         // Deletes all the items of the users cart.
         $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
+
+
         Functions::itemHandle($cart);
 
 

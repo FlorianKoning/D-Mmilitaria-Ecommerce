@@ -29,7 +29,7 @@
 <?php unset($__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d); ?>
 <?php endif; ?>
 
-    <div class="py-12 h-screen">
+    <div class="py-12 w-fit">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-full">

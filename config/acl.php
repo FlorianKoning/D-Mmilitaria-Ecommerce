@@ -67,7 +67,7 @@ return [
             "ProfileController" => ["*"],
             "PaymentController" => ["*"],
             "CheckoutController" => ["*"],
-            "AjaxController" => ["paymentId"],
+            "AjaxController" => ["*"],
             "DownloadController" => ['*']
         ]
     ]

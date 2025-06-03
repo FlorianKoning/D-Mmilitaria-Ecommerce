@@ -79,7 +79,7 @@
                                     @endif
                                 </div>
                             </div>
-                            
+
                         </div>
                     </li>
                 @endforeach
@@ -94,14 +94,46 @@
 
                 <div class="space-y-4">
                     <div>
+
                         <div class="flex items-center justify-between">
-                            <dt class="text-base text-gray-900">Sub Amount</dt>
-                            <dd class="text-base font-bold text-gray-900">€{{ (isset($totalPrice)) ? $totalPrice : '0' }}</dd>
+                            <dt class="text-xs text-gray-900">Sub Amount</dt>
+                            <div class="flex flex-row">
+                                <dd class="text-xs font-bold text-gray-900">€</dd>
+                                <dd id="subtotal" class="text-xs font-bold text-gray-900">{{ (isset($totalPrice)) ? $totalPrice : '0' }}</dd>
+                            </div>
                         </div>
-                        <p class="text-xs text-gray-500 float-right">(Excluding shipping costs)</p>
+                        <div class="flex items-center justify-between">
+                            <dt class="text-xs text-gray-900">Shipping cost</dt>
+                            <div class="flex flex-row">
+                                <dd class="text-xs font-bold text-gray-900">€</dd>
+                                <dd id="shippingAmount" class="text-xs font-bold text-gray-900">8</dd>
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-200 my-2"></div>
+
+                        <div class="flex items-center justify-between">
+                            <dt class="text-base text-gray-900 font-bold">Total</dt>
+                            <div class="flex flex-row">
+                                <dd class="text-base font-bold text-gray-900">€</dd>
+                                <dd id="total" class="text-base font-bold text-gray-900">8</dd>
+                            </div>
+                        </div>
                     </div>
-                    <div class=" flex flex-col border-t border-gray-200 space-y-4 pt-4">
+                    <div class=" flex flex-col space-y-4">
                         <p class="text-xs text-gray-500 float-right">The available shipping options will be displayed during the checkout process, with the corresponding shipping costs calculated automatically</p>
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label for="shippingCountry" class="block text-xs font-medium text-gray-700">Shipping</label>
+                        <div class="grid grid-cols-1">
+                                <select id="shippingCountry" name="shipping[shippingCountry]" class="mt-2 block w-full rounded-md bg-[#F3F5F7] border-[#F3F5F7]/80 px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-600 sm:text-sm/6">
+                                    @foreach ($countries as $country)
+                                        <option {{ (isset($shipping->shippingCountry_id) && $shipping->shippingCountry_id == $country->id) ? "selected" : null }} value="{{ $country->id }}">{{ $country->country_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        <x-checkout-input-error class="mt-2" :messages="$errors->get('shipping.shippingCountry')" />
                     </div>
                 </div>
             </div>
@@ -120,3 +152,43 @@
 
 {{-- warning model --}}
 <x-cart-warning-modal />
+
+<script>
+    const shippingCountry = document.getElementById('shippingCountry');
+
+
+    window.onload = function() {
+        id = shippingCountry.value;
+
+        $.ajax({
+            type:'GET',
+            url:'/ajax/shipping-country/'+id,
+            dataType: "json",
+            success: function(data) {
+                total = parseInt(document.getElementById('subtotal').innerHTML);
+
+                $('#total').html(total + data.shipping_cost);
+                $('#shippingAmount').html(data.shipping_cost);
+                $('#inputPayment').val(total + data.shipping_cost);
+            }
+        });
+    };
+
+
+    shippingCountry.addEventListener('click', function() {
+        id = shippingCountry.value;
+
+        $.ajax({
+            type:'GET',
+            url:'/ajax/shipping-country/'+id,
+            dataType: "json",
+            success: function(data) {
+                total = parseInt(document.getElementById('subtotal').innerHTML);
+
+                $('#total').html(total + data.shipping_cost);
+                $('#shippingAmount').html(data.shipping_cost);
+                $('#inputPayment').val(total + data.shipping_cost);
+            }
+        });
+    });
+</script>

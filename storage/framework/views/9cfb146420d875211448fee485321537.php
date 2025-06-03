@@ -1,14 +1,16 @@
 <div class="bg-cmsNavBackground">
     <header class="fixed inset-x-0 top-0 z-50 bg-navBackground shadow-lg">
         <nav>
-            <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+            <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8 border-b-2 sm:border-0">
 
                 <div class="flex h-16 justify-between content-center">
 
                     <div class="flex px-2 lg:px-0">
                         
-                        <div class="lg:hidden flex shrink-0 items-center">
-                            <img class="size-10" src="<?php echo e($business->business_logo); ?>" alt="">
+                        <div class="sm:hidden flex shrink-0 items-center">
+                            <a href="<?php echo e(route('home.index')); ?>">
+                                <img class="size-10" src="<?php echo e($business->business_logo); ?>" alt="">
+                            </a>
                         </div>
 
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -93,7 +95,7 @@
                             aria-controls="mobile-menu" aria-expanded="false">
                             <span class="-inset-0.5"></span>
                             <span class="sr-only">Open main menu</span>
-                            
+
                             <svg onclick="hideLayer('phoneNav')" class="block size-8" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -104,7 +106,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                             </svg>
                         </button>
-                        
+
                         <div class="flex flex-row justify-center">
                                     <button onclick="phoneHideLayer('phone-cartLayer')"
                                         class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-base font-bold leading-5 text-white/70 hover:text-white hover:border-white focus:outline-none focus:text-white focus:border-white transition duration-150 ease-in-out">

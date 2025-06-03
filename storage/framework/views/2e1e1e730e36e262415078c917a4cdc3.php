@@ -79,7 +79,7 @@
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </li>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -94,14 +94,65 @@
 
                 <div class="space-y-4">
                     <div>
+
                         <div class="flex items-center justify-between">
-                            <dt class="text-base text-gray-900">Sub Amount</dt>
-                            <dd class="text-base font-bold text-gray-900">€<?php echo e((isset($totalPrice)) ? $totalPrice : '0'); ?></dd>
+                            <dt class="text-xs text-gray-900">Sub Amount</dt>
+                            <div class="flex flex-row">
+                                <dd class="text-xs font-bold text-gray-900">€</dd>
+                                <dd id="subtotal" class="text-xs font-bold text-gray-900"><?php echo e((isset($totalPrice)) ? $totalPrice : '0'); ?></dd>
+                            </div>
                         </div>
-                        <p class="text-xs text-gray-500 float-right">(Excluding shipping costs)</p>
+                        <div class="flex items-center justify-between">
+                            <dt class="text-xs text-gray-900">Shipping cost</dt>
+                            <div class="flex flex-row">
+                                <dd class="text-xs font-bold text-gray-900">€</dd>
+                                <dd id="shippingAmount" class="text-xs font-bold text-gray-900">8</dd>
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-200 my-2"></div>
+
+                        <div class="flex items-center justify-between">
+                            <dt class="text-base text-gray-900 font-bold">Total</dt>
+                            <div class="flex flex-row">
+                                <dd class="text-base font-bold text-gray-900">€</dd>
+                                <dd id="total" class="text-base font-bold text-gray-900">8</dd>
+                            </div>
+                        </div>
                     </div>
-                    <div class=" flex flex-col border-t border-gray-200 space-y-4 pt-4">
+                    <div class=" flex flex-col space-y-4">
                         <p class="text-xs text-gray-500 float-right">The available shipping options will be displayed during the checkout process, with the corresponding shipping costs calculated automatically</p>
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label for="shippingCountry" class="block text-xs font-medium text-gray-700">Shipping</label>
+                        <div class="grid grid-cols-1">
+                                <select id="shippingCountry" name="shipping[shippingCountry]" class="mt-2 block w-full rounded-md bg-[#F3F5F7] border-[#F3F5F7]/80 px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-600 sm:text-sm/6">
+                                    <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option <?php echo e((isset($shipping->shippingCountry_id) && $shipping->shippingCountry_id == $country->id) ? "selected" : null); ?> value="<?php echo e($country->id); ?>"><?php echo e($country->country_name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                            </div>
+                        <?php if (isset($component)) { $__componentOriginalbac1e399be2e7e6c3e1566096e195922 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbac1e399be2e7e6c3e1566096e195922 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.checkout-input-error','data' => ['class' => 'mt-2','messages' => $errors->get('shipping.shippingCountry')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('checkout-input-error'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'mt-2','messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('shipping.shippingCountry'))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $attributes = $__attributesOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__attributesOriginalbac1e399be2e7e6c3e1566096e195922); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalbac1e399be2e7e6c3e1566096e195922)): ?>
+<?php $component = $__componentOriginalbac1e399be2e7e6c3e1566096e195922; ?>
+<?php unset($__componentOriginalbac1e399be2e7e6c3e1566096e195922); ?>
+<?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -139,4 +190,44 @@
 <?php $component = $__componentOriginal15268b48311747d5a0f5d7f24b03f422; ?>
 <?php unset($__componentOriginal15268b48311747d5a0f5d7f24b03f422); ?>
 <?php endif; ?>
+
+<script>
+    const shippingCountry = document.getElementById('shippingCountry');
+
+
+    window.onload = function() {
+        id = shippingCountry.value;
+
+        $.ajax({
+            type:'GET',
+            url:'/ajax/shipping-country/'+id,
+            dataType: "json",
+            success: function(data) {
+                total = parseInt(document.getElementById('subtotal').innerHTML);
+
+                $('#total').html(total + data.shipping_cost);
+                $('#shippingAmount').html(data.shipping_cost);
+                $('#inputPayment').val(total + data.shipping_cost);
+            }
+        });
+    };
+
+
+    shippingCountry.addEventListener('click', function() {
+        id = shippingCountry.value;
+
+        $.ajax({
+            type:'GET',
+            url:'/ajax/shipping-country/'+id,
+            dataType: "json",
+            success: function(data) {
+                total = parseInt(document.getElementById('subtotal').innerHTML);
+
+                $('#total').html(total + data.shipping_cost);
+                $('#shippingAmount').html(data.shipping_cost);
+                $('#inputPayment').val(total + data.shipping_cost);
+            }
+        });
+    });
+</script>
 <?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/cart/partials/cart-index.blade.php ENDPATH**/ ?>

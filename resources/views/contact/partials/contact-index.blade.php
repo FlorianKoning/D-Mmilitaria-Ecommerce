@@ -64,14 +64,15 @@
 
 
 
-              <div class="mt-8 flex justify-between">
+              <div class="mt-8 flex flex-col lg:flex-row justify-between gap-2">
+                {{-- captcha --}}
                 <div class="flex flex-col">
                     <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                     <x-input-error :messages="$errors->get('g-recaptcha-response')" class="mt-2" />
                 </div>
 
-
-                <button type="submit" class="rounded-md bg-navBackground px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Send message</button>
+                {{-- submit --}}
+                <button type="submit" class="w-full rounded-md bg-navBackground px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Send message</button>
               </div>
             </div>
           </form>

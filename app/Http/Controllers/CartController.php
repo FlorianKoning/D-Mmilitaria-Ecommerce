@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PaymentOption;
 use App\Models\Product;
+use App\Models\ShippingCountry;
 use Illuminate\View\View;
 use App\Services\CartService;
 use Illuminate\Http\RedirectResponse;
@@ -38,6 +39,7 @@ class CartController extends Controller
         return view('cart.cart-index', [
             'cartService' => $this->cartService,
             'cart' => $cart,
+            'countries' => ShippingCountry::all(),
             'totalPrice' => (isset($totalPrice)) ? $totalPrice : null,
             'paymentOptions' => PaymentOption::all(),
             'paymentTranslation' => PaymentOption::$columnTranslations,

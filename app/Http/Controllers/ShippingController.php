@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ShippingRequest;
 use App\Models\Order;
 use App\Models\Shipping;
-use App\Repositories\ProvincesRepository;
-use App\Repositories\ShippingRepository;
+use App\Models\ShippingCountry;
 use Illuminate\Contracts\View\View;
+use App\Http\Requests\ShippingRequest;
+use App\Repositories\ShippingRepository;
+use App\Repositories\ProvincesRepository;
 
 class ShippingController extends Controller
 {
@@ -26,6 +27,7 @@ class ShippingController extends Controller
             'shipping' => $this->shippingRepository->findWithOrder($order),
             'order' => $order,
             'provinces' => $this->provincesRepository->all(),
+            'countries' => ShippingCountry::all(),
         ]);
     }
 
@@ -41,8 +43,8 @@ class ShippingController extends Controller
             'last_name' => $validated['last_name'],
             'company' => $validated['company'],
             'address' => $validated['address'],
+            'shippingCountry_id' => $validated['shippingCountry'],
             'city' => $validated['city'],
-            'province_id' => $validated['province_id'],
             'postal_code' => $validated['postal_code'],
             'phone_number' => $validated['phone_number']
         ]);
