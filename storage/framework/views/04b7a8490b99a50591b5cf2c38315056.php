@@ -204,7 +204,7 @@ unset($__defined_vars); ?>
             <div class="grid grid-cols-1">
                     <select id="shippingCountry" name="shipping[shippingCountry]" class="mt-2 block w-full rounded-md bg-[#F3F5F7] border-[#F3F5F7]/80 px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-600 sm:text-sm/6">
                         <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option <?php echo e((isset($shipping->shippingCountry_id) && $shipping->shippingCountry_id == $country->id) ? "checked" : null); ?> value="<?php echo e($country->id); ?>"><?php echo e($country->country_name); ?></option>
+                            <option <?php echo e((isset($shipping->shippingCountry_id) && $shipping->shippingCountry_id == $country->id) ? "selected" : null); ?> value="<?php echo e($country->id); ?>"><?php echo e($country->country_name); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                 </div>

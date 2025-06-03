@@ -17,7 +17,8 @@
     const shippingCountry = document.getElementById('shippingCountry');
 
     function paymentMethod(id, shipping = null, serviceCost = null) {
-        const subtotal =$('#inputSubtotal').val();
+        const subtotal = $('#inputSubtotal').val();
+
         switch (id) {
             case '1':
                 // Displays the check
@@ -33,7 +34,21 @@
                 // Changes the pricing
                 $('#shippingCost').fadeIn().removeClass('hidden');
                 $('#shippingCost').removeAttr('style');
+
+                $.ajax({
+                    type:'GET',
+                    url:'/ajax/shipping-country/'+id,
+                    dataType: "json",
+                    success: function(data) {
+                        total = parseInt(document.getElementById('subtotal').innerHTML);
+
+                        $('#total').html(total + data.shipping_cost);
+                        $('#shippingAmount').html(data.shipping_cost);
+                        $('#inputPayment').val(total + data.shipping_cost);
+                    }
+                });
                 break;
+
             case '2':
                 // Displays the check
                 $('#paymentMethod2').fadeIn().removeClass('hidden');
@@ -48,6 +63,10 @@
 
                 // Changes the pricing
                 $('#shippingCost').fadeOut().addClass('hidden');
+
+                total = parseInt(document.getElementById('subtotal').innerHTML);
+
+                $('#total').html(total);
                 break;
             case '3':
                 // Displays the check
@@ -63,8 +82,8 @@
                 // Changes the pricing
                 $('#shippingCost').fadeIn().removeClass('hidden');
                 $('#shippingCost').removeAttr('style');
-                break;
 
+                break;
             default:
                 // Displays the check
                 $('#paymentMethod3').fadeIn().removeClass('hidden');
@@ -79,6 +98,7 @@
                 // Changes the pricing
                 $('#shippingCost').fadeIn().removeClass('hidden');
                 $('#shippingCost').removeAttr('style');
+
                 break;
         }
     }
@@ -110,6 +130,7 @@
             dataType: "json",
             success: function(data) {
                 total = parseInt(document.getElementById('subtotal').innerHTML);
+                shipping = data.shipping_cost;
 
                 $('#total').html(total + data.shipping_cost);
                 $('#shippingAmount').html(data.shipping_cost);
