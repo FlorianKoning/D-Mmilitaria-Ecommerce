@@ -107,10 +107,9 @@ class PaymentController extends Controller
             return redirect()->route('payment.exhibition', $this->order);
         }
 
+        //! FairPickUp payment option will not get here
         // Deletes all the items of the users cart.
         $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
-
-
         Functions::itemHandle($cart);
 
 

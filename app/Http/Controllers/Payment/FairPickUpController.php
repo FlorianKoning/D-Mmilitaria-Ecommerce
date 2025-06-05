@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Payment;
 
-use App\Factories\PaymentFactory;
+use Exception;
+use App\Models\Cart;
 use App\Models\Order;
 use App\Helper\Functions;
 use App\Models\Exhibition;
-use App\Repositories\ShippingRepository;
+use App\Models\PaymentOption;
+use App\Factories\PaymentFactory;
 use App\Services\OrderMailService;
-use Exception;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use App\Models\PaymentOption;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Repositories\BusinessRepository;
+use App\Repositories\ShippingRepository;
 use App\Repositories\GuestUserRepository;
 use App\Repositories\ExhibitionRepository;
 use App\Repositories\PaymentOptionRepository;
@@ -111,6 +113,10 @@ class FairPickUpController extends Controller
         $order->update([
             'exhibition_id' => $exhibition->id,
         ]);
+
+        // Deletes all the items of the users cart.
+        $cart = (Auth::check()) ? Cart::where('user_id', Auth::user()->id)->get() : session()->get('cart');
+        Functions::itemHandle($cart);
 
         // Sends the user to a "thank you" page.
         return redirect()->route('public.confirmation', [$order, $shipping])->with('bankTransfer', 'Uw bestelling word behandeld, u krijgt een bevestegings mail wanneer we het geld binnen hebben.');
