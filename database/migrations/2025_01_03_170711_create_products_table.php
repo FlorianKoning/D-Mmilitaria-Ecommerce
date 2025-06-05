@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('discount_start_date')->nullable();
             $table->date('discount_end_date')->nullable();
             $table->boolean('is_active')->default(0);
+            $table->boolean('show_quantity')->default(0);
             $table->timestamps();
         });
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\ShippingCountry;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
@@ -45,9 +47,27 @@ class AjaxController extends Controller
         return response()->json($paymentId);
     }
 
-
     public function shippingCountry(ShippingCountry $shippingCountry)
     {
         return response()->json($shippingCountry);
+    }
+
+    /**
+     * Retuns an array with all the extra images and the main image on the 0 index.
+     * @param \App\Models\Product $product
+     * @return JsonResponse|mixed
+     */
+    public function getImageArray(Product $product): JsonResponse
+    {
+        $mainImage = $product->main_image;
+        $extraImages = ProductImage::where('product_id', $product->id)->get();
+        $array = array();
+
+        $array[0] = $mainImage;
+        foreach ($extraImages as $image) {
+            $array[] = $image->image_url;
+        }
+
+        return response()->json($array);
     }
 }

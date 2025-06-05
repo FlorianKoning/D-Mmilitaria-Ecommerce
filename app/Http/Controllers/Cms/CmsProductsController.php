@@ -52,7 +52,7 @@ class CmsProductsController extends Controller
     public function index(): View
     {
         return view('cms.products.products-index', [
-            'products' => $this->productRepository->available(false, $this->paginateAmount),
+            'products' => $this->productRepository->available($this->paginateAmount),
             'columnNames' => Product::$columnNames,
         ]);
     }
@@ -255,7 +255,6 @@ class CmsProductsController extends Controller
         // Variables
         $validated = $request->validated();
 
-
         // Checks if productImage exist. if so, create the file url
         if (isset($validated['productImage'])) {
             $fileUrl = FileService::imageUpload($validated['productImage'], $validated['name']);
@@ -266,7 +265,6 @@ class CmsProductsController extends Controller
         if ($validated['discountStartDate'] == $validated['discountEndDate'] && $validated['discountStartDate'] != '' && $validated['discountEndDate'] != '') {
             return redirect()->route('cms.products.create')->withErrors(['discountStartDate' => 'De begin en eind datum kunnen niet op de zelfde dag zijn.']);
         }
-
 
         // Creates the new product
         $product->update([
@@ -281,12 +279,11 @@ class CmsProductsController extends Controller
             'discount_start_date' => (isset($validated['discountStartDate'])) ? $validated['discountStartDate'] : $product->discount_start_date,
             'discount_end_date' => (isset($validated['discountEndDate'])) ? $validated['discountEndDate'] : $product->discount_end_date,
             'is_active' => (isset($validated['makeActive'])) ? 1 :((isset($validated['makeInActive'])) ? 0 : 1),
+            'show_quantity' => (isset($validated['showInventory'])) ? 1 : 0,
         ]);
-
 
         // Updates the lastupdated database table
         Functions::storeLatestUpdate();
-
 
         // returns the user back to the overview table
         return redirect()->route('cms.products.index')->withErrors('success', "$product->inventory_number is succesvol geupdate.");

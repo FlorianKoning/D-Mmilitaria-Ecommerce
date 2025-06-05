@@ -16,13 +16,9 @@ class ProductRepository implements ProductRepositoryInterface
      * @throws \Exception
      * @return LengthAwarePaginator
      */
-    public function soldProducts(bool $noEmptyValue = true, int $paginateAmount): LengthAwarePaginator
+    public function soldProducts(int $paginateAmount): LengthAwarePaginator
     {
         $products = Product::where('inventory', 0)->paginate($paginateAmount);
-
-        if (count($products) >! 0 && $noEmptyValue) {
-            throw new Exception('There where no sold products found in the database', 404);
-        }
 
         return $products;
     }
@@ -35,13 +31,9 @@ class ProductRepository implements ProductRepositoryInterface
      * @throws \Exception
      * @return LengthAwarePaginator
      */
-    public function available(bool $noEmptyValue = true, int $paginateAmount): LengthAwarePaginator
+    public function available(int $paginateAmount): LengthAwarePaginator
     {
         $products = Product::where('inventory', '>', 0)->paginate($paginateAmount);
-
-         if (count($products) >! 0 && $noEmptyValue) {
-            throw new Exception('There where no sold products found in the database', 404);
-        }
 
         return $products;
     }

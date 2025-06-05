@@ -7,7 +7,6 @@
             <div class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
                 <div class="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
                     <button id="tabs-1-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-navBackground focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
-                        <span class="sr-only">Angled view</span>
                         <span class="absolute inset-0 overflow-hidden rounded-md">
                             <img onclick="changeImage($(this).attr('src'))" src="{{ $product->main_image }}" alt="" class="size-full object-cover">
                         </span>
@@ -31,8 +30,20 @@
 
             <div>
             <!-- Tab panel, show/hide based on tab state. -->
-            <div id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
-                <img id="mainImage" src="{{ $product->main_image }}" alt="Angled front view with bag zipped and handles upright." class="aspect-square w-full object-cover sm:rounded-lg">
+            <div class="flex items-center" id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
+                <div onclick="imageArray('left', '{{ $product->id }}')" class="hover:text-navBackground hover:cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                </div>
+
+                <img id="mainImage" src="{{ $product->main_image }}" alt="Angled front view with bag zipped and handles upright." class="size-[500px] aspect-square object-cover sm:rounded-lg">
+            
+                <div onclick="imageArray('right', '{{ $product->id }}')" class="hover:text-navBackground hover:cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
+                </div>
             </div>
 
             <!-- More images... -->
@@ -55,11 +66,13 @@
 
 
             {{-- amount in stock --}}
-            {{-- <div class="mt-3">
-                <div class="flex flex-row gap-x-1">
-                    <p class="text-sm font-medium text-gray-900">qnt: {{ $product->inventory }}</p>
+            @if ($product->show_quantity)
+                <div class="mt-3">
+                    <div class="flex flex-row gap-x-1">
+                        <p class="text-sm font-medium text-gray-900">qnt: {{ $product->inventory }}</p>
+                    </div>
                 </div>
-            </div> --}}
+            @endif
 
 
             {{-- description --}}
@@ -93,3 +106,5 @@
         </div>
     </div>
 </section>
+
+<input id="key" type="hidden" value="{{ 0 }}">

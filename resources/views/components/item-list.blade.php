@@ -23,9 +23,18 @@
 
       {{-- main display --}}
       <main class="mx-auto max-w-full px-4 lg:max-w-full lg:px-8">
-        <div class="border-b max-w-full border-gray-400 pb-10">
-            <h1 class="text-4xl font-bold tracking-tight text-gray-900">New Products</h1>
-            <p class="mt-4 text-base text-gray-500">Latest update: <br class="lg:hidden"> <span class="text-gray-900 underline break-words">{{ $latestUpdate }}</span></p>
+        <div class="flex flex-row w-full justify-between pb-10">
+            <div class="border-b max-w-full border-gray-400">
+                <h1 class="text-4xl font-bold tracking-tight text-gray-900">{{ ($_SERVER['REQUEST_URI'] == '/') ? "New Products" : "Product Archive" }} </h1>
+                <p class="mt-4 text-base text-gray-500">Latest update: <br class="lg:hidden"> <span class="text-gray-900 underline break-words">{{ $latestUpdate }}</span></p>
+            </div>
+            
+            {{-- product archive link --}}
+            <div class="">
+                <a class="border-b border-gray-400 hover:text-navBackground" href="{{ route('home.archive') }}">
+                    Product Archive
+                </a>
+            </div>
         </div>
 
         <div class="pb-24 pt-12 lg:grid lg:grid-cols-4 lg:gap-x-8 xl:grid-cols-4">

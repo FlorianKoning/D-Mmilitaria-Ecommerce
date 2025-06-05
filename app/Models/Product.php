@@ -49,6 +49,7 @@ class Product extends Model
         'discount_start_date',
         'discount_end_date',
         'is_active',
+        'show_quantity'
     ];
 
 

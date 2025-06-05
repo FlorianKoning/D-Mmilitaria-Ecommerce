@@ -17,15 +17,19 @@ use App\Http\Controllers\ExhibitionController;
 // All the auth routes
 Route::middleware(AclMiddleware::class)->group(function() {
     // Home Route
-    Route::get('/', [HomeController::class, 'index'])->name('home.index');
+    Route::controller(HomeController::class)->group(function() {
+        Route::get('/', 'index')->name('home.index');
+        Route::get('/product-archive', 'archive')->name('home.archive');
+    });
 
 
     // public routes
-    Route::get('/about-us', [PublicController::class,'aboutUs'])->name('public.index');
-    Route::get('/terms-of-services', [PublicController::class,'termsOfService'])->name('public.termsOfService');
-    Route::get('/privacy', [PublicController::class,'privacy'])->name('public.privacy');
-    Route::get('/order/confirmation/{order}/{shipping}', [PublicController::class, 'confirmation'])->name('public.confirmation');
-
+    Route::controller(PublicController::class)->group(function() {
+        Route::get('/about-us', 'aboutUs')->name('public.index');
+        Route::get('/terms-of-services', 'termsOfService')->name('public.termsOfService');
+        Route::get('/privacy', 'privacy')->name('public.privacy');
+        Route::get('/order/confirmation/{order}/{shipping}', 'confirmation')->name('public.confirmation');
+    });
 
     // Contact Routes
     Route::controller(ContactController::class)->group(function() {
@@ -33,7 +37,6 @@ Route::middleware(AclMiddleware::class)->group(function() {
         Route::get('/return-policy', 'returnPolicy')->name('contact.return');
         Route::post('/contact/message', 'message')->name('contact.message');
     });
-
 
     // Cart controller
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
@@ -52,6 +55,7 @@ Route::middleware(AclMiddleware::class)->group(function() {
         Route::get('/ajax/options/{id}/{table}', 'getOptions')->name('ajax.getOptions');
         Route::get('/ajax/payment-id', 'paymentId')->name('ajax.paymentId');
         Route::get('/ajax/shipping-country/{shippingCountry}', 'shippingCountry')->name('ajax.shippingCountry');
+        Route::get('/ajax/get-images/{product}', 'getImageArray')->name('ajax.getImageArray');
     });
 
 

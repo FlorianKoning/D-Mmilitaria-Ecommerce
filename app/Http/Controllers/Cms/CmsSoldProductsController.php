@@ -23,7 +23,7 @@ class CmsSoldProductsController extends Controller
     public function index()
     {
         return view("cms.soldProducts.index", [
-            'products' => $this->productRepository->soldProducts(false, $this->paginateAmount),
+            'products' => $this->productRepository->soldProducts($this->paginateAmount),
             'columnNames' => Product::$columnNames
         ]);
     }

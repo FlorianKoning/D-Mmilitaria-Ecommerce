@@ -40,6 +40,7 @@ class ProductUpdateRequest extends FormRequest
             'discountStartDate' => ['nullable', 'date'],
             'discountEndDate' => ['nullable', 'date'],
             'makeActive' => ['nullable'],
+            'showInventory' => ['nullable'],
             'active' => ['nullable', 'string'],
             'makeInActive' => ['nullable'],
         ];
