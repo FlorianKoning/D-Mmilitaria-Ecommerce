@@ -17,7 +17,7 @@
                                 <input type="text" name="search" id="search" class="mt-4 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6">
                                 <button type="submit" class="mt-4 inline-flex items-center gap-x-1.5 rounded-md bg-gray-400 px-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer">
                                     Search
-                                </button>
+                                </button>  
                                 @if (isset($_GET['search']))
                                     <a href="{{ route('exhibition.index') }}" class="mt-4 inline-flex items-center gap-x-1.5 rounded-md bg-gray-400 px-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer">
                                         <button type="button">

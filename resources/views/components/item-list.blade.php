@@ -25,14 +25,14 @@
       <main class="mx-auto max-w-full px-4 lg:max-w-full lg:px-8">
         <div class="flex flex-row w-full justify-between pb-10">
             <div class="border-b max-w-full border-gray-400">
-                <h1 class="text-4xl font-bold tracking-tight text-gray-900">{{ ($_SERVER['REQUEST_URI'] == '/') ? "New Products" : "Product Archive" }} </h1>
-                <p class="mt-4 text-base text-gray-500">Latest update: <br class="lg:hidden"> <span class="text-gray-900 underline break-words">{{ $latestUpdate }}</span></p>
+                <h1 class="text-4xl font-bold tracking-tight text-gray-900">{{ ($_SERVER['REQUEST_URI'] == '/') ? "New Products" : "Product Archive" }}</h1>
+                <p class="mt-4 text-base text-gray-500">Latest update: <br class="lg:hi dden"> <span class="text-gray-900 underline break-words">{{ $latestUpdate }}</span></p>
             </div>
             
             {{-- product archive link --}}
             <div class="">
-                <a class="border-b border-gray-400 hover:text-navBackground" href="{{ route('home.archive') }}">
-                    Product Archive
+                <a class="font-semibold border-b border-gray-400 hover:text-navBackground" href="{{ ($_SERVER['REQUEST_URI'] == '/') ? route('home.archive') : route('home.index') }}">
+                    {{ ($_SERVER['REQUEST_URI'] == '/') ? "Product Archive" : "New Products" }}
                 </a>
             </div>
         </div>
