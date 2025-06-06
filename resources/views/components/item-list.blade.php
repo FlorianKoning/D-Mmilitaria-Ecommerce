@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-           {{-- filters  --}}
+           {{-- items + filter --}}
            <x-front-page.filter :landCatagories="$landCatagories" :catagories="$catagories" :products="$products" />
         </main>
     </div>

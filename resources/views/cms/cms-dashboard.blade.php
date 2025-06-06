@@ -6,4 +6,8 @@
             </h2>
         </div>
     </x-slot>
+
+    {{-- Dashboard Tiles --}}
+    <x-cms.dashboard.dashboard-top-tiles :orders="$orders" :customers="$customers" />
+
 </x-app-layout>

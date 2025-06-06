@@ -10,7 +10,7 @@
         <nav class="flex flex-1 flex-col border-r">
             <ul role="list" class="flex flex-1 flex-col gap-y-3">
                 {{-- Website overview --}}
-                <div class="flex flex-row justify-between bg-[#3C8DBC] text-white py-2 border-[#DBDBDB] border-b shadow">
+                <div class="flex flex-row justify-between bg-cmsBtnHover text-white py-2 border-[#DBDBDB] border-b shadow">
                     <div class="px-6">
                         <h3 class="font-extrabold text-xs">Website Overivew</h3>
                     </div>
@@ -30,7 +30,7 @@
 
 
                 {{-- website management --}}
-                <div class="flex flex-row justify-between bg-[#3C8DBC] text-white py-2 border-[#DBDBDB] border-t border-b shadow">
+                <div class="flex flex-row justify-between bg-cmsBtnHover text-white py-2 border-[#DBDBDB] border-t border-b shadow">
                     <div class="px-6">
                         <h3 class="font-bold text-xs">Management</h3>
                     </div>
@@ -116,7 +116,7 @@
 
 
                 {{-- Payments and orders --}}
-                <div class="flex flex-row justify-between bg-[#3C8DBC] text-white py-2 border-[#DBDBDB] border-t border-b shadow">
+                <div class="flex flex-row justify-between bg-cmsBtnHover text-white py-2 border-[#DBDBDB] border-t border-b shadow">
                     <div class="px-6">
                         <h3 class="font-extrabold text-xs py-1">Betalingen en bestellingen</h3>
                     </div>
@@ -145,7 +145,7 @@
 
 
                 {{-- Website Settings --}}
-                <div class="flex flex-row justify-between bg-[#3C8DBC] text-white py-2 border-[#DBDBDB] border-t border-b shadow">
+                <div class="flex flex-row justify-between bg-cmsBtnHover text-white py-2 border-[#DBDBDB] border-t border-b shadow">
                     <div class="px-6">
                         <h3 class="font-bold text-xs">Website Settings</h3>
                     </div>
@@ -207,7 +207,7 @@
     </div>
 
     <div class="lg:pl-56">
-      <div class="fixed w-full z-0 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8 bg-[#3C8DBC] text-white">
+      <div class="fixed w-full z-0 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8 bg-cmsBtnHover text-white">
         <div class="flex flex-row justify-between">
             {{-- header title --}}
             @isset($header)
@@ -215,5 +215,3 @@
             @endisset
         </div>
       </div>
-
-

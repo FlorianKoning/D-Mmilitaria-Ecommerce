@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Utils\DateHelper;
 use Exception;
 use App\Models\User;
 use App\Interfaces\Repositories\UserRepositoryInterface;
@@ -44,5 +45,29 @@ class UserRepository implements UserRepositoryInterface
         }
 
         return $users;
+    }
+
+    /**
+     * Returns an collection of all the new users.
+     * @param string $option
+     * @return void
+     */
+    public function newUsers(string $option = "thisWeek"): Collection
+    {
+        $dateHelper = new DateHelper();
+
+        switch ($option) {
+            case 'thisWeek':
+                $dateArray = $dateHelper->thisWeek();
+                break;
+            case 'lastWeek':
+                $dateArray = $dateHelper->lastWeek();
+                break;
+            
+            default:
+                throw new Exception("this option does not exist: [options: $option]", 500);
+        }
+
+        return User::all()->whereBetween('created_at', [$dateArray['startOfWeek'], $dateArray['endOfWeek']]);
     }
 }

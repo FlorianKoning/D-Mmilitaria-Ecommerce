@@ -1,7 +1,13 @@
 <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <h1 class="text-base font-semibold text-gray-900">Bestel Overzicht</h1>
+        <div class="flex flex-row gap-2 justify-between">
+          <h1 class="text-base font-semibold text-gray-900">Bestel Overzicht</h1>
+
+          <?php if(isset($_GET['option'])): ?>
+            <p class="text-base font-semibold text-gray-900">Optie: <?php echo e($orderOptions[$_GET['option']]); ?></p>
+          <?php endif; ?>
+        </div>
         <p class="mt-2 text-sm text-gray-700">Hier heb je de overview tabel van alle bestellingen. Hier kan je ook nieuwe bestellingens editen en verwijderen.</p>
       </div>
     </div>

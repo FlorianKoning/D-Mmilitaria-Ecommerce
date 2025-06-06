@@ -14,7 +14,7 @@
                             <img src="<?php echo e($item->main_image); ?>" alt="<?php echo e($item->name); ?>" class="size-24 rounded-md object-cover sm:size-48">
                         </div>
 
-                        <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
+                        <div class="m backdrop:-4 flex flex-1 flex-col justify-between sm:ml-6">
                             <div class="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                                 <div>
                                     <div class="flex justify-between">

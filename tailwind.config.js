@@ -25,7 +25,8 @@ export default {
                 cmsBorder: '#58baec',
                 cmsTitle: '#2b5367',
                 backgroundBtn: '#444444',
-                logoBackground: '#367FA9',
+                logoBackground: '#17191e',
+                cmsBtnHover: '#292c35',
                 buttonColor: '#808080',
             },
             screens: {

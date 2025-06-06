@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Shipping;
 use App\Models\OrderStatus;
+use App\Utils\ControllerOptions;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
 use Illuminate\Contracts\View\View;
@@ -26,10 +27,15 @@ class CmsOrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
+        if (isset($request->option)) {
+            $orders = $this->options($request->option);
+        }
+
         return view('cms.order.order-index', [
-            'orders' => $this->orderRepository->all(false),
+            'orders' => (isset($orders)) ? $orders : $this->orderRepository->all(false),
+            'orderOptions' => ControllerOptions::all(),
             'columnNames' => Order::$columnNames,
             'statusColors' => Order::$orderColors,
             'paymentOptions' => PaymentOption::$columnTranslations
@@ -118,5 +124,15 @@ class CmsOrderController extends Controller
         }
 
         return $itemsArray;
+    }
+
+    private function options(string $option): object
+    {
+        switch ($option) {
+            case 'thisWeek':
+                return $this->orderRepository->thisWeek();
+            default:
+                return $this->orderRepository->thisWeek();
+        }
     }
 }
