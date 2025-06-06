@@ -174,9 +174,9 @@
                                 </x-responsive-nav-link>
                             @endif
 
-                            <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                                {{ __('Profile') }}
-                            </x-nav-link>
+                            <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                                    {{ __('Profile') }}
+                            </x-responsive-nav-link>
 
                             <form method="POST" action="{{ route('logout') }}" class="flex">
                                 @csrf
