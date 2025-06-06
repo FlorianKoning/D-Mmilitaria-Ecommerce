@@ -31,7 +31,7 @@ class HomeController extends Controller
         }
 
         return view('frontPage', [
-            'products' => $this->productRepository->available($this->paginateAmount),
+            'products' => (isset($products)) ? $products : $this->productRepository->available($this->paginateAmount),
             'catagories' => Product_category::all(),
             'landCatagories' => LandCatagories::all(),
             'latestUpdate' => (Functions::getLatestupdate() != null) ? Functions::getLatestupdate() : 'Er zijn nog geen updates.',
@@ -42,11 +42,11 @@ class HomeController extends Controller
     {
         // Checks there was a filter option selected
         if (isset($request->category) || isset($request->landCategory) || $request->search) {
-            $products = $this->filter($request->search, $request->category, $request->landCategory);
+            $products = $this->filter($request->search, $request->category, $request->landCategory, false);
         }
 
         return view("frontPage", [
-            'products' => $this->productRepository->soldProducts($this->paginateAmount),
+            'products' => (isset($products)) ? $products : $this->productRepository->soldProducts($this->paginateAmount),
             'catagories' => Product_category::all(),
             'landCatagories' => LandCatagories::all(),
             'latestUpdate' => (Functions::getLatestupdate() != null) ? Functions::getLatestupdate() : 'Er zijn nog geen updates.',
@@ -60,7 +60,7 @@ class HomeController extends Controller
      * @param int $landCategory
      * @return Collection<int, Product>
      */
-    private function filter(?string $search, ?array $category, ?array $landCategory): Collection
+    private function filter(?string $search, ?array $category, ?array $landCategory, bool $noSoldProduct = true): Collection
     {
         $baseQuery = ModelHelper::ProductsBaseQuery()
                 ->leftJoin('land_catagories_links', 'land_catagories_links.product_id', '=', 'products.id')
@@ -84,7 +84,6 @@ class HomeController extends Controller
             $baseQuery->whereIn('land_catagories_links.land_categories_id', $landCategory);
         }
 
-
-        return $baseQuery->get();
+        return ($noSoldProduct) ? $baseQuery->where('products.inventory', '>', 0)->get() : $baseQuery->get();
     }
 }
