@@ -1,7 +1,8 @@
 <div class="bg-white">
     <div class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
       <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shopping Cart</h1>
-      <form method="GET" action="{{ route('checkout.index') }}" class="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
+      <form method="GET" action="{{ route('checkout.index') }}" class="flex flex-col gap-10 mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
+
         <section aria-labelledby="cart-heading" class="lg:col-span-7">
           <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
 
@@ -59,25 +60,22 @@
                             </div>
 
                             <div>
-
-                                <div>
-                                    {{-- in stock --}}
-                                    @if ($item->inventory > 0)
-                                        <div class="flex flex-row gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                            </svg>
-                                            <p class="text-sm text-gray-900">In stock</p>
-                                        </div>
-                                    @else
-                                        <div class="flex flex-row gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                            </svg>
-                                            <p class="text-sm text-gray-900">Out of stock</p>
-                                        </div>
-                                    @endif
-                                </div>
+                                {{-- in stock --}}
+                                @if ($item->inventory > 0)
+                                    <div class="flex flex-row gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                        </svg>
+                                        <p class="text-sm text-gray-900">In stock</p>
+                                    </div>
+                                @else
+                                    <div class="flex flex-row gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="my-auto size-3">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                        </svg>
+                                        <p class="text-sm text-gray-900">Out of stock</p>
+                                    </div>
+                                @endif
                             </div>
 
                         </div>

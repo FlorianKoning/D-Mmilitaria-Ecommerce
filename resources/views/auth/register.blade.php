@@ -72,9 +72,8 @@
                 <x-input-error :messages="$errors->get('newsletter')" class="mt-2" />
             </div>
 
-
-            <div>
-                <a  class="underline text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2" href="{{ route('login') }}">
+            <div class="flex flex-row">
+                <a class="hidden lg:flex underline text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2" href="{{ route('login') }}">
                     {{ __('Al een account?') }}
                 </a>
 
