@@ -29,7 +29,7 @@
             <div class="flex flex-row w-full justify-between pb-10">
                 <div class=" max-w-full">
                     <h1 class="text-4xl font-bold tracking-tight text-gray-900"> {{ $_SERVER['REQUEST_URI'] == '/' ? 'New Products' : 'Product Archive' }}</h1>
-                    <p class="flex flex-col lg:flex-row lg:gap-2 w-fit mt-4 text-base text-gray-500 border-b border-gray-400">Latest update: <br class="lg:hi dden"> <span class="text-gray-900 underline break-words">{{ $latestUpdate }}</span></p>
+                    <p class="flex flex-col lg:flex-row lg:gap-2 w-fit mt-4 text-base text-gray-500 border-b border-gray-400">Latest update: <br class="lg:hi dden"> <span class="text-gray-900 break-words">{{ $latestUpdate }}</span></p>
                 </div>
 
                 {{-- product archive link --}}
@@ -44,7 +44,7 @@
             <div class="pb-24 pt-12 lg:grid lg:grid-cols-4 lg:gap-x-8 xl:grid-cols-4">
                 <aside>
                     <h2 class="sr-only">Filters</h2>
-                    <button type="button" class="inline-flex items-center lg:hidden">
+                    <button onclick="hideLayer('filter')" type="button" class="inline-flex items-center lg:hidden">
                         <span class="text-sm font-medium text-gray-700">Filters</span>
                         <svg class="ml-1 size-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
                             aria-hidden="true" data-slot="icon">
@@ -53,7 +53,7 @@
                         </svg>
                     </button>
 
-                    <div class="hidden lg:block bg-white p-5 rounded-xl border shadow">
+                    <div id="filter" class="hidden lg:block bg-white p-5 rounded-xl border shadow">
                         <form id="catagorieForm" method="GET" action="{{ route('home.index') }}"
                             class="space-y-10 divide-y divide-gray-200">
                             <div class="pt-2">

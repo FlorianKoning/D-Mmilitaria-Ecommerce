@@ -14,7 +14,7 @@
                             <img src="{{ $item->main_image }}" alt="{{ $item->name }}" class="size-24 rounded-md object-cover sm:size-48">
                         </div>
 
-                        <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
+                        <div class="m backdrop:-4 flex flex-1 flex-col justify-between sm:ml-6">
                             <div class="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                                 <div>
                                     <div class="flex justify-between">
@@ -22,7 +22,7 @@
                                         <a href="#" class="font-medium text-gray-700 hover:text-gray-800">{{ $item->name }}</a>
                                         </h3>
                                     </div>
-                                    @if (count($cartService->price($item->id)) > 1)
+                                    @if  (count($cartService->price($item->id)) > 1)
                                         <div class="flex flex-row gap-x-1">
                                             <span class="line-through text-sm text-red-500">{{ $cartService->price($item->id)['oldPrice'] }}</span>
                                             <p class="text-sm text-gray-900">{{ $cartService->price($item->id)['newPrice'] }}</p>
