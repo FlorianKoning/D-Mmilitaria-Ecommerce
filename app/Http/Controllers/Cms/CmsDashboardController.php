@@ -21,6 +21,7 @@ class CmsDashboardController extends Controller
         return view('cms.cms-dashboard', [
             'orders' => $this->orderTileService->all(),
             'customers' => $this->customerTileService->all(),
+            'profitChart' => array(),
         ]);
     }
 }

@@ -1,7 +1,15 @@
 <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <h1 class="text-base font-semibold text-gray-900">Gebruikers overzicht</h1>
+        <div class="w-full flex flex-row gap-2">
+            <h1 class="text-base font-semibold text-gray-900 my-auto">Gebruikers overzicht</h1>
+            
+            <?php if(isset($_GET['option'])): ?>
+                <button class="bg-logoBackground p-1 text-white rounded-lg">    
+                    <p class="text-base font-semibold">Optie: <?php echo e($orderOptions[$_GET['option']]); ?></p>
+                </button>
+            <?php endif; ?>
+        </div>
         <p class="mt-2 text-sm text-gray-700">Hier heb je de overview tabel van alle gebruikers. Hier kan je ook nieuwe gebruikers toevoegen, editen en verwijderen.</p>
       </div>
       <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">

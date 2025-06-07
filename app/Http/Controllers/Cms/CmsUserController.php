@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\Cms;
 
+use Exception;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Utils\ControllerOptions;
 use App\Http\Controllers\Controller;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CmsUserRequest;
-use App\Http\Requests\CmsUserUpdateRequest;
-use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use App\Http\Requests\CmsUserUpdateRequest;
+use Illuminate\Database\Eloquent\Collection;
 
 class CmsUserController extends Controller
 {
@@ -25,12 +27,17 @@ class CmsUserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
+        if (isset($request->option)) {
+            $users = $this->options($request->option);
+        }
+
         return view("cms.users.index", [
-            'users' => $this->userRepository->all(false),
+            'users' => (isset($users)) ? $users : $this->userRepository->all(false),
             'columnNames' => User::$columnNames,
             'roleArray' => Role::$roleArray,
+            'orderOptions' => ControllerOptions::all(),
         ]);
     }
 
@@ -110,6 +117,19 @@ class CmsUserController extends Controller
             }
         } catch (Exception $e) {
             throw new Exception("Kon de gebruiker niet verwijderen: ".$e->getMessage(), 404);
+        }
+    }
+
+    /**
+     * Returns data from the user repository based on the given option.
+     * @param string $option
+     * @return Collection
+     */
+    private function options(string $option)
+    {
+        switch ($option) {
+            case 'thisWeek':
+                return $this->userRepository->newUsers('thisWeek');
         }
     }
 }

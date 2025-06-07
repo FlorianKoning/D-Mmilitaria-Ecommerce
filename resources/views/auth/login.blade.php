@@ -35,11 +35,11 @@
                 </div>
 
                 <div class="flex flex-row">
-                    <a class="hidden lg:flex underline text-xs lg:text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-3" href="{{ route('password.request') }}">
+                    <a class="hidden lg:flex mt-auto underline text-xs lg:text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-3" href="{{ route('password.request') }}">
                         {{ __('Forgot password?') }}
                     </a>
 
-                    <a class="hidden lg:flex underline text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+                    <a class="hidden lg:flex mt-auto underline text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
                         {{ __('No account?') }}
                     </a>
 

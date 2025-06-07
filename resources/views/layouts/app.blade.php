@@ -22,6 +22,8 @@
         <script defer src="{{ asset('js/checkout.js') }}" type="text/javascript"></script>
         <script type="text/javascript" src="{{ URL::asset('js/drag-drop.js') }}"></script>
 
+        {{-- chartjs --}}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         {{-- google recaptcha --}}
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>

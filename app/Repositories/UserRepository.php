@@ -68,6 +68,6 @@ class UserRepository implements UserRepositoryInterface
                 throw new Exception("this option does not exist: [options: $option]", 500);
         }
 
-        return User::all()->whereBetween('created_at', [$dateArray['startOfWeek'], $dateArray['endOfWeek']]);
+        return User::defaultQuery()->whereBetween('created_at', [$dateArray['startOfWeek'], $dateArray['endOfWeek']])->get();
     }
 }

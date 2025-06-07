@@ -7,7 +7,13 @@
         </div>
     </x-slot>
 
-    {{-- Dashboard Tiles --}}
-    <x-cms.dashboard.dashboard-top-tiles :orders="$orders" :customers="$customers" />
+    <div class="w-full h-full flex flex-col justify-evenly">
+        {{-- Dashboard Tiles --}}
+        <x-cms.dashboard.dashboard-top-tiles :orders="$orders" :customers="$customers" />
+
+        {{-- products overview --}}
+        <x-cms.dashboard.dashboard-middle-graphs :profitChart="$profitChart" />
+    </div>
+    
 
 </x-app-layout>

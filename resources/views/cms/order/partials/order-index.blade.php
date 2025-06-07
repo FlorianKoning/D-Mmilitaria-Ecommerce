@@ -1,11 +1,13 @@
 <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <div class="flex flex-row gap-2 justify-between">
-          <h1 class="text-base font-semibold text-gray-900">Bestel Overzicht</h1>
-
+        <div class="flex flex-row gap-2">
+          <h1 class="text-base font-semibold text-gray-900 my-auto">Gebruikers overzicht</h1>
+            
           @if (isset($_GET['option']))
-            <p class="text-base font-semibold text-gray-900">Optie: {{ $orderOptions[$_GET['option']] }}</p>
+              <button class="bg-logoBackground p-1 text-white rounded-lg">    
+                  <p class="text-base font-semibold">Optie: {{ $orderOptions[$_GET['option']] }}</p>
+              </button>
           @endif
         </div>
         <p class="mt-2 text-sm text-gray-700">Hier heb je de overview tabel van alle bestellingen. Hier kan je ook nieuwe bestellingens editen en verwijderen.</p>

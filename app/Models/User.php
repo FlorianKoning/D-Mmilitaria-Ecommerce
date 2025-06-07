@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -70,5 +72,14 @@ class User extends Authenticatable
     public function role(): HasOne
     {
         return $this->hasOne(Role::class);
+    }
+
+    /**
+     * Returns the defualt query of users with all the joins.
+     * @return Builder<User>
+     */
+    public static function defaultQuery(): Builder
+    {
+        return User::query()->select('users.*', 'roles.name as role_name')->leftJoin('roles', 'users.role_id', '=', 'roles.id');
     }
 }
