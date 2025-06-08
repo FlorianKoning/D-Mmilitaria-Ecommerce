@@ -1,7 +1,7 @@
 <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
 
 $__newAttributes = [];
-$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['profitChart']));
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['profitChart', 'dateOptions', 'exportOptions']));
 
 foreach ($attributes->all() as $__key => $__value) {
     if (in_array($__key, $__propNames)) {
@@ -16,7 +16,7 @@ $attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
 unset($__propNames);
 unset($__newAttributes);
 
-foreach (array_filter((['profitChart']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+foreach (array_filter((['profitChart', 'dateOptions', 'exportOptions']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 }
 
@@ -28,22 +28,56 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars); ?>
 
-<div class="py-12">
-    <div class="w-full h-full flex flex-row">
-        
-        <div class="w-2/3 sm:px-6 lg:px-8 space-y-6">
-            <div id="firstParent" class="p-8 h-40 bg-white shadow rounded-2xl transition duration-300 ease-in-out">
-                <div class="h-full w-full flex flex-col justify-between bg-red-600">
-                    <canvas id="profitChart"></canvas>
+<div class="py-12 w-full h-screen">
+    <div class="flex flex-row ">
+        <div class="w-2/3 sm:px-6 lg:px-8 space-y-6 h-max">
+            <div id="firstParent" class="flex flex-col p-8 bg-white shadow rounded-2xl transition duration-300 ease-in-out max-h-full">
+                <div class="flex flex-row justify-between">
+                    
+                    <div class="my-auto">
+                        <h1 class="text-logoBackground text-xl font-bold">verkoopprestaties</h1>
+                    </div>
+
+                    <div class="flex flex-row gap-4">
+                        
+                        <div class="grid grid-cols-1">
+                            <select id="shippingCountry" name="shippingCountry" class="mt-1 block w-36 rounded-full bg-white border-[#808080] px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-600 sm:text-sm/6">
+                                <?php $__currentLoopData = $exportOptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $exportOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($key); ?>"><?php echo e($exportOption); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </select>
+                        </div>
+
+                        
+                        <div class="grid grid-cols-1">
+                            <select id="shippingCountry" name="shippingCountry" class="mt-1 block w-36 rounded-full bg-white border-[#808080] px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-600 sm:text-sm/6">
+                                <?php $__currentLoopData = $dateOptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $dateOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($key); ?>"><?php echo e($dateOption); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="" id="chartDiv">
+                    
                 </div>
             </div>
         </div>
 
 
         <div class="w-1/3 sm:px-6 lg:px-8 space-y-6">
-            <div id="secondParent"
-                class="p-8 h-40 bg-white hover:bg-logoBackground hover:text-white shadow rounded-2xl transition duration-300 ease-in-out">
-                <div class="h-full w-full flex flex-col justify-between">
+            <div id="firstParent" class="flex flex-col p-8 bg-white shadow rounded-2xl transition duration-300 ease-in-out max-h-full">
+                <div class="flex flex-row justify-between">
+                    
+                    <div class="my-auto">
+                        <h1 class="text-logoBackground text-xl font-bold">Top Verkochte Categorieën</h1>
+                    </div>
+                </div>
+
+                <div class="h-1/3" id="chartDiv">
+                    
                 </div>
             </div>
         </div>
@@ -55,39 +89,50 @@ unset($__defined_vars); ?>
     // profit chart
     var ctx = document.getElementById('profitChart').getContext('2d');
     var employeeChart = new Chart(ctx, {
-        type: 'bar',
         data: {
-            labels: <?php echo json_encode($profitChart['labels'], 15, 512) ?>,
-            datasets: [
-                {
-                    label: 'Uren per medewerker',
-                    data: <?php echo json_encode($profitChart['data'], 15, 512) ?>,
-                    backgroundColor: <?php echo json_encode($profitChart['backgroundColor'], 15, 512) ?>,
-                    borderWidth: 1
-                }
-            ]
+            datasets: [{
+                type: 'line',
+                label: 'Earnings',
+                data: [7547, 1645, 2856, 6957],
+                fill: true,
+                tension: 0.1,
+                borderColor: '#17191e',
+            }, {
+                type: 'line',
+                label: 'Costs',
+                data: [6200, 500, 1500, 4500],
+                fill: true,
+                tension: 0.1,
+                borderColor: '#808080',
+            }],
+            labels: ['January', 'February', 'March', 'April'],
         },
         options: {
             responsive: true,
-            parsing: {
-                yAxisKey: 'hours'
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: "Default: Deze week",
-                    position: 'top',
-                    align: 'start',
-                },
-                legend: {
-                    position: 'top',
-                },
-            },
             scales: {
                 y: {
-                    beginAtZero: true,
-                },
+                    beginAtZero: true
+                }
             }
+        }
+    });
+
+    // Chatagorie chart
+    var ctx = document.getElementById('donutChart').getContext('2d');
+    var employeeChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Duitsland', 'Nederland'],
+            datasets: [{
+                label: 'Aankopen',
+                data: [3, 6],
+                backgroundColor: ['#17191e', '#808080'],
+                cutout: '80%',
+                borderRadius: 20
+           }]
+        },
+        options: {
+            
         }
     });
 </script>

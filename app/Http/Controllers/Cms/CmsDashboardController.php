@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cms;
 use App\Http\Controllers\Controller;
 use App\Services\Dashboard\CustomerTileService;
 use App\Services\Dashboard\OrderTileService;
+use Illuminate\Support\Facades\Config;
 
 class CmsDashboardController extends Controller
 {
@@ -22,6 +23,8 @@ class CmsDashboardController extends Controller
             'orders' => $this->orderTileService->all(),
             'customers' => $this->customerTileService->all(),
             'profitChart' => array(),
+            'dateOptions' => Config::get('dateOptions'),
+            'exportOptions' => Config::get('exportOptions'),
         ]);
     }
 }

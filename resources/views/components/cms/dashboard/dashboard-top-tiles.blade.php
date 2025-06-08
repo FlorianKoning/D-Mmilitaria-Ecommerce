@@ -4,14 +4,14 @@
     <div class="w-full h-full grid grid-cols-3 gap-y-3 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8">
         {{-- total sales --}}
         <div class="w-full sm:px-6 lg:px-8 space-y-6">
-            <div id="firstParent" class="p-8 h-40 bg-white hover:bg-logoBackground hover:text-white shadow rounded-2xl transition duration-300 ease-in-out">
+            <div id="firstParent" class="p-8 h-40 bg-logoBackground hover:bg-white text-white hover:text-logoBackground shadow rounded-2xl transition duration-300 ease-in-out">
                 <div class="h-full w-full flex flex-col justify-between">
 
                     {{-- title --}}
                     <div class="flex flex-row justify-between gap-4">
                         <div class="flex flex-row gap-4">
-                            <div id="firstTitleChild" class="flex bg-[#E6E6E6] text-logoBackground p-4 rounded-2xl transition duration-300 ease-in-out">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7">
+                            <div id="firstTitleChild" class="flex bg-[#464749] text-white p-4 rounded-2xl transition duration-300 ease-in-out">
+                                <svg id="logo1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7 transition duration-300 ease-in-out">
                                     <path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd" />
                                 </svg>
                             </div>
@@ -19,7 +19,7 @@
                             <div class="flex flex-col gap-1">
                                 <h2 class="my-auto text-xl font-semibold">Aantal Sales</h2>
                                 <a href="{{ route('cms.orders.index', ['option' => 'thisWeek']) }}">
-                                    <p id="orderAmount" class="tetx-xs text-[#696A6C] hover:text-white hover:underline font-semibold transition duration-300 ease-in-out">{{ $orders->ordersThisWeek }} Bestellingen</p>
+                                    <p id="orderAmount" class="tetx-xs text-[#696A6C] hover:text-logoBackground hover:underline font-semibold transition duration-300 ease-in-out">{{ $orders->ordersThisWeek }} Bestellingen</p>
                                 </a>
                             </div>
                         </div>
@@ -133,15 +133,18 @@
     const firstParent = document.getElementById('firstParent');
     const firstTitleChild = document.getElementById('firstTitleChild');
     const ordersRedirect = document.getElementById('orders');
+    const logo1 = document.getElementById('logo1');
 
     firstParent.addEventListener('mouseenter', function() {
-        firstTitleChild.style.backgroundColor = '#464749';
-        firstTitleChild.style.color = 'white';
+        firstTitleChild.style.backgroundColor = '#E6E6E6';
+        firstTitleChild.style.color = 'black';
+        logo1.style.color = 'black';
     })
 
     firstParent.addEventListener('mouseleave', function() {
-        firstTitleChild.style.backgroundColor = '#E6E6E6';
-        firstTitleChild.style.color = '#17191e';
+        firstTitleChild.style.backgroundColor = '#464749';
+        firstTitleChild.style.color = '#464749';
+        logo1.style.color = 'white';
     })
 
     ordersRedirect.addEventListener('mouseenter', function() {
@@ -167,7 +170,7 @@
 
     secondParent.addEventListener('mouseleave', function() {
         secondTitleChild.style.backgroundColor = '#E6E6E6';
-        secondTitleChild.style.color = '#17191e';
+        secondTitleChild.style.color = 'white';
     })
 
     usersRedirect.addEventListener('mouseenter', function() {
