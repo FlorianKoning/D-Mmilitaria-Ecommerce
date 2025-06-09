@@ -22,6 +22,8 @@
         <script defer src="<?php echo e(asset('js/checkout.js')); ?>" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo e(URL::asset('js/drag-drop.js')); ?>"></script>
 
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>

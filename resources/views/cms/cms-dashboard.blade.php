@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="w-full ">
+    <div class="w-full h-full max-h-screen">
         <x-slot name="header">
             <div class="flex justify-around">
                 <h2 class="font-semibold text-xl text-white leading-tight flex-1">

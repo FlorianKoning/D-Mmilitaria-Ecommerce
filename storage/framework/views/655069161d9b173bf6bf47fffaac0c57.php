@@ -1,13 +1,41 @@
-@props(['orders', 'customers'])
+<?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
+
+$__newAttributes = [];
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['orders', 'customers']));
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (in_array($__key, $__propNames)) {
+        $$__key = $$__key ?? $__value;
+    } else {
+        $__newAttributes[$__key] = $__value;
+    }
+}
+
+$attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
+
+unset($__propNames);
+unset($__newAttributes);
+
+foreach (array_filter((['orders', 'customers']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+    $$__key = $$__key ?? $__value;
+}
+
+$__defined_vars = get_defined_vars();
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (array_key_exists($__key, $__defined_vars)) unset($$__key);
+}
+
+unset($__defined_vars); ?>
 
 <div class="py-12">
     <div class="w-full h-full grid grid-cols-3 gap-y-3 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8">
-        {{-- total sales --}}
+        
         <div class="w-full sm:px-6 lg:px-8 space-y-6">
             <div id="firstParent" class="p-8 h-40 bg-logoBackground hover:bg-white text-white hover:text-logoBackground shadow rounded-2xl transition duration-300 ease-in-out">
                 <div class="h-full w-full flex flex-col justify-between">
 
-                    {{-- title --}}
+                    
                     <div class="flex flex-row justify-between gap-4">
                         <div class="flex flex-row gap-4">
                             <div id="firstTitleChild" class="flex bg-[#464749] text-white p-4 rounded-2xl transition duration-300 ease-in-out">
@@ -18,13 +46,13 @@
 
                             <div class="flex flex-col gap-1">
                                 <h2 class="my-auto text-xl font-semibold">Aantal Sales</h2>
-                                <a href="{{ route('cms.orders.index', ['option' => 'thisWeek']) }}">
-                                    <p id="orderAmount" class="tetx-xs text-[#696A6C] hover:text-logoBackground hover:underline font-semibold transition duration-300 ease-in-out">{{ $orders->ordersThisWeek }} Bestellingen</p>
+                                <a href="<?php echo e(route('cms.orders.index', ['option' => 'thisWeek'])); ?>">
+                                    <p id="orderAmount" class="tetx-xs text-[#696A6C] hover:text-logoBackground hover:underline font-semibold transition duration-300 ease-in-out"><?php echo e($orders->ordersThisWeek); ?> Bestellingen</p>
                                 </a>
                             </div>
                         </div>
                         
-                        <a id="orders" href="{{ route('cms.orders.index') }}">
+                        <a id="orders" href="<?php echo e(route('cms.orders.index')); ?>">
                             <svg id="orderPreRedirect" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                             </svg>  
@@ -35,18 +63,18 @@
                         </a>
                     </div>
 
-                    {{-- info --}}
+                    
                     <div class="w-full flex flex-row justify-between">
                         <div class="flex flex-row gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
                             </svg>
 
-                            <p class="tetx-xs font-semibold">{{ $orders->percentage }}%</p>
+                            <p class="tetx-xs font-semibold"><?php echo e($orders->percentage); ?>%</p>
                         </div>
 
                         <div class="flex flex-row gap-2">
-                            <p class="tetx-xs font-semibold">+{{ $orders->profit }}</p>
+                            <p class="tetx-xs font-semibold">+<?php echo e($orders->profit); ?></p>
                             <p id="orderAmount" class="tetx-xs text-[#696A6C] font-semibold">winst gemaakt</p>
                         </div>
                     </div>
@@ -59,7 +87,7 @@
             <div id="secondParent" class="p-8 h-40 bg-white hover:bg-logoBackground hover:text-white shadow rounded-2xl transition duration-300 ease-in-out">
                 <div class="h-full w-full flex flex-col justify-between">
                     
-                    {{-- title --}}
+                    
                     <div class="flex flex-row justify-between gap-4">
                         <div class="flex flex-row gap-4">
                             <div id="secondTitleChild" class="flex bg-[#E6E6E6] text-logoBackground p-4 rounded-2xl transition duration-300 ease-in-out">
@@ -70,15 +98,15 @@
 
                             <div class="flex flex-col gap-1">
                                 <h2 class="my-auto text-xl font-semibold">Nieuwe klanten</h2>
-                                <a href="{{ route('cms.users.index', ['option' => 'thisWeek']) }}">
+                                <a href="<?php echo e(route('cms.users.index', ['option' => 'thisWeek'])); ?>">
                                     <p id="orderAmount" class="tetx-xs text-[#696A6C] hover:text-white hover:underline font-semibold transition duration-300 ease-in-out">
-                                        {{ $customers->newCustomers }} Nieuwe klanten
+                                        <?php echo e($customers->newCustomers); ?> Nieuwe klanten
                                     </p>
                                 </a>
                             </div>
                         </div>
                         
-                        <a id="users" href="{{ route('cms.orders.index') }}">
+                        <a id="users" href="<?php echo e(route('cms.orders.index')); ?>">
                             <svg id="userPreRedirect" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                             </svg>  
@@ -89,18 +117,18 @@
                         </a>
                     </div>
 
-                    {{-- info --}}
+                    
                     <div class="w-full flex flex-row justify-between">
                         <div class="flex flex-row gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
                             </svg>
 
-                            <p class="tetx-xs font-semibold">{{ $customers->percentage }}%</p>
+                            <p class="tetx-xs font-semibold"><?php echo e($customers->percentage); ?>%</p>
                         </div>
 
                         <div class="flex flex-row gap-2">
-                            <p class="tetx-xs font-semibold">{{ $customers->total }}</p>
+                            <p class="tetx-xs font-semibold"><?php echo e($customers->total); ?></p>
                             <p id="orderAmount" class="text-base my-auto text-[#696A6C] font-bold">Accounts/Gebruikers</p>
                         </div>
                     </div>
@@ -111,15 +139,15 @@
         <div class="w-full sm:px-6 lg:px-8 space-y-6">
             <div class="p-8 h-40 bg-white hover:bg-logoBackground shadow rounded-2xl cursor-pointer transition duration-300 ease-in-out">
                 <div class="flex flex-col justify-between">
-                    {{-- title --}}
+                    
                     <div class="flex flex-row">
                     </div>
 
-                    {{-- amount --}}
+                    
                     <div class="flex flex-row">
                     </div>
 
-                    {{-- info --}}
+                    
                     <div class="flex flex-row">
                     </div>
                 </div>
@@ -182,4 +210,4 @@
         document.getElementById('userPreRedirect').classList.remove("hidden");
         document.getElementById('userRedirect').classList.add("hidden");
     });
-</script>
+</script><?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/components/cms/dashboard/dashboard-top-tiles.blade.php ENDPATH**/ ?>

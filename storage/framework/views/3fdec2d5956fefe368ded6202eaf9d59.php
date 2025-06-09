@@ -163,39 +163,40 @@
 <?php endif; ?>
         </div>
 
-        <div class="flex items-center justify-between mt-4">
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-black shadow-sm" name="remember">
-                    <span class="ms-2 text-sm text-gray-900"><?php echo e(__('Remember Me')); ?></span>
-                </label>
-            </div>
+        <div class="flex w-full flex-col items-center justify-between mt-4 gap-y-2">
+            <div class="flex w-full flex-row justify-between">
+                <!-- Remember Me -->
+                <div class="block mt-4">
+                    <label for="remember_me" class="inline-flex items-center">
+                        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-black shadow-sm" name="remember">
+                        <span class="ms-2 text-xs lg:text-sm text-gray-900"><?php echo e(__('Remember Me')); ?></span>
+                    </label>
+                </div>
 
-            <div>
-                <a class="underline text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-3" href="<?php echo e(route('password.request')); ?>">
-                <?php echo e(__('Forgot password?')); ?>
+                <div class="flex flex-row">
+                    <a class="hidden lg:flex mt-auto underline text-xs lg:text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-3" href="<?php echo e(route('password.request')); ?>">
+                        <?php echo e(__('Forgot password?')); ?>
 
-                </a>
+                    </a>
 
-                <a class="underline text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="<?php echo e(route('register')); ?>">
-                <?php echo e(__('No account?')); ?>
+                    <a class="hidden lg:flex mt-auto underline text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="<?php echo e(route('register')); ?>">
+                        <?php echo e(__('No account?')); ?>
 
-                </a>
+                    </a>
 
-                <?php if (isset($component)) { $__componentOriginald411d1792bd6cc877d687758b753742c = $component; } ?>
+                    <?php if (isset($component)) { $__componentOriginald411d1792bd6cc877d687758b753742c = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginald411d1792bd6cc877d687758b753742c = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.primary-button','data' => ['class' => 'ms-3 bg-navBackground hover:bg-navBackground/90 focus:bg-navBackground active:bg-navBackground']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.primary-button','data' => ['class' => 'lg:ms-3 text-xs lg:text-sm bg-navBackground hover:bg-navBackground/90 focus:bg-navBackground active:bg-navBackground']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('primary-button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['class' => 'ms-3 bg-navBackground hover:bg-navBackground/90 focus:bg-navBackground active:bg-navBackground']); ?>
-                    <?php echo e(__('Log in')); ?>
+<?php $component->withAttributes(['class' => 'lg:ms-3 text-xs lg:text-sm bg-navBackground hover:bg-navBackground/90 focus:bg-navBackground active:bg-navBackground']); ?>
+                        <?php echo e(__('Log in')); ?>
 
-                 <?php echo $__env->renderComponent(); ?>
+                     <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginald411d1792bd6cc877d687758b753742c)): ?>
 <?php $attributes = $__attributesOriginald411d1792bd6cc877d687758b753742c; ?>
@@ -205,7 +206,23 @@
 <?php $component = $__componentOriginald411d1792bd6cc877d687758b753742c; ?>
 <?php unset($__componentOriginald411d1792bd6cc877d687758b753742c); ?>
 <?php endif; ?>
+                </div>
             </div>
+
+            
+            <?php if(count($errors) > 0): ?>
+                <div class="flex lg:hidden w-full flex-row justify-between">
+                    <a class="underline text-xs lg:text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-3" href="<?php echo e(route('password.request')); ?>">
+                        <?php echo e(__('Forgot password?')); ?>
+
+                    </a>
+
+                    <a class="underline text-sm text-gray-900 hover:text-navBackground rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="<?php echo e(route('register')); ?>">
+                        <?php echo e(__('No account?')); ?>
+
+                    </a>
+                </div>
+            <?php endif; ?>
         </div>
     </form>
  <?php echo $__env->renderComponent(); ?>

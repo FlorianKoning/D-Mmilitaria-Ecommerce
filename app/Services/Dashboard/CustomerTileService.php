@@ -35,7 +35,7 @@ class CustomerTileService
         $lastWeekOrders = count(User::all()->whereBetween('orders.created_at', [$lastWeekDates['startOfWeek'], $lastWeekDates['endOfWeek']]));
         $thisWeekOrders = ($this->userRepository->newUsers() == null) ? 0 : count($this->userRepository->newUsers());
 
-        $percentage = (($thisWeekOrders - $lastWeekOrders) * 100) / $thisWeekOrders;
+        $percentage = ($thisWeekOrders != 0) ? (($thisWeekOrders - $lastWeekOrders) * 100) / $thisWeekOrders : 0;
 
         return ($percentage > 0) ? '+'.$percentage : $percentage;
     }

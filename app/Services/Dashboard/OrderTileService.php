@@ -39,7 +39,7 @@ class OrderTileService
             ->whereBetween('orders.created_at', [$lastWeekDates['startOfWeek'], $lastWeekDates['endOfWeek']])->get());
         $thisWeekOrders = count($this->orderRepository->thisWeek());
 
-        $percentage = (($thisWeekOrders - $lastWeekOrders) * 100) / $thisWeekOrders;
+        $percentage = ($thisWeekOrders != 0) ? (($thisWeekOrders - $lastWeekOrders) * 100) / $thisWeekOrders : 0;
 
         return ($percentage > 0) ? '+'.$percentage : $percentage;
     }
