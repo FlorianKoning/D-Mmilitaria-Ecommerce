@@ -1,5 +1,5 @@
 <div class="bg-cmsNavBackground">
-    <header class="fixed inset-x-0 top-0 z-50 bg-navBackground shadow-lg">
+    <header class="fixed inset-x-0 top-0 z-50 bg-navBackground shadow-lg border-b-2 border-[#969696]">
         <nav>
             <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8 border-b-2 sm:border-0">
 

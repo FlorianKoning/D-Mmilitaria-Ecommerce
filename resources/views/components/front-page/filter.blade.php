@@ -1,6 +1,6 @@
 @props(['landCatagories', 'catagories', 'products'])
 
-<div class="pb-24 pt-12 lg:grid lg:grid-cols-4 lg:gap-x-8 xl:grid-cols-4">
+<div class="pb-24 pt-6 lg:grid lg:grid-cols-4 lg:gap-x-8 xl:grid-cols-4">
     <aside>
         <h2 class="sr-only">Filters</h2>
         <button onclick="hideLayer('filter')" type="button" class="inline-flex items-center lg:hidden">
@@ -19,7 +19,7 @@
                     <fieldset>
                         <div class="flex flex-row gap-4">
                             <legend class="block text-sm font-medium text-gray-900">Search Products</legend>
-                        
+
                             @if (isset($_GET['search']))
                                 <a class="my-auto hover:text-navBackground" href="{{ route('home.index') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
@@ -125,12 +125,12 @@
                         <img src="{{ $item->main_image }}" alt="Helm"
                             class="bg-gray-100 object-cover group-hover:opacity-75 size-[500px] lg:size-96">
                         <div class="flex flex-1 flex-col space-y-2 p-4">
-                            <h3 class="text-sm font-medium text-gray-900">
+                            <h1 class="text-sm font-medium text-gray-900">
                                 <a href="{{ route('products.show', $item->id) }}">
                                     <span aria-hidden="true" class="absolute inset-0"></span>
                                     {{ $item->name }}
                                 </a>
-                            </h3>
+                            </h1>
                             {{-- <p class="text-sm text-gray-500">{{ substr($item->small_desc, 0, 100) }}</p> --}}
                             <div class="flex flex-1 flex-col justify-end">
                                 <div class="flex flex-row justify-between">
@@ -172,5 +172,9 @@
                 <h1 class="w-full text-3xl font-bold">There where no products found.</h1>
             </div>
         @endif
+
+        <div class="mt-6">
+            {{ $products->links() }}
+        </div>
     </section>
 </div>

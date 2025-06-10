@@ -1,7 +1,9 @@
 <x-app-layout>
     {{-- products overview --}}
-    <div class="max-w-7xl h-fit mx-auto border-t-2 border-black/80 flex flex-col content-start">
-        <div class="py-12">
+    <div class="max-w-full h-fit mx-auto flex flex-col content-start">
+        <x-home-navbar />
+
+        <div class="py-6">
             @include('cart.partials.cart-index')
         </div>
     </div>

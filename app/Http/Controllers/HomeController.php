@@ -34,7 +34,7 @@ class HomeController extends Controller
             'products' => (isset($products)) ? $products : $this->productRepository->available($this->paginateAmount),
             'catagories' => Product_category::all(),
             'landCatagories' => LandCatagories::all(),
-            'latestUpdate' => (Functions::getLatestupdate() != null) ? Functions::getLatestupdate() : 'Er zijn nog geen updates.',
+            'latestUpdate' => (Functions::getLatestupdate() != null) ? Functions::getLatestupdate() : 'No updates yet.',
         ]);
     }
 

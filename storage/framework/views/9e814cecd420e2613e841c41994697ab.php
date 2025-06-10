@@ -9,8 +9,29 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     
-    <div class="max-w-7xl h-fit mx-auto border-t-2 border-black/80 flex flex-col content-start">
-        <div class="py-12">
+    <div class="max-w-full h-fit mx-auto flex flex-col content-start">
+        <?php if (isset($component)) { $__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.home-navbar','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('home-navbar'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d)): ?>
+<?php $attributes = $__attributesOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d; ?>
+<?php unset($__attributesOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d)): ?>
+<?php $component = $__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d; ?>
+<?php unset($__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d); ?>
+<?php endif; ?>
+
+        <div class="py-6">
             <?php echo $__env->make('cart.partials.cart-index', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
         </div>
     </div>

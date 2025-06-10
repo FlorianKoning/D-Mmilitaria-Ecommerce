@@ -41,18 +41,13 @@
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <header>
                     <h2 class="text-lg font-medium text-gray-900">
-                        <?php echo e(__('Verzending informatie bewerken.')); ?>
+                        <?php echo e(__('Edit shipping information.')); ?>
 
                     </h2>
 
                     <div class="flex flex-row justify-between">
-                        <p class="mt-1 text-sm text-gray-600">
-                            <?php echo e(__("Hier kunt u uw verzendings informatie bewerken van uw bestelling.")); ?>
-
-                        </p>
-
                         <p class="mt-1 text-sm font-semibold text-gray-600">
-                            <span>Bestellings Nummer:</span> #<?php echo e($order->order_number); ?>
+                            <span>Order Number:</span> #<?php echo e($order->order_number); ?>
 
                         </p>
                     </div>

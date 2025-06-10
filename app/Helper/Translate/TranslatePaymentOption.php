@@ -14,7 +14,7 @@ class TranslatePaymentOption extends Controller
                 'other' => 'Andere betalingen (Molli)'
             ],
             'shipping' => [
-                'one_week' => '3 tot 5 werkdagen',
+                'one_week' => 'Will be shipped to your given home address',
                 'fair_pickup' => 'Ophalen bij de aangegeven beurs'
             ],
             'shipping_cost' => [
@@ -28,12 +28,12 @@ class TranslatePaymentOption extends Controller
         'en'=> [
             'payment_name' => [
                 'bank_transfer' => 'Bank Transfer',
-                'fair_pickup' => 'Pick up at exhibition',
+                'fair_pickup' => 'Pick up at a fair',
                 'other' => 'Other payment (Molli)'
             ],
             'shipping' => [
-                'one_week' => '3 to 5 work days',
-                'fair_pickup' => 'Pick up at chosen exhibition'
+                'one_week' => 'Transfer funds directly to our bank account',
+                'fair_pickup' => 'Pick up at chosen fair'
             ],
             'shipping_cost' => [
                 '5' => '€5.00 shipping cost',

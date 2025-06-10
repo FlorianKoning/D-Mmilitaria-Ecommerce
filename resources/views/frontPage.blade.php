@@ -4,7 +4,7 @@
         <x-home-navbar />
 
         {{-- Item content --}}
-        <div class="py-12">
+        <div class="py-6">
             <x-item-list :products="$products" :catagories="$catagories" :latestUpdate="$latestUpdate" :landCatagories="$landCatagories" :today="$today" />
         </div>
     </div>

@@ -12,7 +12,7 @@
                 </x-nav-link>
 
                 <x-nav-link :href="route('profile.orders')" :active="request()->routeIs('profile.orders')">
-                    {{ __('Personal Orders') }}
+                    {{ __('Orders') }}
                 </x-nav-link>
             </div>
         </div>

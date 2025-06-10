@@ -1,9 +1,9 @@
 <x-app-layout>
-    
+
 
     {{-- products overview --}}
     <div class="w-full broder border-t-2 border-black/80 flex flex-col content-start">
-        <x-home-navbar />   
+        <x-home-navbar />
 
         <div class="py-12">
             @include('products.partials.products-show')
@@ -15,12 +15,12 @@
     @endif
 
     @if (session()->has('productAdded'))
-        <x-session-succes :sessionText="session('productAdded')" :title="__('Product Toegevoegd.')" />
+        <x-session-succes :sessionText="session('productAdded')" :title="__('Product added.')" />
     @endif
 
 
     @if (session()->has('productNotAdded'))
-        <x-session-succes :sessionText="session('productNotAdded')" :title="__('Product niet toegevoegd.')" />
+        <x-session-succes :sessionText="session('productNotAdded')" :title="__('Product not added.')" />
     @endif
 
 </x-app-layout>

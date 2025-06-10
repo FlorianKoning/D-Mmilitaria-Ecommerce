@@ -8,7 +8,7 @@
 <?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    
+
 
     
     <div class="w-full broder border-t-2 border-black/80 flex flex-col content-start">
@@ -31,7 +31,7 @@
 <?php if (isset($__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d)): ?>
 <?php $component = $__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d; ?>
 <?php unset($__componentOriginal8d5e829eaf66f0f8d3e5a2d22a103a5d); ?>
-<?php endif; ?>   
+<?php endif; ?>
 
         <div class="py-12">
             <?php echo $__env->make('products.partials.products-show', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
@@ -64,14 +64,14 @@
     <?php if(session()->has('productAdded')): ?>
         <?php if (isset($component)) { $__componentOriginal17a22b5bd9358a0459eff8ff7a682ee7 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal17a22b5bd9358a0459eff8ff7a682ee7 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.session-succes','data' => ['sessionText' => session('productAdded'),'title' => __('Product Toegevoegd.')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.session-succes','data' => ['sessionText' => session('productAdded'),'title' => __('Product added.')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('session-succes'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['sessionText' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(session('productAdded')),'title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('Product Toegevoegd.'))]); ?>
+<?php $component->withAttributes(['sessionText' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(session('productAdded')),'title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('Product added.'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal17a22b5bd9358a0459eff8ff7a682ee7)): ?>
@@ -88,14 +88,14 @@
     <?php if(session()->has('productNotAdded')): ?>
         <?php if (isset($component)) { $__componentOriginal17a22b5bd9358a0459eff8ff7a682ee7 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal17a22b5bd9358a0459eff8ff7a682ee7 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.session-succes','data' => ['sessionText' => session('productNotAdded'),'title' => __('Product niet toegevoegd.')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.session-succes','data' => ['sessionText' => session('productNotAdded'),'title' => __('Product not added.')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('session-succes'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['sessionText' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(session('productNotAdded')),'title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('Product niet toegevoegd.'))]); ?>
+<?php $component->withAttributes(['sessionText' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(session('productNotAdded')),'title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('Product not added.'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal17a22b5bd9358a0459eff8ff7a682ee7)): ?>

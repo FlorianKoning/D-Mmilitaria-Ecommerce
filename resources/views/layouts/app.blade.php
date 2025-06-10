@@ -53,7 +53,7 @@
                 </main>
 
                 {{-- footer --}}
-                <footer class="bg-[#36424b]">
+                <footer class="bg-[#475353]">
                     <x-footer-content />
                 </footer>
             </div>

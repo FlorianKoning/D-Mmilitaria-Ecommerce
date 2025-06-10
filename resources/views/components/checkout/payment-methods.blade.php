@@ -7,13 +7,16 @@
         <div class="mt-4 flex flex-col gap-y-6">
             @if ($paymentOptions != null)
                 @foreach ($paymentOptions as $option)
+                    @if ($option->id == 2)
+                        <legend class="text-lg font-medium text-gray-900">Other</legend>
+                    @endif
+
                     <label onclick="paymentMethod('{{ $option->id }}')" aria-label="Standard" aria-description="4–10 business days for $5.00" class="relative flex cursor-pointer rounded-lg bg-white p-4 shadow focus:outline-none w-[350px]">
                         <input id="{{ $option->id }}" name="paymentMethod[{{ $option->id }}]"  type="radio" class="sr-only">
                         <span class="flex flex-1">
                             <span class="flex flex-col">
                                 <span class="block text-sm font-medium text-gray-900">{{ $paymentOptionTranslation['en']['payment_name'][$option->payment_name] }}.</span>
                                 <span class="mt-1 flex items-center text-sm text-gray-500">{{ $paymentOptionTranslation['en']['shipping'][$option->shipping] }}.</span>
-                                <span class="mt-6 flex items-center text-sm text-gray-900">{{ $paymentOptionTranslation['en']['shipping_cost'][$option->shipping_cost] }}.</span>
                                 @if ($option->extra_service_costs == 1)
                                     <span class="text-sm font-medium text-gray-500">{{ $paymentOptionTranslation['en']['extra_service_costs'][$option->extra_service_costs] }}.</span>
                                 @endif

@@ -74,7 +74,7 @@
                 </main>
 
                 
-                <footer class="bg-[#36424b]">
+                <footer class="bg-[#475353]">
                     <?php if (isset($component)) { $__componentOriginal1ad6965a13d836e32d2b9d70591e8bf2 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal1ad6965a13d836e32d2b9d70591e8bf2 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.footer-content','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>

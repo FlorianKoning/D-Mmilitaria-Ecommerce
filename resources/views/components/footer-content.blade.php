@@ -52,6 +52,6 @@
       </div>
     </div>
     <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-      <p class="text-sm/6 text-gray-400">&copy; {{ date('Y') }} Your Company, Inc. All rights reserved.</p>
+      <p class="text-sm/6 text-gray-400">&copy; {{ date('Y') }} {{ env('APP_NAME') }}, Inc. All rights reserved.</p>
     </div>
 </div>

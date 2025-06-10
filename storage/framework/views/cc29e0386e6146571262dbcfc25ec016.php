@@ -1,9 +1,10 @@
-<div class="relative isolate px-6 py-24 sm:py-32 lg:px-8">
-    <img src="https://i.pinimg.com/originals/db/21/43/db2143142ab64643671cba3322f43bfd.jpg" alt="" class="absolute inset-0 -z-10 size-full object-cover">
-    <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-5xl font-semibold tracking-tight text-white sm:text-7xl"><?php echo e(env('APP_NAME')); ?></h2>
-      
+    <div class="relative isolate px-6 py-16 sm:py-16 lg:px-8 bg-[#687979] shadow">
+        
+        <div class="h-full w-full flex flex-col lg:flex-row justify-center mx-auto max-w-4xl text-center gap-8">
+            <img class="size-40 mx-auto" src="<?php echo e($business->business_logo); ?>" alt="Application logo" srcset="">
+            <h2 class="text-5xl font-playfair font-semibold tracking-tight text-white sm:text-[100px] my-auto"><?php echo e(env('APP_NAME')); ?></h2>
+            
+        </div>
     </div>
-</div>
 </div>
 <?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/components/banner.blade.php ENDPATH**/ ?>

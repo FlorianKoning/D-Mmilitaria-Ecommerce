@@ -13,12 +13,14 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                robotoMono: ['Roboto Mono', 'monospace']
+                robotoMono: ['Roboto Mono', 'monospace'],
+                playfair: ['Playfair Display', 'serif'],
             },
             colors: {
                 title: '#010101',
-                background: '#fffff',
-                navBackground: '#4C5C41',
+                background: '#fefefe',
+                // navBackground: '#636A63',
+                navBackground: '#737c73',
                 cmsBackground: '#FBFBFB',
                 cmsNavBackground: '#F4F4F4',
                 cmsNavHover: '#203B49',

@@ -53,9 +53,9 @@ class CartController extends Controller
     {
         // add product to cart
         if ($this->cartService->add($product) == true) {
-            return redirect()->route('products.show', $product->id)->with('productAdded', 'Product is toegevoegd aan uw winkelmandje.');
+            return redirect()->route('products.show', $product->id)->with('productAdded', 'Product has been added to the cart.');
         } else { // CartService::add returned false
-            return redirect()->route('products.show', $product->id)->with('productNotAdded', 'Product kon niet worden toegevoegt, er zijn niet genoeg producten in verkoop.');
+            return redirect()->route('products.show', $product->id)->with('productNotAdded', 'Product could not be added to the cart, there are not enough items.');
         }
     }
 
@@ -68,7 +68,7 @@ class CartController extends Controller
         $this->cartService->update($product, $amount);
 
         // Return the user to the last page
-        return redirect()->route('cart.index')->with('productUpdated', 'Het product is succesful geupdate in uw winkelmandje.');
+        return redirect()->route('cart.index')->with('productUpdated', 'Product has been updated.');
     }
 
     /**
@@ -82,7 +82,7 @@ class CartController extends Controller
         $this->cartService->destroy($product);
 
         // Return the user to the last page
-        return redirect()->route('cart.index')->with('productRemoved', 'Het product is succesful verwijderd uit uw winkelmandje.');
+        return redirect()->route('cart.index')->with('productRemoved', 'Product has been removed.');
     }
 
 

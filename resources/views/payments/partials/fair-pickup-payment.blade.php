@@ -2,7 +2,7 @@
     <div class="flex flex-col">
         <h2 class="text-pretty text-xl font-semibold tracking-tight text-navBackground sm:text-2xl mb-1">Payment Method</h2>
         <p class="text-pretty text-sm tracking-tight text-gray-900 sm:text-base mb-1">
-            Here you can see the available payment options so you can collect your order at a trade show.
+            Available payment methods for pick up at fair.
         </p>
     </div>
     <div class="flex flex-row justify-between items-center gap-10">

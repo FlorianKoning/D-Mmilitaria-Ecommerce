@@ -59,7 +59,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('profile.orders')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('profile.orders'))]); ?>
-                    <?php echo e(__('Personal Orders')); ?>
+                    <?php echo e(__('Orders')); ?>
 
                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

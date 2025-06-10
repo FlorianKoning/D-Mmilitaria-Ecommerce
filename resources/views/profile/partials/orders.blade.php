@@ -12,21 +12,21 @@
                     <div class="flex items-center border-b border-gray-200 p-4 sm:grid sm:grid-cols-4 sm:gap-x-6 sm:p-6">
                         <dl class="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-4 lg:col-span-2">
                             <div>
-                                <dt class="font-medium text-gray-900">Bestellings Nummer</dt>
+                                <dt class="font-medium text-gray-900">Order Number</dt>
                                 <dd class="mt-1 text-gray-500">{{ $order->order_number }}</dd>
                             </div>
                             <div class="hidden sm:block">
-                                <dt class="font-medium text-gray-900">Bestelling gemaakt op</dt>
+                                <dt class="font-medium text-gray-900">Order date</dt>
                                 <dd class="mt-1 text-gray-500">
                                     <time datetime="2021-07-06">{{ $order->created_at }}</time>
                                 </dd>
                             </div>
                             <div>
-                                <dt class="font-medium text-gray-900">Bestel bedrag</dt>
+                                <dt class="font-medium text-gray-900">Order amount</dt>
                                 <dd class="mt-1 font-medium text-gray-900">€{{ $order->payment_amount }}</dd>
                             </div>
                             <div>
-                                <dt class="font-medium text-gray-900">Bestelling Status</dt>
+                                <dt class="font-medium text-gray-900">Order status</dt>
                                 <dd class="mt-1 font-medium text-gray-900">
                                     <button type="button" class="rounded {{ $orderStatusColor[$orderStatusRepository->find($order->order_status_id)['status']] }} px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                         {{ $orderStatusRepository->find($order->order_status_id)['status'] }}
@@ -46,13 +46,13 @@
                         {{-- Order buttons --}}
                         <div class="hidden lg:col-span-2 lg:flex lg:items-center lg:justify-end lg:space-x-4">
                             <a href="{{ route('download.invoice', $order->id) }}" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                <span>Download Factuur</span>
+                                <span>Download Invoice</span>
                             </a>
 
                             @if (in_array($order->order_status_id, $shippingStatusArray))
                                 <a href="{{ route('shipping.edit', [$order->id, $shipping->id]) }}" class="flex items-center justify-center rounded-md border border-gray-300 bg-white px-2.5 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                    <span>Verzending Details</span>
-                                </a>    
+                                    <span>Shipping Details</span>
+                                </a>
                             @endif
                         </div>
                     </div>

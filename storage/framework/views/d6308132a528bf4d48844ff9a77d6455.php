@@ -32,7 +32,7 @@
 <?php endif; ?>
 
         
-        <div class="py-12">
+        <div class="py-6">
             <?php if (isset($component)) { $__componentOriginal75719a873aef52870b75ff337fe33664 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal75719a873aef52870b75ff337fe33664 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.item-list','data' => ['products' => $products,'catagories' => $catagories,'latestUpdate' => $latestUpdate,'landCatagories' => $landCatagories,'today' => $today]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>

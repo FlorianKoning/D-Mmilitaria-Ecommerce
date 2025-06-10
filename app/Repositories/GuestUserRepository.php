@@ -2,10 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\Repositories\GuestUserRepositoryInterface;
+use App\Interfaces\repositories\GuestUserRepositoryInterface;
 use Exception;
-use App\Models\User;
-use App\Interfaces\Repositories\UserRepositoryInterface;
 use App\Models\GuestUser;
 
 class GuestUserRepository implements GuestUserRepositoryInterface
