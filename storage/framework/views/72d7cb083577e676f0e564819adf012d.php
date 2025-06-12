@@ -100,7 +100,7 @@
                     <h3 class="sr-only">Description</h3>
 
                     <div class="space-y-6 text-base text-gray-700">
-                        <p><?php echo e($product->big_desc); ?></p>
+                        <p><?php echo nl2br($product->big_desc); ?></p>
                     </div>
                 </div>
 

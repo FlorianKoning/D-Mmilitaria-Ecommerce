@@ -21,6 +21,7 @@
         <script defer src="<?php echo e(asset('js/frontPage.js')); ?>" type="text/javascript"></script>
         <script defer src="<?php echo e(asset('js/checkout.js')); ?>" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo e(URL::asset('js/drag-drop.js')); ?>"></script>
+        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 
         
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -28,6 +29,9 @@
         
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+        
+        <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/45.2.0/ckeditor5.css" />
+        <script src="https://cdn.ckeditor.com/ckeditor5/45.2.0/ckeditor5.umd.js"></script>
 
         <!-- Scripts -->
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>

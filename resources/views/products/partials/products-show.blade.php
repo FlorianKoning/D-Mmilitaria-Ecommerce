@@ -81,7 +81,7 @@
                     <h3 class="sr-only">Description</h3>
 
                     <div class="space-y-6 text-base text-gray-700">
-                        <p>{{ $product->big_desc }}</p>
+                        <p>{!! nl2br($product->big_desc) !!}</p>
                     </div>
                 </div>
 

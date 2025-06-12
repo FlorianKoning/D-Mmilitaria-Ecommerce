@@ -255,6 +255,7 @@ class CmsProductsController extends Controller
         // Variables
         $validated = $request->validated();
 
+
         // Checks if productImage exist. if so, create the file url
         if (isset($validated['productImage'])) {
             $fileUrl = FileService::imageUpload($validated['productImage'], $validated['name']);
