@@ -81,7 +81,10 @@
                       You can download the invoice here: <a href="<?php echo e(route('download.invoice', $order->id)); ?>">download</a>.
                     </p>
                     <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
-                      Bank account number: <span style="font-weight: 500"><?php echo e($businessSettings->bankaccount_number); ?>, <?php echo e(env('SELLER_NAME')); ?></span>
+                      Bank account number: <span style="font-weight: 500"><?php echo e($businessSettings->bankaccount_number); ?></span>
+                    </p>
+                    <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
+                      Bank account holder: <span style="font-weight: 500"><?php echo e(env('APP_NAME')); ?></span>
                     </p>
                     <p style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
                       Kind regards,

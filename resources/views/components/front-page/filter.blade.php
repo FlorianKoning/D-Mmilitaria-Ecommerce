@@ -13,7 +13,7 @@
         </button>
 
         <div id="filter" class="hidden lg:block bg-white p-5 rounded-xl border shadow">
-            <form id="catagorieForm" method="GET" action="{{ route('home.index') }}"
+            <form id="catagorieForm" method="GET" action="{{ (isset($_SERVER['PATH_INFO'])) ? route('home.archive') : route('home.index') }}"
                 class="space-y-10 divide-y divide-gray-200">
                 <div class="pt-2">
                     <fieldset>

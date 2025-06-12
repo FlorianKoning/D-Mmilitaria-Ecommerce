@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\LandCatagories;
 use App\Models\Product_category;
 use App\Repositories\ProductRepository;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -60,7 +61,7 @@ class HomeController extends Controller
      * @param int $landCategory
      * @return Collection<int, Product>
      */
-    private function filter(?string $search, ?array $category, ?array $landCategory, bool $noSoldProduct = true): Collection
+    private function filter(?string $search, ?array $category, ?array $landCategory, bool $noSoldProduct = true): LengthAwarePaginator
     {
         $baseQuery = ModelHelper::ProductsBaseQuery()
                 ->leftJoin('land_catagories_links', 'land_catagories_links.product_id', '=', 'products.id')
@@ -84,6 +85,6 @@ class HomeController extends Controller
             $baseQuery->whereIn('land_catagories_links.land_categories_id', $landCategory);
         }
 
-        return ($noSoldProduct) ? $baseQuery->where('products.inventory', '>', 0)->get() : $baseQuery->get();
+        return ($noSoldProduct) ? $baseQuery->where('products.inventory', '>', 0)->paginate($this->paginateAmount) : $baseQuery->paginate($this->paginateAmount);
     }
 }

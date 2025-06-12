@@ -13,6 +13,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\ExhibitionController;
+use App\Http\Controllers\PurchaseController;
 
 // All the auth routes
 Route::middleware(AclMiddleware::class)->group(function() {
@@ -36,6 +37,12 @@ Route::middleware(AclMiddleware::class)->group(function() {
         Route::get('/contact', 'index')->name('contact.index');
         Route::get('/return-policy', 'returnPolicy')->name('contact.return');
         Route::post('/contact/message', 'message')->name('contact.message');
+    });
+
+    // Purchases Routes
+    Route::controller(PurchaseController::class)->group(function() {
+        Route::get('/purchases', 'index')->name('contact.purchases.index');
+        Route::get('/purchases/message', 'message')->name('contact.purchases.message');
     });
 
     // Cart controller

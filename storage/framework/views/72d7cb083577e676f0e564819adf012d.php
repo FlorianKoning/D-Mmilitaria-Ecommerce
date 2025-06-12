@@ -38,8 +38,8 @@
                         </svg>
                     </div>
 
-                    <img id="mainImage" src="<?php echo e($product->main_image); ?>" alt="Angled front view with bag zipped and handles upright." class="size-96 lg:size-[500px] aspect-square object-cover sm:rounded-lg">
-                
+                    <img onclick="showImage($('#mainImage').attr('src'))" id="mainImage" src="<?php echo e($product->main_image); ?>" alt="Angled front view with bag zipped and handles upright." class="size-96 lg:size-[500px] aspect-square object-cover sm:rounded-lg hover:cursor-pointer">
+
                     <div onclick="imageArray('right', '<?php echo e($product->id); ?>')" class="hover:text-navBackground hover:cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -128,4 +128,31 @@
 </section>
 
 <input id="key" type="hidden" value="<?php echo e(0); ?>">
+
+
+<div id="modal" class="hidden">
+  <div class="relative z-[60]" aria-labelledby="dialog-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-500/60 transition-opacity" aria-hidden="true"></div>
+
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+        <img id="modalImage" src="" alt="Angled front view with bag zipped and handles upright." class="size-96 lg:size-[500px] aspect-square object-cover sm:rounded-lg">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    function showImage(imageUrl) {
+        $('#modal').removeClass('hidden');
+        $('#modalImage').attr('src', imageUrl);
+    }
+
+    $(document).click(function(e) {
+        if ($(e.target).is('#mainImage') == false) {
+            $('#modal').addClass('hidden');
+        }
+        console.log();
+    });
+</script>
 <?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/products/partials/products-show.blade.php ENDPATH**/ ?>

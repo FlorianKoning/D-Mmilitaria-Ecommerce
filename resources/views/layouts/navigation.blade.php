@@ -24,13 +24,17 @@
                                 {{ __('Home') }}
                             </x-nav-link>
 
-                            <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.*')">
+                            <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')">
                                 {{ __('Contact') }}
                             </x-nav-link>
 
                             <x-nav-link :href="route('exhibition.index')" :active="request()->routeIs('exhibition.*')">
                                 {{ __('Fairs/Beurzen') }}
                             </x-nav-link>
+
+                            {{-- <x-nav-link :href="route('contact.purchases.index')" :active="request()->routeIs('contact.purchases.*')">
+                                {{ __('Purchase/Inkoop') }}
+                            </x-nav-link> --}}
                         </div>
                     </div>
                     <div class="flex flex-cols justify-between items-center lg:hidden">

@@ -3,7 +3,7 @@
         <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
           <div class="relative px-6 lg:static">
             <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
-              <h2 class="text-pretty text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">Contact us!</h2>
+              <h2 class="text-pretty text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">I also purchase items!</h2>
               <p class="mt-6 text-lg/8 text-gray-600">
                 There are several ways to get in touch with us. Below you’ll find our contact details, but you can also easily fill out the contact form. As soon as we receive your message, we’ll do our best to respond as quickly as possible.
               <dl class="mt-10 space-y-4 text-base/7 text-gray-600">
@@ -28,7 +28,7 @@
               </dl>
             </div>
           </div>
-          <form action="<?php echo e(route('contact.message')); ?>" method="POST" class="px-6">
+          <form action="<?php echo e(route('contact.purchases.message')); ?>" method="POST" class="px-6">
             <?php echo csrf_field(); ?>
             <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
               <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -199,7 +199,29 @@
 
               <div class="mt-8 flex flex-col lg:flex-row justify-between gap-2">
                 
-                
+                <div class="flex flex-col">
+                    <div class="g-recaptcha" data-sitekey="<?php echo e(env('RECAPTCHA_SITE_KEY')); ?>"></div>
+                    <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['messages' => $errors->get('g-recaptcha-response'),'class' => 'mt-2']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('input-error'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('g-recaptcha-response')),'class' => 'mt-2']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
+<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
+<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
+<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
+<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
+<?php endif; ?>
+                </div>
 
                 
                 <button type="submit" class="w-full rounded-md bg-navBackground px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-navBackground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Send message</button>
@@ -209,4 +231,4 @@
         </div>
       </div>
 </section>
-<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/contact/partials/contact-index.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/contact/purchase/partials/index.blade.php ENDPATH**/ ?>

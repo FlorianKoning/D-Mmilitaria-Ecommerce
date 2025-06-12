@@ -68,7 +68,8 @@ return [
             "PaymentController" => ["*"],
             "CheckoutController" => ["*"],
             "AjaxController" => ["*"],
-            "DownloadController" => ['*']
+            "DownloadController" => ['*'],
+            "PurchaseController" => ["*"]
         ]
     ]
 

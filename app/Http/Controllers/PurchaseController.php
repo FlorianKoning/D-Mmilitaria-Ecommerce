@@ -2,53 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ContactMail;
+use Illuminate\Http\Request;
 use App\Models\BusinessSettings;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\ContactMessageRequest;
 use App\Repositories\BusinessRepository;
+use App\Http\Requests\ContactMessageRequest;
+use App\Mail\PurchaseMail;
 
-class ContactController extends Controller
+class PurchaseController extends Controller
 {
     public function __construct(
         protected BusinessRepository $businessRepository,
     ){parent::__construct();}
 
     /**
-     * Displays the contact form and information.
+     * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
-        return view('contact.contact-index', [
+        return view("contact.purchase.index", [
             'business' => $this->businessRepository->all(),
         ]);
     }
 
-
-    /**
-     * Displays the return policy information.
-     */
-    public function returnPolicy(): View
-    {
-        return view('contact.return-index', []);
-    }
-
-
     /**
      * Handels the contact email.
      * @param \App\Http\Requests\ContactMessageRequest $request
-     * @return void
+     * @return RedirectResponse
      */
     public function message(ContactMessageRequest $request): RedirectResponse
     {
         $validated = $request->validated();
-        $business = $this->businessRepository->all();
+        $business =  BusinessSettings::find(ProfileController::$businessTableId);
 
         // Sends email That the order has been made to the customer.
         Mail::to($business->business_email)->queue(
-            new ContactMail($validated['message'], $validated['email'], $business)
+            new PurchaseMail($validated['message'], $validated['email'], $this->businessRepository->all())
         );
 
         return redirect()->route('contact.index')->with('success','Uw bericht is verstuurd!');

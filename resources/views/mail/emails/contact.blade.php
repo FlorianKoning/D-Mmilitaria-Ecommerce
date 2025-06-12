@@ -67,7 +67,7 @@
                     <div class="sm-p-6" style="padding: 24px 36px">
                       <div role="separator" style="line-height: 24px">&zwj;</div>
                       <h1 style="margin: 0 0 24px; font-size: 18px; font-weight: 600; color: #0f172a">
-                          You have received a new message from a customer!<br>
+                          {{ $context }}<br>
                       </h1>
                       <p style="margin: 0 0 24px; font-size: 14px; color: #475569">
                           Message from the customer:

@@ -19,7 +19,6 @@ export default {
             colors: {
                 title: '#010101',
                 background: '#fefefe',
-                // navBackground: '#636A63',
                 navBackground: '#737c73',
                 cmsBackground: '#FBFBFB',
                 cmsNavBackground: '#F4F4F4',

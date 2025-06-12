@@ -26,9 +26,8 @@ class ContactMessageRequest extends FormRequest
             'first-name' => ['required', 'string', 'max:141'],
             'last-name' => ['required', 'string', 'max:141'],
             'email' => ['required', 'email'],
-            'phone-number' => ['required', 'max:13'],
             'message' => ['required', 'string'],
-            'g-recaptcha-response' => [new ReCaptcha()]
+            // 'g-recaptcha-response' => [new ReCaptcha()]
         ];
     }
 }

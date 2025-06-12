@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 
-class ContactMail extends Mailable
+class PurchaseMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -41,7 +41,7 @@ class ContactMail extends Mailable
         return new Content(
             html: 'mail.emails.contact',
             with: [
-                'context' => 'Een nieuw bericht van een klant!',
+                'context' => 'Een nieuwe inkoop bericht van een klant!',
                 'customerEmail' => $this->customer_email,
                 'customerMessage' => $this->customer_message,
                 'businessSettings' => $this->businessSettings,

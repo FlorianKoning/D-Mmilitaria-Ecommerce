@@ -33,7 +33,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-full">
-                    <?php echo $__env->make('contact.partials.contact-index', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+                    <?php echo $__env->make('contact.purchase.partials.index', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
                 </div>
             </div>
         </div>
@@ -72,4 +72,4 @@
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
 <?php endif; ?>
-<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/contact/contact-index.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\wamp64\www\D-Mmilitaria-Ecommerce\resources\views/contact/purchase/index.blade.php ENDPATH**/ ?>
