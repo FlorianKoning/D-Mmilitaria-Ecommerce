@@ -20,7 +20,7 @@
                             <button id="tabs-1-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-navBackground focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
                                 <span class="sr-only">Angled view</span>
                                 <span class="absolute inset-0 overflow-hidden rounded-md">
-                                    <img onclick="changeImage($(this).attr('src'))" src="{{ $image->image_url }}" alt="{{ $image->image_name }}" class="size-full object-cover">
+                                    <img onclick="changeImage($(this).attr('src'))" src="{{ $image->image_url }}" alt="{{ $image->image_name }}" class="max-w-full h-auto object-cover">
                                 </span>
                                 <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
                                 <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2" aria-hidden="true"></span>
