@@ -28,6 +28,15 @@
                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                 <img class="h-12 rounded-full" src="{{ $image->image_url }}" alt="{{ $image->image_name }}">
                             </td>
+                            <td onclick="toggleInput('{{ $image->id }}')" id="order-{{ $image->id }}" state="closed" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                <span id="orderResult-{{ $image->id }}" class="hover:cursor-pointer hover:underline">{{ ($image->order == null) ? 0 : $image->order }}</span>    
+                            
+                                <form id="udpateForm-{{ $image->id }}" method="POST" action="{{ route('cms.extraImages.updateOrder', $image->id) }}">
+                                    @csrf
+
+                                    <x-text-input onchange="this.form.submit()" id="orderInput-{{ $image->id }}" name="orderInput" type="number" class="mt-1 block w-full hidden" :value="$image->order" />
+                                </form>
+                            </td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $image->image_name }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $image->product_id }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -78,3 +87,17 @@
 
 
 <x-extra-images-modal :id="$id" />
+
+
+<script>
+    function toggleInput(imageId) {
+        const order = document.getElementById('order-'+imageId);
+        const orderResult = document.getElementById('orderResult-'+imageId);
+        const orderInput = document.getElementById('orderInput-'+imageId);
+
+        orderResult.classList.add('hidden');
+        orderInput.classList.remove('hidden');
+
+        order.setAttribute('state', 'open');
+    }
+</script>

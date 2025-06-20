@@ -191,6 +191,18 @@ class CmsProductsController extends Controller
         ]);
     }
 
+    /**
+     * Updates the order of the extra image.
+     * @param \App\Models\ProductImage $productImage
+     * @param int $order
+     * @return void
+     */
+    public function updateExtraOrder(Request $request, ProductImage $productImage): RedirectResponse
+    {
+        $productImage->update(['order' => $request->orderInput]);
+
+        return redirect()->route('cms.products.extra', $productImage->product_id);
+    }
 
     /**
      * Store a newly created resource in storage.

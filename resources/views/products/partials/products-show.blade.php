@@ -8,7 +8,7 @@
                 <div class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
                     <div class="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
                         <button id="tabs-1-tab-1" class="relative flex h-40 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-navBackground focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
-                            <span class="absolute inset-0 rounded-md">
+                            <span class="absolute inset-0 overflow-hidden rounded-md">
                                 <img onclick="changeImage($(this).attr('src'))" src="{{ $product->main_image }}" alt="" class="size-full object-cover">
                             </span>
                             <!-- Selected: "ring-navBackgroundNot Selected: "ring-transparent" -->
@@ -17,10 +17,9 @@
 
                         {{-- extra images --}}
                         @foreach ($extraImages as $image)
-                            <button id="tabs-1-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-navBackground focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
-                                <span class="sr-only">Angled view</span>
+                            <button id="tabs-1-tab-1" class="relative flex h-40 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-navBackground focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
                                 <span class="absolute inset-0 overflow-hidden rounded-md">
-                                    <img onclick="changeImage($(this).attr('src'))" src="{{ $image->image_url }}" alt="{{ $image->image_name }}" class="max-w-full size-96 object-cover">
+                                    <img onclick="changeImage($(this).attr('src'))" src="{{ $image->image_url }}" alt="{{ $image->image_name }}" class="w-full h-full object-contain">
                                 </span>
                                 <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
                                 <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2" aria-hidden="true"></span>
@@ -31,8 +30,8 @@
 
                 <div>
                     <!-- Tab panel, show/hide based on tab state. -->
-                    <div class="flex items-center" id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
-                        <div onclick="imageArray('left', '{{ $product->id }}')" class="hover:text-navBackground hover:cursor-pointer">
+                    <div class="flex items-center select-none" id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
+                        <div onclick="imageArray('left', '{{ $product->id }}')" class="hover:text-navBackground hover:cursor-pointer p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                             </svg>
@@ -40,7 +39,7 @@
     
                         <img onclick="showImage($('#mainImage').attr('src'))" id="mainImage" src="{{ $product->main_image }}" alt="{{ $product->description }}" class="w-3/4  object-cover sm:rounded-lg hover:cursor-pointer">
     
-                        <div onclick="imageArray('right', '{{ $product->id }}')" class="hover:text-navBackground hover:cursor-pointer">
+                        <div onclick="imageArray('right', '{{ $product->id }}')" class="hover:text-navBackground hover:cursor-pointer p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                             </svg>

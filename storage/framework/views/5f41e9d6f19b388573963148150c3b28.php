@@ -56,6 +56,34 @@ unset($__defined_vars); ?>
                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                 <img class="h-12 rounded-full" src="<?php echo e($image->image_url); ?>" alt="<?php echo e($image->image_name); ?>">
                             </td>
+                            <td onclick="toggleInput('<?php echo e($image->id); ?>')" id="order-<?php echo e($image->id); ?>" state="closed" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                <span id="orderResult-<?php echo e($image->id); ?>" class="hover:cursor-pointer hover:underline"><?php echo e(($image->order == null) ? 0 : $image->order); ?></span>    
+                            
+                                <form id="udpateForm-<?php echo e($image->id); ?>" method="POST" action="<?php echo e(route('cms.extraImages.updateOrder', $image->id)); ?>">
+                                    <?php echo csrf_field(); ?>
+
+                                    <?php if (isset($component)) { $__componentOriginal18c21970322f9e5c938bc954620c12bb = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal18c21970322f9e5c938bc954620c12bb = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.text-input','data' => ['onchange' => 'this.form.submit()','id' => 'orderInput-'.e($image->id).'','name' => 'orderInput','type' => 'number','class' => 'mt-1 block w-full hidden','value' => $image->order]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('text-input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['onchange' => 'this.form.submit()','id' => 'orderInput-'.e($image->id).'','name' => 'orderInput','type' => 'number','class' => 'mt-1 block w-full hidden','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($image->order)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal18c21970322f9e5c938bc954620c12bb)): ?>
+<?php $attributes = $__attributesOriginal18c21970322f9e5c938bc954620c12bb; ?>
+<?php unset($__attributesOriginal18c21970322f9e5c938bc954620c12bb); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal18c21970322f9e5c938bc954620c12bb)): ?>
+<?php $component = $__componentOriginal18c21970322f9e5c938bc954620c12bb; ?>
+<?php unset($__componentOriginal18c21970322f9e5c938bc954620c12bb); ?>
+<?php endif; ?>
+                                </form>
+                            </td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo e($image->image_name); ?></td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo e($image->product_id); ?></td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -217,4 +245,17 @@ unset($__defined_vars); ?>
 <?php $component = $__componentOriginald95b741ed7a4ab97d3c498f8ea04c853; ?>
 <?php unset($__componentOriginald95b741ed7a4ab97d3c498f8ea04c853); ?>
 <?php endif; ?>
-<?php /**PATH C:\Users\flori\D-Mmilitaria-Ecommerce\resources\views/components/extra-images-table.blade.php ENDPATH**/ ?>
+
+
+<script>
+    function toggleInput(imageId) {
+        const order = document.getElementById('order-'+imageId);
+        const orderResult = document.getElementById('orderResult-'+imageId);
+        const orderInput = document.getElementById('orderInput-'+imageId);
+
+        orderResult.classList.add('hidden');
+        orderInput.classList.remove('hidden');
+
+        order.setAttribute('state', 'open');
+    }
+</script><?php /**PATH C:\Users\flori\D-Mmilitaria-Ecommerce\resources\views/components/extra-images-table.blade.php ENDPATH**/ ?>

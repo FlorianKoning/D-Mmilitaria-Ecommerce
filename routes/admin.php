@@ -76,6 +76,7 @@ Route::controller(CmsProductCategoryController::class)->group(function() {
 Route::controller(CmsExtraImagesController::class)->group(function() {
     Route::post('/extraImages/create/{id}', [CmsExtraImagesController::class, 'create'])->name('cms.extraImages.create');
     Route::post('/extraImages/edit/{productImage}',  [CmsExtraImagesController::class, 'edit'])->name('cms.extraImages.edit');
+    Route::post('/cms/extraImages/update/{productImage}', [CmsProductsController::class, 'updateExtraOrder'])->name('cms.extraImages.updateOrder');
     Route::delete('/extraImage/delete/{productImage}', [CmsExtraImagesController::class, 'destroy'])->name('cms.extraImages.delete');
 });
 
