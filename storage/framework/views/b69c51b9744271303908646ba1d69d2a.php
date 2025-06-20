@@ -9,38 +9,38 @@
                     <div class="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
                         <button id="tabs-1-tab-1" class="relative flex h-40 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-navBackground focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
                             <span class="absolute inset-0 rounded-md">
-                                <img onclick="changeImage($(this).attr('src'))" src="{{ $product->main_image }}" alt="" class="size-full object-cover">
+                                <img onclick="changeImage($(this).attr('src'))" src="<?php echo e($product->main_image); ?>" alt="" class="size-full object-cover">
                             </span>
                             <!-- Selected: "ring-navBackgroundNot Selected: "ring-transparent" -->
                             <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2" aria-hidden="true"></span>
                         </button>
 
-                        {{-- extra images --}}
-                        @foreach ($extraImages as $image)
+                        
+                        <?php $__currentLoopData = $extraImages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <button id="tabs-1-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-navBackground focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
                                 <span class="sr-only">Angled view</span>
                                 <span class="absolute inset-0 overflow-hidden rounded-md">
-                                    <img onclick="changeImage($(this).attr('src'))" src="{{ $image->image_url }}" alt="{{ $image->image_name }}" class="max-w-full size-96 object-cover">
+                                    <img onclick="changeImage($(this).attr('src'))" src="<?php echo e($image->image_url); ?>" alt="<?php echo e($image->image_name); ?>" class="max-w-full size-96 object-cover">
                                 </span>
                                 <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
                                 <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2" aria-hidden="true"></span>
                             </button>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 
                 <div>
                     <!-- Tab panel, show/hide based on tab state. -->
                     <div class="flex items-center" id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
-                        <div onclick="imageArray('left', '{{ $product->id }}')" class="hover:text-navBackground hover:cursor-pointer">
+                        <div onclick="imageArray('left', '<?php echo e($product->id); ?>')" class="hover:text-navBackground hover:cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                             </svg>
                         </div>
     
-                        <img onclick="showImage($('#mainImage').attr('src'))" id="mainImage" src="{{ $product->main_image }}" alt="{{ $product->description }}" class="w-3/4  object-cover sm:rounded-lg hover:cursor-pointer">
+                        <img onclick="showImage($('#mainImage').attr('src'))" id="mainImage" src="<?php echo e($product->main_image); ?>" alt="<?php echo e($product->description); ?>" class="w-3/4  object-cover sm:rounded-lg hover:cursor-pointer">
     
-                        <div onclick="imageArray('right', '{{ $product->id }}')" class="hover:text-navBackground hover:cursor-pointer">
+                        <div onclick="imageArray('right', '<?php echo e($product->id); ?>')" class="hover:text-navBackground hover:cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                             </svg>
@@ -53,48 +53,67 @@
 
             <!-- Product info -->
             <div class="w-1/3 mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-                {{-- title --}}
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $product->name }}</h1>
+                
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900"><?php echo e($product->name); ?></h1>
 
 
-                {{-- price --}}
+                
                 <div class="mt-3">
                     <h2 class="sr-only">Product information</h2>
-                    @if ($product->inventory > 0)
-                        <x-discount-price :item="$product" :textSize="__('xl')" />
-                    @endif
+                    <?php if($product->inventory > 0): ?>
+                        <?php if (isset($component)) { $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.discount-price','data' => ['item' => $product,'textSize' => __('xl')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('discount-price'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['item' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($product),'textSize' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('xl'))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79)): ?>
+<?php $attributes = $__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79; ?>
+<?php unset($__attributesOriginal4eba5a0f5430be374961e51d7c8c9e79); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4eba5a0f5430be374961e51d7c8c9e79)): ?>
+<?php $component = $__componentOriginal4eba5a0f5430be374961e51d7c8c9e79; ?>
+<?php unset($__componentOriginal4eba5a0f5430be374961e51d7c8c9e79); ?>
+<?php endif; ?>
+                    <?php endif; ?>
                 </div>
 
 
-                {{-- amount in stock --}}
-                @if ($product->show_quantity)
+                
+                <?php if($product->show_quantity): ?>
                     <div class="mt-3">
                         <div class="flex flex-row gap-x-1">
-                            <p class="text-sm font-medium text-gray-900">qnt: {{ $product->inventory }}</p>
+                            <p class="text-sm font-medium text-gray-900">qnt: <?php echo e($product->inventory); ?></p>
                         </div>
                     </div>
-                @endif
+                <?php endif; ?>
 
 
-                {{-- description --}}
+                
                 <div class="mt-6">
                     <h3 class="sr-only">Description</h3>
 
                     <div class="space-y-6 text-base text-gray-700">
-                        <p>{!! nl2br($product->big_desc) !!}</p>
+                        <p><?php echo nl2br($product->big_desc); ?></p>
                     </div>
                 </div>
 
 
                 <div class="mt-10">
-                    @if ($product->inventory > 0)
-                        <form method="POST" action="{{ route('cart.store', $product->id) }}" class="mt-6">
-                            @csrf
+                    <?php if($product->inventory > 0): ?>
+                        <form method="POST" action="<?php echo e(route('cart.store', $product->id)); ?>" class="mt-6">
+                            <?php echo csrf_field(); ?>
                             <button type="submit" class="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-navBackground px-8 py-3 text-base font-medium text-white hover:bg-navBackground/80 focus:outline-none focus:ring-2 focus:ring-navBackground focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">Add to cart</button>
                         </form>
-                    @else
+                    <?php else: ?>
                         <button type="button" class="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-navBackground px-8 py-3 text-base font-medium text-white sm:w-full cursor-not-allowed">Product Uitverkocht</button>
-                    @endif
+                    <?php endif; ?>
 
                     <button type="button" class="hidden ml-4 flex items-center justify-center rounded-md px-3 py-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500">
                         <svg class="size-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
@@ -108,9 +127,9 @@
     </div>
 </section>
 
-<input id="key" type="hidden" value="{{ 0 }}">
+<input id="key" type="hidden" value="<?php echo e(0); ?>">
 
-<!--{{-- image modal --}}-->
+<!---->
 <div id="modal" class="hidden">
   <div class="relative z-[60]" aria-labelledby="dialog-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 bg-gray-500/60 transition-opacity" aria-hidden="true"></div>
@@ -125,3 +144,4 @@
 
 <script>
 </script>
+<?php /**PATH C:\Users\flori\D-Mmilitaria-Ecommerce\resources\views/products/partials/products-show.blade.php ENDPATH**/ ?>
