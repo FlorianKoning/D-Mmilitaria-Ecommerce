@@ -1,6 +1,9 @@
-function changeImage(newUrl)
+function changeImage(newUrl, order)
 {
+    const key = document.getElementById('key');
+
     $("#mainImage").attr("src", newUrl);
+    key.setAttribute('value', order);
 }
 
 function imageArray(option, product_id)

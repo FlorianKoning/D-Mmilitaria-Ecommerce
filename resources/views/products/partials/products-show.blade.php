@@ -19,7 +19,7 @@
                         @foreach ($extraImages as $image)
                             <button id="tabs-1-tab-1" class="relative flex h-40 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-navBackground focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
                                 <span class="absolute inset-0 overflow-hidden rounded-md">
-                                    <img onclick="changeImage($(this).attr('src'))" src="{{ $image->image_url }}" alt="{{ $image->image_name }}" class="w-full h-full object-contain">
+                                    <img onclick="changeImage($(this).attr('src'), '{{ $image->order }}')" src="{{ $image->image_url }}" alt="{{ $image->image_name }}" class="w-full h-full object-contain">
                                 </span>
                                 <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
                                 <span class="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2" aria-hidden="true"></span>
@@ -37,7 +37,7 @@
                             </svg>
                         </div>
     
-                        <img onclick="showImage($('#mainImage').attr('src'))" id="mainImage" src="{{ $product->main_image }}" alt="{{ $product->description }}" class="w-3/4  object-cover sm:rounded-lg hover:cursor-pointer">
+                        <img onclick="toogleZoom()" id="mainImage" src="{{ $product->main_image }}" alt="{{ $product->description }}" class="w-3/4  object-cover sm:rounded-lg hover:cursor-pointer">
     
                         <div onclick="imageArray('right', '{{ $product->id }}')" class="hover:text-navBackground hover:cursor-pointer p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16">
@@ -109,18 +109,26 @@
 
 <input id="key" type="hidden" value="{{ 0 }}">
 
-<!--{{-- image modal --}}-->
-<div id="modal" class="hidden">
-  <div class="relative z-[60]" aria-labelledby="dialog-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-500/60 transition-opacity" aria-hidden="true"></div>
-
-    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-      <div class="flex flex-row min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-        <img id="modalImage" src="" alt="Angled front view with bag zipped and handles upright." class="size-[500px] aspect-square object-cover sm:rounded-lg">
-      </div>
-    </div>
-  </div>
+{{-- image overlay --}}
+<div id="zoomedOverlay" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden">
+  <img src="" alt="Zoomed image" class="max-w-4xl max-h-[90vh] object-contain cursor-zoom-out" id="zoomedImage"/>
 </div>
 
+
+
 <script>
+    const zoomedOverlay = document.getElementById('zoomedOverlay');
+    const zoomedImage = document.getElementById('zoomedImage');
+
+    function toogleZoom() {
+        let imageUrl = document.getElementById('mainImage').getAttribute('src');
+        zoomedImage.setAttribute('src', imageUrl);
+
+        zoomedOverlay.classList.remove('hidden');
+    }
+
+    // Makes the zoomed image hidden again.
+    zoomedOverlay.addEventListener('click', function() {
+        zoomedOverlay.classList.add('hidden');
+    });
 </script>
