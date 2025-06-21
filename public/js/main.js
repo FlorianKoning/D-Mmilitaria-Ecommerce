@@ -49,6 +49,11 @@ function warningModel(route, name)
 }
 
 
+function deleteModel(id) {
+    $('#warningModel-'+id).removeClass('hidden');
+}
+
+
 function featureWarning(id)
 {
     $('#'+id).fadeIn().removeClass('hidden');

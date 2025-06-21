@@ -65,14 +65,14 @@
 
                                         {{-- delete options --}}
                                         <x-dropdown-link >
-                                            <button class="flex w-full" onclick="warningModel()">{{ __('Verwijder') }}</button>
+                                            <button class="flex w-full" onclick="deleteModel('{{ $image->id }}')">{{ __('Verwijder') }}</button>
                                         </x-dropdown-link>
                                     </x-slot>
                                 </x-dropdown>
                             </td>
 
                             {{-- warning model --}}
-                            <x-warning-modal :catagory="__('extra foto')" :route="route('cms.extraImages.delete', $image->id)" :name="$image->image_name" />
+                            <x-warning-modal :id="__('warningModel-').$image->id" :catagory="__('extra foto')" :route="route('cms.extraImages.delete', $image->id)" :name="$image->image_name" />
 
                             {{-- edit modal --}}
                             <x-extra-images-edit-modal :id="$image->id" />

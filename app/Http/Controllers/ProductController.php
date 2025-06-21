@@ -18,7 +18,7 @@ class ProductController extends Controller
     {
         return view('products.products-show', [
             'product' => $product,
-            'extraImages' => $this->orderImageArray(ProductImage::where('product_id', $product->id)->get()),
+            'extraImages' => self::orderImageArray(ProductImage::where('product_id', $product->id)->get()),
             'extraFeatures' => ProductFeature::where('product_id', $product->id)->get()
         ]);
     }
@@ -28,7 +28,7 @@ class ProductController extends Controller
      * @param \Illuminate\Database\Eloquent\Collection $images
      * @return object
      */
-    private function orderImageArray(Collection $images): object
+    public static function orderImageArray(Collection $images): object
     {
         $orderArray = array();
         $noValueArray = array();

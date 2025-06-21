@@ -17,6 +17,7 @@ class ProductImage extends Model
      */
     public static array $columnNames = [
         'preview' => 'Foto Preview',
+        'order' => 'Order Nummer',
         'image_name' => 'Naam van de foto',
         'product_id' => 'Gekoppelde Product',
     ];

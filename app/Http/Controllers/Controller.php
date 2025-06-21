@@ -15,7 +15,7 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 
 abstract class Controller
 {
-    protected int $paginateAmount = 8;
+    protected int $paginateAmount = 9;
     protected AclService $aclService;
     protected CartService $cartService;
     protected CartRepository $cartRepository;

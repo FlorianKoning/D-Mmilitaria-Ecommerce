@@ -1,7 +1,7 @@
 <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
 
 $__newAttributes = [];
-$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['catagory', 'route' => null, 'name' => null]));
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['catagory', 'route' => null, 'name' => null, 'id' => 'warningModel']));
 
 foreach ($attributes->all() as $__key => $__value) {
     if (in_array($__key, $__propNames)) {
@@ -16,7 +16,7 @@ $attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
 unset($__propNames);
 unset($__newAttributes);
 
-foreach (array_filter((['catagory', 'route' => null, 'name' => null]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+foreach (array_filter((['catagory', 'route' => null, 'name' => null, 'id' => 'warningModel']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 }
 
@@ -27,7 +27,7 @@ foreach ($attributes->all() as $__key => $__value) {
 }
 
 unset($__defined_vars); ?>
-<div id="warningModel" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div id="<?php echo e($id); ?>" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <form id="warningForm" method="POST" action="<?php echo e($route); ?>">
         <?php echo csrf_field(); ?>
         <?php echo method_field('delete'); ?>

@@ -1,5 +1,5 @@
-@props(['catagory', 'route' => null, 'name' => null])
-<div id="warningModel" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+@props(['catagory', 'route' => null, 'name' => null, 'id' => 'warningModel'])
+<div id="{{ $id }}" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <form id="warningForm" method="POST" action="{{ $route }}">
         @csrf
         @method('delete')

@@ -51,7 +51,7 @@
             </div>
 
             <!-- Product info -->
-            <div class="w-1/3 mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+            <div class="w-full lg:w-1/3 mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
                 {{-- title --}}
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $product->name }}</h1>
 

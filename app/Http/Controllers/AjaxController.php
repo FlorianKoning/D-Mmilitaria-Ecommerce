@@ -59,12 +59,15 @@ class AjaxController extends Controller
      */
     public function getImageArray(Product $product): JsonResponse
     {
+        $array = array();
+            
         $mainImage = $product->main_image;
         $extraImages = ProductImage::where('product_id', $product->id)->get();
-        $array = array();
+        $sortedArray = ProductController::orderImageArray($extraImages);
 
+        
         $array[0] = $mainImage;
-        foreach ($extraImages as $image) {
+        foreach ($sortedArray as $image) {
             $array[] = $image->image_url;
         }
 

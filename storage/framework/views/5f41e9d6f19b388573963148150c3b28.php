@@ -148,7 +148,7 @@ unset($__defined_vars); ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-                                            <button class="flex w-full" onclick="warningModel()"><?php echo e(__('Verwijder')); ?></button>
+                                            <button class="flex w-full" onclick="deleteModel('<?php echo e($image->id); ?>')"><?php echo e(__('Verwijder')); ?></button>
                                          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal68cb1971a2b92c9735f83359058f7108)): ?>
@@ -175,14 +175,14 @@ unset($__defined_vars); ?>
                             
                             <?php if (isset($component)) { $__componentOriginal6a4f9248e22234a0b486211ad8b1b3c5 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal6a4f9248e22234a0b486211ad8b1b3c5 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.warning-modal','data' => ['catagory' => __('extra foto'),'route' => route('cms.extraImages.delete', $image->id),'name' => $image->image_name]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.warning-modal','data' => ['id' => __('warningModel-').$image->id,'catagory' => __('extra foto'),'route' => route('cms.extraImages.delete', $image->id),'name' => $image->image_name]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('warning-modal'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['catagory' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('extra foto')),'route' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('cms.extraImages.delete', $image->id)),'name' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($image->image_name)]); ?>
+<?php $component->withAttributes(['id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('warningModel-').$image->id),'catagory' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('extra foto')),'route' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('cms.extraImages.delete', $image->id)),'name' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($image->image_name)]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal6a4f9248e22234a0b486211ad8b1b3c5)): ?>
